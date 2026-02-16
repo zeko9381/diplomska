@@ -1,0 +1,649 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% datoteka diploma-FRI-vzorec.tex
+%
+%POZOR: ta verzija ne producira pdf datoteke v pdf/A formatu!!!
+%namenjena je le za nalogo pri Diplomskem seminarju!
+%
+% vzorčna datoteka za pisanje diplomskega dela v formatu LaTeX
+% na UL Fakulteti za računalništvo in informatiko
+%
+% na osnovi starejših verzij vkup spravil Franc Solina, maj 2021
+% prvo verzijo je leta 2010 pripravil Gašper Fijavž
+%
+% za upravljanje z literaturo ta vezija uporablja BibLaTeX
+%
+% svetujemo uporabo Overleaf.com - na tej spletni implementaciji LaTeXa ta vzorec zagotovo pravilno deluje
+%
+
+\documentclass[a4paper,12pt,openright]{book}
+%\documentclass[a4paper, 12pt, openright, draft]{book}  Nalogo preverite tudi z opcijo draft, ki pokaže, katere vrstice so predolge! Pozor, v draft opciji, se slike ne pokažejo!
+ 
+\usepackage[utf8]{inputenc}   % omogoča uporabo slovenskih črk kodiranih v formatu UTF-8
+\usepackage[slovenian,english]{babel}    % naloži, med drugim, slovenske delilne vzorce
+\usepackage[pdftex]{graphicx}  % omogoča vlaganje slik različnih formatov
+\usepackage{fancyhdr}          % poskrbi, na primer, za glave strani
+\usepackage{amssymb}           % dodatni matematični simboli
+\usepackage{amsmath}           % eqref, npr.
+\usepackage[hyphens]{url}
+\usepackage{csquotes}
+\usepackage[pdftex, colorlinks=true,
+						citecolor=black, filecolor=black, 
+						linkcolor=black, urlcolor=black,
+						pdfproducer={LaTeX}, pdfcreator={LaTeX}]{hyperref}
+\usepackage{hyperxmp}
+
+\usepackage{color}
+\usepackage{soul}
+
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=nty,
+defernumbers=true
+]{biblatex}
+
+
+\addbibresource{main.bib} %Imports bibliography file
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	DIPLOMA INFO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ttitle}{Svoboda na dotik: Ali je popolnoma odprtokoden telefon možen?}
+\newcommand{\ttitleEn}{Freedom at Your Fingertips: Is a Fully Open-Source Phone Possible?}
+\newcommand{\tsubject}{\ttitle}
+\newcommand{\tsubjectEn}{\ttitleEn}
+\newcommand{\tauthor}{Jan Zajc}
+\newcommand{\tkeywords}{odprtokodni telefon, odprtokodna programska oprema, pametni telefoni, mobilni operacijski sistemi, zasebnost}
+\newcommand{\tkeywordsEn}{open-source phone, open-source software, smartphones, mobile operating systems, privacy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	HYPERREF SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{pdftitle={\ttitle}}
+\hypersetup{pdfsubject=\ttitleEn}
+\hypersetup{pdfauthor={\tauthor}}
+\hypersetup{pdfkeywords=\tkeywordsEn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% postavitev strani
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+\addtolength{\marginparwidth}{-20pt} % robovi za tisk
+\addtolength{\oddsidemargin}{40pt}
+\addtolength{\evensidemargin}{-40pt}
+
+\renewcommand{\baselinestretch}{1.3} % ustrezen razmik med vrsticami
+\setlength{\headheight}{15pt}        % potreben prostor na vrhu
+\renewcommand{\chaptermark}[1]%
+{\markboth{\MakeUppercase{\thechapter.\ #1}}{}} \renewcommand{\sectionmark}[1]%
+{\markright{\MakeUppercase{\thesection.\ #1}}} \renewcommand{\headrulewidth}{0.5pt} \renewcommand{\footrulewidth}{0pt}
+\fancyhf{}
+\fancyhead[LE,RO]{\sl \thepage} 
+%\fancyhead[LO]{\sl \rightmark} \fancyhead[RE]{\sl \leftmark}
+\fancyhead[RE]{\sc \tauthor}              % dodal Solina
+\fancyhead[LO]{\sc Osnutek Diplomske naloge}     % dodal Solina
+
+
+\newcommand{\BibLaTeX}{{\sc Bib}\LaTeX}
+\newcommand{\BibTeX}{{\sc Bib}\TeX}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% naslovi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+\newcommand{\autfont}{\Large}
+\newcommand{\titfont}{\LARGE\bf}
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+\setcounter{tocdepth}{1}	      % globina kazala
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% konstrukti
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\newtheorem{izrek}{Izrek}[chapter]
+\newtheorem{trditev}{Trditev}[izrek]
+\newenvironment{dokaz}{\emph{Dokaz.}\ }{\hspace{\fill}{$\Box$}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% PDF-A
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% define medatata
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\def\Title{\ttitle}
+\def\Author{\tauthor, jz3623@student.uni-lj.si}
+\def\Subject{\ttitleEn}
+\def\Keywords{\tkeywordsEn}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% \convertDate converts D:20080419103507+02'00' to 2008-04-19T10:35:07+02:00
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\def\convertDate{%
+    \getYear
+}
+
+{\catcode`\D=12
+ \gdef\getYear D:#1#2#3#4{\edef\xYear{#1#2#3#4}\getMonth}
+}
+\def\getMonth#1#2{\edef\xMonth{#1#2}\getDay}
+\def\getDay#1#2{\edef\xDay{#1#2}\getHour}
+\def\getHour#1#2{\edef\xHour{#1#2}\getMin}
+\def\getMin#1#2{\edef\xMin{#1#2}\getSec}
+\def\getSec#1#2{\edef\xSec{#1#2}\getTZh}
+\def\getTZh +#1#2{\edef\xTZh{#1#2}\getTZm}
+\def\getTZm '#1#2'{%
+    \edef\xTZm{#1#2}%
+    \edef\convDate{\xYear-\xMonth-\xDay T\xHour:\xMin:\xSec+\xTZh:\xTZm}%
+}
+
+%\expandafter\convertDate\pdfcreationdate 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% get pdftex version string
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\newcount\countA
+\countA=\pdftexversion
+\advance \countA by -100
+\def\pdftexVersionStr{pdfTeX-1.\the\countA.\pdftexrevision}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% XMP data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\usepackage{xmpincl}
+%\includexmp{pdfa-1b}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% pdfInfo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\pdfinfo{%
+    /Title    (\ttitle)
+    /Author   (\tauthor)
+    /Subject  (\ttitleEn)
+    /Keywords (\tkeywordsEn)
+    /ModDate  (\pdfcreationdate)
+    /Trapped  /False
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% znaki za copyright stran
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+\newcommand{\CcImageCc}[1]{%
+	\includegraphics[scale=#1]{cc_cc_30.pdf}%
+}
+\newcommand{\CcImageBy}[1]{%
+	\includegraphics[scale=#1]{cc_by_30.pdf}%
+}
+\newcommand{\CcImageSa}[1]{%
+	\includegraphics[scale=#1]{cc_sa_30.pdf}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\selectlanguage{slovene}
+\frontmatter
+\setcounter{page}{1} %
+\renewcommand{\thepage}{}       % preprečimo težave s številkami strani v kazalu
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%naslovnica
+ \thispagestyle{empty}%
+   \begin{center}
+    {\large\sc Univerza v Ljubljani\\%
+%      Fakulteta za elektrotehniko\\% za študijski program Multimedija
+%      Fakulteta za upravo\\% za študijski program Upravna informatika
+      Fakulteta za računalništvo in informatiko\\%
+%      Fakulteta za matematiko in fiziko\\% za študijski program Računalništvo in matematika
+     }
+    \vskip 10em%
+    {\autfont \tauthor\par}%
+    {\titfont \ttitle \par}%
+    {\vskip 3em \textsc{OSNUTEK DIPLOMSKE NALOGE\\[5mm]         % dodal Solina za ostale študijske programe
+    VISOKOŠOLSKI STROKOVNI ŠTUDIJSKI PROGRAM\\ PRVE STOPNJE\\ RAČUNALNIŠTVO IN INFORMATIKA}\par}%
+%     UNIVERZITETNI  ŠTUDIJSKI PROGRAM\\ PRVE STOPNJE\\ RAČUNALNIŠTVO IN INFORMATIKA}\par}%
+%    INTERDISCIPLINARNI UNIVERZITETNI\\ ŠTUDIJSKI PROGRAM PRVE STOPNJE\\ MULTIMEDIJA}\par}%
+%    INTERDISCIPLINARNI UNIVERZITETNI\\ ŠTUDIJSKI PROGRAM PRVE STOPNJE\\ UPRAVNA INFORMATIKA}\par}%
+%    INTERDISCIPLINARNI UNIVERZITETNI\\ ŠTUDIJSKI PROGRAM PRVE STOPNJE\\ RAČUNALNIŠTVO IN MATEMATIKA}\par}%
+    \vfill\null%
+% izberite pravi habilitacijski naziv mentorja!
+    {\large \textsc{Mentor}: doc. dr. David Modic\par}%
+%   {\large \textsc{Somentor}:  viš. pred./doc./izr. prof./prof. dr.  Martin Krpan \par}%
+    {\vskip 2em \large Ljubljana, \the\year \par}%
+\end{center}
+% prazna stran
+%\clearemptydoublepage      
+% izjava o licencah itd. se izpiše na hrbtni strani naslovnice
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%copyright stran
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\thispagestyle{empty}
+
+\vspace*{5cm}
+{\small \noindent
+To delo je ponujeno pod licenco \textit{Creative Commons Priznanje avtorstva-Deljenje pod enakimi pogoji 2.5 Slovenija} (ali novej\v so razli\v cico).
+To pomeni, da se tako besedilo, slike, grafi in druge sestavine dela kot tudi rezultati diplomskega dela lahko prosto distribuirajo,
+reproducirajo, uporabljajo, priobčujejo javnosti in predelujejo, pod pogojem, da se jasno in vidno navede avtorja in naslov tega
+dela in da se v primeru spremembe, preoblikovanja ali uporabe tega dela v svojem delu, lahko distribuira predelava le pod
+licenco, ki je enaka tej.
+Podrobnosti licence so dostopne na spletni strani \href{http://creativecommons.si}{creativecommons.si} ali na Inštitutu za
+intelektualno lastnino, Streliška 1, 1000 Ljubljana.
+
+\vspace*{1cm}
+\begin{center}% 0.66 / 0.89 = 0.741573033707865
+\CcImageCc{0.741573033707865}\hspace*{1ex}\CcImageBy{1}\hspace*{1ex}\CcImageSa{1}%
+\end{center}
+}
+
+\vspace*{1cm}
+{\small \noindent
+Izvorna koda diplomskega dela, njeni rezultati in v ta namen razvita programska oprema je ponujena pod licenco GNU General Public License,
+različica 3 (ali novejša). To pomeni, da se lahko prosto distribuira in/ali predeluje pod njenimi pogoji.
+Podrobnosti licence so dostopne na spletni strani \url{http://www.gnu.org/licenses/}.
+}
+
+\vfill
+\begin{center} 
+\ \\ \vfill
+{\em
+Besedilo je oblikovano z urejevalnikom besedil \LaTeX.}
+\end{center}
+
+% prazna stran
+\clearemptydoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% stran 3 med uvodnimi listi
+\thispagestyle{empty}
+\
+\vfill
+
+\bigskip
+\noindent\textbf{Kandidat:} Jan Zajc\\
+\noindent\textbf{Naslov:} Svoboda na dotik: Ali je popolnoma odprtokoden telefon možen?\\
+% vstavite ustrezen naziv študijskega programa!
+\noindent\textbf{Vrsta naloge:} Diplomska naloga na visokošolskem strokovnem programu prve stopnje Računalništvo in informatika \\
+% izberite pravi habilitacijski naziv mentorja!
+\noindent\textbf{Mentor:} doc. dr. David Modic\\
+%\noindent\textbf{Somentor:} isto kot za mentorja
+
+\bigskip
+\noindent\textbf{Opis:}\\
+Opis diplome
+
+\bigskip
+\noindent\textbf{Title:} Freedom at Your Fingertips: Is a Fully Open-Source Phone Possible?
+
+\bigskip
+\noindent\textbf{Description:}\\
+Opis diplome v angleščini
+
+\vfill
+
+
+
+\vspace{2cm}
+
+% prazna stran
+\clearemptydoublepage
+
+% zahvala
+%\thispagestyle{empty}\mbox{}\vfill\null\it%
+%\noindent
+%Na tem mestu zapišite, komu se zahvaljujete za pomoč pri izdelavi diplomske naloge oziroma pri vašem študiju nasploh. Pazite, da ne boste koga pozabili. Utegnil vam bo zameriti. Temu se da izogniti tako, da celotno zahvalo izpustite.
+%\rm\normalfont
+
+% prazna stran
+\clearemptydoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% posvetilo, če sama zahvala ne zadošča :-)
+%\thispagestyle{empty}\mbox{}{\vskip0.20\textheight}\mbox{}\hfill\begin{minipage}{0.55\textwidth}%
+%Svoji dragi Alenčici.
+%\normalfont\end{minipage}
+
+% prazna stran
+%\clearemptydoublepage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% kazalo
+\pagestyle{empty}
+\def\thepage{}% preprečimo težave s številkami strani v kazalu
+\tableofcontents{}
+
+
+% Tabela s kraticami
+
+
+% prazna stran
+\clearemptydoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% povzetek
+\addcontentsline{toc}{chapter}{Povzetek}
+\chapter*{Povzetek}
+
+\noindent\textbf{Naslov:} \ttitle
+\bigskip
+
+\noindent\textbf{Avtor:} \tauthor
+\bigskip
+
+%\noindent\textbf{Povzetek:} 
+\noindent placeholder
+
+\bigskip
+
+\noindent\textbf{Ključne besede:} \tkeywords.
+% prazna stran
+\clearemptydoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% abstract
+\selectlanguage{english}
+\addcontentsline{toc}{chapter}{Abstract}
+\chapter*{Abstract}
+
+\noindent\textbf{Title:} \ttitleEn
+\bigskip
+
+\noindent\textbf{Author:} \tauthor
+\bigskip
+
+%\noindent\textbf{Abstract:} 
+\noindent placeholder
+\bigskip
+
+\noindent\textbf{Keywords:} \tkeywordsEn.
+\selectlanguage{slovene}
+% prazna stran
+\clearemptydoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+\chapter{Uvod}
+\label{chap:uvod}
+placeholder
+
+\chapter{Pregled področja: mobilni operacijski sistemi in odprtokodne alternative}
+\label{chap:pregled_podrocja}
+
+Mobilni telefoni so se iz komunikacijskih naprav razvili v splošnonamenska računalniška orodja, ki jih uporabljamo za delo, zabavo, navigacijo, avtentikacijo in komunikacijo.
+V praksi to pomeni, da je operacijski sistem pametnega telefona postal ena izmed ključnih komponent digitalnega življenja uporabnika.
+Trenutno stanje na trgu je močno centralizirano.
+Mobilni ekosistem je v veliki meri razdeljen med Android in iOS, kar ima neposredne posledice za svobodo uporabnika, zasebnost in življenjsko dobo naprav.
+V tem poglavju najprej opišemo ključne lastnosti obeh prevladujočih platform, nato pa pregledamo glavne odprtokodne pristope in njihove omejitve.
+
+\section{Terminologija}
+\label{sec:terminologija}
+
+V poglavju uporabljamo nekaj izrazov, ki se pri mobilnih sistemih pogosto pojavljajo v angleščini ali pa imajo v slovenščini več možnih prevodov. Da ne bi pri vsaki sekciji znova razlagali istih pojmov, spodaj na kratko zberemo ključne izraze in kratice. V nadaljevanju jih uporabljamo dosledno v istem pomenu.
+
+\begin{description}
+  \item[Android, iOS] Dve prevladujoči mobilni platformi. Android je ekosistem naprav različnih proizvajalcev, iOS pa Applov operacijski sistem za iPhone.
+
+  \item[Applova trgovina z aplikacijami (\textit{App Store})] Uradni kanal za distribucijo aplikacij na iOS.
+
+  \item[Androidov odprtokodni projekt (\textit{Android Open Source Project}, AOSP)] Odprtokodna osnova Androida, na kateri temeljijo številne distribucije in prilagoditve.
+
+  \item[Izdelovalec originalne opreme (OEM)] Proizvajalec končne naprave (npr. OnePlus, Samsung), ki tipično prilagodi sistem in programsko opremo za svojo strojno opremo.
+
+  \item[Sistem na čipu (SoC)] Glavni čip v telefonu, ki običajno vključuje CPU, GPU, komunikacijske podsisteme in druge krmilnike (npr. Qualcomm Snapdragon).
+
+  \item[Gonilnik] Programska komponenta, ki operacijskemu sistemu omogoča uporabo strojne opreme (angl. \textit{driver}).
+
+  \item[Strojna programska oprema (\textit{firmware})] Programi, ki tečejo neposredno na strojnih komponentah (npr. kamera, Wi-Fi/BT, modem) in so pogosto lastniški.
+
+  \item[Sklad dobavitelja (\textit{vendor stack})] Strojno-specifičen del programskega sklada, ki ga zagotovi dobavitelj čipovja ali proizvajalec naprave (gonilniki, \textit{firmware}, vmesniki).
+
+  \item[Googlove mobilne storitve (\textit{Google Mobile Services}, GMS)] Nabor lastniških Googlovih komponent na Androidu (npr. trgovina aplikacij, storitve za obvestila, API-ji). Pomemben del predstavlja \textit{GMS Core} oziroma \textit{Google Play Services}.
+
+  \item[Programski vmesnik (API)] Vmesnik, prek katerega aplikacije ali sistemske komponente uporabljajo funkcionalnosti drugih komponent (angl. \textit{Application Programming Interface}).
+
+  \item[Potisna obvestila (\textit{push notifications})] Mehanizem, kjer strežnik sproži obvestilo aplikaciji na napravi (pogosto prek posrednih storitev).
+
+  \item[Preverjanje integritete (SafetyNet/Play Integrity)] Mehanizmi, s katerimi ponudnik platforme preverja lastnosti naprave in okolja izvajanja (npr. certificiranost, nepooblaščene spremembe). SafetyNet je starejši pristop, Play Integrity pa novejši.
+
+  \item[Upravljanje digitalnih pravic (\textit{Digital Rights Management}, DRM)] Tehnike za nadzor dostopa do zaščitenih vsebin (npr. video). V kontekstu Androida je pogost primer \textit{Widevine}, ki uporablja različne varnostne ravni (npr. L1, L3).
+
+  \item[Jedro] Osrednji del operacijskega sistema (angl. \textit{kernel}). V mobilnem svetu je pogosto pomembno, ali naprava uporablja jedro iz glavne razvojne veje.
+
+  \item[Uporabniški prostor (\textit{userspace})] Del sistema, kjer teče večina programov in storitev nad jedrom (npr. lupina, paketni upravljalnik, grafični vmesnik).
+
+  \item[Jedro iz glavne razvojne veje (\textit{mainline kernel})] Jedro Linuxa, ki je del uradne (glavne) razvojne veje, ne pa posebej prilagojena različica proizvajalca.
+
+  \item[ROM] V kontekstu Androida izraz uporabljamo za sistemsko sliko oziroma distribucijo operacijskega sistema (npr. \textit{stock ROM} za tovarniški sistem, \textit{custom ROM} za alternativni sistem). Ne gre za pomnilniški čip tipa ROM.
+
+  \item[Skrbniški dostop (\textit{root})] Možnost izvajanja ukazov z najvišjimi privilegiji v sistemu.
+
+  \item[Obnovitveno okolje (\textit{recovery})] Posebno zagonsko okolje za vzdrževanje naprave (namestitve, posodobitve, brisanje podatkov ipd.).
+
+  \item[Prenos (\textit{porting})] Postopek prilagoditve operacijskega sistema ali distribucije na določeno strojno platformo oziroma napravo.
+
+  \item[Osnovnopasovni podsistem (\textit{baseband})] Komunikacijski podsistem (modem) za mobilna omrežja, pogosto ločen od glavnega procesorja in z lastno strojno programsko opremo.
+
+  \item[Konvergenca (\textit{convergence})] Koncept, kjer ista naprava (telefon) v določenih načinih uporabe deluje tudi kot namizni računalnik.
+
+  \item[Vmesni sloji (libhybris, Halium)] Pristopi, ki omogočajo uporabo Androidovih strojno-specifičnih komponent (npr. knjižnic/gonilnikov) v okolju GNU/Linux na telefonih.
+\end{description}
+
+\section{Duopol Android/iOS in posledice za uporabnike}
+\label{sec:duopol}
+
+Android in iOS predstavljata praktično celoten trg mobilnih operacijskih sistemov.
+Po podatkih StatCounter ima Android globalno večinski delež, iOS pa večino preostalega~\cite{statcounter_mobileos_2025}.
+Podobno sliko kažejo tudi tržne analize prodajnih deležev~\cite{counterpoint_os_share_2025}.
+Ne glede na natančne odstotke je ključna ugotovitev, da sta v praksi relevantni skoraj izključno ti dve platformi.
+
+Takšna koncentracija moči pomeni, da sta Google in Apple posrednika med uporabnikom in napravo.
+Določata, kako se namešča programska oprema, kakšna so pravila za aplikacije, kakšni so varnostni mehanizmi in katere funkcionalnosti so sploh dostopne.
+Čeprav sta varnost in zanesljivost pomembni, tak model pogosto vodi v položaj, kjer se uporabnikove pravice (npr. nadzor nad sistemom, možnost prilagoditev, izbira storitev) podredijo poslovnim interesom ekosistema.
+
+\section{iOS: zaprt ekosistem in nadzor nad distribucijo aplikacij}
+\label{sec:ios}
+
+iOS je zasnovan kot strogo nadzorovan sistem.
+Uporabnik praviloma namešča aplikacije prek uradne Applove trgovine z aplikacijami (angl. \textit{App Store}), sistem pa je zgrajen okoli modela podpisovanja kode in preverjanja integritete~\cite{apple_app_code_signing,apple_app_review_guidelines}.
+Tak pristop ima prednosti, kot so enotna uporabniška izkušnja, relativno predvidljiv varnostni model in dolga programska podpora za naprave.
+Hkrati pa pomeni tudi, da ima uporabnik omejen vpliv na to, kaj se lahko poganja na napravi in kakšne posege v sistem je sploh možno izvesti.
+
+Z vidika diplomske naloge je pomembno predvsem to, da iOS kot platforma ne omogoča resnične možnosti ``popolnoma odprtokodnega telefona''.
+Uporabnik niti teoretično nima možnosti zamenjati ključnih komponent sistema z odprtokodnimi alternativami.
+iOS je zato dober kontrast, saj pokaže, kako je videti maksimalno centraliziran mobilni ekosistem, kjer je nadzor nad napravo primarno v rokah proizvajalca~\cite{apple_app_review_guidelines}.
+
+\section{Android: odprtokodna osnova in resničnost zaprtih komponent}
+\label{sec:android}
+
+Android se pogosto predstavlja kot odprtokoden sistem, saj temelji na Androidovem odprtokodnem projektu (angl. \textit{Android Open Source Project}, AOSP)~\cite{aosp_get_started_2025}.
+To je pomembna razlika v primerjavi z iOS, ker AOSP omogoča javno dostopno izvorno kodo za velik del platforme in teoretično dopušča razvoj alternativnih distribucij.
+
+V praksi pa tipična naprava z Androidom ni enaka AOSP.
+Večina naprav vsebuje:
+\begin{itemize}
+  \item prilagoditve izdelovalca originalne opreme (OEM), ki pogosto vključujejo dodatne sistemske aplikacije;
+  \item zaprtokodne gonilnike in strojno programsko opremo (angl. \textit{firmware}) za posamezne komponente, ki so del sklada dobavitelja (angl. \textit{vendor stack})~\cite{android_treble_vendor_system_split,android_hidl_versioning_treble};
+  \item Googlove mobilne storitve (angl. \textit{Google Mobile Services}, GMS), ki niso del AOSP in so na voljo le prek licence; pomemben del teh storitev predstavlja GMS Core oziroma Google Play Services~\cite{gms_not_part_of_aosp_license,gms_core_proprietary_layer}.
+\end{itemize}
+
+Posledica je, da je Android kot ekosistem hibrid.
+Odprtokodna osnova se v praksi nadgradi z več lastniškimi plastmi.
+To se najbolj pozna pri strojni podpori.
+Gonilniki za grafični pospeševalnik, kamero, mobilni modem in druge ključne komponente so pogosto zaprti ter vezani na konkretno jedro in različico sistema~\cite{android_treble_vendor_system_split,android_hidl_versioning_treble}.
+Zaradi tega posodobitve niso zgolj vprašanje ``nove različice Androida'', temveč tudi vprašanje združljivosti celotnega sklada gonilnikov in strojne programske opreme.
+Del problema Android poskuša nasloviti z modularizacijo sistemskih komponent (projekt \textit{Mainline}), kjer je del posodobitev mogoče dostaviti ločeno od celotnega sistema~\cite{android_mainline_modular_system}.
+
+Ena izmed posledic takšne arhitekture je tudi fragmentacija.
+Različni proizvajalci vzdržujejo svoje različice sistema in jedra, kar poveča stroške vzdrževanja in lahko negativno vpliva na hitrost ter trajanje zagotavljanja posodobitev~\cite{acar_android_security_updates_2024,android_devblog_treble_plus_one_2020}.
+To je eden izmed razlogov, zakaj naprave pogosto dobijo le omejeno število večjih posodobitev, čeprav je strojna oprema še povsem zmogljiva.
+Kot minimalen referenčni okvir lahko uporabimo tudi zahteve programa ``Android Enterprise Recommended'', ki za vključene naprave predvideva podporo trenutni izdaji in vsaj eni večji nadgradnji operacijskega sistema~\cite{android_enterprise_recommended_requirements}.
+
+\section{Akterji mobilnega ekosistema}
+\label{sec:akterji}
+
+Za razumevanje omejitev odprtokodnih mobilnih sistemov je ključno upoštevati, da telefon ni samo operacijski sistem in aplikacije.
+Pri tipični napravi sodeluje več akterjev:
+\begin{itemize}
+  \item \textbf{Proizvajalec operacijskega sistema oziroma ekosistema} (Apple ali Google, posredno tudi skupnost AOSP);
+  \item \textbf{Izdelovalec originalne opreme (OEM)} (npr. OnePlus), ki prilagodi sistem;
+  \item \textbf{Proizvajalec sistema na čipu (SoC)} (npr. Qualcomm), ki zagotovi gonilnike in strojno programsko opremo (angl. \textit{firmware});
+  \item \textbf{Operaterji} (v določenih državah tudi certificiranje in omejitve);
+  \item \textbf{Razvijalci aplikacij}, ki se pogosto zanašajo na lastniške programske vmesnike (API) in storitve (npr. potisna obvestila, SafetyNet/Play Integrity)~\cite{safetynet_deprecated_replaced,play_integrity_overview}.
+\end{itemize}
+
+Poseben primer je \textbf{osnovnopasovni podsistem (angl. \textit{baseband})}.
+Ta je pogosto ločen procesor ali podsistem s svojo strojno programsko opremo, ki je praviloma lastniška~\cite{hernandez_firmwire_ndss2022,davis_cellular_baseband_security_2012}.
+Zaradi varnosti in regulative je razumljivo, zakaj je ta del izoliran, vendar z vidika odprtokodnosti predstavlja trdno omejitev.
+Tudi če zamenjamo operacijski sistem in aplikacije, ostaja osnovnopasovni podsistem ključen zaprt del naprave.
+
+\section{Alternativni Android ROM-i}
+\label{sec:custom_rom}
+
+Alternativni ROM-i za Android so pogost način, kako predvsem tehnično bolj podkovani uporabniki poskušajo povečati nadzor nad napravo.
+Najbolj poznan primer je LineageOS, poleg tega pa obstajajo še projekti, ki se posebej osredotočajo na zasebnost ali zmanjšanje odvisnosti od Googlovih storitev (npr. /e/OS, GrapheneOS)~\cite{lineageos_home,eos_about,grapheneos_about}.
+
+V primerjavi s tovarniškimi ROM-i alternative pogosto ponujajo:
+\begin{itemize}
+  \item manj prednaložene odvečne programske opreme (angl. \textit{bloatware});
+  \item bolj transparentne nastavitve zasebnosti;
+  \item več možnosti prilagajanja (npr. skrbniški dostop, angl. \textit{root}, drugačno obnovitveno okolje, angl. \textit{recovery}, ter večji nadzor nad sistemskimi aplikacijami);
+  \item v nekaterih primerih daljšo podporo za starejše naprave (odvisno od skupnosti in vzdrževanja)~\cite{bradley_sustainable_security_2023}.
+\end{itemize}
+
+Ključna omejitev alternativnih ROM-ov je, da so še vedno vezani na isti problem kot tovarniški Android.
+Odvisni so od zaprtokodnih gonilnikov in strojne programske opreme (angl. \textit{firmware}), ki jih zagotavlja proizvajalec strojne opreme.
+Poleg tega se v zadnjih letih povečuje odvisnost aplikacij od lastniških storitev in mehanizmov preverjanja integritete (npr. Play Integrity), kar lahko na sistemih brez Googlovih storitev povzroča težave pri aplikacijah z višjimi varnostnimi zahtevami (npr. plačila, bančne aplikacije)~\cite{play_integrity_overview,google_play_integrity_help}.
+Pri zaščiti vsebin se uporabljajo mehanizmi upravljanja digitalnih pravic (angl. \textit{Digital Rights Management}, DRM), kot je Widevine, kjer lahko razlike v varnostnih ravneh vplivajo na razpoložljive funkcionalnosti oziroma kakovost predvajanja~\cite{widevine_overview_2024,widevine_help_security_levels,chrome_media_updates_chrome62_2017,bitmovin_widevine_levels}.
+
+\section{Mobilni Linux: postmarketOS, Ubuntu Touch in sorodni projekti}
+\label{sec:mobile_linux}
+
+Mobilni Linux poskuša na telefon prinesti bolj klasičen model računalniškega sistema.
+V ospredju so standarden uporabniški prostor Linuxa (angl. \textit{userspace}), paketni upravljalnik, terminal in večja svoboda prilagajanja.
+Med bolj aktivnimi projekti sta postmarketOS in Ubuntu Touch.
+
+Projekt postmarketOS gradi na distribuciji Alpine Linux in ima dolgoročno usmeritev v vzdržljivost ter ponovno uporabnost naprav~\cite{postmarketos_about}.
+S tem poskuša zmanjšati odvisnost od specifičnih različic Androida in cilja na to, da bi naprave lahko uporabljale jedro iz glavne razvojne veje (angl. \textit{mainline kernel}), kjer je to izvedljivo.
+
+Ubuntu Touch razvija skupnost UBports in poskuša ponuditi uporabniku prijazen mobilni sistem z lastnim grafičnim vmesnikom.
+Pomemben del zasnove je koncept konvergence, kjer lahko ista naprava deluje kot telefon in kot namizni računalnik~\cite{ubports_ubuntu_touch,ubports_convergence}.
+Cilj je ponuditi alternativo Androidu, ki ni vezana na Googlov ekosistem in kjer je večina programske opreme odprtokodna.
+
+Kljub obetom je resničnost mobilnega Linuxa še vedno močno odvisna od strojne podpore.
+Pri številnih napravah se za delovanje še vedno uporabljajo obhodi, kot so vmesni sloji za uporabo Android gonilnikov (npr. libhybris, Halium), kar pomeni kompromis med odprtostjo in praktično uporabnostjo~\cite{halium_docs_intro,libhybris_readme,sailfish_hadk_libhybris}.
+To je tipičen primer konflikta.
+Ideal je ``čist'' Linux programski sklad, praksa pa pogosto zahteva uporabo obstoječih lastniških komponent.
+
+\section{Namenske Linux naprave}
+\label{sec:linux_phones}
+
+Poleg prenosov na obstoječe telefone Android (angl. \textit{porting}) obstajajo tudi namenske naprave, ki ciljajo na uporabnike, ki želijo odprtokodne alternative (npr. PinePhone, Librem~5)~\cite{pine64_pinephone_device,pine64_wiki_pinephone,purism_librem5_product,purism_librem5_docs}.
+Te naprave pogosto poskušajo izboljšati stanje tako, da izberejo strojno opremo z boljšo podporo v jedru Linuxa ali z bolj odprto dokumentacijo.
+
+Prednost namenskih Linux telefonov je, da je programski sklad pogosto bolj konsistenten (jedro + uporabniški prostor + uporabniški vmesnik) in da skupnost razvoj usmeri na manjše število naprav.
+Slabost pa je, da se takšne naprave pogosto ne morejo kosati z najboljšimi telefoni z Androidom ali iOS glede zmogljivosti, kakovosti kamere in porabe energije.
+Zato ostajajo predvsem v niši, kar vpliva tudi na velikost skupnosti in hitrost razvoja.
+
+\section{Povzetek}
+\label{sec:povzetek_pregleda}
+
+Pregled področja pokaže, da mobilni ekosistem trenutno obvladuje duopol Android/iOS, kjer je uporabniška svoboda v veliki meri omejena z zaprtimi ekosistemi, lastniškimi komponentami in poslovnimi modeli.
+Android sicer ponuja odprtokodno osnovo (AOSP), vendar tipične naprave vsebujejo veliko zaprtih slojev, kar oteži dolgotrajno vzdrževanje in razvoj alternativ.
+Alternativni ROM-i za Android delno izboljšajo nadzor nad sistemom, vendar ostajajo odvisni od istih zaprtih gonilnikov in strojne programske opreme.
+Projekti mobilnega Linuxa ponujajo bolj radikalno alternativo, vendar je njihova praktična uporabnost še vedno močno omejena s strojno podporo in ekosistemom aplikacij.
+To neposredno motivira nadaljnja poglavja, kjer bodo najprej opredeljeni kriteriji ``popolnoma odprtokodnega telefona'', nato pa bodo analizirane obstoječe rešitve in empirično preizkušene.
+
+\chapter{Empirični del}
+\label{chap:empiricni}
+Empirični del diplomskega dela bo izveden kot študija primera na izbranem pametnem telefonu OnePlus 6T. Fokus bo na ciljnem profilu tehnično bolj podkovanega uporabnika, ki je pripravljen sam namestiti alternativne sisteme in mu veliko pomenita nadzor nad napravo ter zasebnost.
+
+\section{Izbrana naprava}
+Kot testna naprava bo uporabljen pametni telefon OnePlus 6T, ki ima dovolj zmogljivo strojno opremo in dobro podporo skupnosti. Naprava omogoča odklepanje bootloaderja in namestitev alternativnih sistemov, hkrati pa predstavlja tipičen primer sodobnega Android telefona z zaprtimi gonilniki in firmware-om. V nalogi bom na kratko predstavil osnovne strojne značilnosti naprave (čipovje, pomnilnik, zaslon, brezžične povezave, senzorji), saj te neposredno vplivajo na podporo v odprtokodnih sistemih.
+
+\section{Izbrani sistemi}
+Na napravi bom primerjal naslednje vrste sistemov:
+\begin{description}
+    \item[Tovarniški sistem] izhodiščni Android sistem, ki je bil uradno namenjen napravi (OxygenOS oziroma uradna različica Androida za OnePlus 6T).
+    \item[Alternativni Android ROM-i] vsaj en odprtokoden sistem na osnovi AOSP, na primer LineageOS ali podoben projekt, ki za napravo ponuja stabilne ali poluradne izdaje.
+    \item[Mobilne Linux distribucije] ena ali več mobilnih distribucij Linuxa (npr. postmarketOS, Ubuntu Touch), za katere obstaja port na OnePlus 6T in omogočajo vsaj osnovno funkcionalnost naprave.
+\end{description}
+
+Končni nabor sistemov bo prilagojen dejanski razpoložljivosti stabilnih ali vsaj dovolj uporabnih graditev za izbrano napravo. V nalogi bo jasno dokumentirano, katere verzije sistemov so bile uporabljene in kako so bile nameščene (odklep bootloaderja, način flashanja, uporaba recovery okolja ipd.).
+
+\section{Scenariji testiranja}
+Za vse izbrane sisteme bodo uporabljeni čim bolj enotni scenariji testiranja, ki pokrivajo tipično rabo ciljne skupine uporabnikov. Predvideni scenariji vključujejo:
+\begin{description}
+    \item[Osnovna komunikacija] klici, SMS sporočila, delovanje mobilnih podatkov, tethering (hotspot).
+    \item[Povezljivost in strojna oprema] Wi-Fi, Bluetooth, čitalnik prstnih odtisov, senzorji (pospeškomer, žiroskop, bližinski senzor), morebitni NFC.
+    \item[Multimedija] delovanje kamere (slikanje, video, samodejno ostrenje), predvajanje zvoka, kakovost slušalke in zvočnika.
+    \item[Uporabniški vmesnik in stabilnost] odzivnost sistema, zagon aplikacij, obnašanje pri daljši uporabi, pogostost napak in zrušitev.
+    \item[Poraba energije] ocena trajanja baterije pri tipični dnevni uporabi (komunikacija, brskanje po spletu, multimedija), na podlagi enostavnih ponovljivih vzorcev rabe.
+    \item[Možnosti prilagajanja in nadzora] dostop do terminala, možnosti uporabe paketnih upravljalnikov, namestitev dodatne odprtokodne programske opreme, odstranjevanje vnaprej nameščenih aplikacij ter nadzor nad dovoljenji in procesi v ozadju.
+\end{description}
+
+Scenariji bodo oblikovani tako, da odražajo rabo tehnično podkovanega uporabnika, ki poleg osnovnih funkcionalnosti uporablja tudi naprednejša orodja (npr. terminal, SSH, skripte, prilagajanje okolja).
+
+\section{Metrike in način beleženja rezultatov}
+Za ocenjevanje posameznih sistemov bom uporabil kombinacijo kvalitativnih in enostavnih kvantitativnih metrik:
+\begin{description}
+    \item[Podpora funkcionalnosti] za vsako ključno komponento (klici, podatki, kamera, Wi-Fi, Bluetooth, senzorji itd.) bom zabeležil stanje »deluje«, »deluje delno« ali »ne deluje« ter po potrebi dodal kratek opis težav. Rezultat bo predstavljen v preglednih tabelah.
+    \item[Subjektivna uporabniška izkušnja] odzivnost, stabilnost in splošni vtis bodo ocenjeni na enotni lestvici (npr. od 1 do 5), pri čemer bo jasno zapisano, kaj posamezna vrednost pomeni.
+    \item[Poraba energije] trajanje baterije bom ocenil na osnovi ponovljivih vzorcev rabe (npr. nekaj ur brskanja, občasni klici, pripravljenost čez dan) in rezultat primerjal med sistemi. Če bo izvedljivo, bom uporabil tudi osnovna orodja sistema za vpogled v porabo energije posameznih procesov.
+    \item[Stopnja odprtosti] z uporabo kriterijev iz teoretičnega poglavja (model popolnoma odprtokodnega telefona) bom vsak sistem ocenil glede na odprtost posameznih plasti (jedro, gonilniki, firmware, sistemske storitve, aplikacije). Tudi ti rezultati bodo predstavljeni v tabelah ali grafičnih povzetkih.
+\end{description}
+
+Vsi testi bodo izvedeni v enakih ali primerljivih pogojih (isti uporabnik, podobni vzorci rabe, enaka ali podobna konfiguracija sistemov), pri čemer bom sproti beležil ugotovljene težave, obhode (workarounde) in omejitve.
+
+\section{Omejitve empiričnega dela}
+Pri interpretaciji rezultatov bo treba upoštevati nekaj omejitev:
+\begin{itemize}
+    \item testirana bo ena sama naprava, zato ugotovitve ne bodo neposredno posplošljive na celoten trg pametnih telefonov,
+    \item ocena uporabniške izkušnje bo do določene mere subjektivna in vezana na perspektivo tehnično bolj podkovanega uporabnika,
+    \item zaradi časovnih omejitev diplomskega dela bodo nekatere meritve (npr. poraba energije) izvedene z enostavnejšimi metodami in ne z laboratorijsko natančnostjo,
+    \item rezultati so odvisni od konkretnih različic sistemov, ki bodo v času izvajanja eksperimentov na voljo.
+\end{itemize} 
+
+Kljub tem omejitvam bo študija omogočila smiseln vpogled v praktično uporabnost odprtokodnih mobilnih rešitev na resnični napravi ter podlago za odgovor na zastavljena raziskovalna vprašanja.
+
+\chapter{Pričakovani prispevek}
+\label{chap:prispevek}
+Diplomsko delo bo imelo tako teoretični kot empirični prispevek.
+Na teoretični ravni pričakujem naslednje prispevke:
+\begin{itemize}
+    \item \textbf{jasna definicija pojma "popolnoma odprtokoden telefon"} v kontekstu sodobne mobilne strojne opreme, ki upošteva različne plasti sistema (jedro, gonilniki, firmware, sistemske storitve, aplikacije),
+    \item \textbf{model kriterijev odprtosti in praktične uporabnosti}, s katerim je mogoče ovrednotiti konkretne kombinacije strojne in programske opreme; model bo mogoče uporabiti tudi pri analizi drugih naprav ali sistemov,
+    \item \textbf{sintetiziran pregled obstoječih odprtokodnih mobilnih projektov} (alternativni Android ROM-i, mobilne Linux distribucije, namenski Linux telefoni) z vidika njihovega prispevka k večji odprtosti in nadzoru uporabnika nad napravo.
+\end{itemize}
+
+Na empirični ravni bo glavni prispevek:
+\begin{itemize}
+    \item \textbf{primerjalna študija na resnični napravi (OnePlus 6T)}, v okviru katere bom sistematično primerjal tovarniški Android sistem in izbrane odprtokodne alternative glede podpore strojne opreme, stabilnosti, porabe energije, uporabniške izkušnje ter možnosti prilagajanja,
+    \item \textbf{ocena izvedljivosti skoraj popolnoma odprtokodnega telefona za tehnično bolj podkovanega uporabnika}, ki bo temeljila na konkretnih meritvah in opažanjih, ne le na teoretičnih razmislekih,
+    \item \textbf{identifikacija ključnih ozkih grl}, kjer zaprtokodne komponente (npr. baseband modem, gonilniki za kamero) še vedno predstavljajo glavno oviro za uresničitev popolnoma odprtokodnega sistema.
+\end{itemize}
+
+Posredno naj bi delo prispevalo tudi k boljši informiranosti tehnično usmerjenih uporabnikov in razvijalcev o trenutnih možnostih in omejitvah odprtokodnih mobilnih rešitev ter ponudilo strukturiran pregled, ki ga je mogoče nadgraditi v kasnejših raziskavah ali projektih.
+
+
+%\cleardoublepage
+%\addcontentsline{toc}{chapter}{Literatura}
+
+\printbibliography[heading=bibintoc,type=article,title={Članki v revijah}]
+
+\printbibliography[heading=bibintoc,type=inproceedings,title={Članki v zbornikih}]
+
+\printbibliography[heading=bibintoc,type=incollection,title={Poglavja v knjigah}]
+
+\printbibliography[heading=bibintoc,title={Celotna literatura}]
+
+\end{document}
+
