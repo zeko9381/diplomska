@@ -211,7 +211,7 @@ defernumbers=true
 %    INTERDISCIPLINARNI UNIVERZITETNI\\ ŠTUDIJSKI PROGRAM PRVE STOPNJE\\ RAČUNALNIŠTVO IN MATEMATIKA}\par}%
     \vfill\null%
 % izberite pravi habilitacijski naziv mentorja!
-    {\large \textsc{Mentor}: doc. dr. David Modic\par}%
+    {\large \textsc{Mentor}: viš. pred. dr. David Jelenc\par}%
 %   {\large \textsc{Somentor}:  viš. pred./doc./izr. prof./prof. dr.  Martin Krpan \par}%
     {\vskip 2em \large Ljubljana, \the\year \par}%
 \end{center}
@@ -270,7 +270,7 @@ Besedilo je oblikovano z urejevalnikom besedil \LaTeX.}
 % vstavite ustrezen naziv študijskega programa!
 \noindent\textbf{Vrsta naloge:} Diplomska naloga na visokošolskem strokovnem programu prve stopnje Računalništvo in informatika \\
 % izberite pravi habilitacijski naziv mentorja!
-\noindent\textbf{Mentor:} doc. dr. David Modic\\
+\noindent\textbf{Mentor:} viš. pred. dr. David Jelenc \\
 %\noindent\textbf{Somentor:} isto kot za mentorja
 
 \bigskip
@@ -561,78 +561,6 @@ Android sicer ponuja odprtokodno osnovo (AOSP), vendar tipične naprave vsebujej
 Alternativni ROM-i za Android delno izboljšajo nadzor nad sistemom, vendar ostajajo odvisni od istih zaprtih gonilnikov in strojne programske opreme.
 Projekti mobilnega Linuxa ponujajo bolj radikalno alternativo, vendar je njihova praktična uporabnost še vedno močno omejena s strojno podporo in ekosistemom aplikacij.
 To neposredno motivira nadaljnja poglavja, kjer bodo najprej opredeljeni kriteriji ``popolnoma odprtokodnega telefona'', nato pa bodo analizirane obstoječe rešitve in empirično preizkušene.
-
-\chapter{Empirični del}
-\label{chap:empiricni}
-Empirični del diplomskega dela bo izveden kot študija primera na izbranem pametnem telefonu OnePlus 6T. Fokus bo na ciljnem profilu tehnično bolj podkovanega uporabnika, ki je pripravljen sam namestiti alternativne sisteme in mu veliko pomenita nadzor nad napravo ter zasebnost.
-
-\section{Izbrana naprava}
-Kot testna naprava bo uporabljen pametni telefon OnePlus 6T, ki ima dovolj zmogljivo strojno opremo in dobro podporo skupnosti. Naprava omogoča odklepanje bootloaderja in namestitev alternativnih sistemov, hkrati pa predstavlja tipičen primer sodobnega Android telefona z zaprtimi gonilniki in firmware-om. V nalogi bom na kratko predstavil osnovne strojne značilnosti naprave (čipovje, pomnilnik, zaslon, brezžične povezave, senzorji), saj te neposredno vplivajo na podporo v odprtokodnih sistemih.
-
-\section{Izbrani sistemi}
-Na napravi bom primerjal naslednje vrste sistemov:
-\begin{description}
-    \item[Tovarniški sistem] izhodiščni Android sistem, ki je bil uradno namenjen napravi (OxygenOS oziroma uradna različica Androida za OnePlus 6T).
-    \item[Alternativni Android ROM-i] vsaj en odprtokoden sistem na osnovi AOSP, na primer LineageOS ali podoben projekt, ki za napravo ponuja stabilne ali poluradne izdaje.
-    \item[Mobilne Linux distribucije] ena ali več mobilnih distribucij Linuxa (npr. postmarketOS, Ubuntu Touch), za katere obstaja port na OnePlus 6T in omogočajo vsaj osnovno funkcionalnost naprave.
-\end{description}
-
-Končni nabor sistemov bo prilagojen dejanski razpoložljivosti stabilnih ali vsaj dovolj uporabnih graditev za izbrano napravo. V nalogi bo jasno dokumentirano, katere verzije sistemov so bile uporabljene in kako so bile nameščene (odklep bootloaderja, način flashanja, uporaba recovery okolja ipd.).
-
-\section{Scenariji testiranja}
-Za vse izbrane sisteme bodo uporabljeni čim bolj enotni scenariji testiranja, ki pokrivajo tipično rabo ciljne skupine uporabnikov. Predvideni scenariji vključujejo:
-\begin{description}
-    \item[Osnovna komunikacija] klici, SMS sporočila, delovanje mobilnih podatkov, tethering (hotspot).
-    \item[Povezljivost in strojna oprema] Wi-Fi, Bluetooth, čitalnik prstnih odtisov, senzorji (pospeškomer, žiroskop, bližinski senzor), morebitni NFC.
-    \item[Multimedija] delovanje kamere (slikanje, video, samodejno ostrenje), predvajanje zvoka, kakovost slušalke in zvočnika.
-    \item[Uporabniški vmesnik in stabilnost] odzivnost sistema, zagon aplikacij, obnašanje pri daljši uporabi, pogostost napak in zrušitev.
-    \item[Poraba energije] ocena trajanja baterije pri tipični dnevni uporabi (komunikacija, brskanje po spletu, multimedija), na podlagi enostavnih ponovljivih vzorcev rabe.
-    \item[Možnosti prilagajanja in nadzora] dostop do terminala, možnosti uporabe paketnih upravljalnikov, namestitev dodatne odprtokodne programske opreme, odstranjevanje vnaprej nameščenih aplikacij ter nadzor nad dovoljenji in procesi v ozadju.
-\end{description}
-
-Scenariji bodo oblikovani tako, da odražajo rabo tehnično podkovanega uporabnika, ki poleg osnovnih funkcionalnosti uporablja tudi naprednejša orodja (npr. terminal, SSH, skripte, prilagajanje okolja).
-
-\section{Metrike in način beleženja rezultatov}
-Za ocenjevanje posameznih sistemov bom uporabil kombinacijo kvalitativnih in enostavnih kvantitativnih metrik:
-\begin{description}
-    \item[Podpora funkcionalnosti] za vsako ključno komponento (klici, podatki, kamera, Wi-Fi, Bluetooth, senzorji itd.) bom zabeležil stanje »deluje«, »deluje delno« ali »ne deluje« ter po potrebi dodal kratek opis težav. Rezultat bo predstavljen v preglednih tabelah.
-    \item[Subjektivna uporabniška izkušnja] odzivnost, stabilnost in splošni vtis bodo ocenjeni na enotni lestvici (npr. od 1 do 5), pri čemer bo jasno zapisano, kaj posamezna vrednost pomeni.
-    \item[Poraba energije] trajanje baterije bom ocenil na osnovi ponovljivih vzorcev rabe (npr. nekaj ur brskanja, občasni klici, pripravljenost čez dan) in rezultat primerjal med sistemi. Če bo izvedljivo, bom uporabil tudi osnovna orodja sistema za vpogled v porabo energije posameznih procesov.
-    \item[Stopnja odprtosti] z uporabo kriterijev iz teoretičnega poglavja (model popolnoma odprtokodnega telefona) bom vsak sistem ocenil glede na odprtost posameznih plasti (jedro, gonilniki, firmware, sistemske storitve, aplikacije). Tudi ti rezultati bodo predstavljeni v tabelah ali grafičnih povzetkih.
-\end{description}
-
-Vsi testi bodo izvedeni v enakih ali primerljivih pogojih (isti uporabnik, podobni vzorci rabe, enaka ali podobna konfiguracija sistemov), pri čemer bom sproti beležil ugotovljene težave, obhode (workarounde) in omejitve.
-
-\section{Omejitve empiričnega dela}
-Pri interpretaciji rezultatov bo treba upoštevati nekaj omejitev:
-\begin{itemize}
-    \item testirana bo ena sama naprava, zato ugotovitve ne bodo neposredno posplošljive na celoten trg pametnih telefonov,
-    \item ocena uporabniške izkušnje bo do določene mere subjektivna in vezana na perspektivo tehnično bolj podkovanega uporabnika,
-    \item zaradi časovnih omejitev diplomskega dela bodo nekatere meritve (npr. poraba energije) izvedene z enostavnejšimi metodami in ne z laboratorijsko natančnostjo,
-    \item rezultati so odvisni od konkretnih različic sistemov, ki bodo v času izvajanja eksperimentov na voljo.
-\end{itemize} 
-
-Kljub tem omejitvam bo študija omogočila smiseln vpogled v praktično uporabnost odprtokodnih mobilnih rešitev na resnični napravi ter podlago za odgovor na zastavljena raziskovalna vprašanja.
-
-\chapter{Pričakovani prispevek}
-\label{chap:prispevek}
-Diplomsko delo bo imelo tako teoretični kot empirični prispevek.
-Na teoretični ravni pričakujem naslednje prispevke:
-\begin{itemize}
-    \item \textbf{jasna definicija pojma "popolnoma odprtokoden telefon"} v kontekstu sodobne mobilne strojne opreme, ki upošteva različne plasti sistema (jedro, gonilniki, firmware, sistemske storitve, aplikacije),
-    \item \textbf{model kriterijev odprtosti in praktične uporabnosti}, s katerim je mogoče ovrednotiti konkretne kombinacije strojne in programske opreme; model bo mogoče uporabiti tudi pri analizi drugih naprav ali sistemov,
-    \item \textbf{sintetiziran pregled obstoječih odprtokodnih mobilnih projektov} (alternativni Android ROM-i, mobilne Linux distribucije, namenski Linux telefoni) z vidika njihovega prispevka k večji odprtosti in nadzoru uporabnika nad napravo.
-\end{itemize}
-
-Na empirični ravni bo glavni prispevek:
-\begin{itemize}
-    \item \textbf{primerjalna študija na resnični napravi (OnePlus 6T)}, v okviru katere bom sistematično primerjal tovarniški Android sistem in izbrane odprtokodne alternative glede podpore strojne opreme, stabilnosti, porabe energije, uporabniške izkušnje ter možnosti prilagajanja,
-    \item \textbf{ocena izvedljivosti skoraj popolnoma odprtokodnega telefona za tehnično bolj podkovanega uporabnika}, ki bo temeljila na konkretnih meritvah in opažanjih, ne le na teoretičnih razmislekih,
-    \item \textbf{identifikacija ključnih ozkih grl}, kjer zaprtokodne komponente (npr. baseband modem, gonilniki za kamero) še vedno predstavljajo glavno oviro za uresničitev popolnoma odprtokodnega sistema.
-\end{itemize}
-
-Posredno naj bi delo prispevalo tudi k boljši informiranosti tehnično usmerjenih uporabnikov in razvijalcev o trenutnih možnostih in omejitvah odprtokodnih mobilnih rešitev ter ponudilo strukturiran pregled, ki ga je mogoče nadgraditi v kasnejših raziskavah ali projektih.
-
 
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Literatura}
