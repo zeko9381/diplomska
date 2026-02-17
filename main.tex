@@ -31,6 +31,8 @@
 						linkcolor=black, urlcolor=black,
 						pdfproducer={LaTeX}, pdfcreator={LaTeX}]{hyperref}
 \usepackage{hyperxmp}
+\usepackage{tikz}   % omogoča risanje grafov
+\usetikzlibrary{arrows.meta,positioning,fit}
 
 \usepackage{color}
 \usepackage{soul}
@@ -38,8 +40,7 @@
 \usepackage[
 backend=biber,
 style=numeric,
-sorting=nty,
-defernumbers=true
+sorting=nty
 ]{biblatex}
 
 
@@ -561,6 +562,188 @@ Android sicer ponuja odprtokodno osnovo (AOSP), vendar tipične naprave vsebujej
 Alternativni ROM-i za Android delno izboljšajo nadzor nad sistemom, vendar ostajajo odvisni od istih zaprtih gonilnikov in strojne programske opreme.
 Projekti mobilnega Linuxa ponujajo bolj radikalno alternativo, vendar je njihova praktična uporabnost še vedno močno omejena s strojno podporo in ekosistemom aplikacij.
 To neposredno motivira nadaljnja poglavja, kjer bodo najprej opredeljeni kriteriji ``popolnoma odprtokodnega telefona'', nato pa bodo analizirane obstoječe rešitve in empirično preizkušene.
+
+
+\chapter{Teoretična izhodišča}
+\label{chap:teoreticna_izhodisca}
+
+V prejšnjem poglavju smo pokazali, da je tudi pri sistemih z odprtokodno osnovo velik del mobilnega ekosistema odvisen od zaprtih komponent.
+Da lahko kasneje ocenimo, v kolikšni meri je \enquote{popolnoma odprtokoden telefon} v praksi izvedljiv, moramo najprej razjasniti osnovne pojme, sloje sistema in tipične omejitve.
+V tem poglavju opredelimo razliko med odprtokodno in prosto programsko opremo, na kratko predstavimo arhitekturo mobilnih sistemov ter izpostavimo vlogo gonilnikov in strojne programske opreme.
+Nato povežemo odprtost z varnostjo in zasebnostjo, pri čemer obravnavamo tudi tveganja skritih funkcionalnosti oziroma stranskih vrat (v literaturi pogosto označenih kot angl.~\textit{backdoor}).
+
+\section{Odprtokodna in prosta programska oprema}
+\label{sec:teorija_foss}
+
+Pojma odprtokodna programska oprema (angl.~\textit{open source software}) in prosta programska oprema (angl.~\textit{free software}) se pogosto uporabljata kot sopomenki, vendar izhajata iz različnih poudarkov.
+Open Source Initiative (OSI) odprtokodnost definira s kriteriji, ki med drugim zahtevajo dostop do izvorne kode, možnost sprememb in redistribucije ter nediskriminatorne licence~\cite{osi_osd}.
+Free Software Foundation (FSF) pa v ospredje postavlja uporabniške svoboščine: program je prost, če omogoča (1) poganjanje za poljuben namen, (2) preučevanje delovanja, (3) prilagajanje ter (4) deljenje kopij, tudi spremenjenih~\cite{fsf_free_software}.
+V nadaljevanju zato uporabljamo tudi širši izraz prosta in odprtokodna programska oprema (angl.~\textit{Free and Open Source Software}, FOSS), kadar želimo zajeti oba vidika.
+
+Pri ocenjevanju \enquote{odprtosti telefona} je pomembno, da ločimo licenco od samega dejstva, da je koda javno dostopna.
+V praksi se pojavljajo tudi projekti, kjer je izvorna koda objavljena, vendar licenca ne dopušča redistribucije ali sprememb; za tak model se pogosto uporablja izraz dostopna izvorna koda (angl.~\textit{source-available}).
+Za kriterije v tej diplomski nalogi zato ne zadošča zgolj javna objava kode, ampak zahtevamo tudi pravice, ki jih določajo licence, ter možnost dejanske uporabe spremenjenih različic (npr.~namestitev na napravo).
+
+\subsection{Licence in posledice za mobilne sisteme}
+\label{subsec:teorija_licence}
+
+Licence določajo, kaj lahko uporabnik in razvijalec s kodo počneta.
+V grobem jih lahko razdelimo na:
+\begin{itemize}
+  \item permisivne licence (npr.~MIT, BSD, Apache~2.0), ki omogočajo tudi vključitev kode v zaprt izdelek, in
+  \item licence z zahtevami deljenja izboljšav (angl.~\textit{copyleft}, npr.~GPL), ki ob distribuciji pod določenimi pogoji zahtevajo, da so tudi izpeljana dela na voljo pod enako (ali združljivo) licenco.
+\end{itemize}
+
+Za telefone je posebej pomembno jedro Linux, ki je pod licenco GPLv2.
+To proizvajalcem pri distribuciji naprav nalaga obveznosti glede objave izvorne kode sprememb jedra, vendar še ne zagotavlja, da je odprt celoten sistem.
+V praksi lahko ostanejo zaprti gonilniki, strojna programska oprema in velik del uporabniškega prostora (npr.~sistemske aplikacije ali dobaviteljske knjižnice).
+
+\section{Arhitektura sistema: od zagona do uporabniškega prostora}
+\label{sec:teorija_arhitektura}
+
+Pametni telefon je sestavljen iz več podsistemov.
+Poleg glavnega procesorja (SoC) ima naprava pogosto ločene mikrokrmilnike ali koprocesorje za modem, Wi-Fi/Bluetooth, kamero in senzorje, pogosto pa tudi varnostne podsisteme, kot je zaupanja vredno izvajalno okolje (angl.~\textit{Trusted Execution Environment}, TEE).
+Ti deli praviloma uporabljajo lastno strojno programsko opremo in so pomemben del vprašanja zaupanja, ker so za uporabnika običajno netransparentni.
+
+Na nivoju glavnega sistema ločimo:
+\begin{itemize}
+  \item zagonsko verigo, ki določa, kaj se sploh sme zagnati (npr.~zagonski nalagalnik (angl.~\textit{bootloader}) in preverjen zagon (angl.~\textit{verified boot})),
+  \item jedro (angl.~\textit{kernel}) z gonilniki in
+  \item uporabniški prostor (angl.~\textit{userspace}), kjer tečejo sistemske storitve, knjižnice in aplikacije.
+\end{itemize}
+
+Slika~\ref{fig:arhitektura_telefona} prikazuje tipično razmejitev med splošnimi sloji sistema in zaprtimi dobaviteljskimi komponentami, ki pogosto predstavljajo ključno omejitev pri \enquote{popolnoma odprtokodnem} telefonu.
+
+\begin{figure}[!t]
+  \centering
+  \begin{tikzpicture}[
+    font=\small,
+    box/.style={draw, rounded corners, align=center, text width=5.2cm, minimum height=9mm},
+    open/.style={box, fill=black!3},
+    closed/.style={box, dashed, fill=black!10},
+    arrow/.style={-Latex, thick},
+    node distance=3.2mm and 10mm
+  ]
+    % Levo: "odprti" sloji
+    \node[open] (boot) {zagonska veriga\\(\textit{boot ROM}, \textit{bootloader}, \textit{verified boot})};
+    \node[open, below=of boot] (kernel) {jedro\\(gonilniki, scheduler)};
+    \node[open, below=of kernel] (user) {uporabniški prostor\\(storitve, knjižnice, aplikacije)};
+
+    \draw[arrow] (boot) -- (kernel);
+    \draw[arrow] (kernel) -- (user);
+
+    \node[draw, rounded corners, fit=(boot)(user), inner sep=6mm,
+          label={[font=\small]above:glavni sistem (SoC)}] (soc) {};
+
+    % Desno: zaprt del (en stolpec)
+    \node[closed, right=of kernel] (vendor) {dobaviteljski sklad\\(\texttt{vendor}, HAL, knjižnice)};
+    \node[closed, below=of vendor] (fw) {strojna programska oprema\\(\textit{firmware}, \textit{binary blobs})};
+    \node[closed, below=of fw, text width=5.2cm, align=left] (subsys) {podsistemi (pogosto zaprti):\\
+      -- osnovnopasovni modem (\textit{baseband})\\
+      -- Wi-Fi / Bluetooth\\
+      -- TEE / varnostni element};
+
+    \draw[arrow] (kernel.east) -- node[above, font=\scriptsize]{vmesniki} (vendor.west);
+    \draw[arrow] (vendor) -- (fw);
+    \draw[arrow] (fw) -- (subsys);
+
+    \node[draw, rounded corners, dashed, fit=(vendor)(subsys), inner sep=6mm,
+          label={[font=\small]above:tipično zaprt del}] (closedfit) {};
+
+    % Meja zaupanja (črtkana navpičnica med stolpcema)
+    \draw[densely dotted, thick]
+      ([xshift=-6mm]vendor.west) -- ([xshift=-6mm]subsys.south);
+    \node[font=\scriptsize, align=left] at ([xshift=-3mm,yshift=2mm]vendor.west) {meja\\zaupanja};
+
+  \end{tikzpicture}
+  \caption{Poenostavljena arhitektura telefona z vidika slojev sistema in tipičnih zaprtih komponent.}
+  \label{fig:arhitektura_telefona}
+\end{figure}
+
+
+\subsection{Linux: glavna razvojna veja jedra in vzdrževanje}
+\label{subsec:teorija_linux}
+
+Linux je družina sistemov, ki delijo isto jedro, nad njim pa lahko teče različna programska oprema uporabniškega prostora.
+Za dolgoročno vzdrževanje naprav je ključno, ali je podpora za strojno opremo vključena v glavno razvojno vejo jedra (angl.~\textit{mainline}) ali pa je vezana na proizvajalčevo prilagojeno različico jedra~\cite{kernelorg_releases}.
+Če je podpora del glavne veje, lahko naprava praviloma dobiva varnostne popravke skupaj z ostalim ekosistemom.
+Če pa je odvisna od zaprtih ali slabo vzdrževanih sprememb dobavitelja, je življenjska doba programske podpore praviloma krajša.
+
+\subsection{Android: AOSP in ločitev dobaviteljskega sklada}
+\label{subsec:teorija_android}
+
+Android temelji na jedru Linux, vendar ima specifičen uporabniški prostor in nabor sistemskih storitev, ki skupaj tvorijo platformo~\cite{aosp_get_started_2025}.
+Za odprtost je pomembna meja med generičnim sistemom in strojno specifičnimi deli.
+Projekt Treble je uvedel bolj jasno ločitev na particije in vmesnike (npr.~ločen \texttt{system} in \texttt{vendor}), s čimer sistem teoretično omogoča posodabljanje neodvisno od dobaviteljskega sklada~\cite{android_treble_vendor_system_split,android_hidl_versioning_treble}.
+Kljub temu dobaviteljski del pogosto vsebuje zaprt nabor knjižnic, implementacije abstrakcijskega sloja strojne opreme (angl.~\textit{Hardware Abstraction Layer}, HAL), gonilnike in strojno programsko opremo, brez katerih naprava ne deluje.
+
+\section{Gonilniki, strojna programska oprema in binarni dodatki}
+\label{sec:teorija_firmware}
+
+Pri telefonih se pogosto srečamo s situacijo, kjer je del kode odprtokoden, ključne funkcionalnosti pa so dobavljene v obliki binarnih dodatkov (angl.~\textit{binary blobs}).
+Pomembno je ločiti med:
+\begin{description}
+  \item[Gonilniki] kodo, ki teče v jedru ali uporabniškem prostoru in omogoča komunikacijo s strojno opremo.
+  \item[Strojno programsko opremo] kodo, ki teče na sami komponenti (npr.~Wi-Fi čip, digitalni signalni procesor ali modem) in jo sistem zgolj naloži ali upravlja.
+\end{description}
+
+Tudi če so gonilniki odprtokodni, je strojna programska oprema lahko popolnoma zaprta, brez možnosti revizije ali popravkov.
+To je ena glavnih tehničnih ovir za telefon, kjer bi bil celoten programski sklad pregledljiv in zamenljiv.
+Najbolj problematični so podsistemi z visokimi privilegiji ali neposrednim vplivom na komunikacijo (npr.~osnovnopasovni modem in brezžični vmesniki).
+Raziskave kažejo, da se ranljivosti in napadi pogosto selijo prav v zaprt dobaviteljski sklad in strojno programsko opremo, kjer je preglednost manjša in so orodja za analizo omejena~\cite{hernandez_firmwire_ndss2022,davis_cellular_baseband_security_2012}.
+
+\section{Odprtost, varnost in zasebnost}
+\label{sec:teorija_varnost}
+
+Odprta koda lahko prispeva k varnosti, ker omogoča neodvisen pregled in hitrejše odkrivanje napak.
+Vendar odprtost sama po sebi ni garancija; varnost je predvsem rezultat procesa (revizije, testiranja, odzivnost na ranljivosti) in nadzora nad tem, kaj se na napravi dejansko izvaja.
+Pri telefonih zato poleg licence ocenjujemo tudi dobavno verigo, mehanizme posodabljanja ter stopnjo zaprtih komponent.
+
+\subsection{Stranska vrata in dobavna veriga}
+\label{subsec:teorija_backdoor}
+
+Stranska vrata razumemo kot namerno dodano ali prikrito funkcionalnost, ki omogoča dostop mimo običajnih varnostnih mehanizmov.
+Pri zaprtih komponentah je problem očiten: uporabnik in neodvisni raziskovalci težko preverijo, ali takšna funkcionalnost obstaja.
+Tudi pri odprtokodni programski opremi pa ostaja pomemben napadni vektor dobavna veriga in orodja za izgradnjo.
+Klasičen primer je Thompsonov opis, kako lahko kompromitiran prevajalnik vstavi stranska vrata v program tudi takrat, ko je izvorna koda navidezno \enquote{čista}~\cite{thompson_trusting_trust}.
+Za oceno zaupanja je zato smiselno gledati širše od same izvorne kode.
+
+Pri telefonih se pomisleki o stranskih vratih najpogosteje vežejo na:
+\begin{itemize}
+  \item zaprt dobaviteljski sklad na komunikacijskih čipih (modem, Wi-Fi/Bluetooth),
+  \item privilegirane varnostne podsisteme (npr.~TEE in varnostni element) in
+  \item lastniške sistemske storitve s širokimi dovoljenji (npr.~telemetrija).
+\end{itemize}
+
+\subsection{Integriteta zagona in ponovljive gradnje}
+\label{subsec:teorija_supply_chain}
+
+Moderni telefoni pogosto uporabljajo mehanizme preverjenega zagona, kjer je zagonska veriga kriptografsko vezana na podpisane sistemske slike.
+To izboljša zaščito pred zlonamernimi spremembami, hkrati pa lahko omeji lastnika naprave, če je zagonski nalagalnik zaklenjen in proizvajalec ne omogoča nalaganja alternativnih podpisov~\cite{android_verified_boot}.
+Za sisteme, ki ciljajo na odprtost, je zato pomembno ravnotežje: želimo visoko integriteto, vendar tudi možnost, da lastnik zakonito naloži in podpiše lastno zgradbo sistema.
+
+Dodaten sloj zaupanja predstavljajo ponovljive gradnje (angl.~\textit{reproducible builds}), kjer lahko neodvisna stran iz iste izvorne kode izdela identične binarne pakete~\cite{reproducible_builds}.
+S tem zmanjšamo tveganje, da bi bila uradna izdaja kompromitirana na poti od kode do binarne slike.
+Pri telefonih je to posebej relevantno, ker uporabniki praviloma nameščajo vnaprej zgrajene sistemske slike, ne pa da bi sistem prevajali sami.
+
+\subsection{Zasebnost kot posledica arhitekture}
+\label{subsec:teorija_zasebnost}
+
+Zasebnost pri telefonih ni samo vprašanje aplikacij, ampak tudi sistemske arhitekture.
+Če naprava temelji na zaprtih storitvah in naborih API-jev, uporabnik težko oceni, kateri podatki se pošiljajo in kdaj.
+Alternativni sistemi lahko zmanjšajo odvisnost od centraliziranih storitev, vendar se pri tem pogosto pojavi kompromis pri združljivosti aplikacij, zlasti pri aplikacijah z višjimi varnostnimi zahtevami, ki uporabljajo mehanizme preverjanja integritete~\cite{play_integrity_overview}.
+
+\section{Vzdrževanje in življenjski cikel naprav}
+\label{sec:teorija_vzdrzevanje}
+
+Pri oceni odprtokodnega telefona je praktična uporabnost močno povezana z vzdrževanjem.
+Če naprava ne dobiva varnostnih popravkov, odprtost hitro postane zgolj formalna lastnost.
+Analize Android ekosistema kažejo velike razlike v dolžini podpore in zamudah pri varnostnih posodobitvah med proizvajalci~\cite{acar_android_security_updates_2024}.
+V mobilnem Linuxu se ta problem pogosto rešuje z uporabo glavne razvojne veje jedra in standardnega uporabniškega prostora, vendar je cena praviloma slabša strojna podpora in manj zrel ekosistem aplikacij.
+
+V naslednjih poglavjih bomo na podlagi teh izhodišč postavili merljive kriterije, kaj v našem kontekstu pomeni \enquote{popolnoma odprtokoden telefon}, nato pa bomo z njimi analizirali izbrane obstoječe rešitve.
+
+
 
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Literatura}
