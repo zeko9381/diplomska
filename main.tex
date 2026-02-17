@@ -31,8 +31,7 @@
 						linkcolor=black, urlcolor=black,
 						pdfproducer={LaTeX}, pdfcreator={LaTeX}]{hyperref}
 \usepackage{hyperxmp}
-\usepackage{tikz}   % omogoča risanje grafov
-\usetikzlibrary{arrows.meta,positioning,fit}
+\usepackage[section]{placeins}
 
 \usepackage{color}
 \usepackage{soul}
@@ -612,53 +611,17 @@ Na nivoju glavnega sistema ločimo:
   \item uporabniški prostor (angl.~\textit{userspace}), kjer tečejo sistemske storitve, knjižnice in aplikacije.
 \end{itemize}
 
-Slika~\ref{fig:arhitektura_telefona} prikazuje tipično razmejitev med splošnimi sloji sistema in zaprtimi dobaviteljskimi komponentami, ki pogosto predstavljajo ključno omejitev pri \enquote{popolnoma odprtokodnem} telefonu.
+Slika~\ref{fig:arhitektura_telefona} povzema sloje sistema in tipične zaprte komponente, ki predstavljajo glavno omejitev pri popolnoma odprtokodnem telefonu.
 
-\begin{figure}[!t]
+\begin{figure}[htb]
   \centering
-  \begin{tikzpicture}[
-    font=\small,
-    box/.style={draw, rounded corners, align=center, text width=5.2cm, minimum height=9mm},
-    open/.style={box, fill=black!3},
-    closed/.style={box, dashed, fill=black!10},
-    arrow/.style={-Latex, thick},
-    node distance=3.2mm and 10mm
-  ]
-    % Levo: "odprti" sloji
-    \node[open] (boot) {zagonska veriga\\(\textit{boot ROM}, \textit{bootloader}, \textit{verified boot})};
-    \node[open, below=of boot] (kernel) {jedro\\(gonilniki, scheduler)};
-    \node[open, below=of kernel] (user) {uporabniški prostor\\(storitve, knjižnice, aplikacije)};
-
-    \draw[arrow] (boot) -- (kernel);
-    \draw[arrow] (kernel) -- (user);
-
-    \node[draw, rounded corners, fit=(boot)(user), inner sep=6mm,
-          label={[font=\small]above:glavni sistem (SoC)}] (soc) {};
-
-    % Desno: zaprt del (en stolpec)
-    \node[closed, right=of kernel] (vendor) {dobaviteljski sklad\\(\texttt{vendor}, HAL, knjižnice)};
-    \node[closed, below=of vendor] (fw) {strojna programska oprema\\(\textit{firmware}, \textit{binary blobs})};
-    \node[closed, below=of fw, text width=5.2cm, align=left] (subsys) {podsistemi (pogosto zaprti):\\
-      -- osnovnopasovni modem (\textit{baseband})\\
-      -- Wi-Fi / Bluetooth\\
-      -- TEE / varnostni element};
-
-    \draw[arrow] (kernel.east) -- node[above, font=\scriptsize]{vmesniki} (vendor.west);
-    \draw[arrow] (vendor) -- (fw);
-    \draw[arrow] (fw) -- (subsys);
-
-    \node[draw, rounded corners, dashed, fit=(vendor)(subsys), inner sep=6mm,
-          label={[font=\small]above:tipično zaprt del}] (closedfit) {};
-
-    % Meja zaupanja (črtkana navpičnica med stolpcema)
-    \draw[densely dotted, thick]
-      ([xshift=-6mm]vendor.west) -- ([xshift=-6mm]subsys.south);
-    \node[font=\scriptsize, align=left] at ([xshift=-3mm,yshift=2mm]vendor.west) {meja\\zaupanja};
-
-  \end{tikzpicture}
+  \includegraphics[width=1\linewidth]{figure/arhitektura_telefona.pdf}
   \caption{Poenostavljena arhitektura telefona z vidika slojev sistema in tipičnih zaprtih komponent.}
   \label{fig:arhitektura_telefona}
 \end{figure}
+
+\FloatBarrier
+\clearpage
 
 
 \subsection{Linux: glavna razvojna veja jedra in vzdrževanje}

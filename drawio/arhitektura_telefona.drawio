@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0" version="29.4.0">
+  <diagram name="Page-1" id="9tUKhqqJVzwRJre4v7Ps">
+    <mxGraphModel dx="1414" dy="857" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-15" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="290" width="260" x="480" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-9" parent="tW3Z1LUZG3heywAeF_YU-15" style="rounded=1;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;fontSize=16;spacing=2;glass=0;perimeterSpacing=0;fillColor=none;rotation=0;dashed=1;dashPattern=8 8;" value="&lt;font face=&quot;Liberation Sans&quot; style=&quot;font-size: 17px;&quot;&gt;Tipično zaprt del&lt;/font&gt;" vertex="1">
+          <mxGeometry height="290" width="260" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-10" edge="1" parent="tW3Z1LUZG3heywAeF_YU-15" source="tW3Z1LUZG3heywAeF_YU-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;" target="tW3Z1LUZG3heywAeF_YU-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-11" parent="tW3Z1LUZG3heywAeF_YU-15" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=#E6E6E6;fontColor=#333333;strokeColor=#666666;dashed=1;dashPattern=8 8;fontSize=14;" value="&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;&lt;b&gt;Dobaviteljski sklad&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;(&lt;/font&gt;&lt;i&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;vendor&lt;/font&gt;&lt;/i&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;&lt;i&gt;, &lt;/i&gt;HAL&lt;i&gt;, &lt;/i&gt;knjižnice)&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="220" x="20" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-12" edge="1" parent="tW3Z1LUZG3heywAeF_YU-15" source="tW3Z1LUZG3heywAeF_YU-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;" target="tW3Z1LUZG3heywAeF_YU-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-13" parent="tW3Z1LUZG3heywAeF_YU-15" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=#E6E6E6;fontColor=#333333;strokeColor=#666666;dashed=1;dashPattern=8 8;fontSize=14;" value="&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;&lt;b&gt;Strojna programska oprema&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;(&lt;i&gt;firmware, binary blobs&lt;/i&gt;)&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="220" x="20" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-14" parent="tW3Z1LUZG3heywAeF_YU-15" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=#E6E6E6;fontColor=#333333;strokeColor=#666666;dashed=1;dashPattern=8 8;fontSize=14;" value="&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;&lt;b&gt;Podsistemi (pogosto zaprti):&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;osnovnopasovni modem (&lt;i&gt;baseband&lt;/i&gt;)&amp;nbsp;&amp;nbsp;&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;Wi-Fi / Bluetooth&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;TEE / varnostni element&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="20" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-16" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="440" y="680" as="sourcePoint" />
+            <mxPoint x="440" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-17" connectable="0" parent="tW3Z1LUZG3heywAeF_YU-16" style="edgeLabel;html=1;align=center;verticalAlign=top;resizable=0;points=[];fontFamily=Liberation Sans;fontStyle=1;fontSize=16;horizontal=1;rotation=0;spacingTop=0;spacing=2;spacingLeft=0;labelBackgroundColor=none;" value="Meja zaupanja" vertex="1">
+          <mxGeometry relative="1" x="0.0242" y="4" as="geometry">
+            <mxPoint x="4" y="-215" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-18" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="230" width="260" x="140" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-1" parent="tW3Z1LUZG3heywAeF_YU-18" style="rounded=1;whiteSpace=wrap;html=1;labelPosition=center;verticalLabelPosition=top;align=center;verticalAlign=bottom;fontSize=16;spacing=2;glass=0;perimeterSpacing=0;fillColor=none;rotation=0;" value="&lt;font face=&quot;Liberation Sans&quot; style=&quot;font-size: 17px;&quot;&gt;Glavni sistem (SoC)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="230" width="260" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-6" edge="1" parent="tW3Z1LUZG3heywAeF_YU-18" source="tW3Z1LUZG3heywAeF_YU-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tW3Z1LUZG3heywAeF_YU-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-2" parent="tW3Z1LUZG3heywAeF_YU-18" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;" value="&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;&lt;b&gt;Zagonska veriga&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;(&lt;i&gt;boot ROM, bootloader, verified boot&lt;/i&gt;)&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="220" x="20" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-8" edge="1" parent="tW3Z1LUZG3heywAeF_YU-18" source="tW3Z1LUZG3heywAeF_YU-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="tW3Z1LUZG3heywAeF_YU-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-5" parent="tW3Z1LUZG3heywAeF_YU-18" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;" value="&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;&lt;b&gt;Jedro&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;(gonilniki,&lt;i&gt; scheduler&lt;/i&gt;)&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="220" x="20" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-7" parent="tW3Z1LUZG3heywAeF_YU-18" style="rounded=1;whiteSpace=wrap;html=1;fillStyle=auto;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;fontSize=14;" value="&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;&lt;b&gt;Uporabniški prostor&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Liberation Sans&quot;&gt;(storitve, knjižnice, aplikacije)&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="50" width="220" x="20" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-19" edge="1" parent="1" source="tW3Z1LUZG3heywAeF_YU-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="tW3Z1LUZG3heywAeF_YU-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="425" />
+              <mxPoint x="460" y="425" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tW3Z1LUZG3heywAeF_YU-20" connectable="0" parent="tW3Z1LUZG3heywAeF_YU-19" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Liberation Sans;fontSize=14;fontStyle=1;labelBackgroundColor=default;labelBorderColor=none;spacing=0;" value="Vmesniki" vertex="1">
+          <mxGeometry relative="1" x="0.4667" y="-2" as="geometry">
+            <mxPoint x="-28" y="-5" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
