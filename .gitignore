@@ -331,3 +331,5 @@ TSWLatexianTemp*
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,latex
+drawio/.$arhitektura_telefona.drawio.bkp
+drawio/dobavna_veriga_unused.drawio
