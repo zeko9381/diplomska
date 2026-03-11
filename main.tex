@@ -676,7 +676,7 @@ To ne vključuje le uporabniškega prostora in jedra, temveč tudi gonilnike, za
 
 Tak idealni telefon bi moral hkrati izpolnjevati več pogojev.
 Celoten sistem bi moral biti zgradljiv iz izvorne kode, ključne komponente pa bi morale biti neodvisno preverljive, po možnosti tudi s ponovljivimi gradnjami~\cite{reproducible_builds}.
-Lastnik naprave bi moral imeti možnost zakonito in dokumentirano namestiti lasten sistem, ne da bi pri tem izgubil celovitost zagonske verige ali postal popolnoma odvisen od proizvajalca.
+Lastnik naprave bi moral imeti možnost na dokumentiran in ponovljiv način namestiti lasten sistem, ne da bi se moral pri tem odpovedati preverjenemu zagonu ali postati popolnoma odvisen od proizvajalca.
 Pomembne funkcije telefona bi morale ostati uporabne tudi brez zaprtih, centraliziranih ali proizvajalčevo vezanih storitev.
 
 V kontekstu sodobnih pametnih telefonov je tak ideal praviloma težko dosegljiv.
@@ -711,7 +711,7 @@ Prav zato odprtosti ne obravnavamo kot ene same lastnosti, temveč kot profil po
 \section{Kriteriji odprtosti po slojih}
 \label{sec:model_kriteriji_odprtosti}
 
-V tej sekciji postavimo kriterije, s katerimi bomo kasneje primerjali konkretne rešitve.
+V tem razdelku postavimo kriterije, s katerimi bomo kasneje primerjali konkretne rešitve.
 Kriteriji so oblikovani tako, da so čim bolj preverljivi: zanima nas, ali je nekaj javno objavljeno, neodvisno zgradljivo, dokumentirano, dolgoročno vzdrževano ali zamenljivo.
 
 \subsection{Zagonska veriga}
@@ -779,10 +779,14 @@ V tej nalogi kot ustrezen način razumemo takšnega, ki omogoča nameščanje in
 
 Kriteriji:
 \begin{itemize}
-  \item \textbf{Privzete aplikacije}: ali so osnovne aplikacije odprtokodne ter ali imajo minimalno in pregledno telemetrijo.
+  \item \textbf{Privzeto nameščene aplikacije}: ali so aplikacije iz privzete namestitve odprtokodne ter ali imajo minimalno, dokumentirano in uporabniško nadzorovano telemetrijo.
   \item \textbf{Trgovina in repozitoriji}: ali je primarni kanal namestitve aplikacij odprt (npr.~paketni repozitorij ali trgovina \textit{F-Droid}) ter ali podpira preverljive posodobitve.
   \item \textbf{Neodvisnost od proizvajalca}: ali uporabnik lahko vzdržuje sistem in aplikacije tudi po tem, ko proizvajalec naprave uradno zaključi podporo.
 \end{itemize}
+
+\subsection{Povzetek}
+
+Za lažji pregled tabela~\ref{tab:model_povzetek_slojev} povzema sloje in tipične kriterije odprtosti, ki jih bomo uporabili v nadaljevanju.
 
 \begin{table}[htb]
 \centering
@@ -813,7 +817,7 @@ Ker je ciljna naprava telefon, mora sistem pokriti vsaj osnovne funkcionalnosti,
 Odprt sistem brez delujočih klicev je lahko zanimiv kot tehnična demonstracija, vendar ne deluje kot telefon v običajnem pomenu besede.
 
 Praktične uporabnosti v tej nalogi ne ocenjujemo po slojih sistema, temveč po funkcionalnih sklopih, ki skupaj določajo, ali je naprava primerna za vsakodnevno rabo.
-Izhodišče je minimalni prag praktičnosti pametnega telefona: naprava mora omogočati osnovno telefonijo, povezljivost, dostop do ključnih aplikacij ter razumno enostavno namestitev in vzdrževanje.
+Izhodišče je minimalni nabor funkcionalnosti za vsakodnevno rabo: naprava mora omogočati osnovno telefonijo, povezljivost, dostop do ključnih aplikacij ter razumno enostavno namestitev in vzdrževanje.
 
 V nadaljevanju uporabljamo naslednje sklope:
 
@@ -821,16 +825,16 @@ V nadaljevanju uporabljamo naslednje sklope:
   \item \textbf{Osnovne funkcije telefona}: klici, SMS, mobilni podatki in stabilnost povezave.
   \item \textbf{Ključna strojna podpora}: kamera, GPS, Bluetooth, Wi-Fi, zvok in senzorji; po potrebi tudi NFC.
   \item \textbf{Avtonomija in zmogljivost}: poraba energije v mirovanju in pri rabi, segrevanje ter odzivnost sistema.
-  \item \textbf{Ekosistem aplikacij}: ali obstaja zadosten nabor aplikacij za osnovne potrebe uporabnika.
+  \item \textbf{Ekosistem aplikacij}: ali obstaja zadosten nabor aplikacij ali spletnih alternativ za minimalni nabor vsakodnevnih nalog.
   \item \textbf{Posodobitve in vzdrževanje}: kako pogosto prihajajo varnostne posodobitve in kako enostavno jih je namestiti.
 \end{itemize}
 
-Pri kameri izraz \enquote{uporabna kakovost} pomeni, da je mogoče zajeti fotografijo, ki je primerna za tipične vsakodnevne naloge, na primer fotografiranje dokumenta ali situacije za sporočilo.
-To preverimo s preprostimi scenariji, kot sta fotografija v dnevni svetlobi in fotografija v notranjem prostoru, pri čemer ocenimo predvsem delovanje samodejnega ostrenja, berljivost besedila na dokumentu in stabilnost delovanja aplikacije.
+Pri teh sklopih nas zanima predvsem, ali posamezne funkcije delujejo dovolj zanesljivo, da je naprava primerna za vsakodnevno rabo.
 
-Pri ekosistemu aplikacij izraz \enquote{zadosten nabor} pomeni, da so na voljo aplikacije ali spletne alternative, ki pokrijejo vnaprej definiran minimalni nabor potreb.
+Pri ekosistemu aplikacij izraz \enquote{zadosten nabor} pomeni, da so na voljo aplikacije ali spletne alternative, ki pokrijejo vnaprej opredeljen minimalni nabor vsakodnevnih nalog.
 Kot minimalne kategorije upoštevamo: komunikacijo, navigacijo, spletni brskalnik, e-pošto, kamero in galerijo, predvajanje medijev ter osnovne aplikacije za avtentikacijo, npr.~dvofaktorsko avtentikacijo.
-Posebej izpostavimo aplikacije, ki uporabljajo mehanizme preverjanja celovitosti (npr.~Play Integrity), saj lahko na sistemih brez določenih lastniških storitev povzročajo omejitve delovanja~\cite{play_integrity_overview}.
+Posebej obravnavamo tudi aplikacije z višjimi varnostnimi zahtevami, kot so bančne aplikacije in storitve mobilnega plačevanja, saj pogosto uporabljajo mehanizme preverjanja celovitosti.
+Takšne aplikacije so zato dober pokazatelj praktičnih omejitev posamezne rešitve~\cite{play_integrity_overview}.
 
 \section{Način ocenjevanja}
 \label{sec:model_tockovanje}
@@ -863,11 +867,14 @@ V obeh dimenzijah uporabimo tristopenjsko lestvico z vrednostmi $0$, $1$ in $2$.
 
 Ocena posameznega sloja oziroma sklopa je sintezna ocena na podlagi vnaprej določenih kriterijev.
 Pri tem ne računamo uteženega skupnega rezultata, saj bi tak pristop ustvaril vtis večje objektivnosti, kot jo je pri tovrstni primerjavi realno mogoče zagotoviti.
-Namesto tega rezultate predstavimo v obliki tabel in radialnih diagramov, ločeno za odprtost in za praktično uporabnost.
+Namesto tega rezultate predstavimo v obliki tabel in radarskih diagramov, ločeno za odprtost in za praktično uporabnost.
 
-Tak način prikaza omogoča, da pri vsaki rešitvi jasno pokažemo njen profil kompromisov:
-kje je bližje idealu popolnoma odprtokodnega telefona in kje od njega bistveno odstopa.
-V diskusiji lahko te profile dodatno interpretiramo tudi z vidika različnih tipov uporabnikov, vendar to ne spremeni osnovnega načina ocenjevanja.
+Tak način prikaza omogoča, da pri vsaki rešitvi jasno pokažemo njen profil kompromisov, torej kje je bližje idealu popolnoma odprtokodnega telefona in kje od njega bistveno odstopa.
+V razpravi lahko te profile dodatno interpretiramo tudi z vidika različnih tipov uporabnikov, vendar to ne spremeni osnovnega načina ocenjevanja.
+
+Pri analizi obstoječih rešitev bodo ocene temeljile na javno dostopni dokumentaciji projektov, seznamih podprtih funkcionalnosti, znanih omejitvah ter uporabniških poročilih.
+V empiričnem delu pa bomo iste sklope ocenili še na podlagi lastnega testiranja na izbrani napravi.
+Ocene v primerjalni analizi so zato nujno bolj okvirne kot ocene v študiji primera, kjer lahko funkcionalnosti preverimo neposredno.
 
 \section{Povzetek}
 \label{sec:model_povzetek}
