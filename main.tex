@@ -1106,29 +1106,29 @@ Prav ta skupina zato najbolj jasno pokaže, da je mobilna strojna oprema še ved
 
 Tretjo skupino obravnavanih rešitev predstavljajo namenski telefoni z operacijskim sistemom GNU/Linux.
 V nasprotju z alternativnimi ROM-i za sistem Android in mobilnimi distribucijami sistema GNU/Linux na obstoječi strojni opremi ne gre več za naknadno prilagajanje ali zamenjavo programske opreme na napravah, ki so bile prvotno razvite za drug ekosistem.
-Pri tej skupini so tako strojna kot programska zasnova že od začetka usmerjene v čim večji nadzor uporabnika, tesnejšo povezanost z ekosistemom GNU/Linux in manjšo odvisnost od običajnega mobilnega sklada, ki ga določa sistem Android.
+Pri tej skupini so tako strojna kot programska zasnova že od začetka usmerjene v čim večji nadzor uporabnika, tesnejšo povezanost z ekosistemom GNU/Linux in manjšo odvisnost od običajnega mobilnega programskega sklada, kakršen je uveljavljen pri napravah s sistemom Android.
 
 Tak pristop je z vidika modela iz prejšnjega poglavja posebej zanimiv zato, ker se lahko najbolj približa idealu popolnoma odprtokodnega telefona.
 Ker naprava ni zasnovana kot kompromisna prilagoditev obstoječemu telefonu s sistemom Android, je mogoče doseči večjo preglednost arhitekture, bolj neposreden nadzor nad posameznimi podsistemi in v nekaterih primerih tudi boljšo fizično ločitev komponent, kot so modem, brezžične povezave in senzorji.
 Po drugi strani pa takšne naprave praviloma težje konkurirajo običajnim pametnim telefonom glede zmogljivosti, energijske učinkovitosti, kakovosti kamer, zrelosti aplikacijskega ekosistema in splošne vsakdanje uporabnosti.
 
 V tej skupini kot osrednja primera obravnavamo PinePhone\footnote{\url{https://pine64.org/devices/pinephone/}} in Librem 5\footnote{\url{https://puri.sm/products/librem-5/}}.
-Izbrana sta zato, ker sta najizrazitejša in najpogosteje omenjena predstavnika namenskih telefonov z operacijskim sistemom GNU/Linux.
-Na koncu na kratko omenimo še nekatere novejše oziroma bolj robne projekte, kot so Jolla C2, FuriPhone FLX1s in Liberux NEXX, ki kažejo, da to področje ni povsem zamrlo, vendar za zdaj še ne predstavljajo tako uveljavljene referenčne osnove kot PinePhone in Librem 5.
+Izbrana sta zato, ker sodita med najbolj uveljavljene in najizrazitejše predstavnike namenskih telefonov z operacijskim sistemom GNU/Linux.
+Na koncu na kratko omenimo še nekatere novejše oziroma bolj robne projekte, kot so Jolla C2, FuriPhone FLX1s in Liberux NEXX, ki kažejo, da to področje ostaja razvojno aktivno, vendar za zdaj še ne predstavljajo tako uveljavljene referenčne osnove kot PinePhone in Librem 5.
 
 \subsection{PinePhone}
 
-Projekt PinePhone predstavlja enega najčistejših primerov telefona, ki je bil od začetka zamišljen kot naprava za skupnost mobilnega GNU/Linux.
-Uradna predstavitev ga opisuje kot telefon, ki je zmožen poganjati mainline jedro Linux, vključuje strojna stikala za zasebnost in ga podpirajo glavni projekti mobilnega GNU/Linux~\cite{pine64_pinephone_device,pine64_wiki_pinephone}.
+Projekt PinePhone predstavlja enega najizrazitejših primerov telefona, ki je bil od začetka zamišljen kot naprava za skupnost mobilnih projektov GNU/Linux.
+Uradna predstavitev ga opisuje kot telefon, ki zmore poganjati glavno vejo jedra Linux, vključuje strojna stikala za zasebnost in ga podpirajo glavni projekti mobilnega GNU/Linux~\cite{pine64_pinephone_device,pine64_wiki_pinephone}.
 Že ta opis pokaže, da se PinePhone ne poskuša približati običajni logiki komercialnega pametnega telefona, temveč predvsem ponuditi odprto in eksperimentalno razvojno platformo.
 
 Za naš model je PinePhone pomemben predvsem zato, ker se v več vidikih zelo približa idealu odprte arhitekture.
-Ključna prednost je, da naprava ni zasnovana okoli sistema Android, temveč okoli neposredne podpore za GNU/Linux, pri čemer PINE64 posebej poudarja podporo mainline jedru Linux in prisotnost strojnih stikal za zasebnost~\cite{pine64_pinephone_device}.
+Ključna prednost je, da naprava ni zasnovana okoli sistema Android, temveč okoli neposredne podpore za GNU/Linux, pri čemer PINE64 posebej poudarja podporo glavni veji jedra Linux in prisotnost strojnih stikal za zasebnost~\cite{pine64_pinephone_device}.
 To pomeni, da je nadzor nad napravo v večji meri prenesen na uporabnika in skupnost razvijalcev, ne pa na proizvajalca zaprtega mobilnega ekosistema.
 
 Vendar PinePhone hkrati zelo jasno pokaže, kako težko je visoko stopnjo odprtosti pretvoriti v vsakdanje uporabno napravo.
 Njegova zasnova je izrecno naklonjena eksperimentiranju, odprtemu razvoju in podpori različnih mobilnih distribucij sistema GNU/Linux, vendar to ne pomeni, da vse ključne funkcije dosegajo enako raven zrelosti kot pri običajnih pametnih telefonih.
-Prav zato je PinePhone predvsem pomemben kot referenčna razvojna naprava in kot dokaz, da je mogoče zgraditi telefon, ki ni podrejen logiki sistema Android ali iOS, manj prepričljiv pa je kot univerzalna rešitev za običajnega uporabnika.
+Prav zato je PinePhone pomemben predvsem kot referenčna razvojna naprava in kot dokaz, da je mogoče zgraditi telefon, ki ni podrejen logiki sistema Android ali iOS. Kot splošna rešitev za vsakdanjo rabo pa ostaja manj prepričljiv.
 
 Po našem modelu bi PinePhone ocenili kot rešitev, ki je zelo močna na ravni arhitekturne odprtosti, preglednosti sistema in nadzora nad strojno opremo, nekoliko šibkejša pa na ravni praktične uporabnosti.
 Njegova največja prednost je prav to, da gre za namensko napravo za mobilni GNU/Linux, njegova največja slabost pa, da ta prednost še ne pomeni tudi enake stopnje zrelosti kot pri uveljavljenih komercialnih telefonih.
@@ -1137,10 +1137,10 @@ Njegova največja prednost je prav to, da gre za namensko napravo za mobilni GNU
 
 Librem 5 predstavlja drugačno interpretacijo namenskega telefona z operacijskim sistemom GNU/Linux kot PinePhone.
 Če PinePhone bolj odkrito cilja na razvojno skupnost in eksperimentiranje, Purism pri Librem 5 veliko izraziteje poudarja zasebnost, varnost in nadzor uporabnika.
-Uradna stran naprave ga opisuje kot telefon, zgrajen na sistemu PureOS, ki ni osnovan na sistemu Android ali iOS, dokumentacija in varnostna predstavitev pa posebej poudarjata tri strojna kill-switch stikala in tako imenovani \enquote{Lockdown mode}~\cite{purism_librem5_product,purism_librem5_privacy,purism_security}.
+Uradna stran naprave ga opisuje kot telefon, zgrajen na sistemu PureOS, ki ni osnovan na sistemu Android ali iOS, dokumentacija in varnostna predstavitev pa posebej poudarjata tri strojna stikala za fizični izklop komponent (angl. \textit{kill switches}) ter tako imenovani način popolne omejitve \textit{Lockdown mode}~\cite{purism_librem5_product,purism_librem5_privacy,purism_security}.
 
 Za naš model je Librem 5 posebej zanimiv zato, ker poskuša odprtost povezati z bolj premišljeno varnostno zasnovo.
-Tri strojna stikala omogočajo fizični izklop mobilnega modema, Wi-Fi/Bluetooth modula ter kamere in mikrofona, Lockdown mode pa ob hkratni uporabi vseh treh stikal izklopi še druge senzorje, kot so GPS, pospeškomer, senzor bližine in svetlobni senzor~\cite{purism_security,purism_lockdown_mode}.
+Tri strojna stikala omogočajo fizični izklop mobilnega modema, Wi-Fi/Bluetooth modula ter kamere in mikrofona, \textit{Lockdown mode} pa ob hkratni uporabi vseh treh stikal izklopi še druge senzorje, kot so GPS, pospeškomer, senzor bližine in svetlobni senzor~\cite{purism_security,purism_lockdown_mode}.
 Takšna rešitev je v mobilnem prostoru zelo neobičajna, saj uporabniku daje neposreden fizični nadzor nad komponentami, ki so pri običajnih pametnih telefonih večinoma skrite za programskimi plastmi.
 
 V primerjavi s PinePhone je Librem 5 zato manj zanimiv kot povsem odprta razvojna platforma v ožjem smislu, bolj pa kot naprava, ki skuša odprtost in svobodo povezati z uporabniško razumljivimi mehanizmi nadzora.
@@ -1156,16 +1156,16 @@ Poleg PinePhone in Librem 5 je v zadnjih letih mogoče opaziti še nekaj novejš
 Med njimi velja omeniti Jolla C2\footnote{\url{https://commerce.jolla.com/products/jolla-community-phone}}, FuriPhone FLX1s\footnote{\url{https://furilabs.com/shop/flx1s/}} in Liberux NEXX\footnote{\url{https://liberux.net/}}.
 
 Jolla C2 je zanimiv predvsem kot referenčna naprava za skupnost sistema Sailfish OS.
-Uradna predstavitev ga opisuje kot \enquote{true Linux smartphone} z 4G in VoLTE podporo ter poudarja tudi možnost poganjanja Android aplikacij~\cite{jolla_c2,jolla_c2_android_apps}.
-Vendar je za to diplomsko nalogo pomembna tudi omejitev, da uradna dokumentacija Sailfish OS sama navaja, da sistem sestavljajo tako odprtokodne kot tudi proprietary komponente~\cite{sailfish_open_source}.
-Jolla C2 je zato zanimiv kot dokaz, da na trgu še obstaja komercialni interes za telefone z GNU/Linuxom, ni pa tako čist primer odprtokodne mobilne rešitve kot PinePhone ali Librem 5.
+Uradna predstavitev ga opisuje kot referenčno napravo za skupnost sistema Sailfish OS z 4G in VoLTE podporo ter možnostjo poganjanja aplikacij za Android~\cite{jolla_c2,jolla_c2_android_apps}.
+Vendar je za to diplomsko nalogo pomembna tudi omejitev, da uradna dokumentacija Sailfish OS sama navaja, da sistem sestavljajo tako odprtokodne kot tudi zaprte komponente~\cite{sailfish_open_source}.
+Jolla C2 je zato zanimiv kot pokazatelj, da na trgu še vedno obstaja komercialni interes za telefone z GNU/Linuxom, ni pa tako \enquote{čist} primer odprtokodne mobilne rešitve kot PinePhone ali Librem 5.
 
 FuriPhone FLX1s predstavlja novejši poskus telefona, ki temelji na sistemu FuriOS, opisanem kot mobilno prilagojen sistem na osnovi Debiana.
 Proizvajalec pri njem poudarja tri strojna stikala za zasebnost in usmerjenost v mobilno uporabo brez umetnih omejitev~\cite{furiphone_flx1s,furiphone_flx1s_switches}.
-Projekt je zanimiv zato, ker skuša združiti ideje klasičnega GNU/Linux okolja, zasebnosti in vsakdanje uporabnosti, vendar je za zdaj še premlad, da bi ga lahko obravnavali kot enako referenčen primer kot PinePhone ali Librem 5.
+Ta projekt je zanimiv zato, ker skuša združiti ideje klasičnega okolja GNU/Linux, zasebnosti in vsakdanje uporabnosti, vendar je za zdaj še premlad, da bi ga lahko obravnavali kot enako referenčen primer kot PinePhone ali Librem 5.
 
-Liberux NEXX pa je še izrazitejši primer novega projekta v nastajanju.
-Uradna stran ga opisuje kot telefon, zgrajen na sistemu LiberuxOS, ki je opisan kot etičen, prost in večinoma odprtokoden ter ni osnovan na Androidu ali iOS, spremljevalne objave projekta pa govorijo o crowdfundingu in prototipiranju prve razvojne plošče~\cite{liberux_home,liberux_crowdfunding,liberux_devboard}.
+Liberux NEXX pa predstavlja še zgodnejši primer novega projekta v nastajanju.
+Uradna stran ga opisuje kot telefon, zgrajen na sistemu LiberuxOS, ki je opisan kot etičen, prost in večinoma odprtokoden ter ni osnovan na Androidu ali iOS, spremljevalne objave projekta pa govorijo o množičnem financiranju in prototipiranju prve razvojne plošče~\cite{liberux_home,liberux_crowdfunding,liberux_devboard}.
 Takšni projekti so pomembni predvsem zato, ker kažejo, da ideja namenskega telefona z GNU/Linuxom še ni izginila, vendar je njihova dejanska dolgoročna uspešnost v tej fazi še negotova.
 
 \subsection{Vmesna primerjalna ugotovitev}
@@ -1174,10 +1174,9 @@ Analiza namenskih telefonov z operacijskim sistemom GNU/Linux pokaže, da se ta 
 PinePhone predstavlja izrazitejši razvojno-skupnostni pol, pri katerem je v ospredju odprta arhitektura in podpora različnim projektom mobilnega GNU/Linux.
 Librem 5 pa predstavlja varnostno in zasebnostno bolj usmerjen pol, pri katerem so v ospredju fizični mehanizmi nadzora nad strojno opremo in jasneje izražena ideja uporabniške avtonomije.
 
-Novejši projekti, kot so Jolla C2, FuriPhone FLX1s in Liberux NEXX, kažejo, da področje namenskih telefonov z GNU/Linuxom ostaja razvojno živo, vendar so ti primeri bodisi bolj mešani z vidika odprtokodnosti bodisi še premalo zreli, da bi že predstavljali enako stabilno referenčno osnovo kot PinePhone in Librem 5.
+Novejši projekti, kot so Jolla C2, FuriPhone FLX1s in Liberux NEXX, kažejo, da področje namenskih telefonov z GNU/Linuxom ostaja razvojno živo, vendar so ti primeri bodisi manj dosledni z vidika odprtokodnosti bodisi še premalo zreli, da bi že predstavljali enako stabilno referenčno osnovo kot PinePhone in Librem 5.
 
-Ta skupina rešitev zato najbolje pokaže osrednjo napetost celotne diplomske naloge:
-bolj ko se mobilna rešitev približa idealu odprte arhitekture in neposrednega nadzora uporabnika, težje praviloma dosega enako raven zrelosti, udobja in splošne vsakdanje uporabnosti kot prevladujoči komercialni pametni telefoni.
+Ta skupina rešitev zato najbolje pokaže osrednjo napetost celotne diplomske naloge. Bolj ko se mobilna rešitev približa idealu odprte arhitekture in neposrednega nadzora uporabnika, težje praviloma dosega enako raven zrelosti, udobja in splošne vsakdanje uporabnosti kot prevladujoči komercialni pametni telefoni.
 
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Literatura}
