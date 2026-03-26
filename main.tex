@@ -33,6 +33,10 @@
 \usepackage{hyperxmp}
 \usepackage[section]{placeins}
 
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\pgfplotsset{compat=1.18}
+
 \usepackage{color}
 \usepackage{soul}
 
@@ -1177,6 +1181,166 @@ Librem 5 pa predstavlja varnostno in zasebnostno bolj usmerjen pol, pri katerem 
 Novejši projekti, kot so Jolla C2, FuriPhone FLX1s in Liberux NEXX, kažejo, da področje namenskih telefonov z GNU/Linuxom ostaja razvojno živo, vendar so ti primeri bodisi manj dosledni z vidika odprtokodnosti bodisi še premalo zreli, da bi že predstavljali enako stabilno referenčno osnovo kot PinePhone in Librem 5.
 
 Ta skupina rešitev zato najbolje pokaže osrednjo napetost celotne diplomske naloge. Bolj ko se mobilna rešitev približa idealu odprte arhitekture in neposrednega nadzora uporabnika, težje praviloma dosega enako raven zrelosti, udobja in splošne vsakdanje uporabnosti kot prevladujoči komercialni pametni telefoni.
+
+\section{Primerjalna sinteza}
+\label{sec:primerjalna_sinteza}
+
+Analiza treh skupin odprtokodnih mobilnih rešitev pokaže, da se nobena izmed obravnavanih rešitev ne približa idealu popolnoma odprtokodnega telefona hkrati v obeh dimenzijah, ki smo ju opredelili v prejšnjem poglavju.
+Pri vseh treh skupinah se namreč pokaže izrazita napetost med odprtostjo in praktično uporabnostjo:
+rešitve, ki uporabniku omogočajo večji nadzor nad arhitekturo sistema in bolj odprto programsko okolje, praviloma težje dosežejo enako raven vsakdanje uporabnosti kot rešitve, ki ostajajo bliže prevladujočemu ekosistemu sistema Android.
+
+Sintezne ocene odprtosti in praktične uporabnosti so povzete v tabelah~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost}, dodatno pa jih ponazarjata radarska diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost}.
+Ocene v tabelah so sintezne in temeljijo na analizi javno dostopne dokumentacije, znanih omejitev in razvojnih usmeritev posameznih projektov.
+Gre torej za okvirno primerjavo profilov posameznih rešitev, ne za strogo merilno vrednotenje.
+
+\begin{table}[htb]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Rešitev} & \textbf{ZV} & \textbf{JG} & \textbf{SP} & \textbf{SS} & \textbf{AD} \\
+\hline
+LineageOS    & 1 & 1 & 0 & 1 & 1 \\
+GrapheneOS   & 2 & 1 & 0 & 1 & 1 \\
+/e/OS        & 1 & 1 & 0 & 1 & 1 \\
+Replicant    & 1 & 1 & 1 & 2 & 1 \\
+Ubuntu Touch & 1 & 1 & 0 & 1 & 2 \\
+Mobian       & 1 & 1 & 0 & 2 & 2 \\
+postmarketOS & 1 & 1 & 0 & 2 & 2 \\
+PinePhone    & 2 & 2 & 1 & 2 & 2 \\
+Librem 5     & 2 & 2 & 1 & 2 & 2 \\
+\hline
+\end{tabular}
+\caption{Sintezna primerjava odprtosti po slojih. Oznake: ZV -- zagonska veriga, JG -- jedro in gonilniki, SP -- strojna programska oprema, SS -- sistemske storitve in vmesni sloj, AD -- privzete aplikacije in distribucija aplikacij. Vrednosti pomenijo: 0 -- pretežno zaprto, 1 -- mešano, 2 -- pretežno odprto.}
+\label{tab:primerjalna_sinteza_odprtost}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Rešitev} & \textbf{OF} & \textbf{KS} & \textbf{AZ} & \textbf{EA} & \textbf{PV} \\
+\hline
+LineageOS    & 2 & 2 & 2 & 2 & 2 \\
+GrapheneOS   & 2 & 2 & 2 & 2 & 2 \\
+/e/OS        & 2 & 2 & 2 & 2 & 1 \\
+Replicant    & 1 & 0 & 0 & 0 & 0 \\
+Ubuntu Touch & 1 & 1 & 1 & 1 & 2 \\
+Mobian       & 1 & 1 & 1 & 1 & 1 \\
+postmarketOS & 1 & 1 & 0 & 1 & 1 \\
+PinePhone    & 1 & 1 & 0 & 1 & 1 \\
+Librem 5     & 1 & 1 & 0 & 1 & 2 \\
+\hline
+\end{tabular}
+\caption{Sintezna primerjava praktične uporabnosti po funkcionalnih sklopih. Oznake: OF -- osnovne funkcije telefona, KS -- ključna strojna podpora, AZ -- avtonomija in zmogljivost, EA -- ekosistem aplikacij, PV -- posodobitve in vzdrževanje. Vrednosti pomenijo: 0 -- neuporabno, 1 -- omejeno, 2 -- uporabno.}
+\label{tab:primerjalna_sinteza_uporabnost}
+\end{table}
+\FloatBarrier
+
+Iz tabel~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost} je razvidno, da alternativni ROM-i za sistem Android dosegajo razmeroma visoke ocene praktične uporabnosti, vendar ostajajo omejeni v spodnjih slojih sistema, zlasti pri strojni programski opremi in delu gonilnikov.
+Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android izboljšajo odprtost uporabniškega prostora in pogosto tudi preglednost sistema, vendar praviloma ne morejo v celoti prekiniti odvisnosti od izvorne zasnove naprav za sistem Android.
+Namenski telefoni z operacijskim sistemom GNU/Linux pa so v arhitekturnem smislu najbližje idealu odprtega telefona, vendar pri praktični uporabnosti praviloma zaostajajo za rešitvami, ki so tesneje povezane z ekosistemom sistema Android.
+
+Zaradi preglednosti radarska diagrama ne prikazujeta vseh obravnavanih rešitev, temveč tri reprezentativne profile:
+LineageOS kot predstavnika alternativnih ROM-ov za sistem Android, Mobian kot predstavnika mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi za sistem Android ter Librem 5 kot predstavnika namenskih telefonov z operacijskim sistemom GNU/Linux.
+
+\begin{figure}[htb]
+\centering
+\begin{tikzpicture}
+\begin{polaraxis}[
+    width=0.72\textwidth,
+    ymin=0, ymax=2,
+    ytick={0,1,2},
+    xtick={0,72,144,216,288},
+    xticklabels={ZV,JG,SP,SS,AD},
+    grid=both,
+    legend style={at={(0.5,-0.15)}, anchor=north, legend columns=3},
+    every axis plot/.append style={thick, no marks}
+]
+\addplot+[black] coordinates {
+    (0,1) (72,1) (144,0) (216,1) (288,1) (360,1)
+};
+\addlegendentry{LineageOS}
+
+\addplot+[black, dashed] coordinates {
+    (0,1) (72,1) (144,0) (216,2) (288,2) (360,1)
+};
+\addlegendentry{Mobian}
+
+\addplot+[black, dotted] coordinates {
+    (0,2) (72,2) (144,1) (216,2) (288,2) (360,2)
+};
+\addlegendentry{Librem 5}
+\end{polaraxis}
+\end{tikzpicture}
+\caption{Radarski diagram odprtosti za tri reprezentativne profile. Oznake osi so enake kot v tabeli~\ref{tab:primerjalna_sinteza_odprtost}.}
+\label{fig:radar_odprtost}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\begin{tikzpicture}
+\begin{polaraxis}[
+    width=0.72\textwidth,
+    ymin=0, ymax=2,
+    ytick={0,1,2},
+    xtick={0,72,144,216,288},
+    xticklabels={OF,KS,AZ,EA,PV},
+    grid=both,
+    legend style={at={(0.5,-0.15)}, anchor=north, legend columns=3},
+    every axis plot/.append style={thick, no marks}
+]
+\addplot+[black] coordinates {
+    (0,2) (72,2) (144,2) (216,2) (288,2) (360,2)
+};
+\addlegendentry{LineageOS}
+
+\addplot+[black, dashed] coordinates {
+    (0,1) (72,1) (144,1) (216,1) (288,1) (360,1)
+};
+\addlegendentry{Mobian}
+
+\addplot+[black, dotted] coordinates {
+    (0,1) (72,1) (144,0) (216,1) (288,1) (360,1)
+};
+\addlegendentry{Librem 5}
+\end{polaraxis}
+\end{tikzpicture}
+\caption{Radarski diagram praktične uporabnosti za tri reprezentativne profile. Oznake osi so enake kot v tabeli~\ref{tab:primerjalna_sinteza_uporabnost}.}
+\label{fig:radar_uporabnost}
+\end{figure}
+
+\FloatBarrier
+
+Radarska diagrama potrjujeta ugotovitve iz tabel.
+LineageOS se kot predstavnik alternativnih ROM-ov za sistem Android izkaže z najbolj uravnoteženim profilom praktične uporabnosti, vendar ostaja omejen na ravni strojne programske opreme in dela spodnjih slojev sistema.
+Mobian kot predstavnik mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi kaže izrazitejšo odprtost uporabniškega prostora, vendar brez enake stopnje vsakdanje zrelosti kot LineageOS.
+Librem 5 pa se kot namenska naprava najbolj približa idealu odprte arhitekture, vendar pri praktični uporabnosti ostaja v bolj omejenem območju.
+
+Če tri skupine rešitev primerjamo z vidika odprtosti, so alternativni ROM-i za sistem Android praviloma najmočnejši v zgornjih slojih sistema, torej pri uporabniškem prostoru, sistemskih storitvah in distribuciji aplikacij.
+Njihova glavna omejitev je, da praviloma ne odpravijo temeljne odvisnosti od zaprtih komponent v spodnjih slojih naprave.
+Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android povečajo odprtost uporabniškega prostora in tesnejšo povezanost z običajnimi distribucijami GNU/Linux, vendar pogosto ostajajo tehnično odvisne od jeder, binarnih dodatkov in združljivostnih slojev, ki izhajajo iz prvotne zasnove naprav za sistem Android.
+Namenski telefoni z operacijskim sistemom GNU/Linux pa se idealu odprtega telefona približajo najbolj neposredno, saj omogočajo bolj pregleden odnos med strojno in programsko zasnovo ter praviloma tudi več neposrednega nadzora nad posameznimi podsistemi.
+
+Če iste rešitve primerjamo z vidika praktične uporabnosti, se razmerje med skupinami deloma obrne.
+Najbolj prepričljivi ostajajo alternativni ROM-i za sistem Android, saj v največji meri ohranijo združljivost z aplikacijskim ekosistemom sistema Android ter s tem tudi osnovne prednosti sodobnega pametnega telefona.
+Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android so praviloma manj enotne:
+Ubuntu Touch daje največji poudarek zaokroženi mobilni uporabniški izkušnji, Mobian ostaja najbližje logiki običajne distribucije GNU/Linux, postmarketOS pa najbolj razširja prostor eksperimentiranja in dolgoročnega oživljanja starejših naprav.
+Namenski telefoni z operacijskim sistemom GNU/Linux so pri praktični uporabnosti praviloma najmanj konkurenčni v primerjavi z običajnimi pametnimi telefoni, vendar je njihova glavna vrednost drugje:
+v preizkušanju drugačnega modela naprave, pri katerem ima uporabnik več neposrednega nadzora nad sistemom in strojno opremo.
+
+Primerjalna sinteza tako potrjuje osnovno izhodišče te diplomske naloge:
+v sodobnem mobilnem prostoru odprtost in praktična uporabnost praviloma nista lastnosti, ki bi ju bilo mogoče hkrati maksimirati brez pomembnih kompromisov.
+Bolj ko se rešitev približuje idealu odprte arhitekture, več omejitev se praviloma pokaže pri zrelosti programske podpore, aplikacijskem ekosistemu in vsakdanji rabi.
+Po drugi strani pa rešitve, ki so uporabniku najbližje kot dejanska zamenjava za običajen pametni telefon, skoraj vedno ostajajo odvisne od zaprtih komponent v spodnjih slojih sistema.
+
+Takšna primerjalna slika je pomembna tudi za nadaljnji empirični del naloge.
+Omogoča namreč, da izbrano rešitev v nadaljevanju ne razumemo kot izoliran primer, temveč kot del širšega prostora kompromisov med odprtostjo, varnostjo, vzdrževanjem in praktično uporabnostjo.
 
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Literatura}
