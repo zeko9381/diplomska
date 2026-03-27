@@ -36,6 +36,7 @@
 \usepackage{pgfplots}
 \usepgfplotslibrary{polar}
 \pgfplotsset{compat=1.18}
+\usepackage[dvipsnames]{xcolor}
 
 \usepackage{color}
 \usepackage{soul}
@@ -1059,7 +1060,7 @@ Projekt Mobian predstavlja nekoliko drugačen pristop kot Ubuntu Touch, čeprav 
 Na uradni strani se predstavlja kot izpeljanka Debiana za mobilne naprave, uradni blog projekta pa poudarja, da želi standardno distribucijo Debian povezati z mobilnimi prilagoditvami, pri čemer skuša čim več posebnih rešitev prenesti v izvorne projekte in s tem zmanjšati količino lastnih, projektno specifičnih sprememb~\cite{mobian_home,mobian_what_is}.
 Že iz tega izhodišča je razvidno, da Mobian ne želi biti povsem ločen mobilni ekosistem, temveč čim bolj neposredna mobilna razširitev obstoječega ekosistema Debian.
 
-Za naš model je Mobian zanimiv predvsem zato, ker je med obravnavanimi rešitvami eden najbližjih predstavi mobilnega sistema, ki ostaja tesno povezan z običajno distribucijo GNU/Linux.
+Za naš model je Mobian zanimiv predvsem zato, ker je med obravnavanimi rešitvami eden najbližjih predstavnikov mobilnega sistema, ki ostaja tesno povezan z običajno distribucijo GNU/Linux.
 Tak pristop lahko poveča preglednost sistema, zmanjša količino projektno specifičnih prilagoditev in olajša razumevanje celotnega programskega sklada.
 Hkrati pa pomeni, da projekt manj stavi na strogo nadzorovano in poenoteno mobilno uporabniško izkušnjo kot Ubuntu Touch, temveč bolj na postopno prilagajanje obstoječega ekosistema GNU/Linux mobilni rabi.
 
@@ -1186,8 +1187,8 @@ Ta skupina rešitev zato najbolje pokaže osrednjo napetost celotne diplomske na
 \label{sec:primerjalna_sinteza}
 
 Analiza treh skupin odprtokodnih mobilnih rešitev pokaže, da se nobena izmed obravnavanih rešitev ne približa idealu popolnoma odprtokodnega telefona hkrati v obeh dimenzijah, ki smo ju opredelili v prejšnjem poglavju.
-Pri vseh treh skupinah se namreč pokaže izrazita napetost med odprtostjo in praktično uporabnostjo:
-rešitve, ki uporabniku omogočajo večji nadzor nad arhitekturo sistema in bolj odprto programsko okolje, praviloma težje dosežejo enako raven vsakdanje uporabnosti kot rešitve, ki ostajajo bliže prevladujočemu ekosistemu sistema Android.
+Pri vseh treh skupinah se pokaže izrazita napetost med odprtostjo in praktično uporabnostjo.
+Rešitve, ki uporabniku omogočajo večji nadzor nad arhitekturo sistema in bolj odprto programsko okolje, praviloma težje dosežejo enako raven vsakdanje uporabnosti kot rešitve, ki ostajajo bliže prevladujočemu ekosistemu sistema Android.
 
 Sintezne ocene odprtosti in praktične uporabnosti so povzete v tabelah~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost}, dodatno pa jih ponazarjata radarska diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost}.
 Ocene v tabelah so sintezne in temeljijo na analizi javno dostopne dokumentacije, znanih omejitev in razvojnih usmeritev posameznih projektov.
@@ -1246,36 +1247,71 @@ Iz tabel~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_
 Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android izboljšajo odprtost uporabniškega prostora in pogosto tudi preglednost sistema, vendar praviloma ne morejo v celoti prekiniti odvisnosti od izvorne zasnove naprav za sistem Android.
 Namenski telefoni z operacijskim sistemom GNU/Linux pa so v arhitekturnem smislu najbližje idealu odprtega telefona, vendar pri praktični uporabnosti praviloma zaostajajo za rešitvami, ki so tesneje povezane z ekosistemom sistema Android.
 
-Zaradi preglednosti radarska diagrama ne prikazujeta vseh obravnavanih rešitev, temveč tri reprezentativne profile:
-LineageOS kot predstavnika alternativnih ROM-ov za sistem Android, Mobian kot predstavnika mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi za sistem Android ter Librem 5 kot predstavnika namenskih telefonov z operacijskim sistemom GNU/Linux.
+Zaradi preglednosti radarska diagrama ne prikazujeta vseh obravnavanih rešitev, temveč tri reprezentativne profile.
+To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian kot predstavnik mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi za sistem Android ter Librem 5 kot predstavnik namenskih telefonov z operacijskim sistemom GNU/Linux.
 
 \begin{figure}[htb]
 \centering
 \begin{tikzpicture}
 \begin{polaraxis}[
-    width=0.72\textwidth,
+    width=0.78\textwidth,
     ymin=0, ymax=2,
-    ytick={0,1,2},
+    ytick={1,2},
+    yticklabels={1,2},
     xtick={0,72,144,216,288},
     xticklabels={ZV,JG,SP,SS,AD},
     grid=both,
-    legend style={at={(0.5,-0.15)}, anchor=north, legend columns=3},
-    every axis plot/.append style={thick, no marks}
+    axis line style={draw=none},
+    minor grid style={gray!25},
+    major grid style={gray!45},
+    xticklabel style={font=\small},
+    yticklabel style={font=\small},
+    tick label style={font=\small},
+    clip=false,
+    legend style={
+        at={(0.5,-0.20)},
+        anchor=north,
+        legend columns=3,
+        font=\small,
+        draw=black,
+        fill=white
+    },
+    every axis plot/.append style={thick}
 ]
-\addplot+[black] coordinates {
-    (0,1) (72,1) (144,0) (216,1) (288,1) (360,1)
-};
-\addlegendentry{LineageOS}
 
-\addplot+[black, dashed] coordinates {
+\addplot+[
+    black,
+    dashed,
+    mark=square*,
+    mark size=4pt,
+    mark options={solid, draw=black, fill=ForestGreen}
+] coordinates {
     (0,1) (72,1) (144,0) (216,2) (288,2) (360,1)
 };
 \addlegendentry{Mobian}
 
-\addplot+[black, dotted] coordinates {
+\addplot+[
+    black,
+    dotted,
+    mark=triangle*,
+    mark size=3.5pt,
+    mark options={solid, draw=black, fill=BrickRed}
+] coordinates {
     (0,2) (72,2) (144,1) (216,2) (288,2) (360,2)
 };
 \addlegendentry{Librem 5}
+
+\addplot+[
+    black,
+    solid,
+    mark=*,
+    mark size=2.5pt,
+    mark options={solid, draw=black, fill=NavyBlue}
+] coordinates {
+    (0,1) (72,1) (144,0) (216,1) (288,1) (360,1)
+};
+\addlegendentry{LineageOS}
+
 \end{polaraxis}
 \end{tikzpicture}
 \caption{Radarski diagram odprtosti za tri reprezentativne profile. Oznake osi so enake kot v tabeli~\ref{tab:primerjalna_sinteza_odprtost}.}
@@ -1286,29 +1322,64 @@ LineageOS kot predstavnika alternativnih ROM-ov za sistem Android, Mobian kot pr
 \centering
 \begin{tikzpicture}
 \begin{polaraxis}[
-    width=0.72\textwidth,
+    width=0.78\textwidth,
     ymin=0, ymax=2,
-    ytick={0,1,2},
+    ytick={1,2},
+    yticklabels={1,2},
     xtick={0,72,144,216,288},
     xticklabels={OF,KS,AZ,EA,PV},
     grid=both,
-    legend style={at={(0.5,-0.15)}, anchor=north, legend columns=3},
-    every axis plot/.append style={thick, no marks}
+    axis line style={draw=none},
+    minor grid style={gray!25},
+    major grid style={gray!45},
+    xticklabel style={font=\small},
+    yticklabel style={font=\small},
+    tick label style={font=\small},
+    clip=false,
+    legend style={
+        at={(0.5,-0.20)},
+        anchor=north,
+        legend columns=3,
+        font=\small,
+        draw=black,
+        fill=white
+    },
+    every axis plot/.append style={thick}
 ]
-\addplot+[black] coordinates {
-    (0,2) (72,2) (144,2) (216,2) (288,2) (360,2)
-};
-\addlegendentry{LineageOS}
 
-\addplot+[black, dashed] coordinates {
+\addplot+[
+    black,
+    dashed,
+    mark=square*,
+    mark size=4pt,
+    mark options={solid, draw=black, fill=ForestGreen}
+] coordinates {
     (0,1) (72,1) (144,1) (216,1) (288,1) (360,1)
 };
 \addlegendentry{Mobian}
 
-\addplot+[black, dotted] coordinates {
+\addplot+[
+    black,
+    dotted,
+    mark=triangle*,
+    mark size=3.5pt,
+    mark options={solid, draw=black, fill=BrickRed}
+] coordinates {
     (0,1) (72,1) (144,0) (216,1) (288,1) (360,1)
 };
 \addlegendentry{Librem 5}
+
+\addplot+[
+    black,
+    solid,
+    mark=*,
+    mark size=2.5pt,
+    mark options={solid, draw=black, fill=NavyBlue}
+] coordinates {
+    (0,2) (72,2) (144,2) (216,2) (288,2) (360,2)
+};
+\addlegendentry{LineageOS}
+
 \end{polaraxis}
 \end{tikzpicture}
 \caption{Radarski diagram praktične uporabnosti za tri reprezentativne profile. Oznake osi so enake kot v tabeli~\ref{tab:primerjalna_sinteza_uporabnost}.}
@@ -1328,14 +1399,14 @@ Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem An
 Namenski telefoni z operacijskim sistemom GNU/Linux pa se idealu odprtega telefona približajo najbolj neposredno, saj omogočajo bolj pregleden odnos med strojno in programsko zasnovo ter praviloma tudi več neposrednega nadzora nad posameznimi podsistemi.
 
 Če iste rešitve primerjamo z vidika praktične uporabnosti, se razmerje med skupinami deloma obrne.
-Najbolj prepričljivi ostajajo alternativni ROM-i za sistem Android, saj v največji meri ohranijo združljivost z aplikacijskim ekosistemom sistema Android ter s tem tudi osnovne prednosti sodobnega pametnega telefona.
-Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android so praviloma manj enotne:
-Ubuntu Touch daje največji poudarek zaokroženi mobilni uporabniški izkušnji, Mobian ostaja najbližje logiki običajne distribucije GNU/Linux, postmarketOS pa najbolj razširja prostor eksperimentiranja in dolgoročnega oživljanja starejših naprav.
-Namenski telefoni z operacijskim sistemom GNU/Linux so pri praktični uporabnosti praviloma najmanj konkurenčni v primerjavi z običajnimi pametnimi telefoni, vendar je njihova glavna vrednost drugje:
-v preizkušanju drugačnega modela naprave, pri katerem ima uporabnik več neposrednega nadzora nad sistemom in strojno opremo.
+Najbolj prepričljivi ostajajo alternativni ROM-i za sistem Android, saj v največji meri ohranijo združljivost z aplikacijskim ekosistemom sistema Android in s tem tudi osnovne prednosti sodobnega pametnega telefona.
+To pa ne velja povsem brez izjem, zlasti pri aplikacijah, ki uporabljajo mehanizme preverjanja celovitosti naprave~\cite{play_integrity_overview}.
+Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android so praviloma manj enotne. Ubuntu Touch daje največji poudarek zaokroženi mobilni uporabniški izkušnji, Mobian ostaja najbližje logiki običajne distribucije GNU/Linux, postmarketOS pa najbolj razširja prostor eksperimentiranja in dolgoročnega oživljanja starejših naprav.
+Namenski telefoni z operacijskim sistemom GNU/Linux so pri praktični uporabnosti praviloma najmanj konkurenčni v primerjavi z običajnimi pametnimi telefoni.
+Njihova glavna vrednost je drugje, in sicer v preizkušanju drugačnega modela naprave, pri katerem ima uporabnik več neposrednega nadzora nad sistemom in strojno opremo.
 
-Primerjalna sinteza tako potrjuje osnovno izhodišče te diplomske naloge:
-v sodobnem mobilnem prostoru odprtost in praktična uporabnost praviloma nista lastnosti, ki bi ju bilo mogoče hkrati maksimirati brez pomembnih kompromisov.
+Primerjalna sinteza tako potrjuje osnovno izhodišče te diplomske naloge.
+V sodobnem mobilnem prostoru odprtost in praktična uporabnost praviloma nista lastnosti, ki bi ju bilo mogoče hkrati maksimirati brez pomembnih kompromisov.
 Bolj ko se rešitev približuje idealu odprte arhitekture, več omejitev se praviloma pokaže pri zrelosti programske podpore, aplikacijskem ekosistemu in vsakdanji rabi.
 Po drugi strani pa rešitve, ki so uporabniku najbližje kot dejanska zamenjava za običajen pametni telefon, skoraj vedno ostajajo odvisne od zaprtih komponent v spodnjih slojih sistema.
 
