@@ -1413,6 +1413,183 @@ Po drugi strani pa rešitve, ki so uporabniku najbližje kot dejanska zamenjava 
 Takšna primerjalna slika je pomembna tudi za nadaljnji empirični del naloge.
 Omogoča namreč, da izbrano rešitev v nadaljevanju ne razumemo kot izoliran primer, temveč kot del širšega prostora kompromisov med odprtostjo, varnostjo, vzdrževanjem in praktično uporabnostjo.
 
+\chapter{Empirični del: študija primera na telefonu OnePlus 6T}
+\label{chap:empiricni_del}
+
+V prejšnjem poglavju smo odprtokodne mobilne rešitve primerjali predvsem na podlagi javno dostopne dokumentacije, razvojnih usmeritev projektov in znanih omejitev.
+Takšna primerjava je uporabna za pregled širšega prostora rešitev, ne more pa v celoti nadomestiti neposrednega preizkusa na konkretni napravi.
+Zato v empiričnem delu izvedemo študijo primera na telefonu OnePlus 6T, na katerem primerjamo štiri sisteme: tovarniški sistem OxygenOS, LineageOS, Ubuntu Touch in postmarketOS.
+
+Namen empiričnega dela ni ugotoviti, kateri projekt je \enquote{najboljši} v splošnem smislu, temveč preveriti, kako se izbrane rešitve obnašajo na isti strojni osnovi.
+Na ta način lahko bistveno bolj neposredno opazujemo kompromise, ki smo jih v prejšnjih poglavjih obravnavali na bolj teoretični ravni.
+Posebej nas zanima, kako se na konkretni napravi spreminja razmerje med odprtostjo, praktično uporabnostjo, zrelostjo programske podpore in dejanskim nadzorom uporabnika nad sistemom.
+
+V skladu z modelom iz poglavja~\ref{chap:model_odprtokodnega_telefona} tudi v empiričnem delu posameznih rešitev ne obravnavamo z eno samo skupno oceno.
+Sisteme bomo ocenjevali ločeno v dveh dimenzijah: odprtosti in praktični uporabnosti.
+Odprtost bomo presojali po slojih sistema, praktično uporabnost pa po funkcionalnih sklopih, ki smo jih opredelili v sekcijah~\ref{sec:kriteriji_odprtosti} in~\ref{sec:kriteriji_prakticne_uporabnosti}.
+
+\section{Cilj in zasnova študije}
+\label{sec:cilj_in_zasnova_studije}
+
+Študija primera je zasnovana kot primerjava štirih različnih pristopov na isti napravi.
+Tovarniški sistem OxygenOS predstavlja izhodiščno referenco, torej stanje, kakršnega je telefon dosegal v okviru proizvajalčeve uradne programske podpore.
+LineageOS predstavlja pragmatično odprtokodno alternativo znotraj ekosistema sistema Android.
+Ubuntu Touch in postmarketOS pa predstavljata dva različna pristopa mobilnega sistema GNU/Linux na isti strojni opremi.
+
+Tak izbor je primeren zato, ker na isti napravi zajame tri različne profile kompromisov.
+OxygenOS je referenca najvišje pričakovane združljivosti s strojno opremo in aplikacijami.
+LineageOS pokaže, koliko praktične uporabnosti je mogoče ohraniti ob večjem nadzoru nad sistemom in brez proizvajalčeve preobleke.
+Ubuntu Touch in postmarketOS pa pokažeta, kaj se zgodi, ko se od uporabniškega prostora sistema Android premaknemo proti mobilnemu sistemu GNU/Linux.
+
+\section{Testna naprava}
+\label{sec:testna_naprava}
+
+Testna naprava je OnePlus 6T, kodno ime \texttt{fajita}.
+Gre za telefon, predstavljen leta 2018, z vezjem Qualcomm Snapdragon 845, zaslonom Optic AMOLED velikosti 6{,}41 palca, 6~GB ali 8~GB delovnega pomnilnika, baterijo kapacitete 3700~mAh, modulom NFC, priključkom USB-C in čitalnikom prstnih odtisov pod zaslonom~\cite{oneplus_6t_specs}.
+
+Izbira te naprave je smiselna iz več razlogov.
+Prvič, strojna oprema je kljub starosti še vedno dovolj zmogljiva, da razlike med sistemi niso zgolj posledica prešibke naprave.
+Drugič, OnePlus 6T omogoča odklep zagonskega nalagalnika in je že dalj časa priljubljena naprava v skupnosti alternativnih sistemov.
+Tretjič, gre za tipičen primer komercialnega telefona z Androidom, pri katerem je uporabniški prostor mogoče relativno enostavno zamenjati, medtem ko spodnji sloji sistema ostajajo močno odvisni od zaprtih komponent.
+
+Za namen diplomskega dela je ta naprava zato zanimiva prav kot realistično izhodišče.
+Ne gre za namenski telefon z GNU/Linuxom, temveč za komercialno napravo, na kateri želimo preveriti, kako daleč lahko v praksi pridemo z odprtokodnimi alternativami.
+
+\section{Izbrani sistemi}
+\label{sec:izbrani_sistemi_empiricni}
+
+\subsection{Tovarniški sistem OxygenOS}
+\label{sec:oxygenos_empiricni}
+
+Kot izhodiščni sistem uporabimo tovarniški sistem OxygenOS za OnePlus 6T.
+Ta sistem predstavlja referenčno točko, saj je bil izrecno prilagojen strojni opremi naprave in je zato pričakovano najmočnejši pri združljivosti s podsistemi, kot so kamera, modem, čitalnik prstnih odtisov, upravljanje porabe energije in aplikacijski ekosistem.
+Za OnePlus 6 in OnePlus 6T je bila javno objavljena izdaja OxygenOS~11.1.2.2 na osnovi Androida~11~\cite{oneplus_oxygenos_11_1_2_2}.
+
+V empiričnem delu je vloga sistema OxygenOS predvsem primerjalna.
+Ne obravnavamo ga kot odprtokodno rešitev, temveč kot praktični referenčni maksimum za konkretno strojno opremo.
+Prav primerjava z njim omogoča, da kasneje bolj jasno ocenimo, katere funkcionalnosti alternativni sistemi ohranijo, katere izgubijo in kje se kompromisi pokažejo najbolj izrazito.
+
+\subsection{LineageOS}
+\label{sec:lineageos_empiricni}
+
+LineageOS je v tej študiji predstavnik alternativnih ROM-ov za sistem Android.
+Za OnePlus 6T obstaja uradna stran naprave v dokumentaciji projekta LineageOS, aktualna navodila za namestitev pa se nanašajo na napravo \texttt{fajita} in na izdajo LineageOS~22.2~\cite{lineageos_fajita,lineageos_fajita_install}.
+
+Izbira LineageOS je pomembna zato, ker gre za verjetno najbolj realističen odprtokodni kompromis za vsakodnevno rabo na obstoječi napravi Android.
+Sistem ohranja uporabniški prostor in aplikacijski model sistema Android, hkrati pa odstrani proizvajalčevo preobleko in praviloma poveča preglednost sistema.
+Pričakovati je mogoče, da bo LineageOS v primerjavi z mobilnimi distribucijami sistema GNU/Linux uporabniško bliže tovarniškemu sistemu, vendar bo še vedno ostal odvisen od istih omejitev spodnjih slojev strojne podpore.
+
+\subsection{Ubuntu Touch}
+\label{sec:ubuntu_touch_empiricni}
+
+Ubuntu Touch je v tej študiji predstavnik uporabniško usmerjenega mobilnega sistema GNU/Linux.
+Uradna stran naprav projekta Ubuntu Touch za OnePlus 6T navaja, da je naprava na voljo v installerju, da večina ključnih funkcij deluje, ter da je sistem večinoma primeren za vsakodnevno rabo z nekaterimi manjšimi omejitvami~\cite{ubports_fajita}.
+
+Za diplomsko nalogo je Ubuntu Touch pomemben zato, ker poskuša ponuditi zaokrožen mobilni operacijski sistem zunaj ekosistema Google Android.
+V primerjavi z LineageOS nas zato zanima predvsem, kako velika je cena prehoda iz uporabniškega prostora sistema Android v mobilni sistem GNU/Linux.
+Posebej pomembna bodo opažanja pri aplikacijskem ekosistemu, telefoniji, upravljanju porabe energije in splošni odzivnosti uporabniškega vmesnika.
+
+\subsection{postmarketOS}
+\label{sec:postmarketos_empiricni}
+
+postmarketOS je v tej študiji predstavnik bolj odprtega in eksperimentalnega pola mobilnega sistema GNU/Linux.
+Projekt vodi OnePlus 6T kot skupnostno napravo \texttt{oneplus-fajita}, posebna stran naprave pa opisuje stanje podpore in status glavne razvojne veje jedra Linux za to napravo~\cite{postmarketos_fajita,postmarketos_all_devices}.
+
+V primerjavi z Ubuntu Touch je postmarketOS bliže logiki klasične distribucije GNU/Linux.
+To pomeni večji poudarek na paketnem upravljanju, terminalu, standardnem uporabniškem prostoru in dolgoročnem vzdrževanju.
+Hkrati pa je prav pri takem sistemu smiselno pričakovati več praktičnih omejitev pri funkcijah, ki so na komercialnih telefonih močno odvisne od dobaviteljskih komponent in specifičnih prilagoditev za Android.
+
+\section{Metodologija testiranja}
+\label{sec:metodologija_testiranja}
+
+Da bi bili rezultati med sistemi čim bolj primerljivi, bomo testiranje izvajali v čim bolj enotnih pogojih.
+Pri vseh sistemih bomo, kjer bo to mogoče, uporabili enako napravo, isto kartico SIM, isto brezžično omrežje, podobno svetlost zaslona in podoben nabor osnovnih uporabniških opravil.
+Po vsaki namestitvi bomo sistem pustili v osnovni konfiguraciji, nato pa bomo dodali le tiste aplikacije in nastavitve, ki so potrebne za primerljiv preizkus vsakodnevne rabe.
+
+Pri tem je treba upoštevati, da popolna simetrija med sistemi ni vedno dosegljiva.
+Na sistemih GNU/Linux enake aplikacije kot na sistemu Android pogosto niso na voljo, zato bomo tam, kjer bo to potrebno, uporabili funkcionalno najbližjo alternativo ali spletno različico storitve.
+Cilj ni prisilno izenačiti različne platforme, temveč preveriti, ali posamezen sistem omogoča razumno izvedbo iste uporabniške naloge.
+
+Zaradi bolj poštene primerjave se izognemo sintetičnim merilnikom zmogljivosti, ki niso enako dostopni ali enako smiselni na vseh štirih sistemih.
+Namesto tega se osredotočimo na ponovljive scenarije dejanske rabe.
+Tak pristop je bolj skladen tudi z osrednjim vprašanjem naloge, saj nas zanima predvsem, ali je sistem uporaben kot telefon za vsakdanjo rabo, ne pa le, kako visoko doseže rezultat v posameznem merilniku.
+
+\section{Scenariji testiranja}
+\label{sec:scenariji_testiranja_empiricni}
+
+Scenariji testiranja pokrivajo iste funkcionalne sklope praktične uporabnosti, ki smo jih opredelili v poglavju~\ref{chap:model_odprtokodnega_telefona}.
+
+\subsection*{Osnovne funkcije telefona}
+Pri vsakem sistemu bomo preverili odhodne in dohodne klice, pošiljanje in prejemanje sporočil SMS, delovanje mobilnih podatkov ter možnost souporabe povezave prek dostopne točke.
+Pri klicih bomo poleg same vzpostavitve povezave spremljali tudi stabilnost zvoka, preklapljanje med slušalko in zvočnikom ter splošen vtis o zanesljivosti.
+Pri mobilnih podatkih nas ne zanima največja teoretična hitrost, temveč predvsem stabilna uporabnost za tipična opravila, kot so brskanje po spletu, prenos sporočil in navigacija.
+
+\subsection*{Ključna strojna podpora}
+V tej skupini bomo preverili Wi-Fi, Bluetooth, GPS, NFC, zvok, kamero, senzorje ter čitalnik prstnih odtisov, kjer je ta funkcionalnost na voljo.
+Pri kameri bomo ločeno preverili fotografiranje, snemanje videa in splošno odzivnost zagona aplikacije.
+Pri senzorjih nas zanima predvsem to, ali delujejo tisti deli sistema, ki so pomembni za vsakodnevno rabo, na primer samodejni izklop zaslona med klicem, orientacija zaslona in osnovne meritve gibanja.
+
+\subsection*{Avtonomija in zmogljivost}
+Porabo energije bomo ocenjevali s preprostimi, ponovljivimi vzorci rabe.
+Pri vsakem sistemu bomo izvedli vsaj tri osnovne preizkuse: pripravljenost čez noč, krajši preizkus brskanja po spletu in krajši preizkus predvajanja lokalno shranjenega videa.
+Poleg padca baterije bomo opisno zabeležili tudi segrevanje naprave, splošno odzivnost sistema in morebitne težave, kot so neobičajno hitro praznjenje, nestabilno stanje pripravljenosti ali počasno prebujanje iz spanja.
+
+\subsection*{Ekosistem aplikacij}
+Ker je uporabnost telefona danes tesno povezana z aplikacijami, bomo preverili, ali posamezen sistem pokrije minimalni nabor vsakodnevnih opravil.
+Ta nabor vključuje spletni brskalnik, e-pošto, sporazumevanje, navigacijo, kamero in galerijo, predvajanje medijev ter osnovna orodja za avtentikacijo, kot je dvofaktorska avtentikacija.
+Posebej bomo zabeležili tudi stanje pri aplikacijah z višjimi varnostnimi zahtevami, kot so bančne aplikacije in mobilno plačevanje, saj so te v praksi pogosto med prvimi pokazatelji omejitev alternativnih sistemov.
+
+\subsection*{Možnosti prilagajanja in nadzora}
+Kot dodatni praktični sklop bomo preverili tudi tiste vidike, ki so za ciljni profil uporabnika posebej pomembni: dostop do terminala, razpoložljivost paketnega upravljalnika, možnost nameščanja dodatne odprtokodne programske opreme, odstranjevanje nezaželenih aplikacij in splošno preglednost sistema.
+Ta sklop ni ločen od praktične uporabnosti, temveč jo v našem kontekstu dopolnjuje.
+Prav večji nadzor nad sistemom je namreč eden glavnih razlogov, zakaj uporabnik sploh poseže po odprtokodni alternativi.
+
+\section{Metrike in način beleženja rezultatov}
+\label{sec:metrike_in_belezenje_empiricni}
+
+Rezultate bomo beležili v dveh ravneh.
+Na prvi ravni bomo za posamezne funkcionalnosti uporabili neposreden opis stanja:
+\enquote{deluje}, \enquote{deluje delno} ali \enquote{ne deluje}.
+Tak zapis je primeren za osnovne komponente, kot so kamera, Wi-Fi, Bluetooth, GPS, klici in podobno, saj omogoča dovolj jasen pregled nad tem, kaj je na napravi dejansko uporabno.
+
+Na drugi ravni bomo opažanja pretvorili v sintezne ocene po istem modelu, kot smo ga uvedli v prejšnjih poglavjih.
+Odprtost bomo ocenili po slojih sistema, praktično uporabnost pa po funkcionalnih sklopih.
+V obeh primerih bomo uporabili tristopenjsko lestvico z vrednostmi 0, 1 in 2.
+Na ta način bodo rezultati empiričnega dela neposredno primerljivi s sinteznimi ocenami iz analitičnega dela naloge.
+
+Pri subjektivnih vidikih, kot so odzivnost uporabniškega vmesnika, stabilnost in splošni vtis, bomo uporabili kratke opisne opombe.
+Namesto navidezno natančnih številčnih ocen bomo dali prednost kratkim kvalitativnim ugotovitvam, na primer da je sistem pri vsakdanji rabi \enquote{stabilen}, \enquote{občasno neodziven} ali \enquote{primeren le za potrpežljivo eksperimentalno rabo}.
+Tak pristop je v kontekstu diplomske naloge poštenejši kot pretirano natančno točkovanje subjektivnih občutkov.
+
+Pri porabi energije bomo zabeležili odstotek baterije na začetku in na koncu posameznega preizkusa, dodatno pa bomo opisali tudi kakovost stanja pripravljenosti.
+Pri sistemih, kjer bo to mogoče, bomo zabeležili tudi sistemske informacije o porabi energije ali ozadnih procesih.
+Ker ti podatki med sistemi niso nujno neposredno primerljivi, bodo služili predvsem kot dopolnilna interpretativna informacija.
+
+\section{Ocenjevanje odprtosti v empiričnem delu}
+\label{sec:ocenjevanje_odprtosti_empiricni}
+
+Čeprav odprtosti ni mogoče v celoti izmeriti z neposrednim uporabniškim testom, bomo tudi v empiričnem delu preverili nekaj konkretnih indikatorjev.
+Zanimalo nas bo, kako dokumentiran je postopek namestitve, ali je sistem mogoče posodabljati brez posebnih obhodov, koliko nadzora ima uporabnik nad prednameščenimi komponentami, kako pregledna je distribucija programske opreme ter ali sistem ostaja tesno vezan na lastniške storitve ali posebne dobaviteljske komponente.
+
+Pomembno je poudariti, da v tej sekciji ne ocenjujemo abstraktnega projekta, temveč konkretno kombinacijo projekta in naprave.
+Na primer: pri LineageOS nas ne zanima le, da je projekt odprtokoden, temveč kako se ta odprtost pokaže prav na OnePlus 6T.
+Enako velja za Ubuntu Touch in postmarketOS, kjer je treba razlikovati med splošnim ciljem projekta in dejansko stopnjo odprtosti oziroma uporabniške avtonomije na konkretni strojni opremi.
+
+\section{Omejitve študije}
+\label{sec:omejitve_studije_empiricni}
+
+Empirični del ima več pomembnih omejitev.
+Prvič, testirana bo ena sama naprava, zato rezultatov ne moremo neposredno posplošiti na celoten mobilni ekosistem.
+Drugič, rezultati bodo vezani na konkretne izdaje sistemov, ki bodo v času testiranja na voljo.
+Tretjič, del ocene, zlasti pri uporabniški izkušnji, bo neizogibno vseboval subjektivno komponento.
+
+Dodatna omejitev izhaja iz dejstva, da vse platforme nimajo enakega aplikacijskega okolja.
+Tam, kjer bo na voljo le spletna alternativa ali funkcionalno podoben program, primerjava ne bo popolnoma simetrična.
+Vendar to ni zgolj metodološka slabost, temveč tudi del same ugotovitve: če posamezen sistem določenega vsakdanjega opravila ne omogoča na enako neposreden način, je prav to pomemben rezultat praktične primerjave.
+
+Kljub navedenim omejitvam takšna študija primera omogoča dovolj konkreten vpogled v to, kako se na isti napravi dejansko razlikujejo tovarniški sistem Android, alternativni ROM za sistem Android in mobilne distribucije sistema GNU/Linux.
+Prav ta neposredna primerjava je ključna za odgovor na raziskovalni vprašanji, ki zadevata praktično uporabnost in dejansko izvedljivost skoraj popolnoma odprtokodnega telefona za tehnično bolj podkovanega uporabnika.
+
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Literatura}
 
