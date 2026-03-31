@@ -89,9 +89,9 @@ Tega rezultata ne gre avtomatično enačiti s podporo za mobilno plačevanje.
 ## 3. Avtonomija in zmogljivost
 
 ### Stanje pripravljenosti čez noč
-Začetni %: 81?
+Začetni %: 79
 Končni %: 69
-Čas: 21:40 - 7:00
+Čas: 21:40 - 7:00 = 9h 20min
 
 Wi-Fi, mobilni podatki in GPS so bili vključeni.
 Ostalo je bilo izključeno.

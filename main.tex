@@ -383,11 +383,13 @@ placeholder
 \chapter{Pregled področja}
 \label{chap:pregled_podrocja}
 
-Mobilni telefoni so se iz komunikacijskih naprav razvili v splošnonamenska računalniška orodja, ki jih uporabljamo za delo, zabavo, navigacijo, avtentikacijo in komunikacijo.
-V praksi to pomeni, da je operacijski sistem pametnega telefona postal ena izmed ključnih komponent digitalnega življenja uporabnika.
-Trenutno stanje na trgu je močno centralizirano.
-Mobilni ekosistem je v veliki meri razdeljen med Android in iOS, kar ima neposredne posledice za svobodo uporabnika, zasebnost in življenjsko dobo naprav.
-V tem poglavju najprej opišemo ključne lastnosti obeh prevladujočih platform, nato pa pregledamo glavne odprtokodne pristope in njihove omejitve.
+Pametni telefon je danes ena izmed osrednjih računalniških naprav v vsakdanji rabi.
+Uporabniki ga uporabljajo za komunikacijo, dostop do spleta, navigacijo, avtentikacijo, večpredstavnostne vsebine in številne druge storitve.
+Zato je operacijski sistem telefona pomemben ne le z vidika uporabniške izkušnje, temveč tudi z vidika nadzora nad napravo, zasebnosti, varnosti in življenjske dobe programske podpore.
+
+Sodobni mobilni trg je močno koncentriran.
+V praksi ga skoraj v celoti obvladujeta Android in iOS, kar pomembno vpliva na to, kakšne možnosti ima uporabnik pri nameščanju programske opreme, prilagajanju sistema in dolgoročnem vzdrževanju naprave.
+V tem poglavju najprej predstavimo ključne značilnosti obeh prevladujočih platform, nato pa pregledamo glavne odprtokodne pristope in njihove omejitve.
 
 \section{Duopol Android/iOS in posledice za uporabnike}
 \label{sec:duopol}
@@ -511,20 +513,19 @@ Zato ostajajo predvsem v niši, kar vpliva tudi na velikost skupnosti in hitrost
 \section{Povzetek}
 \label{sec:povzetek_pregleda}
 
-Pregled področja pokaže, da mobilni ekosistem trenutno obvladuje duopol Android/iOS, kjer je uporabniška svoboda v veliki meri omejena z zaprtimi ekosistemi, lastniškimi komponentami in poslovnimi modeli.
-Android sicer ponuja odprtokodno osnovo (AOSP), vendar tipične naprave vsebujejo veliko zaprtih slojev, kar oteži dolgotrajno vzdrževanje in razvoj alternativ.
-Alternativni ROM-i za Android delno izboljšajo nadzor nad sistemom, vendar ostajajo odvisni od istih zaprtih gonilnikov in strojne programske opreme.
-Projekti mobilnega Linuxa ponujajo bolj radikalno alternativo, vendar je njihova praktična uporabnost še vedno močno omejena s strojno podporo in ekosistemom aplikacij.
-To neposredno motivira nadaljnja poglavja, kjer bodo najprej opredeljeni kriteriji \enquote{popolnoma odprtokodnega telefona}, nato pa bodo analizirane obstoječe rešitve in empirično preizkušene.
-
+Pregled področja pokaže, da mobilni ekosistem danes skoraj v celoti obvladuje duopol Android/iOS, v katerem je nadzor uporabnika nad napravo v veliki meri omejen z zaprtimi ekosistemi, lastniškimi komponentami in poslovnimi modeli platform.
+Android sicer temelji na odprtokodni osnovi, vendar tipične naprave vključujejo več zaprtih slojev, ki otežujejo dolgoročno vzdrževanje in razvoj alternativnih sistemov.
+Alternativni ROM-i za Android lahko deloma povečajo nadzor nad sistemom, vendar ostajajo odvisni od istih gonilnikov in strojne programske opreme.
+Mobilne distribucije sistema GNU/Linux in namenske naprave z GNU/Linuxom predstavljajo ambicioznejšo alternativo, vendar njihovo praktično uporabnost še naprej omejujeta strojna podpora in aplikacijski ekosistem.
+To predstavlja izhodišče za naslednje poglavje, v katerem opredelimo teoretične pojme in tehnične sloje, potrebne za nadaljnjo analizo.
 
 \chapter{Teoretična izhodišča}
 \label{chap:teoreticna_izhodisca}
 
-V prejšnjem poglavju smo pokazali, da je tudi pri sistemih z odprtokodno osnovo velik del mobilnega ekosistema odvisen od zaprtih komponent.
-Da lahko kasneje ocenimo, v kolikšni meri je \enquote{popolnoma odprtokoden telefon} v praksi izvedljiv, moramo najprej definirati osnovne koncepte, sloje sistema in tipične omejitve.
-V tem poglavju opredelimo razliko med odprtokodno in prosto programsko opremo, na kratko predstavimo arhitekturo mobilnih sistemov ter izpostavimo vlogo gonilnikov in strojne programske opreme.
-Nato povežemo odprtost z varnostjo in zasebnostjo, pri čemer obravnavamo tudi tveganja skritih funkcionalnosti oziroma stranskih vrat (v literaturi pogosto označenih kot angl.~\textit{backdoor}).
+V prejšnjem poglavju smo pokazali, da je tudi pri sistemih z odprtokodno osnovo velik del mobilnega ekosistema še vedno odvisen od zaprtih komponent.
+Da lahko kasneje ocenimo, v kolikšni meri je popolnoma odprtokoden telefon v praksi izvedljiv, moramo najprej opredeliti osnovne pojme, sloje sistema in tipične omejitve.
+V tem poglavju najprej pojasnimo razliko med odprtokodno in prosto programsko opremo, nato predstavimo osnovno arhitekturo mobilnih sistemov ter izpostavimo vlogo gonilnikov, strojne programske opreme in binarnih dodatkov.
+Odprtost nato povežemo še z varnostjo, zasebnostjo, vprašanjem stranskih vrat (angl. \textit{backdoor}) in z vzdrževanjem naprav.
 
 \section{Odprtokodna in prosta programska oprema}
 \label{sec:teorija_foss}
@@ -950,7 +951,8 @@ To pomeni, da LineageOS sicer poveča odprtost zgornjih slojev sistema, ne odpra
 
 Po našem modelu bi zato LineageOS praviloma ocenili kot rešitev z mešanim do pretežno odprtim profilom na ravni sistemskih storitev, privzetih aplikacij in načina distribucije aplikacij, bistveno slabše pa na ravni strojne programske opreme ter dela gonilnikov.
 Na ravni praktične uporabnosti je njegov profil praviloma močan:
-osnovne funkcije telefona, aplikacijski ekosistem in splošna odzivnost sistema so pri uradno podprtih napravah praviloma dovolj dobri za vsakodnevno rabo.
+osnovne funkcije telefona, aplikacijski ekosistem, splošna odzivnost sistema in možnosti prilagajanja so pri uradno podprtih napravah praviloma dovolj dobri za vsakodnevno rabo.
+V primerjavi s tovarniškimi sistemi LineageOS uporabniku pogosto omogoča več nadzora nad nameščeno programsko opremo, več možnosti sistemskih prilagoditev in manjšo odvisnost od proizvajalčevih privzetih storitev.
 Glavne omejitve se pokažejo pri funkcijah, ki so posebej odvisne od proizvajalčeve implementacije, ter pri aplikacijah, ki preverjajo celovitost naprave ali se opirajo na dodatne zaprtokodne storitve~\cite{play_integrity_overview}.
 
 LineageOS je zato najprimernejši predstavnik \enquote{uravnoteženega kompromisa}: ne približa se najbolj idealu popolnoma odprtokodnega telefona, je pa pogosto ena najbolj uporabnih odprtokodnih alternativ v praksi.
@@ -971,6 +973,9 @@ Na drugi strani projekt GrapheneOS ni bistveno bolj odprt v spodnjih slojih stro
 Njegova prednost zato ni v tem, da bi odpravil vse zaprtokodne dele, temveč v tem, da na razmeroma kakovostni in varnostno močni strojni podlagi zgradi strožje nastavljen odprtokoden sistemski sloj.
 
 V dimenziji praktične uporabnosti je GrapheneOS na uradno podprtih napravah zelo močan, saj ohranja združljivost z aplikacijami za sistem Android in hkrati ne zahteva običajnega odpovedovanja ključnim funkcijam telefona.
+Pomemben del njegove praktične vrednosti je tudi visoka stopnja nadzora nad aplikacijami, dovoljenji in profili uporabe.
+Po drugi strani pa projekt ni usmerjen v maksimalno prilagodljivost sistema, saj daje prednost ohranjanju strogega varnostnega modela pred poljubnim poseganjem v sistem.
+Z vidika sklopa uporabniškega nadzora gre zato za rešitev, ki je močna pri nadzoru, vendar bolj omejena pri prostem poseganju v sistem kot nekatere druge odprtokodne alternative.
 Njegova glavna omejitev je drugje:
 uporabnik mora sprejeti zelo ozek nabor podprtih naprav in s tem precej večjo vezanost na konkretno strojno platformo.
 GrapheneOS je zato dober primer rešitve, ki ni najbolj odprta v absolutnem smislu, vendar zelo premišljeno združuje odprtost zgornjih slojev, močan varnostni model in visoko praktično uporabnost.
@@ -991,7 +996,8 @@ tudi tu podpora napravam ostaja odvisna od dobaviteljskih komponent, strojne pro
 Zaradi zelo širokega nabora podprtih naprav je profil sistema /e/OS nekoliko manj enoten kot pri projektu GrapheneOS.
 To pomeni, da se lahko dejanska kakovost podpore, hitrost posodobitev in obseg kompromisov med napravami precej razlikujejo.
 Vseeno pa je /e/OS pomemben primer zato, ker pokaže, da je mogoče odprtokodno mobilno rešitev usmeriti predvsem v praktično rabo in ne le v tehnično ali ideološko čistost.
-Med obravnavanimi ROM-i za sistem Android je zato /e/OS eden najbolj izrazitih primerov rešitve, ki daje prednost uporabniški dostopnosti.
+V primerjavi z LineageOS daje /e/OS nekoliko manjši poudarek globlji prilagodljivosti sistema in bolj izrazito prednost uporabniški dostopnosti.
+Prav zato je z vidika uporabniškega nadzora nekoliko manj izrazit predstavnik odprtokodne mobilne rešitve kot projekti, ki so bolj neposredno usmerjeni v tehnično prilagajanje sistema.
 
 \subsection{Replicant}
 
@@ -1007,16 +1013,18 @@ To neposredno vpliva tudi na praktično uporabnost:
 Replicant je zato pomemben predvsem kot referenčni robni primer.
 Pokaže, da je v okviru sistema Android mogoče zgraditi rešitev, ki programsko svobodo razume bistveno strožje kot projekti LineageOS, GrapheneOS ali /e/OS.
 Hkrati pa ista odločitev povzroči tako velike omejitve pri podpori napravam in pri vsakdanji rabi, da Replicant za večino uporabnikov danes težko predstavlja realno zamenjavo za sodoben telefon.
+Po drugi strani je za tehnično bolj podkovanega uporabnika pomemben tudi zato, ker zaradi strožjega odnosa do neproste programske opreme omogoča večji vpogled v sistem in več neposrednega nadzora nad njegovimi odprtimi deli kot bolj pragmatične alternative.
+Replicant ima lahko zato kljub nizki splošni praktični uporabnosti visoko oceno pri uporabniškem nadzoru, ker ravno na tem področju najbolj jasno uresničuje idejo, da ima lastnik naprave dejanski nadzor nad odprtimi deli sistema.
 Prav zato je za to diplomsko nalogo zelo uporaben:
 ne kot najbolj praktična rešitev, temveč kot dokaz, kako hitro se ob strožjem razumevanju odprtosti skrči nabor dejansko uporabnih naprav.
 
 \subsection{Vmesna primerjalna ugotovitev}
 
 Analiza alternativnih ROM-ov za sistem Android pokaže, da znotraj iste tehnične družine ne obstaja ena sama \enquote{najboljša} rešitev, temveč več različnih strategij.
-LineageOS predstavlja najbolj uravnotežen kompromis med odprtostjo in uporabnostjo.
-GrapheneOS kaže, kako daleč je mogoče priti z varnostno strogim pristopom, če projekt sprejme zelo ozek nabor strojne podpore.
-/e/OS daje največji poudarek vsakdanji uporabnosti in zmanjšanju odvisnosti od Googlovega ekosistema.
-Replicant pa predstavlja najbolj dosledno svobodnjaško smer, vendar za ceno zelo omejene praktične uporabnosti.
+LineageOS predstavlja najbolj uravnotežen kompromis med odprtostjo, uporabnostjo in možnostmi prilagajanja sistema.
+GrapheneOS kaže, kako daleč je mogoče priti z varnostno strogim pristopom, če projekt sprejme zelo ozek nabor strojne podpore in prilagodljivost sistema podredi strožjemu varnostnemu modelu.
+/e/OS daje največji poudarek vsakdanji uporabnosti in zmanjšanju odvisnosti od Googlovega ekosistema, manj pa globljemu uporabniškemu nadzoru nad sistemom.
+Replicant pa predstavlja najdoslednejšo interpretacijo programske svobode, vendar za ceno zelo omejene praktične uporabnosti.
 
 Skupna omejitev vseh teh rešitev je, da praviloma ne odpravijo temeljne odvisnosti od zaprtih komponent v spodnjih slojih mobilne naprave.
 Njihova največja prednost je zato predvsem v odprtosti uporabniškega prostora, večjem nadzoru nad sistemom, daljši življenjski dobi podprtih naprav in manjši vezanosti na proizvajalčev tovarniški sistem.
@@ -1048,7 +1056,8 @@ Uradna dokumentacija projekta UBports ga opisuje kot mobilni operacijski sistem,
 Že ta izhodišča kažejo, da projekt ne stavi predvsem na ideološko čistost ali eksperimentalnost, temveč na čim bolj zaokroženo uporabniško izkušnjo.
 
 Za naš model je Ubuntu Touch zanimiv predvsem zato, ker poskuša na mobilni napravi ponuditi uporabniški prostor sistema GNU/Linux, ne da bi se pri tem povsem odpovedal praktični uporabnosti.
-Na ravni uporabniške izkušnje je projekt bližje klasičnemu razumevanju mobilnega operacijskega sistema kot številni bolj eksperimentalni projekti. Velik poudarek daje konsistentnemu uporabniškemu vmesniku in zaokroženi vsakdanji rabi.
+Na ravni uporabniške izkušnje je projekt bližje klasičnemu razumevanju mobilnega operacijskega sistema kot številni bolj eksperimentalni projekti.
+Velik poudarek daje konsistentnemu uporabniškemu vmesniku in zaokroženi vsakdanji rabi.
 Pomemben poudarek je tudi ideja konvergence, torej približevanja mobilnega in namiznega načina uporabe v okviru istega sistema~\cite{ubports_convergence}.
 
 Vendar Ubuntu Touch hkrati zelo jasno pokaže omejitve te skupine rešitev.
@@ -1056,6 +1065,7 @@ Dokumentacija za prenašanje sistema na nove naprave izrecno navaja, da je Ubunt
 To pomeni, da Ubuntu Touch bistveno spremeni uporabniški prostor, ne odpravi pa nujno zaprtosti spodnjih slojev strojne podpore.
 
 Po našem modelu bi zato Ubuntu Touch ocenili kot rešitev, ki je praviloma razmeroma močna na ravni odprtosti uporabniškega prostora, preglednosti sistema in nadzora nad privzetimi storitvami, nekoliko šibkejša pa na ravni gonilnikov, strojne programske opreme in celotne strojne neodvisnosti.
+Na ravni prilagodljivosti in uporabniškega nadzora ponuja več možnosti kot tipični potrošniški mobilni sistemi, vendar zaradi manj zrelega ekosistema in projektno specifičnih rešitev praviloma ne dosega enake neposrednosti kot klasične mobilne distribucije GNU/Linux.
 V primerjavi z alternativnimi ROM-i za sistem Android je njegov položaj obraten:
 v nekaterih vidikih je bližje idealu odprtega sistema, vendar praviloma težje dosega enako raven aplikacijske združljivosti in splošne vsakdanje uporabnosti.
 
@@ -1073,7 +1083,8 @@ Za to diplomsko nalogo je Mobian pomemben tudi zato, ker ni omejen le na namensk
 Debianova dokumentacija je leta 2025 med uradno podprtimi napravami, ki so bile prvotno razvite za sistem Android, navajala OnePlus 6/6T in Pocophone F1~\cite{mobian_devices}.
 S tem Mobian jasno sodi v skupino rešitev, ki skušajo na obstoječo strojno opremo, prvotno razvito za sistem Android, prenesti uporabniški prostor sistema GNU/Linux.
 
-Po našem modelu bi Mobian ocenili kot rešitev, ki je razmeroma močna na ravni odprtosti uporabniškega prostora, bližine običajnim distribucijam GNU/Linux in preglednosti programskega sklada, nekoliko manj enotna pa na ravni praktične uporabnosti.
+Po našem modelu bi Mobian ocenili kot rešitev, ki je razmeroma močna pri odprtosti uporabniškega prostora, bližini običajnim distribucijam GNU/Linux, preglednosti programskega sklada ter možnostih prilagajanja in uporabniškega nadzora.
+Na ravni splošne praktične uporabnosti pa je njegov profil nekoliko manj enoten.
 V primerjavi z Ubuntu Touch je praviloma manj osredotočen na čim bolj zaokroženo mobilno uporabniško izkušnjo, v primerjavi s postmarketOS pa deluje bolj konservativno in bližje klasični logiki distribucije Debian.
 Prav zato je Mobian dober vmesni primer med uporabniško usmerjenim mobilnim sistemom in bolj eksperimentalnim prilagajanjem sistema GNU/Linux širokemu naboru naprav.
 
@@ -1090,6 +1101,8 @@ Pri številnih napravah to pomeni predvsem osnovno stopnjo podpore, medtem ko so
 
 Projekt postmarketOS je zato pomemben kot primer rešitve, ki močno razširi prostor eksperimentiranja in dolgoročnega oživljanja starejših naprav, vendar prav zaradi te širine težje zagotovi enotno uporabniško izkušnjo.
 Na ravni odprtosti uporabniškega prostora je pogosto zelo močan, na ravni praktične uporabnosti pa je profil med napravami bistveno bolj neenoten kot pri Ubuntu Touch ali pri alternativnih ROM-ih za sistem Android.
+Za tehnično bolj podkovanega uporabnika je postmarketOS posebej zanimiv tudi zato, ker omogoča visoko stopnjo prilagodljivosti in neposrednega nadzora nad sistemom.
+Vendar je praktična vrednost takšne rešitve močno odvisna od tega, kako zrela je prilagoditev za posamezno napravo in koliko ključnih funkcij je na izbrani strojni opremi dejansko uporabnih.
 
 \subsection{Vloga projekta Halium in sorodnih združljivostnih slojev}
 
@@ -1103,13 +1116,15 @@ To pomeni, da je lahko uporabniški del sistema bistveno bolj odprt in bolj podo
 \subsection{Vmesna primerjalna ugotovitev}
 
 Analiza mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi za sistem Android pokaže drugačen profil kompromisov kot pri alternativnih ROM-ih za sistem Android.
-Če so slednji praviloma močnejši pri vsakdanji uporabnosti in združljivosti z mobilnim ekosistemom, so mobilne distribucije sistema GNU/Linux pogosto bolj zanimive z vidika odprtosti uporabniškega prostora, preglednosti sistema in dolgoročnega raziskovalnega potenciala.
+Medtem ko so alternativni ROM-i navadno močnejši pri vsakdanji uporabnosti in združljivosti z mobilnim ekosistemom, so mobilne distribucije sistema GNU/Linux zanimive predvsem z vidika odprtosti uporabniškega prostora, preglednosti sistema, prilagodljivosti in dolgoročnega raziskovalnega potenciala.
 
-Znotraj te skupine se kljub skupnemu izhodišču pokažejo tudi pomembne razlike med posameznimi projekti.
-Ubuntu Touch daje največji poudarek zaokroženi mobilni uporabniški izkušnji, Mobian ostaja najtesneje povezan z običajno distribucijo Debian, postmarketOS pa najizraziteje razširja prostor portanja in eksperimentiranja na velikem številu naprav.
-Halium medtem pokaže, da številne takšne rešitve v spodnjih slojih še vedno ostajajo odvisne od okolja sistema Android in njegovih strojno-specifičnih komponent.
+Kljub skupnemu izhodišču pa se znotraj te skupine pokažejo tudi pomembne razlike med posameznimi projekti.
+Ubuntu Touch daje največji poudarek zaokroženi mobilni uporabniški izkušnji, Mobian ostaja najtesneje povezan z običajno distribucijo Debian, postmarketOS pa najbolj odpira prostor za prilagajanje sistema različnim napravam, eksperimentiranje in neposredni uporabniški nadzor.
+Ob tem je za celotno skupino pomembno, da pri delovanju na obstoječi strojni opremi pogosto še vedno ostaja vsaj delno odvisna od spodnjih slojev, ki izhajajo iz okolja sistema Android.
+To omejitev posebej jasno osvetli vloga projekta Halium.
 
-Prav ta skupina zato najbolj jasno pokaže, da je mobilna strojna oprema še vedno močno zaznamovana z dediščino sistema Android. Prehod na uporabniški prostor sistema GNU/Linux zato sam po sebi še ne pomeni popolnoma odprte naprave.
+Prav ta skupina zato najbolj nazorno pokaže, da je mobilna strojna oprema še vedno močno zaznamovana z dediščino sistema Android.
+Prehod na uporabniški prostor sistema GNU/Linux sam po sebi še ne pomeni popolnoma odprte naprave, pogosto pa vseeno poveča stopnjo dejanskega nadzora uporabnika nad sistemom.
 
 \section{Namenski telefoni z operacijskim sistemom GNU/Linux}
 \label{sec:analiza_namenski_gnulinux_telefoni}
@@ -1138,9 +1153,10 @@ To pomeni, da je nadzor nad napravo v večji meri prenesen na uporabnika in skup
 
 Vendar PinePhone hkrati zelo jasno pokaže, kako težko je visoko stopnjo odprtosti pretvoriti v vsakdanje uporabno napravo.
 Njegova zasnova je izrecno naklonjena eksperimentiranju, odprtemu razvoju in podpori različnih mobilnih distribucij sistema GNU/Linux, vendar to ne pomeni, da vse ključne funkcije dosegajo enako raven zrelosti kot pri običajnih pametnih telefonih.
-Prav zato je PinePhone pomemben predvsem kot referenčna razvojna naprava in kot dokaz, da je mogoče zgraditi telefon, ki ni podrejen logiki sistema Android ali iOS. Kot splošna rešitev za vsakdanjo rabo pa ostaja manj prepričljiv.
+Prav zato je PinePhone pomemben predvsem kot referenčna razvojna naprava in kot dokaz, da je mogoče zgraditi telefon, ki ni podrejen logiki sistema Android ali iOS.
+Kot splošna rešitev za vsakdanjo rabo pa ostaja manj prepričljiv.
 
-Po našem modelu bi PinePhone ocenili kot rešitev, ki je zelo močna na ravni arhitekturne odprtosti, preglednosti sistema in nadzora nad strojno opremo, nekoliko šibkejša pa na ravni praktične uporabnosti.
+Po našem modelu bi PinePhone ocenili kot rešitev, ki je zelo močna na ravni arhitekturne odprtosti, preglednosti sistema, prilagodljivosti in nadzora nad strojno opremo, nekoliko šibkejša pa na ravni praktične uporabnosti.
 Njegova največja prednost je prav to, da gre za namensko napravo za mobilni GNU/Linux, njegova največja slabost pa, da ta prednost še ne pomeni tudi enake stopnje zrelosti kot pri uveljavljenih komercialnih telefonih.
 
 \subsection{Librem 5}
@@ -1155,10 +1171,12 @@ Takšna rešitev je v mobilnem prostoru zelo neobičajna, saj uporabniku daje ne
 
 V primerjavi s PinePhone je Librem 5 zato manj zanimiv kot povsem odprta razvojna platforma v ožjem smislu, bolj pa kot naprava, ki skuša odprtost in svobodo povezati z uporabniško razumljivimi mehanizmi nadzora.
 Njegova glavna prednost ni zgolj v tem, da poganja GNU/Linux, temveč v tem, da svojo zasnovo gradi okoli ideje, da mora imeti uporabnik nadzor tudi na ravni fizične strojne opreme.
-To ga približa idealu popolnoma odprtokodnega telefona z druge strani kot PinePhone: manj skozi eksperimentalno odprtost, bolj skozi zasebnostno in varnostno usmerjeno arhitekturo.
+To ga približa idealu popolnoma odprtokodnega telefona z druge strani kot PinePhone:
+manj skozi eksperimentalno odprtost, bolj skozi zasebnostno in varnostno usmerjeno arhitekturo.
 
-Po našem modelu bi Librem 5 ocenili kot rešitev, ki je zelo močna na ravni nadzora uporabnika, preglednosti arhitekture in ločevanja posameznih podsistemov, nekoliko manj prepričljiva pa ostaja na ravni vsakdanje uporabnosti in konkurenčnosti v primerjavi z običajnimi sodobnimi pametnimi telefoni.
-Prav v tem je tudi njegova glavna vrednost za to diplomsko nalogo: pokaže, da je mogoče zasnovati telefon, ki ni le programsko drugačen, temveč tudi strojno organiziran v korist večje avtonomije uporabnika.
+Po našem modelu bi Librem 5 ocenili kot rešitev, ki je zelo močna na ravni nadzora uporabnika, preglednosti arhitekture, ločevanja posameznih podsistemov ter prilagodljivosti sistema, nekoliko manj prepričljiva pa ostaja na ravni vsakdanje uporabnosti in konkurenčnosti v primerjavi z običajnimi sodobnimi pametnimi telefoni.
+Prav v tem je tudi njegova glavna vrednost za to diplomsko nalogo:
+pokaže, da je mogoče zasnovati telefon, ki ni le programsko drugačen, temveč tudi strojno organiziran v korist večje avtonomije uporabnika.
 
 \subsection{Drugi novejši oziroma robni projekti}
 
@@ -1181,19 +1199,20 @@ Takšni projekti so pomembni predvsem zato, ker kažejo, da ideja namenskega tel
 \subsection{Vmesna primerjalna ugotovitev}
 
 Analiza namenskih telefonov z operacijskim sistemom GNU/Linux pokaže, da se ta skupina najbolj približa idealu popolnoma odprtokodnega telefona, vendar praviloma za ceno nižje stopnje praktične uporabnosti.
-PinePhone predstavlja izrazitejši razvojno-skupnostni pol, pri katerem je v ospredju odprta arhitektura in podpora različnim projektom mobilnega GNU/Linux.
+PinePhone predstavlja izrazitejši razvojno-skupnostni pol, pri katerem je v ospredju odprta arhitektura, visoka prilagodljivost sistema in podpora različnim projektom mobilnega GNU/Linux.
 Librem 5 pa predstavlja varnostno in zasebnostno bolj usmerjen pol, pri katerem so v ospredju fizični mehanizmi nadzora nad strojno opremo in jasneje izražena ideja uporabniške avtonomije.
 
 Novejši projekti, kot so Jolla C2, FuriPhone FLX1s in Liberux NEXX, kažejo, da področje namenskih telefonov z GNU/Linuxom ostaja razvojno živo, vendar so ti primeri bodisi manj dosledni z vidika odprtokodnosti bodisi še premalo zreli, da bi že predstavljali enako stabilno referenčno osnovo kot PinePhone in Librem 5.
 
-Ta skupina rešitev zato najbolje pokaže osrednjo napetost celotne diplomske naloge. Bolj ko se mobilna rešitev približa idealu odprte arhitekture in neposrednega nadzora uporabnika, težje praviloma dosega enako raven zrelosti, udobja in splošne vsakdanje uporabnosti kot prevladujoči komercialni pametni telefoni.
+Ta skupina rešitev zato najbolje pokaže osrednjo napetost celotne diplomske naloge.
+Bolj ko se mobilna rešitev približa idealu odprte arhitekture, neposrednega nadzora uporabnika in prilagodljivega sistema, težje praviloma dosega enako raven zrelosti, udobja in splošne vsakdanje uporabnosti kot prevladujoči komercialni pametni telefoni.
 
 \section{Primerjalna sinteza}
 \label{sec:primerjalna_sinteza}
 
 Analiza treh skupin odprtokodnih mobilnih rešitev pokaže, da se nobena izmed obravnavanih rešitev ne približa idealu popolnoma odprtokodnega telefona hkrati v obeh dimenzijah, ki smo ju opredelili v prejšnjem poglavju.
 Pri vseh treh skupinah se pokaže izrazita napetost med odprtostjo in praktično uporabnostjo.
-Rešitve, ki uporabniku omogočajo večji nadzor nad arhitekturo sistema in bolj odprto programsko okolje, praviloma težje dosežejo enako raven vsakdanje uporabnosti kot rešitve, ki ostajajo bliže prevladujočemu ekosistemu sistema Android.
+Rešitve, ki uporabniku omogočajo večji nadzor nad arhitekturo sistema, večjo prilagodljivost in bolj odprto programsko okolje, težje dosežejo enako raven vsakdanje uporabnosti kot rešitve, ki ostajajo bliže prevladujočemu ekosistemu sistema Android.
 
 Sintezne ocene odprtosti in praktične uporabnosti so povzete v tabelah~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost}, dodatno pa jih ponazarjata radarska diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost}.
 Ocene v tabelah so sintezne in temeljijo na analizi javno dostopne dokumentacije, znanih omejitev in razvojnih usmeritev posameznih projektov.
@@ -1228,29 +1247,37 @@ Librem 5     & 2 & 2 & 1 & 2 & 2 \\
 \small
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.1}
-\begin{tabular}{lccccc}
+\begin{tabular}{lcccccc}
 \hline
-\textbf{Rešitev} & \textbf{OF} & \textbf{KS} & \textbf{AZ} & \textbf{EA} & \textbf{PV} \\
+\textbf{Rešitev} & \textbf{OF} & \textbf{KS} & \textbf{AZ} & \textbf{EA} & \textbf{PV} & \textbf{UN} \\
 \hline
-LineageOS    & 2 & 2 & 2 & 2 & 2 \\
-GrapheneOS   & 2 & 2 & 2 & 2 & 2 \\
-/e/OS        & 2 & 2 & 2 & 2 & 1 \\
-Replicant    & 1 & 0 & 0 & 0 & 0 \\
-Ubuntu Touch & 1 & 1 & 1 & 1 & 2 \\
-Mobian       & 1 & 1 & 1 & 1 & 1 \\
-postmarketOS & 1 & 1 & 0 & 1 & 1 \\
-PinePhone    & 1 & 1 & 0 & 1 & 1 \\
-Librem 5     & 1 & 1 & 0 & 1 & 2 \\
+LineageOS    & 2 & 2 & 2 & 2 & 2 & 2 \\
+GrapheneOS   & 2 & 2 & 2 & 2 & 2 & 1 \\
+/e/OS        & 2 & 2 & 2 & 2 & 1 & 1 \\
+Replicant    & 1 & 0 & 0 & 0 & 0 & 2 \\
+Ubuntu Touch & 1 & 1 & 1 & 1 & 2 & 1 \\
+Mobian       & 1 & 1 & 1 & 1 & 1 & 2 \\
+postmarketOS & 1 & 1 & 0 & 1 & 1 & 2 \\
+PinePhone    & 1 & 1 & 0 & 1 & 1 & 2 \\
+Librem 5     & 1 & 1 & 0 & 1 & 2 & 2 \\
 \hline
 \end{tabular}
-\caption{Sintezna primerjava praktične uporabnosti po funkcionalnih sklopih. Oznake: OF -- osnovne funkcije telefona, KS -- ključna strojna podpora, AZ -- avtonomija in zmogljivost, EA -- ekosistem aplikacij, PV -- posodobitve in vzdrževanje. Vrednosti pomenijo: 0 -- neuporabno, 1 -- omejeno, 2 -- uporabno.}
+\caption{Sintezna primerjava praktične uporabnosti po funkcionalnih sklopih. Oznake: OF -- osnovne funkcije telefona, KS -- ključna strojna podpora, AZ -- avtonomija in zmogljivost, EA -- ekosistem aplikacij, PV -- posodobitve in vzdrževanje, UN -- uporabniški nadzor. Vrednosti pomenijo: 0 -- neuporabno, 1 -- omejeno, 2 -- uporabno.}
 \label{tab:primerjalna_sinteza_uporabnost}
 \end{table}
 \FloatBarrier
 
-Iz tabel~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost} je razvidno, da alternativni ROM-i za sistem Android dosegajo razmeroma visoke ocene praktične uporabnosti, vendar ostajajo omejeni v spodnjih slojih sistema, zlasti pri strojni programski opremi in delu gonilnikov.
-Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android izboljšajo odprtost uporabniškega prostora in pogosto tudi preglednost sistema, vendar praviloma ne morejo v celoti prekiniti odvisnosti od izvorne zasnove naprav za sistem Android.
-Namenski telefoni z operacijskim sistemom GNU/Linux pa so v arhitekturnem smislu najbližje idealu odprtega telefona, vendar pri praktični uporabnosti praviloma zaostajajo za rešitvami, ki so tesneje povezane z ekosistemom sistema Android.
+Visoka ocena v posameznem sklopu še ne pomeni visoke splošne uporabnosti rešitve, temveč le to, da je rešitev močna v točno določeni dimenziji praktične uporabnosti.
+
+Iz tabel~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost} je razvidno, da alternativni ROM-i za sistem Android dosegajo visoke ocene praktične uporabnosti, vendar ostajajo omejeni v spodnjih slojih sistema, zlasti pri strojni programski opremi in delu gonilnikov.
+Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android izboljšajo odprtost uporabniškega prostora in pogosto tudi preglednost sistema, vendar ne morejo v celoti prekiniti odvisnosti od izvorne zasnove naprav za sistem Android.
+Namenski telefoni z operacijskim sistemom GNU/Linux so v arhitekturnem smislu najbližje idealu odprtega telefona, vendar pri praktični uporabnosti zaostajajo za rešitvami, ki so tesneje povezane z ekosistemom sistema Android.
+
+Z vidika varnosti in zaupanja je pri teh rešitvah pomembno tudi vprašanje stranskih vrat, saj zaprtost spodnjih slojev sistema pomeni, da uporabnik in skupnost ne moreta neodvisno preveriti vseh komponent, ki se izvajajo na napravi.
+To je posebej pomembno pri podsistemih z visokimi privilegiji, kot so modem, brezžični vmesniki in drugi deli dobaviteljskega sklada, kjer se omejitve odprtosti neposredno povezujejo tudi z omejitvami preverljivosti.
+
+Sklop uporabniškega nadzora dodatno osvetli razliko med projekti, ki uporabniku predvsem ponujajo bolj uporabno alternativo tovarniškemu sistemu, in projekti, pri katerih pomemben del vrednosti predstavlja večji neposredni nadzor nad sistemom.
+Najizraziteje se to pokaže pri rešitvah, ki so tesneje povezane z običajnim okoljem GNU/Linux, medtem ko uporabniško dostopnejši Android ROM-i ta vidik pogosteje podredijo širši združljivosti in enostavnejši uporabi.
 
 Zaradi preglednosti radarska diagrama ne prikazujeta vseh obravnavanih rešitev, temveč tri reprezentativne profile.
 To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian kot predstavnik mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi za sistem Android ter Librem 5 kot predstavnik namenskih telefonov z operacijskim sistemom GNU/Linux.
@@ -1259,7 +1286,7 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
 \centering
 \begin{tikzpicture}
 \begin{polaraxis}[
-    width=0.78\textwidth,
+    width=0.8\textwidth,
     ymin=0, ymax=2,
     ytick={1,2},
     yticklabels={1,2},
@@ -1267,55 +1294,58 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
     xticklabels={ZV,JG,SP,SS,AD},
     grid=both,
     axis line style={draw=none},
-    minor grid style={gray!25},
-    major grid style={gray!45},
+    minor grid style={gray!20},
+    major grid style={gray!40},
     xticklabel style={font=\small},
     yticklabel style={font=\small},
     tick label style={font=\small},
     clip=false,
     legend style={
-        at={(0.5,-0.20)},
+        at={(0.5,-0.18)},
         anchor=north,
         legend columns=3,
         font=\small,
-        draw=black,
-        fill=white
+        draw=none,
+        fill=none
     },
-    every axis plot/.append style={thick}
+    every axis plot/.append style={line width=1.2pt}
 ]
 
 \addplot+[
-    black,
-    dashed,
+    draw=NavyBlue,
+    fill=NavyBlue,
+    fill opacity=0.18,
+    mark=*,
+    mark size=2.5pt,
+    mark options={solid, draw=NavyBlue, fill=NavyBlue, fill opacity=1}
+] coordinates {
+    (0,1) (72,1) (144,0) (216,1) (288,1) (360,1)
+};
+\addlegendentry{LineageOS}
+
+\addplot+[
+    draw=ForestGreen!70!black,
+    fill=ForestGreen,
+    fill opacity=0.18,
     mark=square*,
-    mark size=4pt,
-    mark options={solid, draw=black, fill=ForestGreen}
+    mark size=3pt,
+    mark options={solid, draw=ForestGreen!70!black, fill=ForestGreen, fill opacity=1}
 ] coordinates {
     (0,1) (72,1) (144,0) (216,2) (288,2) (360,1)
 };
 \addlegendentry{Mobian}
 
 \addplot+[
-    black,
-    dotted,
+    draw=BrickRed!80!black,
+    fill=BrickRed,
+    fill opacity=0.18,
     mark=triangle*,
     mark size=3.5pt,
-    mark options={solid, draw=black, fill=BrickRed}
+    mark options={solid, draw=BrickRed!80!black, fill=BrickRed, fill opacity=1}
 ] coordinates {
     (0,2) (72,2) (144,1) (216,2) (288,2) (360,2)
 };
 \addlegendentry{Librem 5}
-
-\addplot+[
-    black,
-    solid,
-    mark=*,
-    mark size=2.5pt,
-    mark options={solid, draw=black, fill=NavyBlue}
-] coordinates {
-    (0,1) (72,1) (144,0) (216,1) (288,1) (360,1)
-};
-\addlegendentry{LineageOS}
 
 \end{polaraxis}
 \end{tikzpicture}
@@ -1327,63 +1357,66 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
 \centering
 \begin{tikzpicture}
 \begin{polaraxis}[
-    width=0.78\textwidth,
+    width=0.8\textwidth,
     ymin=0, ymax=2,
     ytick={1,2},
     yticklabels={1,2},
-    xtick={0,72,144,216,288},
-    xticklabels={OF,KS,AZ,EA,PV},
+    xtick={0,60,120,180,240,300},
+    xticklabels={OF,KS,AZ,EA,PV,UN},
     grid=both,
     axis line style={draw=none},
-    minor grid style={gray!25},
-    major grid style={gray!45},
+    minor grid style={gray!20},
+    major grid style={gray!40},
     xticklabel style={font=\small},
     yticklabel style={font=\small},
     tick label style={font=\small},
     clip=false,
     legend style={
-        at={(0.5,-0.20)},
+        at={(0.5,-0.18)},
         anchor=north,
         legend columns=3,
         font=\small,
-        draw=black,
-        fill=white
+        draw=none,
+        fill=none
     },
-    every axis plot/.append style={thick}
+    every axis plot/.append style={line width=1.2pt}
 ]
 
 \addplot+[
-    black,
-    dashed,
-    mark=square*,
-    mark size=4pt,
-    mark options={solid, draw=black, fill=ForestGreen}
+    draw=NavyBlue,
+    fill=NavyBlue,
+    fill opacity=0.18,
+    mark=*,
+    mark size=2.5pt,
+    mark options={solid, draw=NavyBlue, fill=NavyBlue, fill opacity=1}
 ] coordinates {
-    (0,1) (72,1) (144,1) (216,1) (288,1) (360,1)
+    (0,2) (60,2) (120,2) (180,2) (240,2) (300,2) (360,2)
+};
+\addlegendentry{LineageOS}
+
+\addplot+[
+    draw=ForestGreen!70!black,
+    fill=ForestGreen,
+    fill opacity=0.18,
+    mark=square*,
+    mark size=3pt,
+    mark options={solid, draw=ForestGreen!70!black, fill=ForestGreen, fill opacity=1}
+] coordinates {
+    (0,1) (60,1) (120,1) (180,1) (240,1) (300,2) (360,1)
 };
 \addlegendentry{Mobian}
 
 \addplot+[
-    black,
-    dotted,
+    draw=BrickRed!80!black,
+    fill=BrickRed,
+    fill opacity=0.18,
     mark=triangle*,
-    mark size=3.5pt,
-    mark options={solid, draw=black, fill=BrickRed}
+    mark size=4.5pt,
+    mark options={solid, draw=BrickRed!80!black, fill=BrickRed, fill opacity=1}
 ] coordinates {
-    (0,1) (72,1) (144,0) (216,1) (288,1) (360,1)
+    (0,1) (60,1) (120,0) (180,1) (240,2) (300,2) (360,1)
 };
 \addlegendentry{Librem 5}
-
-\addplot+[
-    black,
-    solid,
-    mark=*,
-    mark size=2.5pt,
-    mark options={solid, draw=black, fill=NavyBlue}
-] coordinates {
-    (0,2) (72,2) (144,2) (216,2) (288,2) (360,2)
-};
-\addlegendentry{LineageOS}
 
 \end{polaraxis}
 \end{tikzpicture}
@@ -1395,28 +1428,29 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
 
 Radarska diagrama potrjujeta ugotovitve iz tabel.
 LineageOS se kot predstavnik alternativnih ROM-ov za sistem Android izkaže z najbolj uravnoteženim profilom praktične uporabnosti, vendar ostaja omejen na ravni strojne programske opreme in dela spodnjih slojev sistema.
-Mobian kot predstavnik mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi kaže izrazitejšo odprtost uporabniškega prostora, vendar brez enake stopnje vsakdanje zrelosti kot LineageOS.
-Librem 5 pa se kot namenska naprava najbolj približa idealu odprte arhitekture, vendar pri praktični uporabnosti ostaja v bolj omejenem območju.
+Mobian kot predstavnik mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi kaže izrazitejšo odprtost uporabniškega prostora ter večjo prilagodljivost in uporabniški nadzor, vendar brez enake stopnje vsakdanje zrelosti kot LineageOS.
+Librem 5 pa se kot namenska naprava najbolj približa idealu odprte arhitekture, pri praktični uporabnosti pa ostaja v bolj omejenem območju, čeprav uporabniku omogoča zelo neposreden nadzor nad sistemom in strojno opremo.
 
-Če tri skupine rešitev primerjamo z vidika odprtosti, so alternativni ROM-i za sistem Android praviloma najmočnejši v zgornjih slojih sistema, torej pri uporabniškem prostoru, sistemskih storitvah in distribuciji aplikacij.
-Njihova glavna omejitev je, da praviloma ne odpravijo temeljne odvisnosti od zaprtih komponent v spodnjih slojih naprave.
+Če tri skupine rešitev primerjamo z vidika odprtosti, so alternativni ROM-i za sistem Android najmočnejši v zgornjih slojih sistema, torej pri uporabniškem prostoru, sistemskih storitvah in distribuciji aplikacij.
+Njihova glavna omejitev je, da ne odpravijo temeljne odvisnosti od zaprtih komponent v spodnjih slojih naprave.
 Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android povečajo odprtost uporabniškega prostora in tesnejšo povezanost z običajnimi distribucijami GNU/Linux, vendar pogosto ostajajo tehnično odvisne od jeder, binarnih dodatkov in združljivostnih slojev, ki izhajajo iz prvotne zasnove naprav za sistem Android.
-Namenski telefoni z operacijskim sistemom GNU/Linux pa se idealu odprtega telefona približajo najbolj neposredno, saj omogočajo bolj pregleden odnos med strojno in programsko zasnovo ter praviloma tudi več neposrednega nadzora nad posameznimi podsistemi.
+Namenski telefoni z operacijskim sistemom GNU/Linux pa se idealu odprtega telefona približajo najbolj neposredno, saj omogočajo bolj pregleden odnos med strojno in programsko zasnovo ter več neposrednega nadzora nad posameznimi podsistemi.
 
 Če iste rešitve primerjamo z vidika praktične uporabnosti, se razmerje med skupinami deloma obrne.
 Najbolj prepričljivi ostajajo alternativni ROM-i za sistem Android, saj v največji meri ohranijo združljivost z aplikacijskim ekosistemom sistema Android in s tem tudi osnovne prednosti sodobnega pametnega telefona.
 To pa ne velja povsem brez izjem, zlasti pri aplikacijah, ki uporabljajo mehanizme preverjanja celovitosti naprave~\cite{play_integrity_overview}.
-Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android so praviloma manj enotne. Ubuntu Touch daje največji poudarek zaokroženi mobilni uporabniški izkušnji, Mobian ostaja najbližje logiki običajne distribucije GNU/Linux, postmarketOS pa najbolj razširja prostor eksperimentiranja in dolgoročnega oživljanja starejših naprav.
-Namenski telefoni z operacijskim sistemom GNU/Linux so pri praktični uporabnosti praviloma najmanj konkurenčni v primerjavi z običajnimi pametnimi telefoni.
+Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android so manj enotne.
+Ubuntu Touch daje največji poudarek zaokroženi mobilni uporabniški izkušnji, Mobian ostaja najbližje logiki običajne distribucije GNU/Linux, postmarketOS pa najbolj razširja prostor eksperimentiranja, dolgoročnega oživljanja starejših naprav ter neposrednega uporabniškega nadzora.
+Namenski telefoni z operacijskim sistemom GNU/Linux so pri praktični uporabnosti najmanj konkurenčni v primerjavi z običajnimi pametnimi telefoni.
 Njihova glavna vrednost je drugje, in sicer v preizkušanju drugačnega modela naprave, pri katerem ima uporabnik več neposrednega nadzora nad sistemom in strojno opremo.
 
 Primerjalna sinteza tako potrjuje osnovno izhodišče te diplomske naloge.
-V sodobnem mobilnem prostoru odprtost in praktična uporabnost praviloma nista lastnosti, ki bi ju bilo mogoče hkrati maksimirati brez pomembnih kompromisov.
-Bolj ko se rešitev približuje idealu odprte arhitekture, več omejitev se praviloma pokaže pri zrelosti programske podpore, aplikacijskem ekosistemu in vsakdanji rabi.
+V sodobnem mobilnem prostoru odprtost, prilagodljivost in praktična uporabnost niso lastnosti, ki bi jih bilo mogoče hkrati maksimirati brez pomembnih kompromisov.
+Bolj ko se rešitev približuje idealu odprte arhitekture in večjega uporabniškega nadzora, več omejitev se pokaže pri zrelosti programske podpore, aplikacijskem ekosistemu in vsakdanji rabi.
 Po drugi strani pa rešitve, ki so uporabniku najbližje kot dejanska zamenjava za običajen pametni telefon, skoraj vedno ostajajo odvisne od zaprtih komponent v spodnjih slojih sistema.
 
 Takšna primerjalna slika je pomembna tudi za nadaljnji empirični del naloge.
-Omogoča namreč, da izbrano rešitev v nadaljevanju ne razumemo kot izoliran primer, temveč kot del širšega prostora kompromisov med odprtostjo, varnostjo, vzdrževanjem in praktično uporabnostjo.
+Omogoča namreč, da izbrano rešitev v nadaljevanju ne razumemo kot izoliran primer, temveč kot del širšega prostora kompromisov med odprtostjo, varnostjo, vzdrževanjem, prilagodljivostjo in praktično uporabnostjo.
 
 \chapter{Empirični del: študija primera na telefonu OnePlus 6T}
 \label{chap:empiricni_del}
@@ -1505,91 +1539,83 @@ To pomeni večji poudarek na paketnem upravljanju, terminalu, standardnem uporab
 Hkrati pa je prav pri takem sistemu smiselno pričakovati več praktičnih omejitev pri funkcijah, ki so na komercialnih telefonih močno odvisne od dobaviteljskih komponent in specifičnih prilagoditev za Android.
 
 \section{Metodologija testiranja}
-\label{sec:metodologija_testiranja}
 
-Da bi bili rezultati med sistemi čim bolj primerljivi, bomo testiranje izvajali v čim bolj enotnih pogojih.
-Pri vseh sistemih bomo, kjer bo to mogoče, uporabili enako napravo, isto kartico SIM, isto brezžično omrežje, podobno svetlost zaslona in podoben nabor osnovnih uporabniških opravil.
-Po vsaki namestitvi bomo sistem pustili v osnovni konfiguraciji, nato pa bomo dodali le tiste aplikacije in nastavitve, ki so potrebne za primerljiv preizkus vsakodnevne rabe.
+Da bi bili rezultati med sistemi čim bolj primerljivi, testiranje izvajamo v čim bolj enotnih pogojih.
+Pri vseh sistemih, kjer je to mogoče, uporabimo isto napravo, isto kartico SIM, isto brezžično omrežje, podobno svetlost zaslona in primerljiv nabor osnovnih uporabniških opravil.
+Po vsaki namestitvi sistem pustimo v osnovni konfiguraciji, nato pa dodamo le tiste aplikacije in nastavitve, ki so potrebne za primerljiv preizkus vsakdanje rabe.
 
-Pri tem je treba upoštevati, da popolna simetrija med sistemi ni vedno dosegljiva.
-Na sistemih GNU/Linux enake aplikacije kot na sistemu Android pogosto niso na voljo, zato bomo tam, kjer bo to potrebno, uporabili funkcionalno najbližjo alternativo ali spletno različico storitve.
-Cilj ni prisilno izenačiti različne platforme, temveč preveriti, ali posamezen sistem omogoča razumno izvedbo iste uporabniške naloge.
+Popolna simetrija med sistemi ni vedno dosegljiva.
+Na sistemih GNU/Linux enake aplikacije kot na sistemu Android pogosto niso na voljo, zato tam, kjer je to potrebno, uporabimo funkcionalno najbližjo alternativo ali spletno različico storitve.
+Cilj ni umetno izenačiti različnih platform, temveč preveriti, ali posamezen sistem omogoča razumno izvedbo iste uporabniške naloge.
 
 Zaradi bolj poštene primerjave se izognemo sintetičnim merilnikom zmogljivosti, ki niso enako dostopni ali enako smiselni na vseh štirih sistemih.
 Namesto tega se osredotočimo na ponovljive scenarije dejanske rabe.
-Tak pristop je bolj skladen tudi z osrednjim vprašanjem naloge, saj nas zanima predvsem, ali je sistem uporaben kot telefon za vsakdanjo rabo, ne pa le, kako visoko doseže rezultat v posameznem merilniku.
+Tak pristop je bolj skladen z osrednjim vprašanjem naloge, saj nas zanima predvsem, ali je sistem uporaben kot telefon za vsakdanjo rabo, ne pa le, kako visoko doseže rezultat v posameznem merilniku.
 
 \section{Scenariji testiranja}
-\label{sec:scenariji_testiranja_empiricni}
 
-Scenariji testiranja pokrivajo iste funkcionalne sklope praktične uporabnosti, ki smo jih opredelili v poglavju~\ref{chap:model_odprtokodnega_telefona}.
+Scenariji testiranja pokrivajo iste funkcionalne sklope praktične uporabnosti, ki smo jih opredelili v poglavju 4.
 
-\subsection*{Osnovne funkcije telefona}
-Pri vsakem sistemu bomo preverili odhodne in dohodne klice, pošiljanje in prejemanje sporočil SMS, delovanje mobilnih podatkov ter možnost souporabe povezave prek dostopne točke.
-Pri klicih bomo poleg same vzpostavitve povezave spremljali tudi stabilnost zvoka, preklapljanje med slušalko in zvočnikom ter splošen vtis o zanesljivosti.
-Pri mobilnih podatkih nas ne zanima največja teoretična hitrost, temveč predvsem stabilna uporabnost za tipična opravila, kot so brskanje po spletu, prenos sporočil in navigacija.
+\textbf{Osnovne funkcije telefona.}
+Pri vsakem sistemu preverimo odhodne in dohodne klice, pošiljanje in prejemanje sporočil SMS, delovanje mobilnih podatkov ter možnost souporabe povezave prek dostopne točke.
+Pri klicih poleg same vzpostavitve povezave spremljamo tudi stabilnost zvoka, preklapljanje med slušalko in zvočnikom ter splošen vtis o zanesljivosti.
+Pri mobilnih podatkih nas ne zanima najvišja teoretična hitrost, temveč predvsem stabilna uporabnost za tipična opravila, kot so brskanje po spletu, prenos sporočil in navigacija.
 
-\subsection*{Ključna strojna podpora}
-V tej skupini bomo preverili Wi-Fi, Bluetooth, GPS, NFC, zvok, kamero, senzorje ter čitalnik prstnih odtisov, kjer je ta funkcionalnost na voljo.
-Pri kameri bomo ločeno preverili fotografiranje, snemanje videa in splošno odzivnost zagona aplikacije.
+\textbf{Ključna strojna podpora.}
+V tej skupini preverimo Wi-Fi, Bluetooth, GPS, NFC, zvok, kamero, senzorje ter čitalnik prstnih odtisov, kjer je ta funkcionalnost na voljo.
+Pri kameri ločeno preverimo fotografiranje, snemanje videa in splošno odzivnost zagona aplikacije.
 Pri senzorjih nas zanima predvsem to, ali delujejo tisti deli sistema, ki so pomembni za vsakodnevno rabo, na primer samodejni izklop zaslona med klicem, orientacija zaslona in osnovne meritve gibanja.
 
-\subsection*{Avtonomija in zmogljivost}
-Porabo energije bomo ocenjevali s preprostimi, ponovljivimi vzorci rabe.
-Pri vsakem sistemu bomo izvedli vsaj tri osnovne preizkuse: pripravljenost čez noč, krajši preizkus brskanja po spletu in krajši preizkus predvajanja lokalno shranjenega videa.
-Poleg padca baterije bomo opisno zabeležili tudi segrevanje naprave, splošno odzivnost sistema in morebitne težave, kot so neobičajno hitro praznjenje, nestabilno stanje pripravljenosti ali počasno prebujanje iz spanja.
+\textbf{Avtonomija in zmogljivost.}
+Porabo energije ocenjujemo s preprostimi, ponovljivimi vzorci rabe.
+Pri vsakem sistemu izvedemo vsaj tri osnovne preizkuse: pripravljenost čez noč, krajši preizkus brskanja po spletu in krajši preizkus predvajanja lokalno shranjenega videa.
+Poleg padca baterije opisno zabeležimo tudi segrevanje naprave, splošno odzivnost sistema in morebitne težave, kot so neobičajno hitro praznjenje, nestabilno stanje pripravljenosti ali počasno prebujanje iz spanja.
 
-\subsection*{Ekosistem aplikacij}
-Ker je uporabnost telefona danes tesno povezana z aplikacijami, bomo preverili, ali posamezen sistem pokrije minimalni nabor vsakodnevnih opravil.
+\textbf{Ekosistem aplikacij.}
+Ker je uporabnost telefona danes tesno povezana z aplikacijami, preverimo, ali posamezen sistem pokrije minimalni nabor vsakodnevnih opravil.
 Ta nabor vključuje spletni brskalnik, e-pošto, sporazumevanje, navigacijo, kamero in galerijo, predvajanje medijev ter osnovna orodja za avtentikacijo, kot je dvofaktorska avtentikacija.
-Posebej bomo zabeležili tudi stanje pri aplikacijah z višjimi varnostnimi zahtevami, kot so bančne aplikacije in mobilno plačevanje, saj so te v praksi pogosto med prvimi pokazatelji omejitev alternativnih sistemov.
+Posebej zabeležimo tudi stanje pri aplikacijah z višjimi varnostnimi zahtevami, kot so bančne aplikacije in mobilno plačevanje, saj so te v praksi pogosto med prvimi pokazatelji omejitev alternativnih sistemov.
 
-\subsection*{Možnosti prilagajanja in nadzora}
-Kot dodatni praktični sklop bomo preverili tudi tiste vidike, ki so za ciljni profil uporabnika posebej pomembni: dostop do terminala, razpoložljivost paketnega upravljalnika, možnost nameščanja dodatne odprtokodne programske opreme, odstranjevanje nezaželenih aplikacij in splošno preglednost sistema.
+\textbf{Možnosti prilagajanja in nadzora.}
+Kot dodatni praktični sklop preverimo tudi tiste vidike, ki so za ciljni profil uporabnika posebej pomembni: dostop do terminala, razpoložljivost paketnega upravljalnika, možnost nameščanja dodatne odprtokodne programske opreme, odstranjevanje nezaželenih aplikacij in splošno preglednost sistema.
 Ta sklop ni ločen od praktične uporabnosti, temveč jo v našem kontekstu dopolnjuje.
 Prav večji nadzor nad sistemom je namreč eden glavnih razlogov, zakaj uporabnik sploh poseže po odprtokodni alternativi.
 
 \section{Metrike in način beleženja rezultatov}
-\label{sec:metrike_in_belezenje_empiricni}
 
-Rezultate bomo beležili v dveh ravneh.
-Na prvi ravni bomo za posamezne funkcionalnosti uporabili neposreden opis stanja:
-\enquote{deluje}, \enquote{deluje delno} ali \enquote{ne deluje}.
-Tak zapis je primeren za osnovne komponente, kot so kamera, Wi-Fi, Bluetooth, GPS, klici in podobno, saj omogoča dovolj jasen pregled nad tem, kaj je na napravi dejansko uporabno.
+Rezultate beležimo na dveh ravneh.
+Na prvi ravni za posamezne funkcionalnosti uporabimo neposreden opis stanja: \enquote{deluje}, \enquote{deluje delno} ali \enquote{ne deluje}.
+Tak zapis je primeren za osnovne komponente, kot so kamera, Wi-Fi, Bluetooth, GPS, klici in podobno, saj omogoča jasen pregled nad tem, kaj je na napravi dejansko uporabno.
 
-Na drugi ravni bomo opažanja pretvorili v sintezne ocene po istem modelu, kot smo ga uvedli v prejšnjih poglavjih.
-Odprtost bomo ocenili po slojih sistema, praktično uporabnost pa po funkcionalnih sklopih.
-V obeh primerih bomo uporabili tristopenjsko lestvico z vrednostmi 0, 1 in 2.
-Na ta način bodo rezultati empiričnega dela neposredno primerljivi s sinteznimi ocenami iz analitičnega dela naloge.
+Na drugi ravni opažanja pretvorimo v sintezne ocene po istem modelu, kot smo ga uvedli v prejšnjih poglavjih.
+Odprtost ocenjujemo po slojih sistema, praktično uporabnost pa po funkcionalnih sklopih.
+V obeh primerih uporabimo tristopenjsko lestvico z vrednostmi 0, 1 in 2.
+Na ta način so rezultati empiričnega dela neposredno primerljivi s sinteznimi ocenami iz analitičnega dela naloge.
 
-Pri subjektivnih vidikih, kot so odzivnost uporabniškega vmesnika, stabilnost in splošni vtis, bomo uporabili kratke opisne opombe.
-Namesto navidezno natančnih številčnih ocen bomo dali prednost kratkim kvalitativnim ugotovitvam, na primer da je sistem pri vsakdanji rabi \enquote{stabilen}, \enquote{občasno neodziven} ali \enquote{primeren le za potrpežljivo eksperimentalno rabo}.
-Tak pristop je v kontekstu diplomske naloge bolj pošten kot pretirano natančno točkovanje subjektivnih občutkov.
+Pri subjektivnih vidikih, kot so odzivnost uporabniškega vmesnika, stabilnost in splošni vtis, uporabimo kratke opisne opombe.
+Namesto navidezno natančnih številčnih ocen damo prednost kratkim kvalitativnim ugotovitvam, na primer da je sistem pri vsakdanji rabi \enquote{stabilen}, \enquote{občasno neodziven} ali \enquote{primeren le za potrpežljivo eksperimentalno rabo}.
+Tak pristop je v kontekstu diplomske naloge primernejši kot pretirano natančno točkovanje subjektivnih občutkov.
 
-Pri porabi energije bomo zabeležili odstotek baterije na začetku in na koncu posameznega preizkusa, dodatno pa bomo opisali tudi kakovost stanja pripravljenosti.
-Pri sistemih, kjer bo to mogoče, bomo zabeležili tudi sistemske informacije o porabi energije ali ozadnih procesih.
-Ker ti podatki med sistemi niso nujno neposredno primerljivi, bodo služili predvsem kot dopolnilna interpretativna informacija.
+Pri porabi energije bomo zabeležili odstotek baterije na začetku in na koncu posameznega preizkusa, pri preizkusu pripravljenosti čez noč pa tudi padec baterije v mirovanju. Pri sistemih, kjer bo to mogoče, bomo zabeležili tudi sistemske informacije o porabi energije ali ozadnih procesih. Ker ti podatki med sistemi niso nujno neposredno primerljivi, bodo služili predvsem kot dopolnilna interpretativna informacija.
 
 \section{Ocenjevanje odprtosti v empiričnem delu}
-\label{sec:ocenjevanje_odprtosti_empiricni}
 
-Čeprav odprtosti ni mogoče v celoti izmeriti z neposrednim uporabniškim testom, bomo tudi v empiričnem delu preverili nekaj konkretnih indikatorjev.
-Zanimalo nas bo, kako dokumentiran je postopek namestitve, ali je sistem mogoče posodabljati brez posebnih obhodov, koliko nadzora ima uporabnik nad prednameščenimi komponentami, kako pregledna je distribucija programske opreme ter ali sistem ostaja tesno vezan na lastniške storitve ali posebne dobaviteljske komponente.
+Čeprav odprtosti ni mogoče v celoti izmeriti z neposrednim uporabniškim testom, tudi v empiričnem delu preverimo nekaj konkretnih indikatorjev.
+Zanima nas, kako dokumentiran je postopek namestitve, ali je sistem mogoče posodabljati brez posebnih obhodov, koliko nadzora ima uporabnik nad prednameščenimi komponentami, kako pregledna je distribucija programske opreme ter ali sistem ostaja tesno vezan na lastniške storitve ali posebne dobaviteljske komponente.
 
 Pomembno je poudariti, da v tej sekciji ne ocenjujemo abstraktnega projekta, temveč konkretno kombinacijo projekta in naprave.
-Na primer: pri LineageOS nas ne zanima le, da je projekt odprtokoden, temveč kako se ta odprtost pokaže prav na OnePlus 6T.
+Pri LineageOS nas tako ne zanima le, da je projekt odprtokoden, temveč kako se ta odprtost pokaže prav na OnePlus 6T.
 Enako velja za Ubuntu Touch in postmarketOS, kjer je treba razlikovati med splošnim ciljem projekta in dejansko stopnjo odprtosti oziroma uporabniške avtonomije na konkretni strojni opremi.
 
 \section{Omejitve študije}
-\label{sec:omejitve_studije_empiricni}
 
 Empirični del ima več pomembnih omejitev.
-Prvič, testirana bo ena sama naprava, zato rezultatov ne moremo neposredno posplošiti na celoten mobilni ekosistem.
-Drugič, rezultati bodo vezani na konkretne izdaje sistemov, ki bodo v času testiranja na voljo.
-Tretjič, del ocene, zlasti pri uporabniški izkušnji, bo neizogibno vseboval subjektivno komponento.
+Prvič, testirana je ena sama naprava, zato rezultatov ne moremo neposredno posplošiti na celoten mobilni ekosistem.
+Drugič, rezultati so vezani na konkretne izdaje sistemov, ki so bile v času testiranja na voljo.
+Tretjič, del ocene, zlasti pri uporabniški izkušnji, neizogibno vsebuje tudi subjektivno komponento.
 
 Dodatna omejitev izhaja iz dejstva, da vse platforme nimajo enakega aplikacijskega okolja.
-Tam, kjer bo na voljo le spletna alternativa ali funkcionalno podoben program, primerjava ne bo popolnoma simetrična.
+Tam, kjer je na voljo le spletna alternativa ali funkcionalno podoben program, primerjava ni popolnoma simetrična.
 Vendar to ni zgolj metodološka slabost, temveč tudi del same ugotovitve: če posamezen sistem določenega vsakdanjega opravila ne omogoča na enako neposreden način, je prav to pomemben rezultat praktične primerjave.
 
 Kljub navedenim omejitvam takšna študija primera omogoča dovolj konkreten vpogled v to, kako se na isti napravi dejansko razlikujejo tovarniški sistem Android, alternativni ROM za sistem Android in mobilne distribucije sistema GNU/Linux.
