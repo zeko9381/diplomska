@@ -126,8 +126,6 @@ Telefon pri teh opravilih včasih zamrzne in se ne odziva, dokler ga ne prisilno
 
 ## 4. Ekosistem aplikacij
 
-Pri tem sklopu sem upošteval le uradne izdaje aplikacij oziroma uradne spletne različice storitev.
-
 Ubuntu Touch vključuje OpenStore.
 Flatpak ni podprt, Android aplikacije tudi ne.
 Sistem uporablja read-only filesystem, zato nameščanje dodatne programske opreme ni primerljivo z običajno rabo namiznega Ubuntuja.

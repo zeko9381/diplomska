@@ -1462,7 +1462,7 @@ Takšna primerjava je uporabna za pregled širšega prostora rešitev, ne more p
 Zato v empiričnem delu izvedemo študijo primera na telefonu OnePlus 6T, na katerem primerjamo štiri sisteme: tovarniški sistem OxygenOS, LineageOS, Ubuntu Touch in postmarketOS.
 
 Namen empiričnega dela ni ugotoviti, kateri projekt je \enquote{najboljši} v splošnem smislu, temveč preveriti, kako se izbrane rešitve obnašajo na isti strojni osnovi.
-Na ta način lahko bistveno bolj neposredno opazujemo kompromise, ki smo jih v prejšnjih poglavjih obravnavali na bolj teoretični ravni.
+Na ta način lahko bistveno bolj neposredno opazujemo kompromise, ki smo jih v prejšnjih poglavjih obravnavali na teoretični ravni.
 Posebej nas zanima, kako se na konkretni napravi spreminja razmerje med odprtostjo, praktično uporabnostjo, zrelostjo programske podpore in dejanskim nadzorom uporabnika nad sistemom.
 
 V skladu z modelom iz poglavja~\ref{chap:model_odprtokodnega_telefona} tudi v empiričnem delu posameznih rešitev ne obravnavamo z eno samo skupno oceno.
@@ -1541,9 +1541,10 @@ To pomeni večji poudarek na paketnem upravljanju, terminalu, standardnem uporab
 Hkrati pa je pri takem sistemu smiselno pričakovati več praktičnih omejitev pri funkcijah, ki so na komercialnih telefonih močno odvisne od dobaviteljskih komponent in specifičnih prilagoditev za Android.
 
 \section{Metodologija testiranja}
+\label{sec:metodologija_testiranja}
 
 Da bi bili rezultati med sistemi čim bolj primerljivi, testiranje izvajamo v čim bolj enotnih pogojih.
-Pri vseh sistemih, kjer je to mogoče, uporabimo isto napravo, isto kartico SIM, isto brezžično omrežje, podobno svetlost zaslona in primerljiv nabor osnovnih uporabniških opravil.
+Pri vseh sistemih, kjer je to mogoče, uporabimo isto napravo, isto kartico SIM, isto brezžično omrežje, primerljivo svetlost zaslona in enak nabor osnovnih uporabniških opravil.
 Po vsaki namestitvi sistem pustimo v osnovni konfiguraciji, nato pa dodamo le tiste aplikacije in nastavitve, ki so potrebne za primerljiv preizkus vsakdanje rabe.
 
 Popolna simetrija med sistemi ni vedno dosegljiva.
@@ -1554,40 +1555,116 @@ Zaradi bolj poštene primerjave se izognemo sintetičnim merilnikom zmogljivosti
 Namesto tega se osredotočimo na ponovljive scenarije dejanske rabe.
 Tak pristop je bolj skladen z osrednjim vprašanjem naloge, saj nas zanima predvsem, ali je sistem uporaben kot telefon za vsakdanjo rabo, ne pa le, kako visoko doseže rezultat v posameznem merilniku.
 
-\section{Scenariji testiranja}
+\section{Operativna pravila testiranja}
+\label{sec:operativna_pravila_testiranja}
 
-Scenariji testiranja pokrivajo iste funkcionalne sklope praktične uporabnosti, ki smo jih opredelili v poglavju 4.
+Pri vseh testih uporabljamo vnaprej določen protokol.
+Za vsak sistem zabeležimo datum začetka testiranja, točno različico sistema, način namestitve, vrsto začetne konfiguracije ter morebitne posebnosti, ki bi lahko vplivale na rezultate.
+
+Osnovne funkcionalne preizkuse izvedemo vsaj dvakrat.
+Če se rezultat med poskusoma razlikuje, test ponovimo še tretjič in kot končni rezultat upoštevamo prevladujoče stanje, odstopanje pa posebej zabeležimo.
+Pri funkcijah, kjer je to smiselno, poleg samega uspeha ali neuspeha zabeležimo tudi kakovost delovanja, na primer stabilnost, odzivnost in uporabniško zaznavne omejitve.
+
+Pri vseh sistemih poskušamo ohraniti čim bolj primerljive pogoje:
+isto napravo, isto kartico SIM, isto brezžično omrežje, primerljivo svetlost zaslona in enak testni nabor opravil.
+Kadar popolna primerljivost ni mogoča, to posebej navedemo v rezultatih.
+
+Pri osnovnih opravilih imajo prednost prednaložene oziroma privzeto ponujene aplikacije sistema, saj te najbolje predstavljajo privzeto uporabniško izkušnjo konkretne rešitve.
+Če privzeta aplikacija za določeno nalogo ni na voljo, ni dovolj stabilna ali naloge ne omogoča na razumno uporaben način, uporabimo najbolj smiselno dodatno alternativo.
+Tak primer v rezultatih posebej označimo in upoštevamo kot praktično omejitev sistema.
+
+Pri aplikacijskem ekosistemu damo prednost uradnim aplikacijam oziroma uradnim spletnim različicam storitev.
+Če te niso na voljo, lahko izjemoma uporabimo najbolj uveljavljeno skupnostno rešitev, vendar jo v rezultatih jasno označimo kot nepopoln približek uradni podpori.
+Takih rešitev ne obravnavamo kot povsem enakovrednih uradnim aplikacijam.
+
+Pri preizkusih avtonomije in zmogljivosti uporabimo enake časovne intervale in enake obremenitve.
+Pred posameznim testom po možnosti zapremo odprte aplikacije, onemogočimo nebistvene dodatne procese ter zabeležimo začetno stanje baterije.
+
+\section{Scenariji testiranja}
+\label{sec:scenariji_testiranja}
+
+Scenariji testiranja pokrivajo iste funkcionalne sklope praktične uporabnosti, ki smo jih opredelili v poglavju~\ref{chap:model_odprtokodnega_telefona}.
 
 \textbf{Osnovne funkcije telefona.}
 Pri vsakem sistemu preverimo odhodne in dohodne klice, pošiljanje in prejemanje sporočil SMS, delovanje mobilnih podatkov ter možnost souporabe povezave prek dostopne točke.
-Pri klicih poleg same vzpostavitve povezave spremljamo tudi stabilnost zvoka, preklapljanje med slušalko in zvočnikom ter splošen vtis o zanesljivosti.
-Pri mobilnih podatkih nas ne zanima najvišja teoretična hitrost, temveč predvsem stabilna uporabnost za tipična opravila, kot so brskanje po spletu, prenos sporočil in navigacija.
+Pri klicih izvedemo vsaj dva odhodna in dva dohodna klica, vsak v trajanju najmanj ene minute.
+Preverimo vzpostavitev klica, kakovost zvoka, stabilnost povezave ter delovanje zvočnika in slušalke med klicem.
+Pri sporočilih SMS preverimo pošiljanje in prejemanje običajnega kratkega sporočila ter daljšega sporočila s šumniki.
+Pri mobilnih podatkih preverimo vzpostavitev povezave ter stabilno uporabo za osnovna opravila, kot so odpiranje spletnih strani, prenos sporočil in uporaba navigacije.
+Pri dostopni točki preverimo uspešen vklop in dejansko uporabnost povezave na drugi napravi.
 
 \textbf{Ključna strojna podpora.}
 V tej skupini preverimo Wi-Fi, Bluetooth, GPS, NFC, zvok, kamero, senzorje ter čitalnik prstnih odtisov, kjer je ta funkcionalnost na voljo.
-Pri kameri ločeno preverimo fotografiranje, snemanje videa in splošno odzivnost zagona aplikacije.
-Pri senzorjih nas zanima predvsem to, ali delujejo tisti deli sistema, ki so pomembni za vsakodnevno rabo, na primer samodejni izklop zaslona med klicem, orientacija zaslona in osnovne meritve gibanja.
+Pri Wi-Fi preverimo uspešno povezavo z znanim brezžičnim omrežjem in stabilnost povezave med običajno uporabo.
+Pri Bluetooth preverimo povezavo z vsaj eno zunanjo napravo in stabilnost prenosa zvoka.
+Pri GPS preverimo vklop lokacijskih storitev, čas do pridobitve prve lokacije, praktično natančnost ter stabilnost pri navigaciji.
+Kot uspešen rezultat štejemo takšno delovanje, ki omogoča razumno zanesljivo uporabo navigacije brez izrazitega zamika ali pogostega izgubljanja položaja.
+Pri kameri uporabimo standardiziran nabor preizkusov:
+fotografiranje v dobri dnevni svetlobi,
+fotografiranje v slabši notranji svetlobi,
+fotografiranje bližnjega motiva,
+snemanje vsaj 30-sekundnega videa
+ter zagon aplikacije iz hladnega stanja.
+Pri tem spremljamo čas zagona aplikacije, stabilnost delovanja, osnovno kakovost izhoda in nabor razpoložljivih funkcij.
+Pri galeriji preverimo odpiranje fotografij in videov, preklapljanje med posnetki, brisanje, deljenje in splošno odzivnost.
+Pri senzorjih preverimo vsaj vrtenje zaslona, senzor bližine in samodejno svetlost, kjer je na voljo.
+Pri NFC preverimo osnovno branje NFC značk, vendar tega ne enačimo avtomatično s podporo za mobilno plačevanje.
 
 \textbf{Avtonomija in zmogljivost.}
 Porabo energije ocenjujemo s preprostimi, ponovljivimi vzorci rabe.
-Pri vsakem sistemu izvedemo vsaj tri osnovne preizkuse: pripravljenost čez noč, krajši preizkus brskanja po spletu in krajši preizkus predvajanja lokalno shranjenega videa.
-Poleg padca baterije opisno zabeležimo tudi segrevanje naprave, splošno odzivnost sistema in morebitne težave, kot so neobičajno hitro praznjenje, nestabilno stanje pripravljenosti ali počasno prebujanje iz spanja.
+Pri vsakem sistemu izvedemo tri osnovne preizkuse: pripravljenost čez noč, 30-minutno brskanje po spletu in 30-minutno predvajanje lokalno shranjenega videa.
+Pri testu pripravljenosti čez noč pustimo zaslon izklopljen približno osem ur; vse aplikacije v ozadju so pred začetkom zaprte, vključeni pa ostanejo Wi-Fi, mobilni podatki in GPS.
+Pri vseh treh preizkusih zabeležimo začetni in končni odstotek baterije, trajanje preizkusa ter morebitne posebnosti med izvajanjem.
+Pri testu brskanja po spletu uporabimo enako svetlost zaslona in vnaprej določen nabor spletnih strani.
+Pri testu predvajanja videa uporabimo enak lokalno shranjen video posnetek na vseh sistemih.
+Poleg porabe energije opisno zabeležimo tudi segrevanje naprave, splošno odzivnost sistema in morebitne težave, kot so neobičajno hitro praznjenje, nestabilno stanje pripravljenosti ali počasno prebujanje iz spanja.
 
 \textbf{Ekosistem aplikacij.}
 Ker je uporabnost telefona danes tesno povezana z aplikacijami, preverimo, ali posamezen sistem pokrije minimalni nabor vsakodnevnih opravil.
-Ta nabor vključuje spletni brskalnik, e-pošto, sporazumevanje, navigacijo, kamero in galerijo, predvajanje medijev ter osnovna orodja za avtentikacijo, kot je dvofaktorska avtentikacija.
+Posamezno kategorijo obravnavamo kot pokrito le, če je mogoče nalogo opraviti na razumno zanesljiv in uporabniško sprejemljiv način.
+
+Pri spletnem brskalniku uporabimo vnaprej določen nabor spletnih strani: \texttt{wikipedia.org}, \texttt{rtvslo.si}, \texttt{github.com}, \texttt{reddit.com} in \texttt{youtube.com}.
+Pri vsaki strani preverimo uspešnost nalaganja, osnovno pravilnost prikaza, odzivnost, uporabo obrazcev oziroma prijave, delo z zavihki ter osnovne interakcije, kot so kopiranje besedila, odpiranje povezav in predvajanje videa, kjer je to smiselno.
+
+Pri e-pošti preverimo uporabo enega računa, ki podpira protokola IMAP in SMTP.
+Preverimo prijavo, sinhronizacijo, pošiljanje in prejemanje sporočila ter delovanje obvestil.
+
+Pri sporazumevanju uporabimo tri vnaprej določene storitve: Telegram, Signal in Facebook Messenger.
+Telegram uporabimo kot predstavnika bolj odprte in manj vezane komunikacijske platforme, Signal kot predstavnika varnostno usmerjene storitve, Facebook Messenger pa kot predstavnika razširjene zaprte platforme.
+Pri vsaki storitvi preverimo prijavo, pošiljanje, prejemanje in obvestila.
+Če je storitev dostopna le prek skupnostnega odjemalca ali spletne različice, to posebej navedemo.
+
+Pri navigaciji preverimo iskanje cilja, izračun poti, začetek vodenja, odzivnost aplikacije ter stabilnost prikaza položaja med vožnjo ali hojo.
+Posebej zabeležimo tudi razumljivost in uporabnost navodil za pot.
+
+Pri kameri in galeriji posebej opišemo odzivnost, stabilnost in nabor funkcij.
+
+Pri predvajanju medijev preverimo lokalno glasbo, lokalni video in spletni video, pri čemer spremljamo stabilnost delovanja, morebitno segrevanje in splošno uporabnost.
+
+Pri orodjih za avtentikacijo preverimo uporabo TOTP.
+V aplikacijo uvozimo testno QR kodo in preverimo, ali sistem pravilno generira pričakovano kodo z uporabo preverjevalne strani \url{https://2fas.com/auth/check-token/}.
+
 Posebej zabeležimo tudi stanje pri aplikacijah z višjimi varnostnimi zahtevami, kot so bančne aplikacije in mobilno plačevanje, saj so te v praksi pogosto med prvimi pokazatelji omejitev alternativnih sistemov.
 
-\textbf{Možnosti prilagajanja in nadzora.}
-Kot dodatni praktični sklop preverimo tudi tiste vidike, ki so za ciljni profil uporabnika posebej pomembni: dostop do terminala, razpoložljivost paketnega upravljalnika, možnost nameščanja dodatne odprtokodne programske opreme, odstranjevanje nezaželenih aplikacij in splošno preglednost sistema.
+\textbf{Prilagodljivost in uporabniški nadzor.}
+Kot dodatni praktični sklop preverimo tudi tiste vidike, ki so za ciljni profil uporabnika posebej pomembni: dostop do terminala, razpoložljivost paketnega upravljalnika, možnost nameščanja dodatne odprtokodne programske opreme, odstranjevanje nezaželenih aplikacij, preglednost sistema ter možnosti nadzora nad procesi, storitvami in dovoljenji.
 Ta sklop ni ločen od praktične uporabnosti, temveč jo v našem kontekstu dopolnjuje.
 Prav večji nadzor nad sistemom je eden glavnih razlogov, zakaj uporabnik sploh poseže po odprtokodni alternativi.
 
 \section{Metrike in način beleženja rezultatov}
+\label{sec:metrike_in_belezenje}
 
 Rezultate beležimo na dveh ravneh.
 Na prvi ravni za posamezne funkcionalnosti uporabimo neposreden opis stanja: \enquote{deluje}, \enquote{deluje delno} ali \enquote{ne deluje}.
 Tak zapis je primeren za osnovne komponente, kot so kamera, Wi-Fi, Bluetooth, GPS, klici in podobno, saj omogoča jasen pregled nad tem, kaj je na napravi dejansko uporabno.
+
+Pri opisnih ocenah posameznih funkcionalnosti uporabljamo tri osnovne kategorije.
+Oceno \enquote{deluje} dodelimo takrat, ko funkcionalnost v običajnem scenariju uporabe deluje zanesljivo in brez pomembnih omejitev.
+Oceno \enquote{deluje delno} dodelimo, kadar funkcionalnost deluje, vendar z opaznimi omejitvami, slabšo stabilnostjo, zmanjšano zmogljivostjo ali drugimi praktično pomembnimi pomanjkljivostmi.
+Oceno \enquote{ne deluje} dodelimo, kadar funkcionalnosti ni mogoče smiselno uporabiti za predvideni namen.
+
+Kadar je to pomembno, osnovno oznako dopolnimo s kratko kvalitativno opombo.
+Na ta način ohranimo preglednost rezultatov, ne da bi izgubili pomembne praktične podrobnosti.
 
 Na drugi ravni opažanja pretvorimo v sintezne ocene po istem modelu, kot smo ga uvedli v prejšnjih poglavjih.
 Odprtost ocenjujemo po slojih sistema, praktično uporabnost pa po funkcionalnih sklopih.
@@ -1603,15 +1680,22 @@ Pri sistemih, kjer je to mogoče, zabeležimo tudi sistemske informacije o porab
 Ker ti podatki med sistemi niso nujno neposredno primerljivi, služijo predvsem kot dopolnilna interpretativna informacija.
 
 \section{Ocenjevanje odprtosti v empiričnem delu}
+\label{sec:ocenjevanje_odprtosti_empiricni}
 
 Čeprav odprtosti ni mogoče v celoti izmeriti z neposrednim uporabniškim testom, tudi v empiričnem delu preverimo nekaj konkretnih indikatorjev.
-Zanima nas, kako dokumentiran je postopek namestitve, ali je sistem mogoče posodabljati brez posebnih obhodov, koliko nadzora ima uporabnik nad prednameščenimi komponentami, kako pregledna je distribucija programske opreme ter ali sistem ostaja tesno vezan na lastniške storitve ali posebne dobaviteljske komponente.
+Pri tem ne ocenjujemo abstraktnega projekta, temveč konkretno kombinacijo projekta in naprave.
 
-Pomembno je poudariti, da v tej sekciji ne ocenjujemo abstraktnega projekta, temveč konkretno kombinacijo projekta in naprave.
-Pri LineageOS nas tako ne zanima le, da je projekt odprtokoden, temveč kako se ta odprtost pokaže prav na OnePlus 6T.
-Enako velja za Ubuntu Touch in postmarketOS, kjer je treba razlikovati med splošnim ciljem projekta in dejansko stopnjo odprtosti oziroma uporabniške avtonomije na konkretni strojni opremi.
+Na ravni zagonske verige zabeležimo, kako dokumentiran je postopek namestitve, ali je odklep zagonskega nalagalnika preprost in ponovljiv, ali sistem zahteva posebne obhode ter kako predvidljivo poteka posodabljanje po namestitvi.
+
+Na ravni sistemskih storitev in uporabniškega prostora preverimo, koliko nadzora ima uporabnik nad prednameščenimi komponentami, ali je na voljo terminal, ali obstaja paketni upravljalnik oziroma drug pregleden mehanizem nameščanja programske opreme ter kako pregledna je distribucija aplikacij in posodobitev.
+
+Na ravni odvisnosti od lastniških komponent in storitev posebej zabeležimo, ali sistem za osnovno delovanje ostaja tesno vezan na lastniške storitve, posebne dobaviteljske komponente ali druge elemente, nad katerimi uporabnik nima dejanskega nadzora.
+Pri tem upoštevamo tudi, ali so ključne vsakdanje funkcije odvisne od zaprtih ali težko zamenljivih delov sklada.
+
+Na ravni uporabniške avtonomije preverimo, ali lahko uporabnik sistem razmeroma samostojno pregleduje, prilagaja in vzdržuje brez nestandardnih obhodov ter brez pretirane odvisnosti od proizvajalca ali projekta samega.
 
 \section{Omejitve študije}
+\label{sec:omejitve_studije}
 
 Empirični del ima več pomembnih omejitev.
 Prvič, testirana je ena sama naprava, zato rezultatov ne moremo neposredno posplošiti na celoten mobilni ekosistem.
@@ -1624,6 +1708,8 @@ Vendar to ni zgolj metodološka slabost, temveč tudi del same ugotovitve: če p
 
 Kljub navedenim omejitvam takšna študija primera omogoča dovolj konkreten vpogled v to, kako se na isti napravi dejansko razlikujejo tovarniški sistem Android, alternativni ROM za sistem Android in mobilne distribucije sistema GNU/Linux.
 Prav ta neposredna primerjava je ključna za odgovor na raziskovalni vprašanji, ki zadevata praktično uporabnost in dejansko izvedljivost skoraj popolnoma odprtokodnega telefona za tehnično bolj podkovanega uporabnika.
+
+\chapter{Zaključek}
 
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Literatura}
