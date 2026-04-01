@@ -922,12 +922,12 @@ Kljub temu takšna analiza omogoča dovolj jasen pregled nad tem, katere vrste k
 \section{Alternativni ROM-i za sistem Android}
 \label{sec:analiza_android_romi}
 
-Alternativni ROM-i za sistem Android so danes najpomembnejša skupina odprtokodnih mobilnih rešitev za uporabnike, ki jih zanima razmeroma visoka stopnja praktične uporabnosti ob hkratnem zmanjšanju odvisnosti od tovarniškega sistema.
-Njihova ključna prednost je, da praviloma ohranijo združljivost z aplikacijskim ekosistemom sistema Android in s tem velik del vsakdanje uporabnosti telefona.
+Alternativni ROM-i za sistem Android so danes najpomembnejša skupina odprtokodnih mobilnih rešitev za uporabnike, ki želijo visoko stopnjo praktične uporabnosti ob hkratnem zmanjšanju odvisnosti od tovarniškega sistema.
+Njihova ključna prednost je, da ohranijo združljivost z aplikacijskim ekosistemom sistema Android in s tem velik del vsakdanje uporabnosti telefona.
 
-Hkrati pa gre tudi za skupino rešitev, pri kateri hitro postane jasno, da odprtost mobilnega operacijskega sistema ni enaka odprtosti celotne naprave.
-Čeprav ti projekti večinoma temeljijo na odprtokodnem jedru platforme Android, pri konkretni podpori posamezni napravi praviloma ostanejo vezani na dobaviteljske komponente, zaprtokodne implementacije abstrakcijske plasti strojne opreme, binarne dodatke in strojno programsko opremo posameznih podsistemov~\cite{aosp_get_started_2025,android_treble_vendor_system_split,android_hidl_versioning_treble}.
-Zato so alternativni ROM-i za sistem Android praviloma močnejši na ravni uporabniškega prostora in sistemskih storitev kot pa na ravni gonilnikov, strojne programske opreme in celotne zagonske verige.
+Ta skupina rešitev hkrati zelo jasno pokaže, da odprtost mobilnega operacijskega sistema ni enaka odprtosti celotne naprave.
+Čeprav ti projekti večinoma temeljijo na odprtokodnem jedru platforme Android, pri konkretni podpori posamezni napravi ostanejo vezani na dobaviteljske komponente, zaprtokodne implementacije abstrakcijske plasti strojne opreme, binarne dodatke in strojno programsko opremo posameznih podsistemov~\cite{aosp_get_started_2025,android_treble_vendor_system_split,android_hidl_versioning_treble}.
+Zato so alternativni ROM-i za sistem Android najmočnejši na ravni uporabniškega prostora in sistemskih storitev, bistveno manj pa na ravni gonilnikov, strojne programske opreme in celotne zagonske verige.
 
 V tej skupini obravnavamo štiri reprezentativne primere: LineageOS\footnote{\url{https://lineageos.org/}}, GrapheneOS\footnote{\url{https://grapheneos.org/}}, /e/OS\footnote{\url{https://e.foundation/e-os/}} in Replicant\footnote{\url{https://replicant.us/}}.
 Izbrani so zato, ker predstavljajo štiri precej različne strategije:
@@ -941,21 +941,21 @@ ter strogo svobodno rešitev za sistem Android, ki zavrača običajne pragmatič
 Projekt LineageOS je eden najbolj razširjenih predstavnikov alternativnih ROM-ov za sistem Android.
 Predstavlja se kot prost in odprtokoden operacijski sistem za različne naprave, ki temelji na platformi Android, pri čemer za uradno podprte naprave objavlja tudi natančna navodila za namestitev in gradnjo sistema~\cite{lineageos_home,lineageos_devices}.
 
-Z vidika modela iz prejšnjega poglavja je glavna prednost projekta LineageOS v tem, da razmeroma uspešno združi odprtokoden sistemski sloj z dovolj visoko stopnjo praktične uporabnosti.
-Uporabnik dobi sistem brez tovarniške preobleke proizvajalca, brez obvezne vezanosti na Googlove privzete aplikacije in z razmeroma preglednim postopkom namestitve ter posodabljanja~\cite{lineageos_gapps}.
+Glavna prednost projekta LineageOS je, da odprtokoden sistemski sloj združi z dovolj visoko stopnjo praktične uporabnosti.
+Uporabnik dobi sistem brez tovarniške preobleke proizvajalca, brez obvezne vezanosti na Googlove privzete aplikacije in s preglednim postopkom namestitve ter posodabljanja~\cite{lineageos_gapps}.
 Za številne naprave zato LineageOS predstavlja eno najbolj realističnih možnosti, kako podaljšati življenjsko dobo telefona in hkrati pridobiti več nadzora nad sistemom~\cite{bradley_sustainable_security_2023}.
 
-Vendar je LineageOS hkrati tudi dober primer omejitev, ki jih ima skoraj vsak ROM za sistem Android.
+LineageOS je hkrati tudi dober primer omejitev, ki jih ima skoraj vsak ROM za sistem Android.
 Uradni odgovori na pogosta vprašanja poudarjajo, da projekt za vzdrževane naprave redno vključuje varnostne popravke iz projekta AOSP, medtem ko so varnostni popravki za dobaviteljski del sistema še vedno vezani na izvor zaprtih komponent iz tovarniškega sistema~\cite{lineageos_faq}.
-To pomeni, da LineageOS sicer poveča odprtost zgornjih slojev sistema, ne odpravi pa odvisnosti od proizvajalčevih binarnih komponent v spodnjem delu sklada.
+To pomeni, da LineageOS poveča odprtost zgornjih slojev sistema, ne odpravi pa odvisnosti od proizvajalčevih binarnih komponent v spodnjem delu sklada.
 
-Po našem modelu bi zato LineageOS praviloma ocenili kot rešitev z mešanim do pretežno odprtim profilom na ravni sistemskih storitev, privzetih aplikacij in načina distribucije aplikacij, bistveno slabše pa na ravni strojne programske opreme ter dela gonilnikov.
-Na ravni praktične uporabnosti je njegov profil praviloma močan:
-osnovne funkcije telefona, aplikacijski ekosistem, splošna odzivnost sistema in možnosti prilagajanja so pri uradno podprtih napravah praviloma dovolj dobri za vsakodnevno rabo.
+Po našem modelu bi LineageOS ocenili kot rešitev z mešanim do pretežno odprtim profilom na ravni sistemskih storitev, privzetih aplikacij in načina distribucije aplikacij, bistveno slabše pa na ravni strojne programske opreme ter dela gonilnikov.
+Na ravni praktične uporabnosti je njegov profil močan:
+osnovne funkcije telefona, aplikacijski ekosistem, splošna odzivnost sistema in možnosti prilagajanja so pri uradno podprtih napravah dovolj dobri za vsakodnevno rabo.
 V primerjavi s tovarniškimi sistemi LineageOS uporabniku pogosto omogoča več nadzora nad nameščeno programsko opremo, več možnosti sistemskih prilagoditev in manjšo odvisnost od proizvajalčevih privzetih storitev.
 Glavne omejitve se pokažejo pri funkcijah, ki so posebej odvisne od proizvajalčeve implementacije, ter pri aplikacijah, ki preverjajo celovitost naprave ali se opirajo na dodatne zaprtokodne storitve~\cite{play_integrity_overview}.
 
-LineageOS je zato najprimernejši predstavnik \enquote{uravnoteženega kompromisa}: ne približa se najbolj idealu popolnoma odprtokodnega telefona, je pa pogosto ena najbolj uporabnih odprtokodnih alternativ v praksi.
+LineageOS je zato najprimernejši predstavnik \enquote{uravnoteženega kompromisa}: ne približa se najbolj idealu popolnoma odprtokodnega telefona, je pa ena najbolj uporabnih odprtokodnih alternativ v praksi.
 
 \subsection{GrapheneOS}
 
@@ -963,14 +963,14 @@ Projekt GrapheneOS predstavlja drugačno smer razvoja kot LineageOS.
 Ne osredotoča se na široko podporo številnim napravam, temveč na zasebnost, varnost in tehnično strogost pri ožjem naboru uradno podprtih telefonov Pixel~\cite{grapheneos_about,grapheneos_faq}.
 Prav ta omejenost ni naključna, temveč je del osnovne zasnove projekta.
 
-Za naš model je GrapheneOS zanimiv predvsem zato, ker pokaže, da večja varnost in večji nadzor nad sistemom ne pomenita nujno tudi večje odprtosti vseh slojev.
+GrapheneOS je za naš model pomemben predvsem zato, ker pokaže, da večja varnost in večji nadzor nad sistemom ne pomenita nujno tudi večje odprtosti vseh slojev.
 Na ravni zagonske verige je projekt zelo močan:
 postopek namestitve je dobro dokumentiran, vezan na uradno podprte naprave, po namestitvi pa predvideva ponovno zaklepanje zagonskega nalagalnika, tako da se ohrani preverjen zagon in zaščita pred nalaganjem nepooblaščenih sprememb sistema~\cite{grapheneos_install}.
 To je pomembna razlika v primerjavi s številnimi drugimi alternativnimi ROM-i, pri katerih uporabnik po namestitvi pogosto ostane pri trajno odklenjenem zagonskem nalagalniku.
 
-Na drugi strani projekt GrapheneOS ni bistveno bolj odprt v spodnjih slojih strojne podpore.
+Na drugi strani GrapheneOS ni bistveno bolj odprt v spodnjih slojih strojne podpore.
 Še vedno je vezan na Googlovo strojno osnovo telefonov Pixel, na dobaviteljske komponente strojne programske opreme in na gonilnike, ki jih zagotavlja proizvajalec naprave~\cite{grapheneos_faq}.
-Njegova prednost zato ni v tem, da bi odpravil vse zaprtokodne dele, temveč v tem, da na razmeroma kakovostni in varnostno močni strojni podlagi zgradi strožje nastavljen odprtokoden sistemski sloj.
+Njegova prednost zato ni v tem, da bi odpravil vse zaprtokodne dele, temveč v tem, da na kakovostni in varnostno močni strojni podlagi zgradi strožje nastavljen odprtokoden sistemski sloj.
 
 V dimenziji praktične uporabnosti je GrapheneOS na uradno podprtih napravah zelo močan, saj ohranja združljivost z aplikacijami za sistem Android in hkrati ne zahteva običajnega odpovedovanja ključnim funkcijam telefona.
 Pomemben del njegove praktične vrednosti je tudi visoka stopnja nadzora nad aplikacijami, dovoljenji in profili uporabe.
@@ -987,17 +987,17 @@ Projekt /e/OS se od projektov LineageOS in GrapheneOS razlikuje predvsem po tem,
 Njegova glavna ideja je različica sistema Android brez Googlovih storitev:
 odprtokoden sistemski temelj, nadomeščanje Googlovih storitev z alternativami ter bolj uporabniško usmerjen nabor privzetih aplikacij in spremljevalnih storitev.
 Dokumentacija za podprte naprave pri tem izrecno loči med graditvami tipa \enquote{Official} in \enquote{Community}; uradne graditve so po testiranju označene kot primerne za vsakodnevno rabo, obe vrsti pa prejemata posodobitve OTA~\cite{eos_devices}.
-To kaže, da projekt precej jasno cilja na vsakdanjo uporabnost in ne zgolj na tehnično demonstracijo odprtosti.
+To kaže, da projekt jasno cilja na vsakdanjo uporabnost in ne zgolj na tehnično demonstracijo odprtosti.
 
-Po našem modelu je /e/OS zanimiv predvsem kot rešitev, ki skuša izboljšati odprtost in zasebnost na ravni sistemskih storitev, privzetih aplikacij in uporabniške izkušnje, ne da bi pri tem prekinila združljivost z običajno rabo sistema Android.
-Tak pristop poveča praktično uporabnost, vendar hkrati ne odpravi enakih omejitev v spodnjih slojih kot pri drugih ROM-ih za sistem Android:
+Po našem modelu je /e/OS pomemben kot rešitev, ki skuša izboljšati odprtost in zasebnost na ravni sistemskih storitev, privzetih aplikacij in uporabniške izkušnje, ne da bi pri tem prekinila združljivost z običajno rabo sistema Android.
+Tak pristop poveča praktično uporabnost, vendar ne odpravi enakih omejitev v spodnjih slojih kot pri drugih ROM-ih za sistem Android:
 tudi tu podpora napravam ostaja odvisna od dobaviteljskih komponent, strojne programske opreme in konkretne strojne osnove posameznega telefona.
 
-Zaradi zelo širokega nabora podprtih naprav je profil sistema /e/OS nekoliko manj enoten kot pri projektu GrapheneOS.
+Zaradi zelo širokega nabora podprtih naprav je profil sistema /e/OS manj enoten kot pri projektu GrapheneOS.
 To pomeni, da se lahko dejanska kakovost podpore, hitrost posodobitev in obseg kompromisov med napravami precej razlikujejo.
 Vseeno pa je /e/OS pomemben primer zato, ker pokaže, da je mogoče odprtokodno mobilno rešitev usmeriti predvsem v praktično rabo in ne le v tehnično ali ideološko čistost.
-V primerjavi z LineageOS daje /e/OS nekoliko manjši poudarek globlji prilagodljivosti sistema in bolj izrazito prednost uporabniški dostopnosti.
-Prav zato je z vidika uporabniškega nadzora nekoliko manj izrazit predstavnik odprtokodne mobilne rešitve kot projekti, ki so bolj neposredno usmerjeni v tehnično prilagajanje sistema.
+V primerjavi z LineageOS daje /e/OS manjši poudarek globlji prilagodljivosti sistema in izraziteje daje prednost uporabniški dostopnosti.
+Prav zato je z vidika uporabniškega nadzora manj izrazit predstavnik odprtokodne mobilne rešitve kot projekti, ki so bolj neposredno usmerjeni v tehnično prilagajanje sistema.
 
 \subsection{Replicant}
 
@@ -1026,7 +1026,7 @@ GrapheneOS kaže, kako daleč je mogoče priti z varnostno strogim pristopom, č
 /e/OS daje največji poudarek vsakdanji uporabnosti in zmanjšanju odvisnosti od Googlovega ekosistema, manj pa globljemu uporabniškemu nadzoru nad sistemom.
 Replicant pa predstavlja najdoslednejšo interpretacijo programske svobode, vendar za ceno zelo omejene praktične uporabnosti.
 
-Skupna omejitev vseh teh rešitev je, da praviloma ne odpravijo temeljne odvisnosti od zaprtih komponent v spodnjih slojih mobilne naprave.
+Skupna omejitev vseh teh rešitev je, da ne odpravijo temeljne odvisnosti od zaprtih komponent v spodnjih slojih mobilne naprave.
 Njihova največja prednost je zato predvsem v odprtosti uporabniškega prostora, večjem nadzoru nad sistemom, daljši življenjski dobi podprtih naprav in manjši vezanosti na proizvajalčev tovarniški sistem.
 To je pomemben korak naprej, vendar še ne pomeni, da tak telefon v celoti doseže ideal popolnoma odprtokodnega telefona, kot smo ga opredelili v prejšnjem poglavju.
 
@@ -1055,7 +1055,7 @@ Projekt Ubuntu Touch je danes eden najpomembnejših predstavnikov mobilnih distr
 Uradna dokumentacija projekta UBports ga opisuje kot mobilni operacijski sistem, osredotočen na enostavno uporabo, zasebnost in konvergenco~\cite{ubports_ubuntu_touch,ubports_convergence}.
 Že ta izhodišča kažejo, da projekt ne stavi predvsem na ideološko čistost ali eksperimentalnost, temveč na čim bolj zaokroženo uporabniško izkušnjo.
 
-Za naš model je Ubuntu Touch zanimiv predvsem zato, ker poskuša na mobilni napravi ponuditi uporabniški prostor sistema GNU/Linux, ne da bi se pri tem povsem odpovedal praktični uporabnosti.
+Ubuntu Touch je pomemben predvsem zato, ker poskuša na mobilni napravi ponuditi uporabniški prostor sistema GNU/Linux, ne da bi se pri tem povsem odpovedal praktični uporabnosti.
 Na ravni uporabniške izkušnje je projekt bližje klasičnemu razumevanju mobilnega operacijskega sistema kot številni bolj eksperimentalni projekti.
 Velik poudarek daje konsistentnemu uporabniškemu vmesniku in zaokroženi vsakdanji rabi.
 Pomemben poudarek je tudi ideja konvergence, torej približevanja mobilnega in namiznega načina uporabe v okviru istega sistema~\cite{ubports_convergence}.
@@ -1064,10 +1064,10 @@ Vendar Ubuntu Touch hkrati zelo jasno pokaže omejitve te skupine rešitev.
 Dokumentacija za prenašanje sistema na nove naprave izrecno navaja, da je Ubuntu Touch mogoče prenesti na naprave, ki so bile prvotno dobavljene s sistemom Android, pri čemer je večina takih naprav do neke mere še vedno odvisna od lastniške programske opreme~\cite{ubports_porting_intro}.
 To pomeni, da Ubuntu Touch bistveno spremeni uporabniški prostor, ne odpravi pa nujno zaprtosti spodnjih slojev strojne podpore.
 
-Po našem modelu bi zato Ubuntu Touch ocenili kot rešitev, ki je praviloma razmeroma močna na ravni odprtosti uporabniškega prostora, preglednosti sistema in nadzora nad privzetimi storitvami, nekoliko šibkejša pa na ravni gonilnikov, strojne programske opreme in celotne strojne neodvisnosti.
-Na ravni prilagodljivosti in uporabniškega nadzora ponuja več možnosti kot tipični potrošniški mobilni sistemi, vendar zaradi manj zrelega ekosistema in projektno specifičnih rešitev praviloma ne dosega enake neposrednosti kot klasične mobilne distribucije GNU/Linux.
+Po našem modelu bi Ubuntu Touch ocenili kot rešitev, ki je močna na ravni odprtosti uporabniškega prostora, preglednosti sistema in nadzora nad privzetimi storitvami, šibkejša pa na ravni gonilnikov, strojne programske opreme in celotne strojne neodvisnosti.
+Na ravni prilagodljivosti in uporabniškega nadzora ponuja več možnosti kot tipični potrošniški mobilni sistemi, vendar zaradi manj zrelega ekosistema in projektno specifičnih rešitev ne dosega enake neposrednosti kot klasične mobilne distribucije GNU/Linux.
 V primerjavi z alternativnimi ROM-i za sistem Android je njegov položaj obraten:
-v nekaterih vidikih je bližje idealu odprtega sistema, vendar praviloma težje dosega enako raven aplikacijske združljivosti in splošne vsakdanje uporabnosti.
+v nekaterih vidikih je bližje idealu odprtega sistema, vendar težje dosega enako raven aplikacijske združljivosti in splošne vsakdanje uporabnosti.
 
 \subsection{Mobian}
 
@@ -1075,7 +1075,7 @@ Projekt Mobian predstavlja nekoliko drugačen pristop kot Ubuntu Touch, čeprav 
 Na uradni strani se predstavlja kot izpeljanka Debiana za mobilne naprave, uradni blog projekta pa poudarja, da želi standardno distribucijo Debian povezati z mobilnimi prilagoditvami, pri čemer skuša čim več posebnih rešitev prenesti v izvorne projekte in s tem zmanjšati količino lastnih, projektno specifičnih sprememb~\cite{mobian_home,mobian_what_is}.
 Že iz tega izhodišča je razvidno, da Mobian ne želi biti povsem ločen mobilni ekosistem, temveč čim bolj neposredna mobilna razširitev obstoječega ekosistema Debian.
 
-Za naš model je Mobian zanimiv predvsem zato, ker je med obravnavanimi rešitvami eden najbližjih predstavnikov mobilnega sistema, ki ostaja tesno povezan z običajno distribucijo GNU/Linux.
+Mobian je pomemben predvsem zato, ker je med obravnavanimi rešitvami eden najbližjih predstavnikov mobilnega sistema, ki ostaja tesno povezan z običajno distribucijo GNU/Linux.
 Tak pristop lahko poveča preglednost sistema, zmanjša količino projektno specifičnih prilagoditev in olajša razumevanje celotnega programskega sklada.
 Hkrati pa pomeni, da projekt manj stavi na strogo nadzorovano in poenoteno mobilno uporabniško izkušnjo kot Ubuntu Touch, temveč bolj na postopno prilagajanje obstoječega ekosistema GNU/Linux mobilni rabi.
 
@@ -1083,10 +1083,10 @@ Za to diplomsko nalogo je Mobian pomemben tudi zato, ker ni omejen le na namensk
 Debianova dokumentacija je leta 2025 med uradno podprtimi napravami, ki so bile prvotno razvite za sistem Android, navajala OnePlus 6/6T in Pocophone F1~\cite{mobian_devices}.
 S tem Mobian jasno sodi v skupino rešitev, ki skušajo na obstoječo strojno opremo, prvotno razvito za sistem Android, prenesti uporabniški prostor sistema GNU/Linux.
 
-Po našem modelu bi Mobian ocenili kot rešitev, ki je razmeroma močna pri odprtosti uporabniškega prostora, bližini običajnim distribucijam GNU/Linux, preglednosti programskega sklada ter možnostih prilagajanja in uporabniškega nadzora.
-Na ravni splošne praktične uporabnosti pa je njegov profil nekoliko manj enoten.
-V primerjavi z Ubuntu Touch je praviloma manj osredotočen na čim bolj zaokroženo mobilno uporabniško izkušnjo, v primerjavi s postmarketOS pa deluje bolj konservativno in bližje klasični logiki distribucije Debian.
-Prav zato je Mobian dober vmesni primer med uporabniško usmerjenim mobilnim sistemom in bolj eksperimentalnim prilagajanjem sistema GNU/Linux širokemu naboru naprav.
+Po našem modelu bi Mobian ocenili kot rešitev, ki je močna pri odprtosti uporabniškega prostora, bližini običajnim distribucijam GNU/Linux, preglednosti programskega sklada ter možnostih prilagajanja in uporabniškega nadzora.
+Na ravni splošne praktične uporabnosti pa je njegov profil manj enoten.
+V primerjavi z Ubuntu Touch je manj osredotočen na čim bolj zaokroženo mobilno uporabniško izkušnjo, v primerjavi s postmarketOS pa deluje bolj konservativno in bližje klasični logiki distribucije Debian.
+Prav zato je Mobian dober vmesni primer med uporabniško usmerjenim mobilnim sistemom in bolj eksperimentalnim prilagajanjem sistema GNU/Linux širšemu naboru naprav.
 
 \subsection{postmarketOS}
 
@@ -1094,13 +1094,13 @@ Projekt postmarketOS predstavlja bolj izrazito eksperimentalno interpretacijo mo
 Njegov cilj ni predvsem zgraditi čim bolj podoben nadomestek za običajen pametni telefon, temveč mobilno strojno opremo približati običajni logiki distribucij GNU/Linux in dolgoročnega vzdrževanja.
 Že uradna predstavitev projekta poudarja, da gre za razširitev distribucije Alpine Linux na pametne telefone~\cite{postmarketos_about}.
 
-Za naš model je postmarketOS posebej zanimiv zato, ker zelo jasno poudari razliko med široko podporo napravam in dejansko stopnjo uporabnosti.
+Projekt je posebej zanimiv zato, ker zelo jasno poudari razliko med široko podporo napravam in dejansko stopnjo uporabnosti.
 Seznam podprtih naprav je izredno velik; uradna dokumentacija je marca 2026 navajala 735 podprtih naprav~\cite{postmarketos_devices}.
 Vendar sama podprtost še ne pomeni, da posamezna naprava ponuja enako stopnjo praktične uporabnosti.
 Pri številnih napravah to pomeni predvsem osnovno stopnjo podpore, medtem ko so posamezne funkcije, kot so mobilna omrežja, kamera, pospeševanje grafike ali upravljanje porabe, še vedno omejene.
 
 Projekt postmarketOS je zato pomemben kot primer rešitve, ki močno razširi prostor eksperimentiranja in dolgoročnega oživljanja starejših naprav, vendar prav zaradi te širine težje zagotovi enotno uporabniško izkušnjo.
-Na ravni odprtosti uporabniškega prostora je pogosto zelo močan, na ravni praktične uporabnosti pa je profil med napravami bistveno bolj neenoten kot pri Ubuntu Touch ali pri alternativnih ROM-ih za sistem Android.
+Na ravni odprtosti uporabniškega prostora je zelo močan, na ravni praktične uporabnosti pa je profil med napravami bistveno bolj neenoten kot pri Ubuntu Touch ali pri alternativnih ROM-ih za sistem Android.
 Za tehnično bolj podkovanega uporabnika je postmarketOS posebej zanimiv tudi zato, ker omogoča visoko stopnjo prilagodljivosti in neposrednega nadzora nad sistemom.
 Vendar je praktična vrednost takšne rešitve močno odvisna od tega, kako zrela je prilagoditev za posamezno napravo in koliko ključnih funkcij je na izbrani strojni opremi dejansko uporabnih.
 
