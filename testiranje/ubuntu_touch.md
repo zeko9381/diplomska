@@ -210,20 +210,26 @@ Opombe:
 
 ### 30 minut lokalnega videa —
 
-Začetni odstotek:
-Končni odstotek:
 Svetlost zaslona: 50 %
+Storitve: Wifi, GPS, mobilni podatki
+
+1. poskus
+Začetni odstotek: 56%
+Končni odstotek: 52%
+2. poskus
+Začetni odstotek: 52%
+Končni odstotek: 47%
 
 Testni posnetek:
 
-* Ime: Big Buck Bunny
+* Ime: Black Mirror S01E01
 * Format / ločljivost: 1080p H.264
 
 Opombe:
 
-* Segrevanje:
-* Opazno štekanje:
-* Komentar: test še ni zaključen
+* Segrevanje: D
+* Opazno štekanje: D
+* Komentar: brez težav. Na osnovi nizke porabe sklepam, da deluje strojno pospeševanje.
 
 ### Splošna odzivnost sistema — DD
 
