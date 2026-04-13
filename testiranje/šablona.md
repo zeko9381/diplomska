@@ -177,10 +177,10 @@ Trajanje:
 Pogoji testa:
 
 * Zaslon izklopljen:
-* Wi-Fi: vklopljen
-* Mobilni podatki: vklopljeni
-* GPS: vklopljen
-* Aplikacije v ozadju: zaprte
+* Wi-Fi:
+* Mobilni podatki:
+* GPS:
+* Aplikacije v ozadju:
 
 Opombe:
 
@@ -190,9 +190,16 @@ Opombe:
 
 ### 30 minut brskanja po spletu — [D/DD/ND]
 
+Svetlost zaslona:
+Storitve:
+
+1. poskus
 Začetni odstotek:
 Končni odstotek:
-Svetlost zaslona: 50 %
+
+2. poskus
+Začetni odstotek:
+Končni odstotek:
 
 Preizkušene strani:
 
@@ -202,6 +209,10 @@ Preizkušene strani:
 * reddit.com
 * youtube.com
 
+Dodatne preizkušene strani:
+
+*
+
 Opombe:
 
 * Segrevanje:
@@ -210,9 +221,16 @@ Opombe:
 
 ### 30 minut lokalnega videa — [D/DD/ND]
 
+Svetlost zaslona:
+Storitve:
+
+1. poskus
 Začetni odstotek:
 Končni odstotek:
-Svetlost zaslona: 50 %
+
+2. poskus
+Začetni odstotek:
+Končni odstotek:
 
 Testni posnetek:
 
@@ -248,7 +266,7 @@ Opombe:
 
 Privzeta trgovina / repozitorij:
 Način nameščanja aplikacij:
-Posebnosti (npr. read-only filesystem, brez Android aplikacij, brez Flatpak):
+Posebnosti:
 
 Opombe:
 
@@ -267,6 +285,10 @@ Testne strani:
 * reddit.com:
 * youtube.com:
 
+Dodatne preizkušene strani:
+
+*
+
 Preverjeno:
 
 * nalaganje strani:
@@ -284,7 +306,7 @@ Opombe:
 ### E-pošta — [D/DD/ND]
 
 Uporabljena aplikacija:
-Vrsta: privzeta / dodatna
+Vrsta: privzeta / dodatna / nameščena / spletna
 
 Prijava v IMAP/SMTP račun:
 Sinhronizacija:
@@ -301,7 +323,7 @@ Opombe:
 #### Telegram — [D/DD/ND]
 
 Aplikacija / način uporabe:
-Vrsta: uradna / spletna / skupnostna
+Vrsta: uradna / spletna / skupnostna / ni praktično na voljo
 
 Prijava:
 Pošiljanje:
@@ -315,7 +337,7 @@ Opombe:
 #### Signal — [D/DD/ND]
 
 Aplikacija / način uporabe:
-Vrsta: uradna / spletna / skupnostna / ni na voljo
+Vrsta: uradna / spletna / skupnostna / ni na voljo / ni praktično na voljo
 
 Prijava:
 Pošiljanje:
@@ -329,7 +351,7 @@ Opombe:
 #### Facebook Messenger — [D/DD/ND]
 
 Aplikacija / način uporabe:
-Vrsta: uradna / spletna / skupnostna / ni na voljo
+Vrsta: uradna / spletna / skupnostna / ni na voljo / ni praktično na voljo
 
 Prijava:
 Pošiljanje:
@@ -343,8 +365,8 @@ Opombe:
 
 ### Navigacija — [D/DD/ND]
 
-Aplikacija / način uporabe:
-Vrsta: privzeta / dodatna
+Uporabljena aplikacija:
+Vrsta: privzeta / dodatna / nameščena / spletna
 
 Iskanje cilja:
 Izračun poti:
@@ -389,7 +411,7 @@ Pravilnost kode:
 
 Preverjeno z:
 
-* https://2fas.com/auth/check-token/
+*
 
 Opombe:
 
