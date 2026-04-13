@@ -190,9 +190,15 @@ Opombe:
 
 ### 30 minut brskanja po spletu —
 
-Začetni odstotek:
-Končni odstotek:
 Svetlost zaslona: 50 %
+Storitve: Wifi, GPS, mobilni podatki
+
+1. poskus
+Začetni odstotek: 88%
+Končni odstotek: 82%
+2. poskus
+Začetni odstotek: 81%
+Končni odstotek: 76%
 
 Preizkušene strani:
 
@@ -206,7 +212,7 @@ Opombe:
 
 * Segrevanje:
 * Opazno štekanje: počasne animacije in nalaganje. Še vedno uporabno.
-* Komentar: test še ni zaključen; iz opazovanj brskalnika je razvidno, da je raba pogosto počasnejša kot na sodobnem Android sistemu
+* Komentar: ponekod težave s CSS
 
 ### 30 minut lokalnega videa —
 
