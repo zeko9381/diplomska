@@ -210,7 +210,7 @@
 
 ### Stran 37 (PDF)
 
-- [ ] **P37-1**
+- [x] **P37-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `Način ocenjevanja`
   - **Verbatim komentar:** `Mislim, da ni potrebe, da definirate 2 ločeni lestvici z istimi vrednosti (eno za odprtost in eno za uporabnost), temveč le eno, a bolj abstraktno, npr.:
@@ -225,13 +225,13 @@
 
 ### Stran 45 (PDF)
 
-- [ ] **P45-1**
+- [x] **P45-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `/e/OS`
   - **Verbatim komentar:** `Projekt /e/OS; skušajte se izogibati uporabi kratic na začetku stavka kot tudi v začetku naslovov`
   - **Naloga:** preoblikovati začetek stavka ali naslov, da se ne začne s kratico.
 
-- [ ] **P45-2**
+- [x] **P45-2**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `“Official” in “Community”;`
   - **Verbatim komentar:** `Poslovenite, v oklepaju pa navedie izvirnik`
@@ -239,13 +239,13 @@
 
 ### Stran 46 (PDF)
 
-- [ ] **P46-1**
+- [x] **P46-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `OTA`
   - **Verbatim komentar:** `prevedite in pojasnite kratice`
   - **Naloga:** razložiti kratico OTA.
 
-- [ ] **P46-2**
+- [x] **P46-2**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `v tehnično ali ideološko čistost.`
   - **Verbatim komentar:** `Kaj to pomeni?`
@@ -253,7 +253,7 @@
 
 ### Stran 47 (PDF)
 
-- [ ] **P47-1**
+- [x] **P47-1**
   - **Vrsta oznake:** squiggly
   - **Označeno besedilo:** `/e/OS`
   - **Verbatim komentar:** `— (brez dodatnega komentarja, samo označeno)`
@@ -261,7 +261,7 @@
 
 ### Stran 49 (PDF)
 
-- [ ] **P49-1**
+- [x] **P49-1**
   - **Vrsta oznake:** squiggly
   - **Označeno besedilo:** `obravnavamo Ubuntu`
   - **Verbatim komentar:** `obravnavamo rešitve Ubuntu Touch, Mobian, postmarketOS ...`
@@ -269,7 +269,7 @@
 
 ### Stran 55 (PDF)
 
-- [ ] **P55-1**
+- [x] **P55-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `PINE64`
   - **Verbatim komentar:** `Organizacija PINE64? Podjetje?`

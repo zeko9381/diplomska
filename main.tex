@@ -861,19 +861,18 @@ Takšne aplikacije so zato dober pokazatelj praktičnih omejitev posamezne reši
 \label{sec:model_ocenjevanje}
 
 Za primerjavo obstoječih projektov in za študijo primera potrebujemo enoten način ocenjevanja.
-Posamezne rešitve zato ocenjujemo v dveh ločenih dimenzijah: odprtosti in praktični uporabnosti.
+Posamezne rešitve ocenjujemo v dveh ločenih dimenzijah: odprtosti in praktični uporabnosti.
 Pri tem ne uporabljamo dveh ločenih lestvic z enakimi vrednostmi, temveč eno samo tristopenjsko lestvico z ocenami $0$, $1$ in $2$, ki jo razlagamo glede na posamezni kriterij.
 
-Pomembno je, da ne ocenjujemo projekta v splošnem, temveč vedno konkretno rešitev na konkretni podprti napravi.
+Ne ocenjujemo projekta v splošnem, temveč vedno konkretno rešitev na konkretni podprti napravi.
 Tako na primer ne ocenjujemo \enquote{GrapheneOS na splošno}, temveč \enquote{GrapheneOS na uradno podprti napravi}.
-Na ta način se izognemo mešanju lastnosti programske rešitve z lastnostmi strojne opreme.
+S tem se izognemo mešanju lastnosti programske rešitve z lastnostmi strojne opreme.
 
-Odprtost ocenjujemo po slojih iz sekcije~\ref{sec:model_sloji} in po kriterijih iz sekcije~\ref{sec:model_kriteriji_odprtosti}.
-Praktično uporabnost pa ocenjujemo po sklopih iz sekcije~\ref{sec:model_uporabnost}.
-V obeh dimenzijah uporabljamo isto abstraktno lestvico, ker posamezni kriteriji ne merijo vedno odprtosti ali uporabnosti neposredno, temveč pogosto merijo lastnosti, iz katerih lahko na odprtost oziroma uporabnost sklepamo.
+Odprtost ocenjujemo po slojih iz sekcije~\ref{sec:model_sloji} in po kriterijih iz sekcije~\ref{sec:model_kriteriji_odprtosti}, praktično uporabnost pa po sklopih iz sekcije~\ref{sec:model_uporabnost}.
+V obeh dimenzijah uporabljamo isto abstraktno lestvico, ker posamezni kriteriji odprtosti ali uporabnosti ne merijo vedno neposredno, temveč pogosto merijo lastnosti, iz katerih lahko na odprtost oziroma uporabnost sklepamo.
 To velja na primer za dokumentiranost namestitve, neodvisnost od lastniških storitev, ponovljive gradnje, vzdrževalni signal ali odprtost ključnih sistemskih komponent.
 
-Tukaj model ne ocenjuje neposredno varnosti, zasebnosti ali dejanske zaupnosti sistema.
+Model ne ocenjuje neposredno varnosti, zasebnosti ali dejanske zaupnosti sistema.
 Te vidike obravnavamo kot pomembne posledice odprtosti in preverljivosti, vendar jih zaradi omejenega obsega naloge ne vključujemo kot samostojne dimenzije ocenjevanja.
 V model odprtosti zato vključujemo predvsem tiste lastnosti, ki uporabniku in neodvisni skupnosti omogočajo pregled, zamenljivost komponent, preverljivost izdaj ter dolgoročno vzdrževanje sistema.
 
@@ -887,26 +886,23 @@ Pri praktični uporabnosti pa imajo večjo težo osnovne funkcije telefona, mobi
 Skupna ocenjevalna lestvica je naslednja:
 \begin{itemize}
   \item \textbf{0 -- nizka ocena:} obravnavani kriterij je izpolnjen slabo ali pa sploh ni izpolnjen.
-  Pri kriterijih odprtosti to pomeni, da rešitev ostaja pretežno odvisna od zaprtih, nezamenljivih ali slabo preverljivih komponent.
-  Pri kriterijih praktične uporabnosti pa pomeni, da funkcionalnost ne deluje ali pa je za vsakdanjo rabo preveč nezanesljiva.
+  Pri odprtosti to pomeni, da rešitev ostaja pretežno odvisna od zaprtih, nezamenljivih ali slabo preverljivih komponent.
+  Pri praktični uporabnosti pa pomeni, da funkcionalnost ne deluje ali pa je za vsakdanjo rabo preveč nezanesljiva.
 
   \item \textbf{1 -- srednja ocena:} obravnavani kriterij je izpolnjen delno.
   Rešitev na tem mestu pokaže določen napredek, vendar ostajajo pomembne omejitve, kompromisi ali odvisnosti.
 
   \item \textbf{2 -- visoka ocena:} obravnavani kriterij je izpolnjen dobro.
-  Pri kriterijih odprtosti to pomeni, da je rešitev pretežno odprta, preverljiva in zamenljiva.
-  Pri kriterijih praktične uporabnosti pa pomeni, da funkcionalnost deluje stabilno in brez posebnih omejitev v tipičnih scenarijih uporabe.
+  Pri odprtosti to pomeni, da je rešitev pretežno odprta, preverljiva in zamenljiva.
+  Pri praktični uporabnosti pa pomeni, da funkcionalnost deluje stabilno in brez posebnih omejitev v tipičnih scenarijih uporabe.
 \end{itemize}
 
 Ocena posameznega sloja oziroma sklopa je sintezna ocena na podlagi vnaprej določenih kriterijev, pri čemer pri razlagi upoštevamo tudi relativno pomembnost posameznih podsistemov in funkcij.
-Skupnega uteženega rezultata ne računamo, saj bi s tem ustvarili vtis večje objektivnosti, kot jo je pri tovrstni primerjavi mogoče zagotoviti.
-Namesto tega rezultate predstavimo v tabelah in grafičnih povzetkih, ločeno za odprtost in praktično uporabnost.
+Skupnega uteženega rezultata ne računamo.
+Rezultate zato predstavimo v tabelah in grafičnih povzetkih, ločeno za odprtost in praktično uporabnost.
 
-Tak način prikaza omogoča, da pri vsaki rešitvi jasno pokažemo njen profil kompromisov, torej kje je bližje idealu popolnoma odprtokodnega telefona in kje od njega bistveno odstopa.
-V razpravi lahko te profile dodatno osvetlimo tudi z vidika različnih tipov uporabnikov, vendar to ne spremeni osnovnega načina ocenjevanja.
-
-Pri analizi obstoječih rešitev bodo ocene temeljile na javno dostopni dokumentaciji projektov, seznamih podprtih funkcionalnosti, znanih omejitvah in uporabniških poročilih.
-V empiričnem delu pa bomo iste sklope ocenili še na podlagi lastnega testiranja na izbrani napravi.
+Pri analizi obstoječih rešitev ocene temeljijo na javno dostopni dokumentaciji projektov, seznamih podprtih funkcionalnosti, znanih omejitvah in uporabniških poročilih.
+V empiričnem delu iste sklope ocenimo še na podlagi lastnega testiranja na izbrani napravi.
 Ocene v primerjalni analizi so zato nujno bolj okvirne kot ocene v študiji primera, kjer lahko funkcionalnosti preverimo neposredno.
 
 \section{Povzetek}
@@ -1002,13 +998,13 @@ Njegova glavna omejitev je drugje:
 uporabnik mora sprejeti zelo ozek nabor podprtih naprav in s tem precej večjo vezanost na konkretno strojno platformo.
 GrapheneOS je zato dober primer rešitve, ki ni najbolj odprta v absolutnem smislu, vendar zelo premišljeno združuje odprtost zgornjih slojev, močan varnostni model in visoko praktično uporabnost.
 
-\subsection{/e/OS}
+\subsection{Projekt /e/OS}
 
 Projekt /e/OS se od projektov LineageOS in GrapheneOS razlikuje predvsem po tem, da skuša odprtokodno mobilno rešitev približati širšemu krogu uporabnikov, ki jih zanimata zasebnost in manjša odvisnost od Googlovih storitev, ne želijo pa nujno tehnično zahtevnega sistema ali zelo ozkega nabora podprtih naprav~\cite{eos_devices,eos_build_types}.
 
 Njegova glavna ideja je različica sistema Android brez Googlovih storitev:
 odprtokoden sistemski temelj, nadomeščanje Googlovih storitev z alternativami ter bolj uporabniško usmerjen nabor privzetih aplikacij in spremljevalnih storitev.
-Dokumentacija za podprte naprave pri tem izrecno loči med graditvami tipa \enquote{Official} in \enquote{Community}; uradne graditve so po testiranju označene kot primerne za vsakodnevno rabo, obe vrsti pa prejemata posodobitve OTA~\cite{eos_devices}.
+Dokumentacija za podprte naprave pri tem izrecno loči med uradnimi graditvami (angl.~\textit{Official}) in skupnostnimi graditvami (angl.~\textit{Community}); uradne graditve so po testiranju označene kot primerne za vsakodnevno rabo, obe vrsti pa prejemata sprotne posodobitve sistema po zraku (angl.~\textit{over-the-air}, OTA)~\cite{eos_devices}.
 To kaže, da projekt jasno cilja na vsakdanjo uporabnost in ne zgolj na tehnično demonstracijo odprtosti.
 
 Po našem modelu je /e/OS pomemben kot rešitev, ki skuša izboljšati odprtost in zasebnost na ravni sistemskih storitev, privzetih aplikacij in uporabniške izkušnje, ne da bi pri tem prekinila združljivost z običajno rabo sistema Android.
@@ -1017,7 +1013,7 @@ tudi tu podpora napravam ostaja odvisna od dobaviteljskih komponent, strojne pro
 
 Zaradi zelo širokega nabora podprtih naprav je profil sistema /e/OS manj enoten kot pri projektu GrapheneOS.
 To pomeni, da se lahko dejanska kakovost podpore, hitrost posodobitev in obseg kompromisov med napravami precej razlikujejo.
-Vseeno pa je /e/OS pomemben primer zato, ker pokaže, da je mogoče odprtokodno mobilno rešitev usmeriti predvsem v praktično rabo in ne le v tehnično ali ideološko čistost.
+Vseeno pa je /e/OS pomemben primer zato, ker pokaže, da je mogoče odprtokodno mobilno rešitev usmeriti predvsem v praktično rabo in ne predvsem v čim večjo tehnično prilagodljivost sistema ali v čim strožje izogibanje lastniškim komponentam.
 V primerjavi z LineageOS daje /e/OS manjši poudarek globlji prilagodljivosti sistema in izraziteje daje prednost uporabniški dostopnosti.
 Prav zato je z vidika uporabniškega nadzora manj izrazit predstavnik odprtokodne mobilne rešitve kot projekti, ki so bolj neposredno usmerjeni v tehnično prilagajanje sistema.
 
@@ -1045,7 +1041,7 @@ ne kot najbolj praktična rešitev, temveč kot dokaz, kako hitro se ob strožje
 Analiza alternativnih ROM-ov za sistem Android pokaže, da znotraj iste tehnične družine ne obstaja ena sama \enquote{najboljša} rešitev, temveč več različnih strategij.
 LineageOS predstavlja najbolj uravnotežen kompromis med odprtostjo, uporabnostjo in možnostmi prilagajanja sistema.
 GrapheneOS kaže, kako daleč je mogoče priti z varnostno strogim pristopom, če projekt sprejme zelo ozek nabor strojne podpore in prilagodljivost sistema podredi strožjemu varnostnemu modelu.
-/e/OS daje največji poudarek vsakdanji uporabnosti in zmanjšanju odvisnosti od Googlovega ekosistema, manj pa globljemu uporabniškemu nadzoru nad sistemom.
+Projekt /e/OS daje največji poudarek vsakdanji uporabnosti in zmanjšanju odvisnosti od Googlovega ekosistema, manj pa globljemu uporabniškemu nadzoru nad sistemom.
 Replicant pa predstavlja najdoslednejšo interpretacijo programske svobode, vendar za ceno zelo omejene praktične uporabnosti.
 
 Skupna omejitev vseh teh rešitev je, da ne odpravijo temeljne odvisnosti od zaprtih komponent v spodnjih slojih mobilne naprave.
@@ -1064,7 +1060,7 @@ Hkrati pa ne odpravi samodejno omejitev v spodnjih slojih naprave.
 Ker je bila večina teh telefonov prvotno razvita za sistem Android, so mobilne distribucije sistema GNU/Linux pogosto še vedno odvisne od spodnjih slojev sistema Android, prilagojenih jeder, binarnih dodatkov in različnih združljivostnih slojev.
 Prav zato ta skupina rešitev dobro pokaže, da odprtost uporabniškega prostora še ni enaka odprtosti celotnega sistema.
 
-V tej skupini obravnavamo Ubuntu Touch\footnote{\url{https://ubuntu-touch.io/}}, Mobian\footnote{\url{https://mobian.org/}}, postmarketOS\footnote{\url{https://postmarketos.org/}} in projekt Halium\footnote{\url{https://halium.org/}}.
+V tej skupini obravnavamo rešitve Ubuntu Touch\footnote{\url{https://ubuntu-touch.io/}}, Mobian\footnote{\url{https://mobian.org/}}, postmarketOS\footnote{\url{https://postmarketos.org/}} in projekt Halium\footnote{\url{https://halium.org/}}.
 Izbrani so zato, ker predstavljajo štiri tesno povezane, vendar vsebinsko različne pristope:
 Ubuntu Touch kot uporabniško usmerjen mobilni sistem,
 Mobian kot mobilno distribucijo sistema GNU/Linux, tesno povezano z Debianom,
@@ -1170,7 +1166,7 @@ Uradna predstavitev ga opisuje kot telefon, ki zmore poganjati glavno vejo jedra
 Že ta opis pokaže, da se PinePhone ne poskuša približati običajni logiki komercialnega pametnega telefona, temveč predvsem ponuditi odprto in eksperimentalno razvojno platformo.
 
 Ključna prednost PinePhona je, da naprava ni zasnovana okoli sistema Android, temveč okoli neposredne podpore za GNU/Linux.
-PINE64 pri tem posebej poudarja podporo glavni veji jedra Linux in prisotnost strojnih stikal za zasebnost~\cite{pine64_pinephone_device}.
+Podjetje PINE64, ki se predstavlja kot skupnostno usmerjeno podjetje, pri tem posebej poudarja podporo glavni veji jedra Linux in prisotnost strojnih stikal za zasebnost~\cite{pine64_pinephone_device}.
 To pomeni, da je nadzor nad napravo v večji meri prenesen na uporabnika in skupnost razvijalcev, ne pa na proizvajalca zaprtega mobilnega ekosistema.
 
 Vendar PinePhone hkrati zelo jasno pokaže, kako težko je visoko stopnjo odprtosti pretvoriti v vsakdanje uporabno napravo.
