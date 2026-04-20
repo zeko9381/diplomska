@@ -379,19 +379,20 @@ Opis diplome v angleščini
 \chapter{Uvod}
 \label{chap:uvod}
 placeholder
-
-\chapter{Pregled področja}
-\label{chap:pregled_podrocja}
-
+\iffalse
 Pametni telefon je danes ena izmed osrednjih računalniških naprav v vsakdanji rabi.
 Uporabljamo ga za komunikacijo, dostop do spleta, navigacijo, avtentikacijo, večpredstavnostne vsebine in številne druge storitve.
 Zato je operacijski sistem telefona pomemben ne le z vidika uporabniške izkušnje, temveč tudi z vidika nadzora nad napravo, zasebnosti, varnosti in življenjske dobe programske podpore.
+\fi
+
+\chapter{Pregled področja}
+\label{chap:pregled_podrocja}
 
 Sodobni mobilni trg je močno koncentriran.
 V praksi ga skoraj v celoti obvladujeta Android in iOS, kar pomembno vpliva na možnosti nameščanja programske opreme, prilagajanja sistema in dolgoročnega vzdrževanja naprave.
 V tem poglavju najprej predstavimo ključne značilnosti obeh prevladujočih platform, nato pa pregledamo glavne odprtokodne pristope in njihove omejitve.
 
-\section{Duopol Android/iOS in posledice za uporabnike}
+\section{Duopol Android/iOS}
 \label{sec:duopol}
 
 Android in iOS predstavljata skoraj celoten trg mobilnih operacijskih sistemov.
@@ -418,15 +419,15 @@ iOS je zato dober kontrastni primer, saj pokaže, kako je videti močno centrali
 \section{Sistem Android}
 \label{sec:android}
 
-Android se pogosto predstavlja kot odprtokoden sistem, saj temelji na Androidovem odprtokodnem projektu (AOSP)~\cite{aosp_get_started_2025}.
+Android se pogosto predstavlja kot odprtokoden sistem, saj temelji na Androidovem odprtokodnem projektu (angl.~\textit{Android Open Source Project}, AOSP)~\cite{aosp_get_started_2025}.
 To je pomembna razlika v primerjavi z iOS, ker projekt AOSP omogoča javno dostopno izvorno kodo za velik del platforme in teoretično dopušča razvoj alternativnih distribucij.
 
 V praksi pa tipična naprava z Androidom ni enaka projektu AOSP.
 Večina naprav vsebuje:
 \begin{itemize}
-  \item prilagoditve izdelovalca originalne opreme (OEM), ki vključujejo dodatne sistemske aplikacije;
+  \item prilagoditve proizvajalca originalne opreme (angl.~\textit{original equipment manufacturer}, OEM), ki vključujejo dodatne sistemske aplikacije;
   \item zaprtokodne gonilnike in strojno programsko opremo za posamezne komponente, ki so del sklada dobavitelja~\cite{android_treble_vendor_system_split,android_hidl_versioning_treble};
-  \item Googlove mobilne storitve (GMS), ki niso del projekta AOSP in so na voljo le prek licence; pomemben del teh storitev predstavlja \emph{GMS Core} oziroma \emph{Google Play Services}~\cite{gms_not_part_of_aosp_license,gms_core_proprietary_layer}.
+  \item Googlove mobilne storitve (angl.~\textit{Google Mobile Services}, GMS), ki niso del projekta AOSP in so na voljo le prek licence; pomemben del teh storitev predstavlja GMS Core oziroma Google Play Services [7, 3].
 \end{itemize}
 
 Posledica je, da je Android kot ekosistem hibriden.
@@ -448,10 +449,10 @@ Za razumevanje omejitev odprtokodnih mobilnih sistemov je ključno upoštevati, 
 Pri tipični napravi sodeluje več akterjev:
 \begin{itemize}
   \item \textbf{proizvajalec operacijskega sistema oziroma ekosistema} (Apple ali Google, posredno tudi skupnost AOSP);
-  \item \textbf{izdelovalec originalne opreme (OEM)} (npr. OnePlus), ki sistem prilagodi konkretni napravi;
-  \item \textbf{proizvajalec sistema na čipu (SoC)} (npr. Qualcomm), ki zagotovi gonilnike in strojno programsko opremo;
+  \item \textbf{izdelovalec originalne opreme (OEM)} (npr.~OnePlus), ki sistem prilagodi konkretni napravi;
+  \item \textbf{proizvajalec sistema na čipu (angl.~\textit{system on a chip}, SoC)} (npr.~Qualcomm), ki zagotovi gonilnike in strojno programsko opremo;
   \item \textbf{operaterji}, ki v določenih državah vplivajo tudi na certificiranje in omejitve;
-  \item \textbf{razvijalci aplikacij}, ki se zanašajo na lastniške programske vmesnike (API) in storitve, npr. potisna obvestila ali SafetyNet/Play Integrity~\cite{safetynet_deprecated_replaced,play_integrity_overview}.
+  \item \textbf{razvijalci aplikacij}, ki se zanašajo na lastniške programske vmesnike (angl.~\textit{application programming interface}, API) in storitve, npr. potisna obvestila ali SafetyNet/Play Integrity~\cite{safetynet_deprecated_replaced,play_integrity_overview}.
 \end{itemize}
 
 Poseben primer je modemski podsistem.
@@ -464,7 +465,7 @@ Tudi če zamenjamo operacijski sistem in aplikacije, modemski podsistem ostaja k
 \label{sec:custom_rom}
 
 Alternativni ROM-i za Android so eden glavnih načinov, kako tehnično bolj podkovani uporabniki povečajo nadzor nad napravo.
-Najbolj znan primer je LineageOS\footnote{\url{https://lineageos.org/}}, poleg njega pa obstajajo tudi projekti, ki dajejo večji poudarek zasebnosti ali zmanjšanju odvisnosti od Googlovih storitev, na primer /e/OS\footnote{\url{https://e.foundation/e-os/}} in GrapheneOS\footnote{\url{https://grapheneos.org/}}.
+Najbolj znan primer je LineageOS\footnote{\url{https://lineageos.org/}}, poleg njega pa obstajajo tudi projekti, ki dajejo večji poudarek zasebnosti ali zmanjšanju odvisnosti od Googlovih storitev, kot sta sistema /e/OS\footnote{\url{https://e.foundation/e-os/}} in GrapheneOS\footnote{\url{https://grapheneos.org/}}.
 
 V primerjavi s tovarniškimi sistemi alternativni ROM-i navadno vključujejo manj prednaložene programske opreme, preglednejše nastavitve zasebnosti in več možnosti prilagajanja sistema.
 Pri tovarniških sistemih so dodatne aplikacije lahko nameščene že v izhodišču, čeprav jih uporabnik ne potrebuje in jih v nekaterih primerih tudi ne more preprosto odstraniti.
@@ -526,15 +527,15 @@ To predstavlja izhodišče za naslednje poglavje, v katerem opredelimo teoretič
 
 V prejšnjem poglavju smo pokazali, da je tudi pri sistemih z odprtokodno osnovo velik del mobilnega ekosistema še vedno odvisen od zaprtih komponent.
 Da bi lahko kasneje ocenili, v kolikšni meri je popolnoma odprtokoden telefon v praksi izvedljiv, moramo najprej opredeliti osnovne pojme, sloje sistema in tipične omejitve.
-V tem poglavju najprej pojasnimo razliko med odprtokodno in prosto programsko opremo, nato predstavimo osnovno arhitekturo mobilnih sistemov ter izpostavimo vlogo gonilnikov, strojne programske opreme in binarnih dodatkov.
+Pri telefonih se pogosto srečamo s položajem, v katerem je del kode odprtokoden, ključne funkcionalnosti pa so dobavljene v obliki binarnih dodatkov (angl.~\textit{binary blobs}).
 Odprtost nato povežemo še z varnostjo, zasebnostjo, vprašanjem stranskih vrat (angl.~\textit{backdoor}) in vzdrževanjem naprav.
 
 \section{Odprtokodna in prosta programska oprema}
 \label{sec:teorija_foss}
 
 Pojma odprtokodna programska oprema (angl.~\textit{open source software}) in prosta programska oprema (angl.~\textit{free software}) se pogosto uporabljata kot sopomenki, vendar izhajata iz različnih poudarkov.
-Open Source Initiative (OSI) odprtokodnost definira s kriteriji, ki med drugim zahtevajo dostop do izvorne kode, možnost sprememb in redistribucije ter nediskriminatorne licence~\cite{osi_osd}.
-Free Software Foundation (FSF) pa v ospredje postavlja uporabniške svoboščine: program je prost, če omogoča (1) poganjanje za poljuben namen, (2) preučevanje delovanja, (3) prilagajanje ter (4) deljenje kopij, tudi spremenjenih~\cite{fsf_free_software}.
+Odprtokodnost po kriterijih Iniciative za odprto kodo (angl.~\textit{Open Source Initiative}, OSI) med drugim zahteva dostop do izvorne kode, možnost sprememb in redistribucije ter nediskriminatorne licence~\cite{osi_osd}.
+Organizacija za prosto programsko opremo (angl.~\textit{Free Software Foundation}, FSF) pa v ospredje postavlja uporabniške svoboščine: program je prost, če omogoča (1) poganjanje za poljuben namen, (2) preučevanje delovanja, (3) prilagajanje ter (4) deljenje kopij, tudi spremenjenih~\cite{fsf_free_software}.
 V nadaljevanju zato uporabljamo tudi širši izraz prosta in odprtokodna programska oprema (FOSS; angl.~\textit{Free and Open Source Software}), kadar želimo zajeti oba vidika.
 
 Pri ocenjevanju \enquote{odprtosti telefona} je pomembno, da ločimo licenco od samega dejstva, da je koda javno dostopna.
@@ -578,10 +579,6 @@ Slika~\ref{fig:arhitektura_telefona} povzema sloje sistema in tipične zaprte ko
   \label{fig:arhitektura_telefona}
 \end{figure}
 
-\FloatBarrier
-\clearpage
-
-
 \subsection{Linux: glavna razvojna veja jedra in vzdrževanje}
 \label{subsec:teorija_linux}
 
@@ -601,12 +598,12 @@ Kljub temu dobaviteljski del pogosto vsebuje zaprt nabor knjižnic, implementaci
 \section{Gonilniki, strojna programska oprema in binarni dodatki}
 \label{sec:teorija_firmware}
 
-Pri telefonih se pogosto srečamo s položajem, v katerem je del kode odprtokoden, ključne funkcionalnosti pa so dobavljene v obliki binarnih dodatkov.
-Pomembno je ločiti med:
-\begin{description}
-  \item[Gonilniki] kodo, ki teče v jedru ali uporabniškem prostoru in omogoča komunikacijo s strojno opremo.
-  \item[Strojno programsko opremo] kodo, ki teče na sami komponenti, na primer na Wi-Fi čipu, digitalnem signalnem procesorju ali modemu, sistem pa jo zgolj naloži ali upravlja.
-\end{description}
+Pri telefonih s sistemom Android se pogosto srečamo s položajem, v katerem je del kode odprtokoden, ključne funkcionalnosti pa so na voljo le v obliki binarnih dodatkov.
+Pomembno je ločiti med gonilniki (angl.~\textit{drivers}) in strojno programsko opremo (angl.~\textit{firmware}).
+
+Gonilniki predstavljajo kodo, ki teče v jedru ali uporabniškem prostoru in omogoča komunikacijo s strojno opremo.
+
+Strojna programska oprema predstavlja kodo, ki teče na sami komponenti, na primer na čipu Wi-Fi, namenskem procesorju za obdelavo digitalnih signalov (angl.~\textit{digital signal processor}, DSP) ali modemu, sistem pa jo zgolj naloži ali upravlja.
 
 Tudi če so gonilniki odprtokodni, je strojna programska oprema lahko popolnoma zaprta, brez možnosti revizije ali popravkov.
 To je ena glavnih tehničnih ovir za telefon, pri katerem bi bil celoten programski sklad pregleden in zamenljiv.
@@ -643,7 +640,7 @@ Moderni telefoni pogosto uporabljajo mehanizme preverjenega zagona, pri katerih 
 To izboljša zaščito pred zlonamernimi spremembami, hkrati pa lahko omeji lastnika naprave, če je zagonski nalagalnik zaklenjen in proizvajalec ne omogoča nalaganja alternativnih podpisov~\cite{android_verified_boot}.
 Za sisteme, ki ciljajo na odprtost, je zato ključno ravnotežje: visoka stopnja celovitosti zagonske verige, hkrati pa možnost, da lastnik na napravo naloži in s svojimi ključi podpiše lastno različico sistema.
 
-Dodaten sloj zaupanja predstavljajo ponovljive gradnje (angl.~\textit{reproducible builds}), pri katerih lahko neodvisna stran iz iste izvorne kode izdela identične binarne pakete~\cite{reproducible_builds}.
+Dodaten sloj zaupanja predstavljajo ponovljive gradnje (angl.~\textit{reproducible builds}), pri katerih lahko različni neodvisni razvijalci iz iste izvorne kode izdelajo identične binarne pakete~\cite{reproducible_builds}.
 S tem zmanjšamo tveganje, da bi bila uradna izdaja kompromitirana na poti od kode do binarne slike.
 Pri telefonih je to posebej relevantno, ker uporabniki praviloma nameščajo vnaprej zgrajene sistemske slike, ne pa da bi sistem prevajali sami.
 
@@ -755,15 +752,14 @@ Strojna programska oprema je največja ovira za strogo odprt telefon.
 Pri sodobnih pametnih telefonih je velik del te programske opreme tesno vezan na dobavitelje čipov, strojno zasnovo naprave in regulativne zahteve.
 Popolna odprtost zato pogosto ni realno dosegljiva.
 
-V takem primeru je pomembno tudi vprašanje, kako močno je zaprt podsistem vpet v preostali sistem.
-Pri ocenjevanju zato ne upoštevamo le tega, ali je posamezna komponenta odprta, temveč tudi, ali je njen vpliv mogoče omejiti z arhitekturo, ločenimi privilegiji in izolacijo.
-Cilj ni \enquote{narediti zaprto komponento odprto}, temveč zmanjšati njen vpliv na varnost, zasebnost in dolgoročno vzdrževanje naprave.
+V takem primeru je pomembno predvsem vprašanje, katere komponente ostajajo zaprte in kako pomembne so za delovanje telefona. Pri ocenjevanju zato ne upoštevamo le tega, ali je posamezna komponenta odprta, temveč tudi, kako pomembna je za delovanje naprave in kako privilegiran položaj ima v arhitekturi sistema.
+
+Podsistemov ne obravnavamo kot enakovrednih, temveč jih pri sintezni oceni razvrstimo v tri razrede glede na njihov vpliv na celoten sistem. V prvi razred sodijo kritični podsistemi, ki imajo širok dostop do podatkov, vplivajo na komunikacijo z zunanjim svetom ali predstavljajo temelj zaupanja v sistem; sem uvrščamo predvsem modemski podsistem, podsisteme za brezžično povezljivost ter privilegirane varnostne podsisteme, kot sta TEE in varnostni element. V drugi razred sodijo pomembni podsistemi, ki bistveno vplivajo na uporabnost in zasebnost naprave, vendar nimajo enako privilegiranega položaja, na primer kamera, grafični podsistem in GNSS. V tretji razred sodijo manj kritični podsistemi z ožjim vplivom na celoten sistem, na primer posamezni senzorji ali manj pomembni periferni elementi. Pri ocenjevanju zato ne gledamo le na prisotnost zaprtih komponent, temveč tudi na njihov razred pomembnosti, privilegiranost in obseg vpliva. Zaprta komponenta v prvem razredu lahko bistveno zniža sintezno oceno sloja, medtem ko zaprta komponenta v tretjem razredu sama po sebi še ne pomeni nizke ocene. Cilj takšne razvrstitve ni ustvariti navidezno natančnega uteženega modela, temveč transparentno pojasniti, zakaj imajo nekatere zaprte komponente pri končni presoji večjo težo kot druge.
 
 Kriteriji:
 \begin{itemize}
-  \item \textbf{Razpoložljivost izvorne kode}: ali je strojna programska oprema odprtokodna; če ni, ali obstajajo odprte alternative, četudi z omejitvami.
-  \item \textbf{Obseg in privilegiji}: kateri podsistemi so zaprti in kako privilegirani so; modemski podsistem je pomembnejši od strojnega programa posameznega senzorja.
-  \item \textbf{Izolacija}: ali arhitektura zmanjšuje vpliv zaprtih komponent, saj ranljivosti v zaprtih skladih predstavljajo realno napadalno površino~\cite{hernandez_firmwire_ndss2022,davis_cellular_baseband_security_2012}.
+    \item \textbf{Razpoložljivost izvorne kode:} ali je strojna programska oprema odprtokodna; če ni, ali obstajajo odprte alternative, četudi z omejitvami.
+    \item \textbf{Obseg, pomembnost in privilegiji:} kateri podsistemi so zaprti, ali sodijo med kritične, pomembne ali manj kritične podsisteme, kako privilegiran položaj imajo v arhitekturi sistema in kako kritični so za delovanje naprave; večjo težo imajo kritični podsistemi, kot so modem, brezžični vmesniki ter privilegirani varnostni podsistemi, manjšo pa podsistemi z ožjim vplivom na celoten sistem.
 \end{itemize}
 
 \subsection{Sistemske storitve in vmesni sloj}
@@ -771,24 +767,37 @@ Kriteriji:
 
 Pri Androidu je pomembna meja med odprtim jedrom platforme (AOSP) ter dobaviteljskimi komponentami in implementacijami abstrakcijske plasti strojne opreme, pri mobilnem GNU/Linux pa predvsem to, ali je uporabniški prostor sestavljen iz standardnih paketov distribucije ali iz posebnega, projektno vezanega sklada.
 
+Pri tem sloju nas ne zanima neposredno, ali je sistem varen ali zaseben v absolutnem smislu, temveč predvsem to, v kolikšni meri omogoča neodvisen pregled in preverjanje.
+Odprt sistem je v tem kontekstu tak, pri katerem je ključne dele mogoče pregledati, po potrebi zamenjati ter vsaj deloma neodvisno preveriti, kaj se dejansko izvaja na napravi.
+Poudarek je torej na preverljivosti sistema in zmanjšanju potrebe po slepem zaupanju v zaprt dobaviteljski sklad.
+
 Kriteriji:
 \begin{itemize}
-  \item \textbf{Delež komponent FOSS}: koliko ključnih sistemskih storitev je odprtokodnih in zamenljivih.
+  \item \textbf{Odprtost ključnih sistemskih komponent:} ali ključne sistemske storitve in vmesni sloji temeljijo pretežno na odprtokodnih in zamenljivih komponentah ali pa so za osnovno delovanje sistema bistveni zaprtokodni deli.
   \item \textbf{Odvisnost od lastniških storitev}: ali sistem za osnovno delovanje zahteva centralizirane, zaprtokodne storitve ali pa ima odprte alternative.
-  \item \textbf{Ponovljive gradnje}: ali je realno mogoče neodvisno preveriti binarne izdaje, vsaj za kritične dele sistema~\cite{reproducible_builds}.
+  \item \textbf{Preglednost izvora komponent}: ali so ključne sistemske komponente jasno dokumentirane, z javno dostopno izvorno kodo in jasno ločitvijo med odprtimi in zaprtimi deli sklada.
+  \item \textbf{Neodvisna preverljivost izdaj}: ali je realno mogoče neodvisno preveriti binarne izdaje, vsaj za kritične dele sistema, na primer s ponovljivimi gradnjami~\cite{reproducible_builds}.
 \end{itemize}
 
 \subsection{Privzete aplikacije in distribucija aplikacij}
 \label{subsec:model_apps}
 
-Na zadnjem sloju se pokaže praktična plat sistema: tudi zelo odprt sistem je za mnoge uporabnike težko uporaben, če nima varnega in preglednega načina nameščanja aplikacij.
+Na zadnjem sloju se pokaže praktična plat sistema: tudi zelo odprt sistem je za mnoge uporabnike težko uporaben, če nima preglednega in zanesljivega načina nameščanja aplikacij.
 V tej nalogi kot ustrezen način razumemo takšnega, ki omogoča nameščanje in posodabljanje aplikacij iz zaupanja vrednega vira brez nestandardnih postopkov ter s preverljivimi posodobitvami.
+
+Pri tem sloju nas zanimata predvsem dve vprašanji.
+Prvo je, kakšen nabor aplikacij uporabnik dobi že v privzeti namestitvi sistema.
+Drugo pa je, ali sistem tudi po koncu uradne podpore proizvajalca še omogoča smiselno neodvisno vzdrževanje in nameščanje dodatne programske opreme.
+
+Vprašanje telemetrije privzeto nameščenih aplikacij je za uporabnika sicer pomembno, vendar ga v tej nalogi ne vključujemo kot samostojnega ocenjevalnega kriterija.
+Pri zaprtokodnih aplikacijah namreč brez poglobljene dinamične analize ali postopkov obratnega inženiringa (angl.~\textit{reverse engineering}) pogosto ni mogoče zanesljivo ugotoviti, kateri podatki se prenašajo, v kakšnem obsegu in za kakšen namen.
+Telemetrijo zato v nadaljevanju obravnavamo le opisno, kadar je to pomembno za razpravo o posamezni rešitvi.
 
 Kriteriji:
 \begin{itemize}
-  \item \textbf{Privzeto nameščene aplikacije}: ali so aplikacije iz privzete namestitve odprtokodne ter ali imajo minimalno, dokumentirano in uporabniško nadzorovano telemetrijo.
-  \item \textbf{Trgovina in repozitoriji}: ali je primarni kanal namestitve aplikacij odprt (npr.~paketni repozitorij ali trgovina z aplikacijami) ter ali podpira preverljive posodobitve.
-  \item \textbf{Neodvisnost od proizvajalca}: ali uporabnik lahko vzdržuje sistem in aplikacije tudi po tem, ko proizvajalec naprave uradno zaključi podporo.
+  \item \textbf{Odprtost privzeto nameščenih aplikacij:} ali so aplikacije iz privzete namestitve sistema pretežno odprtokodne ali pa med njimi prevladujejo zaprtokodne aplikacije.
+  \item \textbf{Trgovina in repozitoriji:} ali sistem omogoča nameščanje aplikacij iz odprtih ali neodvisno vzdrževanih virov ter ali uporabnik pri nameščanju dodatne programske opreme ni povsem odvisen od enega samega lastniškega distribucijskega kanala.
+  \item \textbf{Neodvisnost od proizvajalca:} ali uporabnik lahko vzdržuje sistem in aplikacije tudi po tem, ko proizvajalec naprave uradno zaključi podporo.
 \end{itemize}
 
 \subsection{Povzetek}
@@ -849,40 +858,52 @@ Posebej obravnavamo tudi aplikacije z višjimi varnostnimi zahtevami, kot so ban
 Takšne aplikacije so zato dober pokazatelj praktičnih omejitev posamezne rešitve~\cite{play_integrity_overview}.
 
 \section{Način ocenjevanja}
-\label{sec:model_tockovanje}
+\label{sec:model_ocenjevanje}
 
-Za kasnejšo analizo projektov in študijo primera potrebujemo konsistenten način primerjave.
-Posamezne rešitve zato ocenjujemo v dveh ločenih dimenzijah:
-(1) \textbf{odprtost} in
-(2) \textbf{praktična uporabnost}.
+Za primerjavo obstoječih projektov in za študijo primera potrebujemo enoten način ocenjevanja.
+Posamezne rešitve zato ocenjujemo v dveh ločenih dimenzijah: odprtosti in praktični uporabnosti.
+Pri tem ne uporabljamo dveh ločenih lestvic z enakimi vrednostmi, temveč eno samo tristopenjsko lestvico z ocenami $0$, $1$ in $2$, ki jo razlagamo glede na posamezni kriterij.
 
-Pomembno je, da pri tem ne ocenjujemo projekta povsem abstraktno, temveč \textbf{konkretno rešitev na konkretni podprti napravi}.
-Na primer: ne ocenjujemo \enquote{GrapheneOS na splošno}, temveč \enquote{GrapheneOS na uradno podprti napravi}.
+Pomembno je, da ne ocenjujemo projekta v splošnem, temveč vedno konkretno rešitev na konkretni podprti napravi.
+Tako na primer ne ocenjujemo \enquote{GrapheneOS na splošno}, temveč \enquote{GrapheneOS na uradno podprti napravi}.
 Na ta način se izognemo mešanju lastnosti programske rešitve z lastnostmi strojne opreme.
 
-Odprtost ocenjujemo po slojih iz sekcije~\ref{sec:model_kriteriji_odprtosti}, praktično uporabnost pa po sklopih iz sekcije~\ref{sec:model_uporabnost}.
-V obeh dimenzijah uporabimo tristopenjsko lestvico z vrednostmi $0$, $1$ in $2$.
+Odprtost ocenjujemo po slojih iz sekcije~\ref{sec:model_sloji} in po kriterijih iz sekcije~\ref{sec:model_kriteriji_odprtosti}.
+Praktično uporabnost pa ocenjujemo po sklopih iz sekcije~\ref{sec:model_uporabnost}.
+V obeh dimenzijah uporabljamo isto abstraktno lestvico, ker posamezni kriteriji ne merijo vedno odprtosti ali uporabnosti neposredno, temveč pogosto merijo lastnosti, iz katerih lahko na odprtost oziroma uporabnost sklepamo.
+To velja na primer za dokumentiranost namestitve, neodvisnost od lastniških storitev, ponovljive gradnje, vzdrževalni signal ali odprtost ključnih sistemskih komponent.
 
-\paragraph{Lestvica odprtosti ($O \in \{0,1,2\}$).}
+Tukaj model ne ocenjuje neposredno varnosti, zasebnosti ali dejanske zaupnosti sistema.
+Te vidike obravnavamo kot pomembne posledice odprtosti in preverljivosti, vendar jih zaradi omejenega obsega naloge ne vključujemo kot samostojne dimenzije ocenjevanja.
+V model odprtosti zato vključujemo predvsem tiste lastnosti, ki uporabniku in neodvisni skupnosti omogočajo pregled, zamenljivost komponent, preverljivost izdaj ter dolgoročno vzdrževanje sistema.
+
+Pri sintezni oceni posameznega sloja oziroma sklopa ne obravnavamo vseh kriterijev in podsistemov kot enako pomembnih.
+Formalnega uteževanja ne uporabljamo, ker bi tak pristop ustvaril vtis večje natančnosti, kot jo je pri tovrstni primerjavi mogoče utemeljiti.
+Kljub temu pri razlagi rezultatov upoštevamo hierarhijo pomembnosti.
+Večjo težo imajo komponente, ki so nujne za osnovno delovanje telefona, imajo širok dostop do podatkov ali zasedajo privilegiran položaj v arhitekturi sistema.
+Pri odprtosti to pomeni, da imajo večjo težo zagonska veriga, modem, brezžični vmesniki, privilegirani varnostni podsistemi ter ključni gonilniki in sistemske storitve kot pa posamezne manj kritične komponente.
+Pri praktični uporabnosti pa imajo večjo težo osnovne funkcije telefona, mobilni podatki, stabilnost sistema in dostop do ključnih aplikacij kot pa manj pogosto uporabljene ali nadomestljive funkcije.
+
+Skupna ocenjevalna lestvica je naslednja:
 \begin{itemize}
-  \item $0$ -- \enquote{pretežno zaprto}: ključni deli so lastniški, brez realnih odprtih alternativ ali brez možnosti neodvisnega vzdrževanja.
-  \item $1$ -- \enquote{mešano}: prisotna je kombinacija odprtih in zaprtih komponent, pri čemer odprti del ne pokrije celotne funkcionalnosti ali zahteva pomembne kompromise.
-  \item $2$ -- \enquote{pretežno odprto}: večina funkcionalnosti je pokrita z odprto programsko opremo in omogoča razumno stopnjo neodvisnega vzdrževanja.
+  \item \textbf{0 -- nizka ocena:} obravnavani kriterij je izpolnjen slabo ali pa sploh ni izpolnjen.
+  Pri kriterijih odprtosti to pomeni, da rešitev ostaja pretežno odvisna od zaprtih, nezamenljivih ali slabo preverljivih komponent.
+  Pri kriterijih praktične uporabnosti pa pomeni, da funkcionalnost ne deluje ali pa je za vsakdanjo rabo preveč nezanesljiva.
+
+  \item \textbf{1 -- srednja ocena:} obravnavani kriterij je izpolnjen delno.
+  Rešitev na tem mestu pokaže določen napredek, vendar ostajajo pomembne omejitve, kompromisi ali odvisnosti.
+
+  \item \textbf{2 -- visoka ocena:} obravnavani kriterij je izpolnjen dobro.
+  Pri kriterijih odprtosti to pomeni, da je rešitev pretežno odprta, preverljiva in zamenljiva.
+  Pri kriterijih praktične uporabnosti pa pomeni, da funkcionalnost deluje stabilno in brez posebnih omejitev v tipičnih scenarijih uporabe.
 \end{itemize}
 
-\paragraph{Lestvica uporabnosti ($U \in \{0,1,2\}$).}
-\begin{itemize}
-  \item $0$ -- \enquote{neuporabno}: ključna funkcionalnost ne deluje ali pa je delovanje preveč nezanesljivo za vsakodnevno rabo.
-  \item $1$ -- \enquote{omejeno}: funkcionalnost deluje, vendar z opaznimi omejitvami, pogostimi težavami ali zmanjšano zanesljivostjo.
-  \item $2$ -- \enquote{uporabno}: funkcionalnost deluje stabilno in brez posebnih omejitev za tipične scenarije uporabe.
-\end{itemize}
-
-Ocena posameznega sloja oziroma sklopa je sintezna ocena na podlagi vnaprej določenih kriterijev.
-Pri tem ne računamo uteženega skupnega rezultata, saj bi tak pristop ustvaril vtis večje objektivnosti, kot jo je pri tovrstni primerjavi realno mogoče zagotoviti.
-Namesto tega rezultate predstavimo v obliki tabel in radarskih diagramov, ločeno za odprtost in praktično uporabnost.
+Ocena posameznega sloja oziroma sklopa je sintezna ocena na podlagi vnaprej določenih kriterijev, pri čemer pri razlagi upoštevamo tudi relativno pomembnost posameznih podsistemov in funkcij.
+Skupnega uteženega rezultata ne računamo, saj bi s tem ustvarili vtis večje objektivnosti, kot jo je pri tovrstni primerjavi mogoče zagotoviti.
+Namesto tega rezultate predstavimo v tabelah in grafičnih povzetkih, ločeno za odprtost in praktično uporabnost.
 
 Tak način prikaza omogoča, da pri vsaki rešitvi jasno pokažemo njen profil kompromisov, torej kje je bližje idealu popolnoma odprtokodnega telefona in kje od njega bistveno odstopa.
-V razpravi lahko te profile dodatno interpretiramo tudi z vidika različnih tipov uporabnikov, vendar to ne spremeni osnovnega načina ocenjevanja.
+V razpravi lahko te profile dodatno osvetlimo tudi z vidika različnih tipov uporabnikov, vendar to ne spremeni osnovnega načina ocenjevanja.
 
 Pri analizi obstoječih rešitev bodo ocene temeljile na javno dostopni dokumentaciji projektov, seznamih podprtih funkcionalnosti, znanih omejitvah in uporabniških poročilih.
 V empiričnem delu pa bomo iste sklope ocenili še na podlagi lastnega testiranja na izbrani napravi.
