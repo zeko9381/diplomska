@@ -10,7 +10,7 @@
   - **Verbatim komentar:** `Kratice je pri prvi uporabi v besedilo potrebno navesti v celoti, npr. proizvajalec sistema na čipu (angl. system on a chip, SoC) ...`
   - **Naloga:** sistematično pregledati vse kratice in pri prvi omembi uporabiti polno obliko.
 
-- [ ] **M3 — Dogovor za klic**
+- [x] **M3 — Dogovor za klic**
   - **Verbatim komentar:** `Morda ne bi bilo slabo, da bi se ponovno slišala, morda šla skupaj čez kakšen nejasen komentar. Kako ste s časom?`
   - **Naloga:** potrditi termin in se po potrebi slišati glede nejasnih komentarjev.
 
@@ -277,7 +277,7 @@
 
 ### Stran 56 (PDF)
 
-- [ ] **P56-1**
+- [x] **P56-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `način popolne omejitve`
   - **Verbatim komentar:** `Zaklenjen način?`
@@ -285,13 +285,13 @@
 
 ### Stran 59 (PDF)
 
-- [ ] **P59-1**
+- [x] **P59-1**
   - **Vrsta oznake:** strikeout
   - **Označeno besedilo:** `radarska`
   - **Verbatim komentar:** `le diagrama; ne vem, če v slovenščini poznamo izraz radarski diagram`
   - **Naloga:** preveriti termin `radarski diagram` in ga po potrebi zamenjati.
 
-- [ ] **P59-2**
+- [x] **P59-2**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `okvirno primerjavo profilov posameznih rešitev, ne za strogo merilno vrednotenje.`
   - **Verbatim komentar:** `okvirne ocene in ne izmerjene količine.`
@@ -299,7 +299,7 @@
 
 ### Stran 61 (PDF)
 
-- [ ] **P61-1**
+- [x] **P61-1**
   - **Vrsta oznake:** strikeout
   - **Označeno besedilo:** `radarska`
   - **Verbatim komentar:** `— (brez dodatnega komentarja, samo prečrtano)`
@@ -307,13 +307,13 @@
 
 ### Stran 62 (PDF)
 
-- [ ] **P62-1**
+- [x] **P62-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `Radarski diagram odprtosti za tri reprezentativne profile. Oznake osi so enake kot v tabeli 5.1.`
   - **Verbatim komentar:** `Na diagramu namesto kratic zapišite kar cele izraze; prostor je na voljo. Če ne gre, pa pomen oznak ponovite v opisu slike.`
   - **Naloga:** na diagramu zamenjati kratice s celimi izrazi ali jih razložiti v opisu slike.
 
-- [ ] **P62-2**
+- [x] **P62-2**
   - **Vrsta oznake:** strikeout
   - **Označeno besedilo:** `Radarski`
   - **Verbatim komentar:** `— (brez dodatnega komentarja, samo prečrtano)`
@@ -321,7 +321,7 @@
 
 ### Stran 63 (PDF)
 
-- [ ] **P63-1**
+- [x] **P63-1**
   - **Vrsta oznake:** strikeout
   - **Označeno besedilo:** `Radarski`
   - **Verbatim komentar:** `— (brez dodatnega komentarja, samo prečrtano)`
@@ -329,13 +329,13 @@
 
 ### Stran 64 (PDF)
 
-- [ ] **P64-1**
+- [x] **P64-1**
   - **Vrsta oznake:** strikeout
   - **Označeno besedilo:** `Radarska`
   - **Verbatim komentar:** `— (brez dodatnega komentarja, samo prečrtano)`
   - **Naloga:** uskladiti poimenovanje diagrama.
 
-- [ ] **P64-2**
+- [x] **P64-2**
   - **Vrsta oznake:** squiggly
   - **Označeno besedilo:** `potrjujeta ugotovitve iz tabel, vendar jih hkrati pokažeta bolj pregledno kot same številčne ocene.`
   - **Verbatim komentar:** `nazorno vizualizirata ugotovitve.`
@@ -343,7 +343,7 @@
 
 ### Stran 69 (PDF)
 
-- [ ] **P69-1**
+- [x] **P69-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `Izbrani sistemi`
   - **Verbatim komentar:** `Dodajte nekaj veznega besedila med 6.3 in 6.3.1`
@@ -351,7 +351,7 @@
 
 ### Stran 70 (PDF)
 
-- [ ] **P70-1**
+- [x] **P70-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `installerju,`
   - **Verbatim komentar:** `poslovenite`
@@ -359,7 +359,7 @@
 
 ### Stran 72 (PDF)
 
-- [ ] **P72-1**
+- [x] **P72-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `Pri vseh sistemih poskušamo ohraniti čim bolj primerljive pogoje: isto napravo, isto kartico SIM, isto brezžično omrežje, primerljivo svetlost zaslona in enak testni nabor opravil. Kadar popolna primerljivost ni mogoča, to posebej navedemo v rezultatih. Pri osnovnih opravilih imajo prednost prednaložene oziroma privzeto ponujene aplikacije sistema, saj te najbolje predstavljajo privzeto uporabniško izkušnjo konkretne rešitve. Če privzeta aplikacija za določeno nalogo ni na voljo, ni dovolj stabilna ali naloge ne omogoča na razumno uporaben način, uporabimo najbolj smiselno dodatno alternativo. Tak primer v rezultatih posebej označimo in upoštevamo kot praktično omejitev sistema.`
   - **Verbatim komentar:** `Gre za ponovitev prejšnjih dveh odstavkov. Ustreznega ohranite, odvečnega odstranite.`
@@ -367,7 +367,7 @@
 
 ### Stran 73 (PDF)
 
-- [ ] **P73-1**
+- [x] **P73-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `Wi-Fi`
   - **Verbatim komentar:** `WiFi omenjate že v prejšnji točki. Gre za podvajanje?`
@@ -375,7 +375,7 @@
 
 ### Stran 75 (PDF)
 
-- [ ] **P75-1**
+- [x] **P75-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `avtentikacijo`
   - **Verbatim komentar:** `overjanje`
@@ -383,7 +383,7 @@
 
 ### Stran 76 (PDF)
 
-- [ ] **P76-1**
+- [x] **P76-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `TOTP.`
   - **Verbatim komentar:** `enkratni gesel na osnovi časa (angl. time-based one-time passwords, OTP)`
@@ -391,13 +391,13 @@
 
 ### Stran 77 (PDF)
 
-- [ ] **P77-1**
+- [x] **P77-1**
   - **Vrsta oznake:** strikeout
   - **Označeno besedilo:** `v kontekstu diplomske naloge`
   - **Verbatim komentar:** `— (brez dodatnega komentarja, samo prečrtano)`
   - **Naloga:** odstraniti ali preoblikovati ta del.
 
-- [ ] **P77-2**
+- [x] **P77-2**
   - **Vrsta oznake:** squiggly
   - **Označeno besedilo:** `potrpežljivo`
   - **Verbatim komentar:** `potrpežljivo bi odstranil`
@@ -405,7 +405,7 @@
 
 ### Stran 78 (PDF)
 
-- [ ] **P78-1**
+- [x] **P78-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `avtonomije.`
   - **Verbatim komentar:** `avtonomije. Indikatorji, katere preverjamo, sledeči.`
@@ -413,7 +413,7 @@
 
 ### Stran 79 (PDF)
 
-- [ ] **P79-1**
+- [x] **P79-1**
   - **Vrsta oznake:** highlight
   - **Označeno besedilo:** `konkretne izdaje sistemov, ki so bile v času testiranja na voljo.`
   - **Verbatim komentar:** `Te navajate kje? Če ne, jih obvezno navedite.`

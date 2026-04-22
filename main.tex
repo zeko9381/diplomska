@@ -1181,10 +1181,10 @@ Njegova največja prednost je prav to, da gre za namensko napravo za mobilni GNU
 
 Librem 5 predstavlja drugačno interpretacijo namenskega telefona z operacijskim sistemom GNU/Linux kot PinePhone.
 Če PinePhone bolj odkrito cilja na razvojno skupnost in eksperimentiranje, Purism pri Librem 5 veliko izraziteje poudarja zasebnost, varnost in nadzor uporabnika.
-Uradna stran naprave ga opisuje kot telefon, zgrajen na sistemu PureOS, ki ni osnovan na sistemu Android ali iOS, dokumentacija in varnostna predstavitev pa posebej poudarjata tri strojna stikala za fizični izklop komponent (angl.~\textit{kill switches}) ter tako imenovani način popolne omejitve \textit{Lockdown mode}~\cite{purism_librem5_product,purism_security,purism_lockdown_mode}.
+Uradna stran naprave ga opisuje kot telefon, zgrajen na sistemu PureOS, ki ni osnovan na sistemu Android ali iOS, dokumentacija in varnostna predstavitev pa posebej poudarjata tri strojna stikala za fizični izklop komponent (angl.~\textit{kill switches}) ter tako imenovani zaklenjeni način delovanja (angl.~\textit{Lockdown mode})~\cite{purism_librem5_product,purism_security,purism_lockdown_mode}.
 
 Librem 5 je posebej zanimiv zato, ker odprtost povezuje z bolj premišljeno varnostno zasnovo.
-Tri strojna stikala omogočajo fizični izklop mobilnega modema, Wi-Fi/Bluetooth modula ter kamere in mikrofona, \textit{Lockdown mode} pa ob hkratni uporabi vseh treh stikal izklopi še druge senzorje, kot so GPS, pospeškomer, senzor bližine in svetlobni senzor~\cite{purism_security,purism_lockdown_mode}.
+Tri strojna stikala omogočajo fizični izklop mobilnega modema, Wi-Fi/Bluetooth modula ter kamere in mikrofona, zaklenjeni način delovanja pa ob hkratni uporabi vseh treh stikal izklopi še druge senzorje, kot so GPS, pospeškomer, senzor bližine in svetlobni senzor~\cite{purism_security,purism_lockdown_mode}.
 Takšna rešitev je v mobilnem prostoru zelo neobičajna, saj uporabniku daje neposreden fizični nadzor nad komponentami, ki so pri običajnih pametnih telefonih večinoma skrite za programskimi plastmi.
 
 V primerjavi s PinePhonom je Librem 5 manj zanimiv kot povsem odprta razvojna platforma v ožjem smislu, bolj pa kot naprava, ki skuša odprtost in svobodo povezati z uporabniško razumljivimi mehanizmi nadzora.
@@ -1230,9 +1230,9 @@ Analiza treh skupin odprtokodnih mobilnih rešitev pokaže, da se nobena izmed o
 Pri vseh treh skupinah se pokaže izrazita napetost med odprtostjo in praktično uporabnostjo.
 Rešitve, ki uporabniku omogočajo večji nadzor nad arhitekturo sistema, večjo prilagodljivost in bolj odprto programsko okolje, težje dosežejo enako raven vsakdanje uporabnosti kot rešitve, ki ostajajo bliže prevladujočemu ekosistemu sistema Android.
 
-Sintezne ocene odprtosti in praktične uporabnosti so povzete v tabelah~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost}, dodatno pa jih ponazarjata radarska diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost}.
+Sintezne ocene odprtosti in praktične uporabnosti so povzete v tabelah~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost}, dodatno pa jih ponazarjata diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost}.
 Ocene v tabelah so sintezne in temeljijo na analizi javno dostopne dokumentacije, znanih omejitev in razvojnih usmeritev posameznih projektov.
-Gre torej za okvirno primerjavo profilov posameznih rešitev, ne za strogo merilno vrednotenje.
+Gre torej za okvirne sintezne ocene, ki temeljijo na razpoložljivih podatkih in strokovni presoji, ne pa za neposredno izmerjene količine.
 
 \begin{table}[htb]
 \centering
@@ -1298,7 +1298,7 @@ Dodani sklop uporabniškega nadzora pomaga razliko med skupinami rešitev pokaza
 Pri nekaterih projektih je glavni cilj predvsem ponuditi bolj uporabno alternativo tovarniškemu sistemu, pri drugih pa pomemben del vrednosti predstavlja prav večji neposredni nadzor nad sistemom.
 Najizraziteje se to pokaže pri rešitvah, ki so tesneje povezane z običajnim okoljem GNU/Linux, medtem ko uporabniško dostopnejši Android ROM-i ta vidik pogosteje podredijo širši združljivosti in enostavnejši uporabi.
 
-Zaradi preglednosti radarska diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost} ne prikazujeta vseh obravnavanih rešitev, temveč tri reprezentativne profile.
+Zaradi preglednosti diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost} ne prikazujeta vseh obravnavanih rešitev, temveč tri reprezentativne profile.
 To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian kot predstavnik mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi za sistem Android ter Librem 5 kot predstavnik namenskih telefonov z operacijskim sistemom GNU/Linux.
 
 \begin{figure}[htb]
@@ -1310,17 +1310,23 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
     ytick={1,2},
     yticklabels={1,2},
     xtick={0,72,144,216,288},
-    xticklabels={ZV,JG,SP,SS,AD},
+    xticklabels={
+        {\makebox[0pt][l]{\hspace{3mm}\shortstack{zagonska\\veriga}}},
+        {\shortstack{jedro in\\gonilniki}},
+        {\shortstack{strojna\\programska\\oprema}},
+        {\shortstack{sistemske storitve\\in vmesni sloj}},
+        {\shortstack{privzete aplikacije\\in distribucija\\aplikacij}}
+    },
     grid=both,
     axis line style={draw=none},
     minor grid style={gray!20},
     major grid style={gray!40},
-    xticklabel style={font=\small},
-    yticklabel style={font=\small},
+    xticklabel style={font=\small, align=center},
+    yticklabel style={font=\small, yshift=1.5mm},
     tick label style={font=\small},
     clip=false,
     legend style={
-        at={(0.5,-0.18)},
+        at={(0.5,-0.30)},
         anchor=north,
         legend columns=3,
         font=\small,
@@ -1368,7 +1374,7 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
 
 \end{polaraxis}
 \end{tikzpicture}
-\caption{Radarski diagram odprtosti za tri reprezentativne profile. Oznake osi so enake kot v tabeli~\ref{tab:primerjalna_sinteza_odprtost}.}
+\caption{Diagram odprtosti za tri reprezentativne profile.}
 \label{fig:radar_odprtost}
 \end{figure}
 
@@ -1380,18 +1386,35 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
     ymin=0, ymax=2,
     ytick={1,2},
     yticklabels={1,2},
-    xtick={0,60,120,180,240,300},
-    xticklabels={OF,KS,AZ,EA,PV,UN},
+    xtick={0,60,120,240,300},
+    xticklabels={
+        {\makebox[0pt][l]{\hspace{4mm}\shortstack{osnovne funkcije\\telefona}}},
+        {\shortstack{ključna strojna\\podpora}},
+        {\shortstack{avtonomija in\\zmogljivost}},
+        {\shortstack{posodobitve in\\vzdrževanje}},
+        {\shortstack{uporabniški\\nadzor}}
+    },
+    extra x ticks={180},
+    extra x tick labels={{
+        \shortstack{ekosistem\\aplikacij}
+    }},
+    extra x tick style={
+        tick label style={
+            overlay,
+            align=center,
+            xshift=-3mm
+        }
+    },
     grid=both,
     axis line style={draw=none},
     minor grid style={gray!20},
     major grid style={gray!40},
-    xticklabel style={font=\small},
-    yticklabel style={font=\small},
+    xticklabel style={font=\small, align=center},
+    yticklabel style={font=\small, yshift=1.5mm},
     tick label style={font=\small},
     clip=false,
     legend style={
-        at={(0.5,-0.18)},
+        at={(0.5,-0.24)},
         anchor=north,
         legend columns=3,
         font=\small,
@@ -1439,13 +1462,13 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
 
 \end{polaraxis}
 \end{tikzpicture}
-\caption{Radarski diagram praktične uporabnosti za tri reprezentativne profile. Oznake osi so enake kot v tabeli~\ref{tab:primerjalna_sinteza_uporabnost}.}
+\caption{Diagram praktične uporabnosti za tri reprezentativne profile.}
 \label{fig:radar_uporabnost}
 \end{figure}
 
-\FloatBarrier
+%\FloatBarrier
 
-Radarska diagrama potrjujeta ugotovitve iz tabel, vendar jih hkrati pokažeta bolj pregledno kot same številčne ocene.
+Diagrama nazorno vizualizirata ugotovitve iz tabel.
 LineageOS se kot predstavnik alternativnih ROM-ov za sistem Android izkaže z najbolj uravnoteženim profilom praktične uporabnosti, vendar ostaja omejen na ravni strojne programske opreme in dela spodnjih slojev sistema.
 Mobian kot predstavnik mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi kaže izrazitejšo odprtost uporabniškega prostora ter večjo prilagodljivost in uporabniški nadzor, vendar brez enake stopnje vsakdanje zrelosti kot LineageOS.
 Librem 5 pa se kot namenska naprava najbolj približa idealu odprte arhitekture, pri praktični uporabnosti pa ostaja v bolj omejenem območju, čeprav uporabniku omogoča zelo neposreden nadzor nad sistemom in strojno opremo.
@@ -1516,6 +1539,10 @@ Ne gre za namenski telefon z GNU/Linuxom, temveč za komercialno napravo, na kat
 \section{Izbrani sistemi}
 \label{sec:izbrani_sistemi_empiricni}
 
+V empirični primerjavi obravnavamo štiri sisteme, ki predstavljajo različne pristope k mobilni programski opremi na isti strojni opremi.
+Med njimi so tovarniški sistem kot referenčno izhodišče, alternativni sistem Android ter dve mobilni distribuciji sistema GNU/Linux.
+V nadaljevanju je za vsak sistem na kratko pojasnjeno, zakaj je bil vključen v primerjavo in kakšno vlogo ima v okviru študije primera.
+
 \subsection{Tovarniški sistem OxygenOS}
 \label{sec:oxygenos_empiricni}
 
@@ -1541,7 +1568,7 @@ Pričakovati je mogoče, da bo LineageOS v primerjavi z mobilnimi distribucijami
 \label{sec:ubuntu_touch_empiricni}
 
 Ubuntu Touch je v tej študiji predstavnik uporabniško usmerjenega mobilnega sistema GNU/Linux.
-Uradna stran naprav projekta Ubuntu Touch za OnePlus 6T navaja, da je naprava na voljo v installerju, da večina ključnih funkcij deluje ter da je sistem večinoma primeren za vsakodnevno rabo z nekaterimi manjšimi omejitvami~\cite{ubports_fajita}.
+Uradna stran naprav projekta Ubuntu Touch za OnePlus 6T navaja, da je naprava podprta v uradnem namestitvenem programu projekta, da večina ključnih funkcij deluje ter da je sistem večinoma primeren za vsakodnevno rabo z nekaterimi manjšimi omejitvami~\cite{ubports_fajita}.
 
 Za diplomsko nalogo je Ubuntu Touch pomemben zato, ker poskuša ponuditi zaokrožen mobilni operacijski sistem zunaj ekosistema Google Android.
 V primerjavi z LineageOS nas zato zanima predvsem, kako visoka je cena prehoda iz uporabniškega prostora sistema Android v mobilni sistem GNU/Linux.
@@ -1576,26 +1603,22 @@ Tak pristop je bolj skladen z osrednjim vprašanjem naloge, saj nas zanima predv
 \label{subsec:splosna_pravila_testiranja}
 
 Pri vseh testih uporabljamo vnaprej določen protokol.
-Za vsak sistem zabeležimo datum začetka testiranja, točno različico sistema, način namestitve, vrsto začetne konfiguracije ter morebitne posebnosti, ki bi lahko vplivale na rezultate.
+Za vsak sistem zabeležimo datum začetka testiranja, točno različico sistema, način namestitve, začetno konfiguracijo sistema ter morebitne posebnosti, ki bi lahko vplivale na rezultate.
 
 Osnovne funkcionalne preizkuse izvedemo vsaj dvakrat.
 Če se rezultat med poskusoma razlikuje, test ponovimo še tretjič in kot končni rezultat upoštevamo prevladujoče stanje, odstopanje pa posebej zabeležimo.
 Pri funkcijah, kjer je to smiselno, poleg samega uspeha ali neuspeha zabeležimo tudi kakovost delovanja, na primer stabilnost, odzivnost in uporabniško zaznavne omejitve.
 
-Pri vseh sistemih poskušamo ohraniti čim bolj primerljive pogoje:
-isto napravo, isto kartico SIM, isto brezžično omrežje, primerljivo svetlost zaslona in enak testni nabor opravil.
-Kadar popolna primerljivost ni mogoča, to posebej navedemo v rezultatih.
-
 Pri osnovnih opravilih imajo prednost prednaložene oziroma privzeto ponujene aplikacije sistema, saj te najbolje predstavljajo privzeto uporabniško izkušnjo konkretne rešitve.
 Če privzeta aplikacija za določeno nalogo ni na voljo, ni dovolj stabilna ali naloge ne omogoča na razumno uporaben način, uporabimo najbolj smiselno dodatno alternativo.
 Tak primer v rezultatih posebej označimo in upoštevamo kot praktično omejitev sistema.
 
-Pri aplikacijskem ekosistemu damo prednost uradnim aplikacijam oziroma uradnim spletnim različicam storitev.
-Če te niso na voljo, lahko izjemoma uporabimo najbolj uveljavljeno skupnostno rešitev, vendar jo v rezultatih jasno označimo kot nepopoln približek uradni podpori.
-Takih rešitev ne obravnavamo kot povsem enakovrednih uradnim aplikacijam.
+Pri dostopu do aplikacij in storitev damo prednost uradnim aplikacijam oziroma uradnim spletnim različicam storitev.
+Če te niso na voljo, lahko izjemoma uporabimo najbolj uveljavljeno skupnostno rešitev, vendar jo v rezultatih jasno označimo kot nepopoln približek uradni rešitvi.
+Takih rešitev ne obravnavamo kot povsem enakovrednih uradnim aplikacijam oziroma uradnim spletnim različicam storitev.
 
 Pri preizkusih avtonomije in zmogljivosti uporabimo enake časovne intervale in enake obremenitve.
-Pred posameznim testom po možnosti zapremo odprte aplikacije, onemogočimo nebistvene dodatne procese ter zabeležimo začetno stanje baterije.
+Pred posameznim testom zapremo odprte aplikacije, onemogočimo nebistvene dodatne procese ter zabeležimo začetno stanje baterije, kadar sistem to omogoča brez posega v običajno delovanje.
 
 \subsection{Scenariji testiranja}
 \label{subsec:scenariji_testiranja}
@@ -1616,9 +1639,6 @@ Preverimo pošiljanje in prejemanje običajnega kratkega sporočila ter daljšeg
 \paragraph{Mobilni podatki in dostopna točka.}
 Preverimo vzpostavitev povezave ter stabilno uporabo za osnovna opravila, kot so odpiranje spletnih strani, prenos sporočil in uporaba navigacije.
 Pri dostopni točki preverimo uspešen vklop in dejansko uporabnost povezave na drugi napravi.
-
-\paragraph{Ključna strojna podpora.}
-V tej skupini preverimo Wi-Fi, Bluetooth, GPS, NFC, zvok, kamero, senzorje ter čitalnik prstnih odtisov, kjer je ta funkcionalnost na voljo.
 
 \paragraph{Wi-Fi in Bluetooth.}
 Pri Wi-Fi preverimo uspešno povezavo z znanim brezžičnim omrežjem in stabilnost povezave med običajno uporabo.
@@ -1677,8 +1697,7 @@ Posebej zabeležimo tudi razumljivost in uporabnost navodil za pot.
 
 \paragraph{Mediji in 2FA.}
 Pri predvajanju medijev preverimo lokalno glasbo, lokalni video in spletni video, pri čemer spremljamo stabilnost delovanja, morebitno segrevanje in splošno uporabnost.
-Pri orodjih za avtentikacijo preverimo uporabo TOTP.
-V aplikacijo uvozimo testno QR kodo in preverimo, ali sistem pravilno generira pričakovano kodo z uporabo preverjevalne strani \url{https://2fas.com/auth/check-token/}.
+Pri orodjih za avtentikacijo preverimo podporo za enkratna gesla na osnovi časa (angl.~\textit{time-based one-time password}, TOTP). V aplikacijo uvozimo testno kodo QR in preverimo, ali sistem pravilno generira pričakovano kodo z uporabo preverjevalne strani \url{https://2fas.com/auth/check-token/}.
 
 \paragraph{Bančne aplikacije in mobilno plačevanje.}
 Posebej zabeležimo tudi stanje pri aplikacijah z višjimi varnostnimi zahtevami, kot so bančne aplikacije in mobilno plačevanje, saj so te v praksi pogosto med prvimi pokazatelji omejitev alternativnih sistemov.
@@ -1707,8 +1726,8 @@ V obeh primerih uporabimo tristopenjsko lestvico z vrednostmi 0, 1 in 2.
 Na ta način so rezultati empiričnega dela neposredno primerljivi s sinteznimi ocenami iz analitičnega dela naloge.
 
 Pri subjektivnih vidikih, kot so odzivnost uporabniškega vmesnika, stabilnost in splošni vtis, uporabimo kratke opisne opombe.
-Namesto navidezno natančnih številčnih ocen damo prednost kratkim kvalitativnim ugotovitvam, na primer da je sistem pri vsakdanji rabi \enquote{stabilen}, \enquote{občasno neodziven} ali \enquote{primeren le za potrpežljivo eksperimentalno rabo}.
-Tak pristop je v kontekstu diplomske naloge primernejši kot pretirano natančno točkovanje subjektivnih občutkov.
+Namesto navidezno natančnih številčnih ocen damo prednost kratkim kvalitativnim ugotovitvam, na primer da je sistem pri vsakdanji rabi \enquote{stabilen}, \enquote{občasno neodziven} ali \enquote{primeren le za eksperimentalno rabo}.
+Tak pristop je primernejši kot pretirano natančno točkovanje subjektivnih občutkov.
 
 Pri porabi energije zabeležimo odstotek baterije na začetku in na koncu posameznega preizkusa, pri preizkusu pripravljenosti čez noč pa tudi padec baterije v mirovanju.
 Pri sistemih, kjer je to mogoče, zabeležimo tudi sistemske informacije o porabi energije ali ozadnih procesih.
@@ -1717,9 +1736,10 @@ Ker ti podatki med sistemi niso nujno neposredno primerljivi, služijo predvsem 
 \section{Empirični indikatorji odprtosti}
 \label{sec:empiricni_indikatorji_odprtosti}
 
-Čeprav odprtosti ni mogoče v celoti izmeriti z neposrednim uporabniškim testom, tudi v empiričnem delu preverimo nekaj konkretnih indikatorjev, ki posredno odražajo kriterije odprtosti iz modela iz prejšnjega poglavja.
+Čeprav odprtosti ni mogoče v celoti ovrednotiti z neposrednim uporabniškim testiranjem, v empiričnem delu vseeno preverimo nekaj konkretnih indikatorjev, ki posredno odražajo kriterije odprtosti iz modela iz prejšnjega poglavja.
 Pri tem ne ocenjujemo abstraktnega projekta, temveč konkretno kombinacijo projekta in naprave.
-Indikatorji zato niso zamišljeni kot ločen nadomestni model odprtosti, temveč kot praktičen način, kako na konkretni napravi opazovati nekatere vidike zagonske verige, sistemskih storitev, distribucije programske opreme, odvisnosti od zaprtih komponent in dejanske uporabniške avtonomije.
+Izbrani indikatorji zato niso zamišljeni kot ločen nadomestni model odprtosti, temveč kot praktičen način opazovanja nekaterih vidikov zagonske verige, sistemskih storitev, distribucije programske opreme, odvisnosti od zaprtih komponent in dejanske uporabniške avtonomije na konkretni napravi.
+V nadaljevanju predstavimo indikatorje, ki jih pri tem upoštevamo.
 
 \paragraph{Zagonska veriga in namestitev.}
 Zabeležimo, kako dokumentiran je postopek namestitve, ali je odklep zagonskega nalagalnika preprost in ponovljiv, ali sistem zahteva posebne obhode ter kako predvidljivo poteka posodabljanje po namestitvi.
@@ -1728,22 +1748,22 @@ Zabeležimo, kako dokumentiran je postopek namestitve, ali je odklep zagonskega 
 Preverimo, koliko nadzora ima uporabnik nad prednameščenimi komponentami, ali je na voljo terminal, ali obstaja paketni upravljalnik oziroma drug pregleden mehanizem nameščanja programske opreme ter kako pregledna je distribucija aplikacij in posodobitev.
 
 \paragraph{Odvisnost od lastniških komponent in storitev.}
-Posebej zabeležimo, ali sistem za osnovno delovanje ostaja tesno vezan na lastniške storitve, posebne dobaviteljske komponente ali druge elemente, nad katerimi uporabnik nima dejanskega nadzora.
+Posebej zabeležimo, ali sistem za osnovno delovanje ostaja tesno vezan na lastniške storitve, komponente posameznega dobavitelja ali druge elemente, nad katerimi uporabnik nima dejanskega nadzora.
 Pri tem upoštevamo tudi, ali so ključne vsakdanje funkcije odvisne od zaprtih ali težko zamenljivih delov sklada.
 
-\paragraph{Odprta koda in preglednost izvora.}
+\paragraph{Dostopnost izvorne kode in preglednost izvora.}
 Preverimo, ali so izvorna koda sistema, privzetih aplikacij in ključnih komponent javno dostopne, ali so repozitoriji jasno navedeni ter ali lahko uporabnik razumno ugotovi, iz katerih virov prihajajo sistemske slike, posodobitve in aplikacije.
-Pri tem nas ne zanima popolna tehnična verifikacija binarnih gradenj, temveč predvsem praktična preglednost izvora programske opreme in jasnost ločitve med odprtimi in zaprtimi deli sistema.
+Pri tem nas ne zanima popolna tehnična verifikacija binarnih gradenj, temveč predvsem praktična preglednost izvora programske opreme in jasna ločitev med odprtimi in zaprtimi deli sistema.
 
 \paragraph{Uporabniška avtonomija.}
-Preverimo, ali lahko uporabnik sistem razmeroma samostojno pregleduje, prilagaja in vzdržuje brez nestandardnih obhodov ter brez pretirane odvisnosti od proizvajalca ali projekta samega.
+Preverimo, ali lahko uporabnik sistem razmeroma samostojno pregleduje, prilagaja in vzdržuje brez nestandardnih obhodov ter brez pretirane odvisnosti od proizvajalca ali samega projekta.
 
 \section{Omejitve študije}
 \label{sec:omejitve_studije}
 
 Empirični del ima več pomembnih omejitev.
 Prvič, testirana je ena sama naprava, zato rezultatov ne moremo neposredno posplošiti na celoten mobilni ekosistem.
-Drugič, rezultati so vezani na konkretne izdaje sistemov, ki so bile v času testiranja na voljo.
+Drugič, rezultati so vezani na konkretne izdaje sistemov, uporabljene med testiranjem, ki so navedene pri predstavitvi posameznih rezultatov.
 Tretjič, del ocene, zlasti pri uporabniški izkušnji, neizogibno vsebuje tudi subjektivno komponento.
 
 Dodatna omejitev izhaja iz dejstva, da vse platforme nimajo enakega aplikacijskega okolja.
