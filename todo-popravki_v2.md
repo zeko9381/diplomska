@@ -2,7 +2,7 @@
 
 ## Splošne pripombe iz maila
 
-- [ ] **M1 — Popraviti raztegnjene strani**
+- [x] **M1 — Popraviti raztegnjene strani**
   - **Verbatim komentar:** `Nekatere strani vam je latex malo raztegnil: tako je npr. prisoten precejšen razmak med alinejami na strani 5 (15 v PDF). Poskusite popraviti z ukazom \raggedbottom na začetku dokumenta.`
   - **Naloga:** dodati `\raggedbottom` in preveriti, ali se izboljša vertikalni razmik po dokumentu, posebej okoli alinej.
 
