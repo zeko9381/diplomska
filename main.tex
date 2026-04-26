@@ -20,7 +20,7 @@
 \raggedbottom
  
 \usepackage[utf8]{inputenc}   % omogoča uporabo slovenskih črk kodiranih v formatu UTF-8
-\usepackage[slovenian,english]{babel}    % naloži, med drugim, slovenske delilne vzorce
+\usepackage[slovene,english]{babel}    % naloži, med drugim, slovenske delilne vzorce
 \usepackage[pdftex]{graphicx}  % omogoča vlaganje slik različnih formatov
 \usepackage{fancyhdr}          % poskrbi, na primer, za glave strani
 \usepackage{amssymb}           % dodatni matematični simboli
@@ -33,11 +33,11 @@
 						pdfproducer={LaTeX}, pdfcreator={LaTeX}]{hyperref}
 \usepackage{hyperxmp}
 \usepackage[section]{placeins}
+\usepackage[dvipsnames]{xcolor}
 
 \usepackage{pgfplots}
 \usepgfplotslibrary{polar}
 \pgfplotsset{compat=1.18}
-\usepackage[dvipsnames]{xcolor}
 
 \usepackage{color}
 \usepackage{soul}
@@ -382,7 +382,7 @@ Opis diplome v angleščini
 placeholder
 \iffalse
 Pametni telefon je danes ena izmed osrednjih računalniških naprav v vsakdanji rabi.
-Uporabljamo ga za komunikacijo, dostop do spleta, navigacijo, avtentikacijo, večpredstavnostne vsebine in številne druge storitve.
+Uporabljamo ga za komunikacijo, dostop do spleta, navigacijo, overjanje, večpredstavnostne vsebine in številne druge storitve.
 Zato je operacijski sistem telefona pomemben ne le z vidika uporabniške izkušnje, temveč tudi z vidika nadzora nad napravo, zasebnosti, varnosti in življenjske dobe programske podpore.
 \fi
 
@@ -682,7 +682,7 @@ To ne vključuje le uporabniškega prostora in jedra, temveč tudi gonilnike, za
 Tak idealni telefon bi moral hkrati izpolnjevati več pogojev.
 Celoten sistem bi moral biti zgradljiv iz izvorne kode, ključne komponente pa neodvisno preverljive, po možnosti tudi s ponovljivimi gradnjami~\cite{reproducible_builds}.
 Lastnik naprave bi moral imeti možnost na dokumentiran in ponovljiv način namestiti lasten sistem, ne da bi se moral pri tem odpovedati preverjenemu zagonu ali postati popolnoma odvisen od proizvajalca.
-Pomembne funkcije telefona bi morale ostati uporabne tudi brez zaprtih, centraliziranih ali proizvajalčevo vezanih storitev.
+Pomembne funkcije telefona bi morale ostati uporabne tudi brez zaprtih, centraliziranih ali na proizvajalca vezanih storitev.
 
 V kontekstu sodobnih pametnih telefonov je tak ideal težko dosegljiv.
 V praksi se skoraj vedno pojavijo vsaj tri pomembne omejitve:
@@ -713,11 +713,24 @@ Tak slojni pogled je primeren za ocenjevanje odprtosti, ker omogoča ločeno obr
 Rešitev je lahko na primer razmeroma odprta na ravni uporabniškega prostora, hkrati pa močno omejena na ravni strojne programske opreme.
 Prav zato odprtosti ne obravnavamo kot ene same lastnosti, temveč kot profil po posameznih slojih sistema.
 
-\section{Kriteriji odprtosti po slojih}
+\section{Kriteriji, kazalniki in sintezne ocene}
+\label{sec:model_kriteriji_kazalniki_ocene}
+
+V nalogi razlikujemo med kriteriji, kazalniki in sinteznimi ocenami.
+Kriterij razumemo kot lastnost oziroma vidik, po katerem ocenjujemo odprtost ali praktično uporabnost posamezne rešitve.
+Pri odprtosti kriteriji ustrezajo posameznim slojem sistema, pri praktični uporabnosti pa funkcionalnim sklopom uporabe telefona.
+Kazalnik je konkreten opazen podatek, dokumentirana lastnost, meritev, opažanje ali rezultat preizkusa, na podlagi katerega sklepamo, v kolikšni meri je posamezen kriterij izpolnjen.
+Sintezna ocena je končna ocena z vrednostjo $0$, $1$ ali $2$, ki jo posameznemu kriteriju dodelimo na podlagi več kazalnikov.
+
+Kriteriji tako določajo, kaj ocenjujemo, kazalniki pa določajo, na podlagi česa oceno utemeljimo.
+Tako je na primer zagonska veriga kriterij odprtosti, medtem ko so dokumentiran postopek odklepa zagonskega nalagalnika, možnost ponovnega zaklepa in podpora preverjenemu zagonu z uporabniškimi ključi kazalniki za presojo tega kriterija.
+
+\section{Kriteriji odprtosti in pripadajoči kazalniki}
 \label{sec:model_kriteriji_odprtosti}
 
-V tem razdelku postavimo kriterije, s katerimi bomo kasneje primerjali konkretne rešitve.
-Kriteriji so oblikovani tako, da so čim bolj preverljivi: zanima nas, ali je nekaj javno objavljeno, neodvisno zgradljivo, dokumentirano, dolgoročno vzdrževano ali zamenljivo.
+V tem razdelku opredelimo kriterije odprtosti, s katerimi bomo kasneje primerjali konkretne rešitve.
+Vsak kriterij ustreza enemu sloju sistema, pri njem pa navedemo kazalnike, na podlagi katerih bomo presojali stopnjo njegove izpolnjenosti.
+Kazalniki so oblikovani tako, da so čim bolj preverljivi: zanima nas, ali je nekaj javno objavljeno, neodvisno zgradljivo, dokumentirano, dolgoročno vzdrževano ali zamenljivo.
 
 \subsection{Zagonska veriga}
 \label{subsec:model_boot}
@@ -725,11 +738,11 @@ Kriteriji so oblikovani tako, da so čim bolj preverljivi: zanima nas, ali je ne
 Pri zagonski verigi nas zanima predvsem, ali ima lastnik naprave realno možnost namestiti lasten sistem, ne da bi bil pri tem popolnoma odvisen od proizvajalca.
 Pri tem ni pomembna le možnost odklenitve naprave, temveč tudi vprašanje, ali je mogoče ohraniti preverjen zagon in razumne varnostne lastnosti sistema.
 
-Kriteriji:
+Kazalniki:
 \begin{itemize}
   \item \textbf{Odklep zagonskega nalagalnika}: ali je uradno podprt in dokumentiran ter ali ne zahteva nepovratnih korakov, ki uporabnika trajno omejijo.
   \item \textbf{Preverjen zagon z uporabniškimi ključi}: ali sistem omogoča preverjen zagon, pri čemer lahko naprava zaupa tudi podpisom, ki jih upravlja lastnik~\cite{android_verified_boot}.
-  \item \textbf{Dokumentiranost namestitve}: ali je postopek namestitve alternativnega sistema javno opisan in reproducibilen.
+  \item \textbf{Dokumentiranost namestitve}: ali je postopek namestitve alternativnega sistema javno opisan in ponovljiv.
 \end{itemize}
 
 \subsection{Jedro in gonilniki}
@@ -739,7 +752,7 @@ Pri jedru in gonilnikih je ključno vprašanje dolgoročno vzdrževanje.
 Če je podpora za napravo vključena v glavno razvojno vejo jedra Linux, je možnost dolgotrajnih varnostnih posodobitev večja~\cite{kernelorg_releases}.
 Nasprotno pa dobaviteljske izpeljanke in zaprtokodni gonilniki povečujejo odvisnost od proizvajalca ter otežujejo neodvisno vzdrževanje.
 
-Kriteriji:
+Kazalniki:
 \begin{itemize}
   \item \textbf{Podpora v glavni veji}: ali so ključni gonilniki vključeni v uradno jedro ali pa gre za dobaviteljsko izpeljanko.
   \item \textbf{Odprtost gonilnikov}: ali so gonilniki odprtokodni ali pa so prisotni binarni dodatki v jedru oziroma uporabniškem prostoru.
@@ -755,9 +768,16 @@ Popolna odprtost zato pogosto ni realno dosegljiva.
 
 V takem primeru je pomembno predvsem vprašanje, katere komponente ostajajo zaprte in kako pomembne so za delovanje telefona. Pri ocenjevanju zato ne upoštevamo le tega, ali je posamezna komponenta odprta, temveč tudi, kako pomembna je za delovanje naprave in kako privilegiran položaj ima v arhitekturi sistema.
 
-Podsistemov ne obravnavamo kot enakovrednih, temveč jih pri sintezni oceni razvrstimo v tri razrede glede na njihov vpliv na celoten sistem. V prvi razred sodijo kritični podsistemi, ki imajo širok dostop do podatkov, vplivajo na komunikacijo z zunanjim svetom ali predstavljajo temelj zaupanja v sistem; sem uvrščamo predvsem modemski podsistem, podsisteme za brezžično povezljivost ter privilegirane varnostne podsisteme, kot sta TEE in varnostni element. V drugi razred sodijo pomembni podsistemi, ki bistveno vplivajo na uporabnost in zasebnost naprave, vendar nimajo enako privilegiranega položaja, na primer kamera, grafični podsistem in globalni navigacijski satelitski sistem (angl.~\textit{Global Navigation Satellite System}, GNSS). V tretji razred sodijo manj kritični podsistemi z ožjim vplivom na celoten sistem, na primer posamezni senzorji ali manj pomembni periferni elementi. Pri ocenjevanju zato ne gledamo le na prisotnost zaprtih komponent, temveč tudi na njihov razred pomembnosti, privilegiranost in obseg vpliva. Zaprta komponenta v prvem razredu lahko bistveno zniža sintezno oceno sloja, medtem ko zaprta komponenta v tretjem razredu sama po sebi še ne pomeni nizke ocene. Cilj takšne razvrstitve ni ustvariti navidezno natančnega uteženega modela, temveč transparentno pojasniti, zakaj imajo nekatere zaprte komponente pri končni presoji večjo težo kot druge.
+Podsistemov ne obravnavamo kot enakovrednih, temveč jih pri sintezni oceni kriterija strojne programske opreme razvrstimo v tri razrede glede na njihov vpliv na celoten sistem.
+V prvi razred sodijo kritični podsistemi, ki imajo širok dostop do podatkov, vplivajo na komunikacijo z zunanjim svetom ali predstavljajo temelj zaupanja v sistem; sem uvrščamo predvsem modemski podsistem, podsisteme za brezžično povezljivost ter privilegirane varnostne podsisteme, kot sta TEE in varnostni element.
+V drugi razred sodijo pomembni podsistemi, ki bistveno vplivajo na uporabnost in zasebnost naprave, vendar nimajo enako privilegiranega položaja, na primer kamera, grafični podsistem in globalni navigacijski satelitski sistem (angl.~\textit{Global Navigation Satellite System}, GNSS).
+V tretji razred sodijo manj kritični podsistemi z ožjim vplivom na celoten sistem, na primer posamezni senzorji ali manj pomembni periferni elementi.
 
-Kriteriji:
+Pri ocenjevanju zato ne gledamo le na prisotnost zaprtih komponent, temveč tudi na njihov razred pomembnosti, privilegiranost in obseg vpliva.
+Zaprta komponenta v prvem razredu lahko bistveno zniža sintezno oceno tega kriterija, medtem ko zaprta komponenta v tretjem razredu sama po sebi še ne pomeni nizke ocene.
+Cilj takšne razvrstitve ni ustvariti navidezno natančnega uteženega modela, temveč pregledno pojasniti, zakaj imajo nekatere zaprte komponente pri končni presoji večjo težo kot druge.
+
+Kazalniki:
 \begin{itemize}
     \item \textbf{Razpoložljivost izvorne kode:} ali je strojna programska oprema odprtokodna; če ni, ali obstajajo odprte alternative, četudi z omejitvami.
     \item \textbf{Obseg, pomembnost in privilegiji:} kateri podsistemi so zaprti, ali sodijo med kritične, pomembne ali manj kritične podsisteme, kako privilegiran položaj imajo v arhitekturi sistema in kako kritični so za delovanje naprave; večjo težo imajo kritični podsistemi, kot so modem, brezžični vmesniki ter privilegirani varnostni podsistemi, manjšo pa podsistemi z ožjim vplivom na celoten sistem.
@@ -772,7 +792,7 @@ Pri tem sloju nas ne zanima neposredno, ali je sistem varen ali zaseben v absolu
 Odprt sistem je v tem kontekstu tak, pri katerem je ključne dele mogoče pregledati, po potrebi zamenjati ter vsaj deloma neodvisno preveriti, kaj se dejansko izvaja na napravi.
 Poudarek je torej na preverljivosti sistema in zmanjšanju potrebe po slepem zaupanju v zaprt dobaviteljski sklad.
 
-Kriteriji:
+Kazalniki:
 \begin{itemize}
   \item \textbf{Odprtost ključnih sistemskih komponent:} ali ključne sistemske storitve in vmesni sloji temeljijo pretežno na odprtokodnih in zamenljivih komponentah ali pa so za osnovno delovanje sistema bistveni zaprtokodni deli.
   \item \textbf{Odvisnost od lastniških storitev}: ali sistem za osnovno delovanje zahteva centralizirane, zaprtokodne storitve ali pa ima odprte alternative.
@@ -794,7 +814,7 @@ Vprašanje telemetrije privzeto nameščenih aplikacij je za uporabnika sicer po
 Pri zaprtokodnih aplikacijah namreč brez poglobljene dinamične analize ali postopkov obratnega inženiringa (angl.~\textit{reverse engineering}) pogosto ni mogoče zanesljivo ugotoviti, kateri podatki se prenašajo, v kakšnem obsegu in za kakšen namen.
 Telemetrijo zato v nadaljevanju obravnavamo le opisno, kadar je to pomembno za razpravo o posamezni rešitvi.
 
-Kriteriji:
+Kazalniki:
 \begin{itemize}
   \item \textbf{Odprtost privzeto nameščenih aplikacij:} ali so aplikacije iz privzete namestitve sistema pretežno odprtokodne ali pa med njimi prevladujejo zaprtokodne aplikacije.
   \item \textbf{Trgovina in repozitoriji:} ali sistem omogoča nameščanje aplikacij iz odprtih ali neodvisno vzdrževanih virov ter ali uporabnik pri nameščanju dodatne programske opreme ni povsem odvisen od enega samega lastniškega distribucijskega kanala.
@@ -803,27 +823,27 @@ Kriteriji:
 
 \subsection{Povzetek}
 
-Za lažji pregled tabela~\ref{tab:model_povzetek_slojev} povzema sloje in tipične kriterije odprtosti, ki jih bomo uporabili v nadaljevanju.
+Za lažji pregled tabela~\ref{tab:model_povzetek_slojev} povzema kriterije odprtosti in pripadajoče kazalnike, ki jih bomo uporabili v nadaljevanju.
 
 \begin{table}[htb]
 \centering
 \begin{tabular}{p{0.26\linewidth} p{0.68\linewidth}}
 \hline
-\textbf{Sloj} & \textbf{Kaj preverjamo} \\
+\textbf{Kriterij odprtosti} & \textbf{Kazalniki} \\
 \hline
 Zagonska veriga &
 odklep zagonskega nalagalnika; preverjen zagon z uporabniškimi ključi; dokumentiran postopek namestitve \\
 Jedro in gonilniki &
 podpora v glavni veji; odprtost gonilnikov; aktivno vzdrževanje \\
 Strojna programska oprema &
-odprta koda ali odprte alternative; obseg zaprtih podsistemov; izolacija \\
+razpoložljivost izvorne kode; odprte alternative; obseg, pomembnost in privilegiji zaprtih podsistemov \\
 Sistemske storitve &
-delež komponent FOSS; odvisnost od lastniških storitev; ponovljive gradnje \\
-Aplikacije in distribucija &
-odprtokodne privzete aplikacije; odprti repozitoriji; neodvisnost od proizvajalca \\
+odprtost ključnih sistemskih komponent; odvisnost od lastniških storitev; preglednost izvora komponent; neodvisna preverljivost izdaj \\
+Privzete aplikacije in distribucija aplikacij &
+odprtost privzeto nameščenih aplikacij; odprti ali neodvisno vzdrževani viri aplikacij; neodvisnost od proizvajalca \\
 \hline
 \end{tabular}
-\caption{Povzetek slojev in tipičnih kriterijev odprtosti v predlaganem modelu.}
+\caption{Povzetek kriterijev odprtosti in pripadajočih kazalnikov v predlaganem modelu.}
 \label{tab:model_povzetek_slojev}
 \end{table}
 
@@ -833,25 +853,25 @@ odprtokodne privzete aplikacije; odprti repozitoriji; neodvisnost od proizvajalc
 Ker je ciljna naprava telefon, mora sistem pokriti vsaj osnovne funkcionalnosti, sicer primerjava ni smiselna.
 Odprt sistem brez delujočih klicev je lahko zanimiv kot tehnična demonstracija, vendar ne deluje kot telefon v običajnem pomenu besede.
 
-Praktične uporabnosti v tej nalogi ne ocenjujemo po slojih sistema, temveč po funkcionalnih sklopih, ki skupaj določajo, ali je naprava primerna za vsakodnevno rabo.
+Kriteriji praktične uporabnosti v tej nalogi niso vezani na sloje sistema, temveč na funkcionalne sklope, ki skupaj določajo, ali je naprava primerna za vsakodnevno rabo.
 Izhodišče je minimalni nabor funkcionalnosti za vsakodnevno uporabo: naprava mora omogočati osnovno telefonijo, povezljivost, dostop do ključnih aplikacij, razumno avtonomijo ter dovolj enostavno namestitev, uporabo in vzdrževanje.
 
 Ker se diplomska naloga ne osredotoča na povprečnega uporabnika, temveč predvsem na tehnično bolj podkovanega uporabnika z višjimi zahtevami glede zasebnosti in nadzora nad sistemom, kot del praktične uporabnosti upoštevamo tudi stopnjo prilagodljivosti sistema.
 Pri telefonu takšnega tipa ni pomembno le, ali funkcija deluje, temveč tudi, v kolikšni meri lahko uporabnik sistem samostojno pregleda, prilagaja in upravlja brez pretirane odvisnosti od proizvajalca ali nestandardnih obhodov.
 
-V nadaljevanju uporabljamo naslednje sklope:
+V nadaljevanju uporabljamo naslednje kriterije praktične uporabnosti:
 
 \begin{itemize}
   \item \textbf{Osnovne funkcije telefona}: klici, SMS, mobilni podatki in stabilnost povezave.
-  \item \textbf{Ključna strojna podpora}: kamera, GPS, Bluetooth, Wi-Fi, zvok in senzorji; po potrebi tudi komunikacija kratkega dosega (angl.~\textit{near-field communication}, NFC).
+  \item \textbf{Ključna strojna podpora}: kamera, GPS, Bluetooth, Wi-Fi, zvok in senzorji; po potrebi tudi NFC.
   \item \textbf{Avtonomija in zmogljivost}: poraba energije v mirovanju in pri rabi, segrevanje ter odzivnost sistema.
   \item \textbf{Ekosistem aplikacij}: ali so za minimalni nabor vsakodnevnih nalog na voljo ustrezne aplikacije ali spletne alternative.
   \item \textbf{Posodobitve in vzdrževanje}: kako pogosto prihajajo varnostne posodobitve in kako enostavno jih je namestiti.
   \item \textbf{Prilagodljivost in uporabniški nadzor}: v kolikšni meri lahko uporabnik samostojno prilagaja sistem, upravlja nameščeno programsko opremo, uporablja naprednejša orodja (npr.~terminal ali paketni upravljalnik) ter nadzira procese, storitve in dovoljenja v ozadju.
 \end{itemize}
 
-Pri teh sklopih nas zanima predvsem, ali posamezne funkcije delujejo dovolj zanesljivo, da je naprava primerna za vsakodnevno rabo.
-Pri zadnjem sklopu pa nas dodatno zanima, ali sistem uporabniku omogoča razumno stopnjo dejanskega nadzora nad napravo, saj je to pri odprtokodnih mobilnih rešitvah pomemben del njihove praktične vrednosti.
+Pri teh kriterijih nas zanima predvsem, ali posamezne funkcije delujejo dovolj zanesljivo, da je naprava primerna za vsakodnevno rabo.
+Pri kriteriju prilagodljivosti in uporabniškega nadzora pa nas dodatno zanima, ali sistem uporabniku omogoča razumno stopnjo dejanskega nadzora nad napravo, saj je to pri odprtokodnih mobilnih rešitvah pomemben del njihove praktične vrednosti.
 
 Pri ekosistemu aplikacij v tej nalogi preverjamo, ali so za vnaprej opredeljen minimalni nabor vsakodnevnih nalog na voljo ustrezne aplikacije ali spletne alternative.
 Kot minimalne kategorije upoštevamo komunikacijo, navigacijo, spletni brskalnik, e-pošto, kamero in galerijo, predvajanje medijev ter osnovne aplikacije za overjanje, npr.~dvofaktorsko overjanje (angl.~\textit{two-factor authentication}, 2FA).
@@ -869,7 +889,8 @@ Ne ocenjujemo projekta v splošnem, temveč vedno konkretno rešitev na konkretn
 Tako na primer ne ocenjujemo \enquote{GrapheneOS na splošno}, temveč \enquote{GrapheneOS na uradno podprti napravi}.
 S tem se izognemo mešanju lastnosti programske rešitve z lastnostmi strojne opreme.
 
-Odprtost ocenjujemo po slojih iz sekcije~\ref{sec:model_sloji} in po kriterijih iz sekcije~\ref{sec:model_kriteriji_odprtosti}, praktično uporabnost pa po sklopih iz sekcije~\ref{sec:model_uporabnost}.
+Odprtost ocenjujemo po kriterijih odprtosti iz sekcije~\ref{sec:model_kriteriji_odprtosti}, ki so organizirani po slojih sistema.
+Praktično uporabnost ocenjujemo po kriterijih iz sekcije~\ref{sec:model_uporabnost}, ki ustrezajo funkcionalnim sklopom uporabe telefona.
 V obeh dimenzijah uporabljamo isto abstraktno lestvico, ker posamezni kriteriji odprtosti ali uporabnosti ne merijo vedno neposredno, temveč pogosto merijo lastnosti, iz katerih lahko na odprtost oziroma uporabnost sklepamo.
 To velja na primer za dokumentiranost namestitve, neodvisnost od lastniških storitev, ponovljive gradnje, vzdrževalni signal ali odprtost ključnih sistemskih komponent.
 
@@ -877,14 +898,14 @@ Model ne ocenjuje neposredno varnosti, zasebnosti ali dejanske zaupnosti sistema
 Te vidike obravnavamo kot pomembne posledice odprtosti in preverljivosti, vendar jih zaradi omejenega obsega naloge ne vključujemo kot samostojne dimenzije ocenjevanja.
 V model odprtosti zato vključujemo predvsem tiste lastnosti, ki uporabniku in neodvisni skupnosti omogočajo pregled, zamenljivost komponent, preverljivost izdaj ter dolgoročno vzdrževanje sistema.
 
-Pri sintezni oceni posameznega sloja oziroma sklopa ne obravnavamo vseh kriterijev in podsistemov kot enako pomembnih.
+Pri sintezni oceni posameznega kriterija ne obravnavamo vseh kazalnikov in podsistemov kot enako pomembnih.
 Formalnega uteževanja ne uporabljamo, ker bi tak pristop ustvaril vtis večje natančnosti, kot jo je pri tovrstni primerjavi mogoče utemeljiti.
 Kljub temu pri razlagi rezultatov upoštevamo hierarhijo pomembnosti.
 Večjo težo imajo komponente, ki so nujne za osnovno delovanje telefona, imajo širok dostop do podatkov ali zasedajo privilegiran položaj v arhitekturi sistema.
 Pri odprtosti to pomeni, da imajo večjo težo zagonska veriga, modem, brezžični vmesniki, privilegirani varnostni podsistemi ter ključni gonilniki in sistemske storitve kot pa posamezne manj kritične komponente.
 Pri praktični uporabnosti pa imajo večjo težo osnovne funkcije telefona, mobilni podatki, stabilnost sistema in dostop do ključnih aplikacij kot pa manj pogosto uporabljene ali nadomestljive funkcije.
 
-Skupna ocenjevalna lestvica je naslednja:
+Enotna ocenjevalna lestvica je naslednja:
 \begin{itemize}
   \item \textbf{0 -- nizka ocena:} obravnavani kriterij je izpolnjen slabo ali pa sploh ni izpolnjen.
   Pri odprtosti to pomeni, da rešitev ostaja pretežno odvisna od zaprtih, nezamenljivih ali slabo preverljivih komponent.
@@ -898,19 +919,24 @@ Skupna ocenjevalna lestvica je naslednja:
   Pri praktični uporabnosti pa pomeni, da funkcionalnost deluje stabilno in brez posebnih omejitev v tipičnih scenarijih uporabe.
 \end{itemize}
 
-Ocena posameznega sloja oziroma sklopa je sintezna ocena na podlagi vnaprej določenih kriterijev, pri čemer pri razlagi upoštevamo tudi relativno pomembnost posameznih podsistemov in funkcij.
+Ocena posameznega kriterija je sintezna ocena na podlagi pripadajočih kazalnikov, pri čemer pri razlagi upoštevamo tudi relativno pomembnost posameznih podsistemov in funkcij.
 Skupnega uteženega rezultata ne računamo.
 Rezultate zato predstavimo v tabelah in grafičnih povzetkih, ločeno za odprtost in praktično uporabnost.
 
-Pri analizi obstoječih rešitev ocene temeljijo na javno dostopni dokumentaciji projektov, seznamih podprtih funkcionalnosti, znanih omejitvah in uporabniških poročilih.
-V empiričnem delu iste sklope ocenimo še na podlagi lastnega testiranja na izbrani napravi.
-Ocene v primerjalni analizi so zato nujno bolj okvirne kot ocene v študiji primera, kjer lahko funkcionalnosti preverimo neposredno.
+Pri analizi obstoječih rešitev uporabljamo pristop od zgoraj navzdol (angl.~\textit{top-down}).
+Izhajamo iz vnaprej določenih kriterijev modela in jih ocenjujemo na podlagi javno dostopne dokumentacije projektov, seznamov podprtih funkcionalnosti, znanih omejitev, razvojnih usmeritev in poročil uporabnikov.
+Ocene v primerjalni analizi so zato nujno bolj okvirne, saj ne izhajajo iz neposrednega testiranja na isti napravi.
+
+V empiričnem delu uporabljamo pristop od spodaj navzgor (angl.~\textit{bottom-up}).
+Najprej zberemo konkretne kazalnike z neposrednim testiranjem na izbrani napravi, nato pa iz njih izpeljemo sintezne ocene posameznih kriterijev.
+Zato so ocene v študiji primera bolj neposredno utemeljene na opažanjih in rezultatih preizkusov.
 
 \section{Povzetek}
 \label{sec:model_povzetek}
 
 V tem poglavju smo idealni popolnoma odprtokodni telefon opredelili kot referenčno točko za nadaljnjo primerjavo.
-Nato smo določili kriterije odprtosti po slojih sistema in kriterije praktične uporabnosti po funkcionalnih sklopih telefona.
+Nato smo določili kriterije odprtosti, organizirane po slojih sistema, in kriterije praktične uporabnosti, organizirane po funkcionalnih sklopih telefona.
+Pri tem smo ločili kriterije, kazalnike in sintezne ocene, kar omogoča bolj pregledno utemeljevanje ocen v primerjalni analizi in empiričnem delu.
 Posamezne rešitve bomo v nadaljevanju ocenjevali ločeno v obeh dimenzijah, brez združevanja v en sam skupni rezultat.
 
 Tak pristop omogoča bolj pregledno in pošteno primerjavo.
@@ -922,7 +948,7 @@ Namesto navidezno natančne končne številke dobimo profil posamezne rešitve, 
 V prejšnjem poglavju smo oblikovali model, s katerim lahko posamezne mobilne rešitve primerjamo glede na dve ločeni dimenziji: \textbf{odprtost} in \textbf{praktična uporabnost}.
 V tem poglavju ta model uporabimo za analizo obstoječih odprtokodnih mobilnih rešitev.
 
-Namen poglavja ni zgolj izdelati seznama projektov, temveč pokazati, kako posamezne rešitve v praksi različno razporejajo kompromise med odprtostjo, varnostjo, zrelostjo programske podpore in vsakdanjo uporabnostjo.
+Namen poglavja ni zgolj izdelati seznama projektov, temveč pokazati, kako posamezne rešitve v praksi različno razporejajo kompromise med odprtostjo, preverljivostjo, zrelostjo programske podpore in vsakdanjo uporabnostjo.
 Pri tem nas ne zanima le, ali je projekt \enquote{odprt}, temveč tudi, \emph{kateri del} sistema je odprt, kje ostajajo odvisnosti od zaprtih komponent in kako močno to vpliva na dejansko uporabo naprave.
 
 Analizirane rešitve razdelimo v tri večje skupine:
@@ -935,7 +961,8 @@ Alternativni ROM-i za sistem Android ohranijo največ praktične uporabnosti, mo
 V nadaljevanju za celoten operacijski sistem uporabljamo izraz GNU/Linux, medtem ko izraz Linux uporabljamo le, kadar govorimo o jedru Linux.
 
 V tem poglavju uporabljamo kriterije odprtosti iz sekcije~\ref{sec:model_kriteriji_odprtosti} in kriterije praktične uporabnosti iz sekcije~\ref{sec:model_uporabnost}.
-Ker gre predvsem za sintezo javno dostopne dokumentacije projektov, seznamov podprtih naprav, znanih omejitev in razvojnih usmeritev, so ocene v tem poglavju nujno bolj okvirne kot v empiričnem delu naloge.
+Metodološko gre za pristop od zgoraj navzdol (angl.~\textit{top-down}): izhajamo iz vnaprej določenih kriterijev modela, nato pa iz javno dostopne dokumentacije projektov, seznamov podprtih naprav, znanih omejitev, razvojnih usmeritev in poročil uporabnikov zberemo kazalnike, iz katerih izpeljemo okvirne sintezne ocene.
+Ker ocene v tem poglavju ne izhajajo iz neposrednega testiranja vseh rešitev na enotni napravi, so nujno bolj okvirne kot v empiričnem delu naloge.
 Kljub temu takšna analiza omogoča dovolj jasen pregled nad tem, katere vrste kompromisov so značilne za posamezno družino rešitev.
 
 \section{Alternativni ROM-i za sistem Android}
@@ -1022,6 +1049,7 @@ Prav zato je z vidika uporabniškega nadzora manj izrazit predstavnik odprtokodn
 
 Projekt Replicant je v tej skupini poseben primer, ker kot osnovni cilj postavlja programsko svobodo in zato ne pristaja na številne pragmatične kompromise, ki jih sprejemajo drugi ROM-i za sistem Android.
 Predstavlja se kot popolnoma prosta distribucija sistema Android, ki ne vključuje in ne priporoča neproste programske opreme~\cite{replicant_about}.
+Zato je Replicant z vidika odprtosti privzetih aplikacij in sistemskih komponent zelo močan, čeprav takšna usmeritev močno omeji njegovo praktično uporabnost in aplikacijski ekosistem.
 
 Z vidika idealnega modela iz prejšnjega poglavja je Replicant med ROM-i za sistem Android najbližje strožji interpretaciji odprtosti.
 Ravno zato pa zelo jasno pokaže, kako težko je v mobilnem svetu hkrati doseči visoko odprtost in visoko uporabnost.
@@ -1033,7 +1061,7 @@ Replicant je zato pomemben predvsem kot referenčni robni primer.
 Pokaže, da je v okviru sistema Android mogoče zgraditi rešitev, ki programsko svobodo razume bistveno strožje kot projekti LineageOS, GrapheneOS ali /e/OS.
 Hkrati pa ista odločitev povzroči tako velike omejitve pri podpori napravam in pri vsakdanji rabi, da Replicant za večino uporabnikov danes težko predstavlja realno zamenjavo za sodoben telefon.
 Po drugi strani je za tehnično bolj podkovanega uporabnika pomemben tudi zato, ker zaradi strožjega odnosa do neproste programske opreme omogoča večji vpogled v sistem in več neposrednega nadzora nad njegovimi odprtimi deli kot bolj pragmatične alternative.
-Replicant ima lahko zato kljub nizki splošni praktični uporabnosti visoko oceno pri uporabniškem nadzoru, ker prav na tem področju najbolj jasno uresničuje idejo, da ima lastnik naprave dejanski nadzor nad odprtimi deli sistema.
+Replicant ima lahko zato kljub nizki splošni praktični uporabnosti visoko sintezno oceno pri kriteriju prilagodljivosti in uporabniškega nadzora, ker prav na tem področju najbolj jasno uresničuje idejo, da ima lastnik naprave dejanski nadzor nad odprtimi deli sistema.
 Prav zato je za to diplomsko nalogo zelo uporaben:
 ne kot najbolj praktična rešitev, temveč kot dokaz, kako hitro se ob strožjem razumevanju odprtosti skrči nabor dejansko uporabnih naprav.
 
@@ -1072,7 +1100,7 @@ Halium pa kot združljivostni temelj, ki skuša povezati svet naprav za sistem A
 
 Projekt Ubuntu Touch je danes eden najpomembnejših predstavnikov mobilnih distribucij sistema GNU/Linux, ki skušajo odprtokodne mobilne rešitve približati tudi manj tehnično usmerjenim uporabnikom.
 Uradna dokumentacija projekta UBports ga opisuje kot mobilni operacijski sistem, osredotočen na enostavno uporabo, zasebnost in konvergenco~\cite{ubports_ubuntu_touch,ubports_convergence}.
-Ta izhodišča kažejo, da projekt ne stavi predvsem na ideološko čistost ali eksperimentalnost, temveč na čim bolj zaokroženo uporabniško izkušnjo.
+Ta izhodišča kažejo, da projekt v ospredje ne postavlja predvsem eksperimentiranja ali strogega izogibanja lastniškim komponentam, temveč čim bolj zaokroženo uporabniško izkušnjo.
 
 Ubuntu Touch je pomemben predvsem zato, ker poskuša na mobilni napravi ponuditi uporabniški prostor sistema GNU/Linux, ne da bi se pri tem povsem odpovedal praktični uporabnosti.
 Na ravni uporabniške izkušnje je projekt bližje klasičnemu razumevanju mobilnega operacijskega sistema kot številni bolj eksperimentalni projekti.
@@ -1204,11 +1232,11 @@ Jolla C2 je zanimiv predvsem kot referenčna naprava za skupnost sistema Sailfis
 Uradna predstavitev ga opisuje kot referenčno napravo za skupnost sistema Sailfish OS.
 Naprava podpira mobilno povezljivost LTE, govorne storitve prek LTE (angl.~\textit{Voice over LTE}, VoLTE) ter poganjanje aplikacij za Android~\cite{jolla_c2,jolla_c2_android_apps}.
 Vendar je za to diplomsko nalogo pomembna tudi omejitev, da uradna dokumentacija Sailfish OS sama navaja, da sistem sestavljajo tako odprtokodne kot tudi zaprte komponente~\cite{sailfish_open_source}.
-Jolla C2 je zato zanimiv kot pokazatelj, da na trgu še vedno obstaja komercialni interes za telefone z GNU/Linuxom, ni pa tako \enquote{čist} primer odprtokodne mobilne rešitve kot PinePhone ali Librem 5.
+Jolla C2 je zato zanimiv predvsem kot pokazatelj, da na trgu še vedno obstaja komercialni interes za Linuxu sorodne mobilne sisteme, ni pa tako dosleden primer odprtokodne mobilne rešitve kot PinePhone ali Librem 5.
 
 FuriPhone FLX1s predstavlja novejši poskus telefona, ki temelji na sistemu FuriOS, opisanem kot mobilno prilagojen sistem na osnovi Debiana.
 Proizvajalec pri njem poudarja tri strojna stikala za zasebnost in usmerjenost v mobilno uporabo brez umetnih omejitev~\cite{furiphone_flx1s,furiphone_flx1s_switches}.
-Ta projekt je zanimiv zato, ker skuša združiti ideje klasičnega okolja GNU/Linux, zasebnosti in vsakdanje uporabnosti, vendar je za zdaj še premlad, da bi ga lahko obravnavali kot enako referenčen primer kot PinePhone ali Librem 5.
+Ta projekt je zanimiv zato, ker skuša združiti ideje klasičnega okolja GNU/Linux, zasebnosti in vsakdanje uporabnosti, vendar je za zdaj še premalo zrel, da bi ga lahko obravnavali kot enako referenčen primer kot PinePhone ali Librem 5.
 
 Liberux NEXX pa predstavlja še zgodnejši primer novega projekta v nastajanju.
 Uradna stran ga opisuje kot telefon, zgrajen na sistemu LiberuxOS, ki je opisan kot etičen, prost in večinoma odprtokoden ter ni osnovan na Androidu ali iOS, spremljevalne objave projekta pa govorijo o množičnem financiranju (angl.~\textit{crowdfunding}) in prototipiranju prve razvojne plošče~\cite{liberux_home,liberux_crowdfunding,liberux_devboard}.
@@ -1232,8 +1260,8 @@ Analiza treh skupin odprtokodnih mobilnih rešitev pokaže, da se nobena izmed o
 Pri vseh treh skupinah se pokaže izrazita napetost med odprtostjo in praktično uporabnostjo.
 Rešitve, ki uporabniku omogočajo večji nadzor nad arhitekturo sistema, večjo prilagodljivost in bolj odprto programsko okolje, težje dosežejo enako raven vsakdanje uporabnosti kot rešitve, ki ostajajo bliže prevladujočemu ekosistemu sistema Android.
 
-Sintezne ocene odprtosti in praktične uporabnosti so povzete v tabelah~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost}, dodatno pa jih ponazarjata diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost}.
-Ocene v tabelah so sintezne in temeljijo na analizi javno dostopne dokumentacije, znanih omejitev in razvojnih usmeritev posameznih projektov.
+Sintezne ocene kriterijev odprtosti in praktične uporabnosti so povzete v tabelah~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost}, dodatno pa jih ponazarjata diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost}.
+Ocene v tabelah temeljijo na kazalnikih, zbranih iz javno dostopne dokumentacije, znanih omejitev in razvojnih usmeritev posameznih projektov.
 Gre torej za okvirne sintezne ocene, ki temeljijo na razpoložljivih podatkih in strokovni presoji, ne pa za neposredno izmerjene količine.
 
 \begin{table}[htb]
@@ -1248,7 +1276,7 @@ Gre torej za okvirne sintezne ocene, ki temeljijo na razpoložljivih podatkih in
 LineageOS    & 1 & 1 & 0 & 1 & 1 \\
 GrapheneOS   & 2 & 1 & 0 & 1 & 1 \\
 /e/OS        & 1 & 1 & 0 & 1 & 1 \\
-Replicant    & 1 & 1 & 1 & 2 & 1 \\
+Replicant    & 1 & 1 & 1 & 2 & 2 \\
 Ubuntu Touch & 1 & 1 & 0 & 1 & 2 \\
 Mobian       & 1 & 1 & 0 & 2 & 2 \\
 postmarketOS & 1 & 1 & 0 & 2 & 2 \\
@@ -1256,7 +1284,7 @@ PinePhone    & 2 & 2 & 1 & 2 & 2 \\
 Librem 5     & 2 & 2 & 1 & 2 & 2 \\
 \hline
 \end{tabular}
-\caption{Sintezna primerjava odprtosti po slojih. Oznake: ZV -- zagonska veriga, JG -- jedro in gonilniki, SP -- strojna programska oprema, SS -- sistemske storitve in vmesni sloj, AD -- privzete aplikacije in distribucija aplikacij. Vrednosti pomenijo: 0 -- pretežno zaprto, 1 -- mešano, 2 -- pretežno odprto.}
+\caption{Sintezna primerjava kriterijev odprtosti. Oznake: ZV -- zagonska veriga, JG -- jedro in gonilniki, SP -- strojna programska oprema, SS -- sistemske storitve in vmesni sloj, AD -- privzete aplikacije in distribucija aplikacij. Vrednosti pomenijo sintezno oceno posameznega kriterija: 0 -- nizka, 1 -- srednja, 2 -- visoka.}
 \label{tab:primerjalna_sinteza_odprtost}
 \end{table}
 
@@ -1269,7 +1297,7 @@ Librem 5     & 2 & 2 & 1 & 2 & 2 \\
 \hline
 \textbf{Rešitev} & \textbf{OF} & \textbf{KS} & \textbf{AZ} & \textbf{EA} & \textbf{PV} & \textbf{UN} \\
 \hline
-LineageOS    & 2 & 2 & 2 & 2 & 2 & 2 \\
+LineageOS    & 2 & 2 & 2 & 2 & 2 & 1 \\
 GrapheneOS   & 2 & 2 & 2 & 2 & 2 & 1 \\
 /e/OS        & 2 & 2 & 2 & 2 & 1 & 1 \\
 Replicant    & 1 & 0 & 0 & 0 & 0 & 2 \\
@@ -1280,25 +1308,26 @@ PinePhone    & 1 & 1 & 0 & 1 & 1 & 2 \\
 Librem 5     & 1 & 1 & 0 & 1 & 2 & 2 \\
 \hline
 \end{tabular}
-\caption{Sintezna primerjava praktične uporabnosti po funkcionalnih sklopih. Oznake: OF -- osnovne funkcije telefona, KS -- ključna strojna podpora, AZ -- avtonomija in zmogljivost, EA -- ekosistem aplikacij, PV -- posodobitve in vzdrževanje, UN -- uporabniški nadzor. Vrednosti pomenijo: 0 -- neuporabno, 1 -- omejeno, 2 -- uporabno.}
+\caption{Sintezna primerjava kriterijev praktične uporabnosti. Oznake: OF -- osnovne funkcije telefona, KS -- ključna strojna podpora, AZ -- avtonomija in zmogljivost, EA -- ekosistem aplikacij, PV -- posodobitve in vzdrževanje, UN -- uporabniški nadzor. Vrednosti pomenijo sintezno oceno posameznega kriterija: 0 -- nizka, 1 -- srednja, 2 -- visoka.}
 \label{tab:primerjalna_sinteza_uporabnost}
 \end{table}
 \FloatBarrier
 
-Visoka ocena v posameznem sklopu še ne pomeni visoke splošne uporabnosti rešitve, temveč kaže predvsem to, da je rešitev močna v točno določeni dimenziji praktične uporabnosti.
+Visoka sintezna ocena posameznega kriterija še ne pomeni visoke skupne ocene rešitve, temveč kaže predvsem to, da je rešitev močna v določeni dimenziji odprtosti ali praktične uporabnosti.
 Tabeli~\ref{tab:primerjalna_sinteza_odprtost} in~\ref{tab:primerjalna_sinteza_uporabnost} zato ne kažeta ene same lestvice \enquote{najboljše} rešitve, temveč različne profile kompromisov.
 
-Iz tabel je najprej razvidno, da alternativni ROM-i za sistem Android dosegajo najvišje ocene praktične uporabnosti, vendar ostajajo omejeni v spodnjih slojih sistema, zlasti pri strojni programski opremi in delu gonilnikov.
+Iz tabel je najprej razvidno, da alternativni ROM-i za sistem Android dosegajo najvišje sintezne ocene pri kriterijih praktične uporabnosti, vendar ostajajo omejeni pri nekaterih kriterijih odprtosti, zlasti pri strojni programski opremi in delu gonilnikov.
 Mobilne distribucije sistema GNU/Linux na obstoječi strojni opremi za sistem Android izboljšajo odprtost uporabniškega prostora in pogosto tudi preglednost sistema, vendar ne morejo v celoti prekiniti odvisnosti od izvorne zasnove naprav za sistem Android.
 Namenski telefoni z operacijskim sistemom GNU/Linux so v arhitekturnem smislu najbližje idealu odprtega telefona, vendar pri praktični uporabnosti zaostajajo za rešitvami, ki so tesneje povezane z ekosistemom sistema Android.
 
-Takšna primerjava ni pomembna le z vidika odprtosti, temveč tudi z vidika zaupanja.
-Zaprtost spodnjih slojev sistema pomeni, da uporabnik in skupnost ne moreta neodvisno preveriti vseh komponent, ki se izvajajo na napravi.
-Vprašanje stranskih vrat je zato posebej pomembno pri podsistemih z visokimi privilegiji, kot so modem, brezžični vmesniki in drugi deli dobaviteljskega sklada, kjer se omejitve odprtosti neposredno povezujejo tudi z omejitvami preverljivosti.
+Takšna primerjava je pomembna tudi z vidika preverljivosti sistema.
+Zaprtost spodnjih slojev pomeni, da uporabnik in skupnost ne moreta neodvisno pregledati vseh komponent, ki se izvajajo na napravi.
+To je posebej izrazito pri podsistemih z visokimi privilegiji, kot so modem, brezžični vmesniki in drugi deli dobaviteljskega sklada.
+V teh primerih omejitve odprtosti neposredno zmanjšajo tudi možnost neodvisnega preverjanja, vendar tega v modelu ne obravnavamo kot ločene varnostne ocene.
 
-Dodani sklop uporabniškega nadzora pomaga razliko med skupinami rešitev pokazati še jasneje.
-Pri nekaterih projektih je glavni cilj predvsem ponuditi bolj uporabno alternativo tovarniškemu sistemu, pri drugih pa pomemben del vrednosti predstavlja prav večji neposredni nadzor nad sistemom.
-Najizraziteje se to pokaže pri rešitvah, ki so tesneje povezane z običajnim okoljem GNU/Linux, medtem ko uporabniško dostopnejši Android ROM-i ta vidik pogosteje podredijo širši združljivosti in enostavnejši uporabi.
+Kriterij prilagodljivosti in uporabniškega nadzora še jasneje pokaže razlike med skupinami rešitev.
+Pri nekaterih projektih je glavni cilj predvsem ponuditi bolj uporabno alternativo tovarniškemu sistemu, pri drugih pa pomemben del vrednosti predstavlja večji neposredni nadzor nad sistemom.
+Najizraziteje se to pokaže pri rešitvah, ki so tesneje povezane z običajnim okoljem GNU/Linux, medtem ko uporabniško dostopnejši ROM-i za sistem Android ta vidik pogosteje podredijo širši združljivosti in enostavnejši uporabi.
 
 Zaradi preglednosti diagrama na slikah~\ref{fig:radar_odprtost} in~\ref{fig:radar_uporabnost} ne prikazujeta vseh obravnavanih rešitev, temveč tri reprezentativne profile.
 To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian kot predstavnik mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi za sistem Android ter Librem 5 kot predstavnik namenskih telefonov z operacijskim sistemom GNU/Linux.
@@ -1376,7 +1405,7 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
 
 \end{polaraxis}
 \end{tikzpicture}
-\caption{Diagram odprtosti za tri reprezentativne profile.}
+\caption{Diagram sinteznih ocen kriterijev odprtosti za tri reprezentativne profile.}
 \label{fig:radar_odprtost}
 \end{figure}
 
@@ -1434,7 +1463,7 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
     mark size=2.5pt,
     mark options={solid, draw=NavyBlue, fill=NavyBlue, fill opacity=1}
 ] coordinates {
-    (0,2) (60,2) (120,2) (180,2) (240,2) (300,2) (360,2)
+    (0,2) (60,2) (120,2) (180,2) (240,2) (300,1) (360,2)
 };
 \addlegendentry{LineageOS}
 
@@ -1464,14 +1493,14 @@ To so LineageOS kot predstavnik alternativnih ROM-ov za sistem Android, Mobian k
 
 \end{polaraxis}
 \end{tikzpicture}
-\caption{Diagram praktične uporabnosti za tri reprezentativne profile.}
+\caption{Diagram sinteznih ocen kriterijev praktične uporabnosti za tri reprezentativne profile.}
 \label{fig:radar_uporabnost}
 \end{figure}
 
 %\FloatBarrier
 
-Diagrama nazorno vizualizirata ugotovitve iz tabel.
-LineageOS se kot predstavnik alternativnih ROM-ov za sistem Android izkaže z najbolj uravnoteženim profilom praktične uporabnosti, vendar ostaja omejen na ravni strojne programske opreme in dela spodnjih slojev sistema.
+Diagrama nazorno prikazujeta razlike med sinteznimi ocenami iz tabel.
+LineageOS se kot predstavnik alternativnih ROM-ov za sistem Android izkaže z zelo močnim profilom praktične uporabnosti, vendar pri uporabniškem nadzoru ne dosega enake ravni kot sistemi, ki so bližje običajnemu okolju GNU/Linux, hkrati pa ostaja omejen tudi na ravni strojne programske opreme in dela spodnjih slojev sistema.
 Mobian kot predstavnik mobilnih distribucij sistema GNU/Linux na obstoječi strojni opremi kaže izrazitejšo odprtost uporabniškega prostora ter večjo prilagodljivost in uporabniški nadzor, vendar brez enake stopnje vsakdanje zrelosti kot LineageOS.
 Librem 5 pa se kot namenska naprava najbolj približa idealu odprte arhitekture, pri praktični uporabnosti pa ostaja v bolj omejenem območju, čeprav uporabniku omogoča zelo neposreden nadzor nad sistemom in strojno opremo.
 
@@ -1494,7 +1523,7 @@ Bolj ko se rešitev približuje idealu odprte arhitekture in večjega uporabniš
 Po drugi strani pa rešitve, ki so uporabniku najbližje kot dejanska zamenjava za običajen pametni telefon, skoraj vedno ostajajo odvisne od zaprtih komponent v spodnjih slojih sistema.
 
 Takšna primerjalna slika je pomembna tudi za nadaljnji empirični del naloge.
-Omogoča namreč, da izbrano rešitev v nadaljevanju ne razumemo kot izoliran primer, temveč kot del širšega prostora kompromisov med odprtostjo, varnostjo, vzdrževanjem, prilagodljivostjo in praktično uporabnostjo.
+Omogoča namreč, da izbrano rešitev v nadaljevanju ne razumemo kot izoliran primer, temveč kot del širšega prostora kompromisov med odprtostjo, preverljivostjo, vzdrževanjem, prilagodljivostjo in praktično uporabnostjo.
 
 \chapter{Empirični del: študija primera na telefonu OnePlus 6T}
 \label{chap:empiricni_del}
@@ -1509,7 +1538,10 @@ Posebej nas zanima, kako se na konkretni napravi spreminja razmerje med odprtost
 
 V skladu z modelom iz poglavja~\ref{chap:model_odprtokodnega_telefona} tudi v empiričnem delu posameznih rešitev ne obravnavamo z eno samo skupno oceno.
 Sisteme ocenjujemo ločeno v dveh dimenzijah: odprtosti in praktični uporabnosti.
-Odprtost presojamo po slojih sistema, praktično uporabnost pa po funkcionalnih sklopih, ki smo jih opredelili v sekcijah~\ref{sec:model_kriteriji_odprtosti} in~\ref{sec:model_uporabnost}.
+Odprtost presojamo po kriterijih odprtosti iz sekcije~\ref{sec:model_kriteriji_odprtosti}, praktično uporabnost pa po kriterijih iz sekcije~\ref{sec:model_uporabnost}.
+
+Za razliko od primerjalne analize iz prejšnjega poglavja, kjer smo uporabili pristop od zgoraj navzdol, empirični del temelji na pristopu od spodaj navzgor (angl.~\textit{bottom-up}).
+Najprej z neposrednim testiranjem na isti napravi zberemo konkretne kazalnike, nato pa iz njih izpeljemo sintezne ocene posameznih kriterijev.
 
 \section{Cilj in zasnova študije}
 \label{sec:cilj_in_zasnova_studije}
@@ -1625,8 +1657,9 @@ Pred posameznim testom zapremo odprte aplikacije, onemogočimo nebistvene dodatn
 \subsection{Scenariji testiranja}
 \label{subsec:scenariji_testiranja}
 
-Scenariji testiranja pokrivajo iste funkcionalne sklope praktične uporabnosti, ki smo jih opredelili v poglavju~\ref{chap:model_odprtokodnega_telefona}.
-Pri vsakem sklopu nas ne zanima le, ali funkcija deluje, temveč tudi, ali je njena uporaba dovolj zanesljiva za vsakdanjo rabo.
+Scenariji testiranja pokrivajo kriterije praktične uporabnosti, ki smo jih opredelili v sekciji~\ref{sec:model_uporabnost}.
+Pri vsakem kriteriju nas ne zanima le, ali posamezna funkcija deluje, temveč tudi, ali je njena uporaba dovolj zanesljiva za vsakdanjo rabo.
+Rezultati posameznih preizkusov služijo kot kazalniki, na podlagi katerih kasneje določimo sintezno oceno posameznega kriterija.
 
 \paragraph{Osnovne funkcije telefona.}
 Pri vsakem sistemu preverimo odhodne in dohodne klice, pošiljanje in prejemanje sporočil SMS, delovanje mobilnih podatkov ter možnost souporabe povezave prek dostopne točke.
@@ -1684,7 +1717,7 @@ Uporabimo vnaprej določen nabor spletnih strani: \\\texttt{wikipedia.org}, \tex
 Pri vsaki strani preverimo uspešnost nalaganja, osnovno pravilnost prikaza, odzivnost, uporabo obrazcev oziroma prijave, delo z zavihki ter osnovne interakcije, kot so kopiranje besedila, odpiranje povezav in predvajanje videa, kjer je to smiselno.
 
 \paragraph{E-pošta.}
-Preverimo uporabo enega računa, ki podpira protokol za dostop do internetnih sporočil (angl.~\textit{Internet Message Access Protocol}, IMAP) in preprosti protokol za prenos pošte (angl.~\textit{Simple Mail Transfer Protocol}, SMTP)
+Preverimo uporabo enega e-poštnega računa, ki podpira protokol za dostop do internetnih sporočil (angl.~\textit{Internet Message Access Protocol}, IMAP) in preprosti protokol za prenos pošte (angl.~\textit{Simple Mail Transfer Protocol}, SMTP).
 Preverimo prijavo, sinhronizacijo, pošiljanje in prejemanje sporočila ter delovanje obvestil.
 
 \paragraph{Sporazumevanje.}
@@ -1699,33 +1732,33 @@ Posebej zabeležimo tudi razumljivost in uporabnost navodil za pot.
 
 \paragraph{Mediji in 2FA.}
 Pri predvajanju medijev preverimo lokalno glasbo, lokalni video in spletni video, pri čemer spremljamo stabilnost delovanja, morebitno segrevanje in splošno uporabnost.
-Pri orodjih za avtentikacijo preverimo podporo za enkratna gesla na osnovi časa (angl.~\textit{time-based one-time password}, TOTP). V aplikacijo uvozimo testno kodo QR in preverimo, ali sistem pravilno generira pričakovano kodo z uporabo preverjevalne strani \url{https://2fas.com/auth/check-token/}.
+Pri orodjih za overjanje preverimo podporo za enkratna gesla na osnovi časa (angl.~\textit{time-based one-time passwords}, TOTP). V aplikacijo uvozimo testno kodo QR in preverimo, ali sistem pravilno generira pričakovano kodo z uporabo preverjevalne strani \url{https://2fas.com/auth/check-token/}.
 
 \paragraph{Bančne aplikacije in mobilno plačevanje.}
 Posebej zabeležimo tudi stanje pri aplikacijah z višjimi varnostnimi zahtevami, kot so bančne aplikacije in mobilno plačevanje, saj so te v praksi pogosto med prvimi pokazatelji omejitev alternativnih sistemov.
 
 \paragraph{Prilagodljivost in uporabniški nadzor.}
-Kot dodatni praktični sklop preverimo tudi tiste vidike, ki so za ciljni profil uporabnika posebej pomembni: dostop do terminala, razpoložljivost paketnega upravljalnika, možnost nameščanja dodatne odprtokodne programske opreme, odstranjevanje nezaželenih aplikacij, preglednost sistema ter možnosti nadzora nad procesi, storitvami in dovoljenji.
-Ta sklop ni ločen od praktične uporabnosti, temveč jo v našem kontekstu dopolnjuje.
-Prav večji nadzor nad sistemom je eden glavnih razlogov, zakaj uporabnik sploh poseže po odprtokodni alternativi.
+Čeprav odprtosti ni mogoče v celoti ovrednotiti zgolj z neposrednim uporabniškim testiranjem, v empiričnem delu vseeno zberemo nekaj konkretnih kazalnikov, ki posredno odražajo kriterije odprtosti iz modela iz prejšnjega poglavja.
+Pri tem ne ocenjujemo abstraktnega projekta, temveč konkretno kombinacijo projekta, različice sistema in naprave.
+Izbrani kazalniki zato niso zamišljeni kot ločen nadomestni model odprtosti, temveč kot praktičen način opazovanja nekaterih vidikov zagonske verige, sistemskih storitev, distribucije programske opreme, odvisnosti od zaprtih komponent in dejanske uporabniške avtonomije na konkretni napravi.
+V nadaljevanju predstavimo kazalnike, ki jih pri tem upoštevamo.
 
 \subsection{Metrike in beleženje rezultatov}
 \label{subsec:metrike_belezenje}
 
 Rezultate beležimo na dveh ravneh.
-Na prvi ravni za posamezne funkcionalnosti uporabimo neposreden opis stanja: \enquote{deluje}, \enquote{deluje delno} ali \enquote{ne deluje}.
-Oceno \enquote{deluje} dodelimo takrat, ko funkcionalnost v običajnem scenariju uporabe deluje zanesljivo in brez pomembnih omejitev.
-Oceno \enquote{deluje delno} dodelimo, kadar funkcionalnost deluje, vendar z opaznimi omejitvami, slabšo stabilnostjo, zmanjšano zmogljivostjo ali drugimi praktično pomembnimi pomanjkljivostmi.
-Oceno \enquote{ne deluje} dodelimo, kadar funkcionalnosti ni mogoče smiselno uporabiti za predvideni namen.
+Na prvi ravni za posamezne funkcionalnosti uporabimo neposredno oznako stanja: \enquote{deluje}, \enquote{deluje delno} ali \enquote{ne deluje}.
+Oznako \enquote{deluje} uporabimo takrat, ko funkcionalnost v običajnem scenariju uporabe deluje zanesljivo in brez pomembnih omejitev.
+Oznako \enquote{deluje delno} uporabimo, kadar funkcionalnost deluje, vendar z opaznimi omejitvami, slabšo stabilnostjo, zmanjšano zmogljivostjo ali drugimi praktično pomembnimi pomanjkljivostmi.
+Oznako \enquote{ne deluje} uporabimo, kadar funkcionalnosti ni mogoče smiselno uporabiti za predvideni namen.
 Tak zapis je posebej primeren za osnovne komponente, kot so kamera, Wi-Fi, Bluetooth, GPS in klici, saj omogoča jasen pregled nad tem, kaj je na napravi dejansko uporabno.
 
 Kadar je to pomembno, osnovno oznako dopolnimo s kratko kvalitativno opombo.
 Na ta način ohranimo preglednost rezultatov, ne da bi izgubili pomembne praktične podrobnosti.
 
-Na drugi ravni opažanja pretvorimo v sintezne ocene po istem modelu, kot smo ga uvedli v prejšnjih poglavjih.
-Odprtost ocenjujemo po slojih sistema, praktično uporabnost pa po funkcionalnih sklopih.
-V obeh primerih uporabimo tristopenjsko lestvico z vrednostmi 0, 1 in 2.
-Na ta način so rezultati empiričnega dela neposredno primerljivi s sinteznimi ocenami iz analitičnega dela naloge.
+Na drugi ravni zbrane kazalnike pretvorimo v sintezne ocene po istem modelu, kot smo ga uvedli v prejšnjih poglavjih.
+Odprtost ocenjujemo po kriterijih odprtosti, praktično uporabnost pa po kriterijih praktične uporabnosti.
+V obeh primerih uporabimo enotno tristopenjsko lestvico z vrednostmi 0, 1 in 2, opredeljeno v sekciji~\ref{sec:model_ocenjevanje}.
 
 Pri subjektivnih vidikih, kot so odzivnost uporabniškega vmesnika, stabilnost in splošni vtis, uporabimo kratke opisne opombe.
 Namesto navidezno natančnih številčnih ocen damo prednost kratkim kvalitativnim ugotovitvam, na primer da je sistem pri vsakdanji rabi \enquote{stabilen}, \enquote{občasno neodziven} ali \enquote{primeren le za eksperimentalno rabo}.
@@ -1735,13 +1768,13 @@ Pri porabi energije zabeležimo odstotek baterije na začetku in na koncu posame
 Pri sistemih, kjer je to mogoče, zabeležimo tudi sistemske informacije o porabi energije ali ozadnih procesih.
 Ker ti podatki med sistemi niso nujno neposredno primerljivi, služijo predvsem kot dopolnilna interpretativna informacija.
 
-\section{Empirični indikatorji odprtosti}
+\section{Empirični kazalniki odprtosti}
 \label{sec:empiricni_indikatorji_odprtosti}
 
-Čeprav odprtosti ni mogoče v celoti ovrednotiti z neposrednim uporabniškim testiranjem, v empiričnem delu vseeno preverimo nekaj konkretnih indikatorjev, ki posredno odražajo kriterije odprtosti iz modela iz prejšnjega poglavja.
-Pri tem ne ocenjujemo abstraktnega projekta, temveč konkretno kombinacijo projekta in naprave.
-Izbrani indikatorji zato niso zamišljeni kot ločen nadomestni model odprtosti, temveč kot praktičen način opazovanja nekaterih vidikov zagonske verige, sistemskih storitev, distribucije programske opreme, odvisnosti od zaprtih komponent in dejanske uporabniške avtonomije na konkretni napravi.
-V nadaljevanju predstavimo indikatorje, ki jih pri tem upoštevamo.
+Čeprav odprtosti ni mogoče v celoti ovrednotiti zgolj z neposrednim uporabniškim testiranjem, v empiričnem delu vseeno zberemo nekaj konkretnih kazalnikov, ki posredno odražajo kriterije odprtosti iz modela iz prejšnjega poglavja.
+Pri tem ne ocenjujemo abstraktnega projekta, temveč konkretno kombinacijo projekta, različice sistema in naprave.
+Izbrani kazalniki zato niso zamišljeni kot ločen nadomestni model odprtosti, temveč kot praktičen način opazovanja nekaterih vidikov zagonske verige, sistemskih storitev, distribucije programske opreme, odvisnosti od zaprtih komponent in dejanske uporabniške avtonomije na konkretni napravi.
+V nadaljevanju predstavimo kazalnike, ki jih pri tem upoštevamo.
 
 \paragraph{Zagonska veriga in namestitev.}
 Zabeležimo, kako dokumentiran je postopek namestitve, ali je odklep zagonskega nalagalnika preprost in ponovljiv, ali sistem zahteva posebne obhode ter kako predvidljivo poteka posodabljanje po namestitvi.
@@ -1773,7 +1806,7 @@ Tam, kjer je na voljo le spletna alternativa ali funkcionalno podoben program, p
 Vendar to ni zgolj metodološka slabost, temveč tudi del same ugotovitve: če posamezen sistem določenega vsakdanjega opravila ne omogoča na enako neposreden način, je prav to pomemben rezultat praktične primerjave.
 
 Kljub navedenim omejitvam takšna študija primera omogoča dovolj konkreten vpogled v to, kako se na isti napravi dejansko razlikujejo tovarniški sistem Android, alternativni ROM za sistem Android in mobilne distribucije sistema GNU/Linux.
-Prav ta neposredna primerjava je ključna za odgovor na raziskovalni vprašanji, ki zadevata praktično uporabnost in dejansko izvedljivost skoraj popolnoma odprtokodnega telefona za tehnično bolj podkovanega uporabnika.
+Prav ta neposredna primerjava je ključna za odgovor na raziskovalni vprašanji, ki zadevata praktično uporabnost in dejansko izvedljivost odprtokodno usmerjene mobilne naprave za tehnično bolj podkovanega uporabnika.
 
 %\cleardoublepage
 %\addcontentsline{toc}{chapter}{Literatura}
